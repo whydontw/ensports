@@ -36,8 +36,6 @@
 
 <body>
 
-	
-
 
 	<!-- start footer Area -->
 	<footer class="footer-area section_gap">
