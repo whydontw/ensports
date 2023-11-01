@@ -137,40 +137,40 @@
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="single-features">
 						<div class="f-icon">
-							<img src="resources/img/features/f-icon1.png" alt="">
+							<img src="resources/img/features/icon-baseball-field1.png" alt="">
 						</div>
-						<h6>Free Delivery</h6>
-						<p>Free Shipping on all order</p>
+						<h6>Baseball field</h6>
+						<p> It ain't over till it's over.</p>
 					</div>
 				</div>
 				<!-- single features -->
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="single-features">
 						<div class="f-icon">
-							<img src="resources/img/features/f-icon2.png" alt="">
+							<img src="resources/img/features/icon-soccer-field2.png" alt="">
 						</div>
-						<h6>Return Policy</h6>
-						<p>Free Shipping on all order</p>
+						<h6>Soccer field</h6>
+						<p>love what you have.</p>
 					</div>
 				</div>
 				<!-- single features -->
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="single-features">
 						<div class="f-icon">
-							<img src="resources/img/features/f-icon3.png" alt="">
+							<img src="resources/img/features/free-icon-basebal3.png" alt="">
 						</div>
-						<h6>24/7 Support</h6>
-						<p>Free Shipping on all order</p>
+						<h6>Baseball matching</h6>
+						<p>No pain no gain.</p>
 					</div>
 				</div>
 				<!-- single features -->
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="single-features">
 						<div class="f-icon">
-							<img src="resources/img/features/f-icon4.png" alt="">
+							<img src="resources/img/features/free-icon-soccer-player4.png" alt="">
 						</div>
-						<h6>Secure Payment</h6>
-						<p>Free Shipping on all order</p>
+						<h6>Soccer matching</h6>
+						<p>Slow and steady win the race.</p>
 					</div>
 				</div>
 			</div>
