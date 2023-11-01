@@ -32,6 +32,21 @@
 	<link rel="stylesheet" href="resources/css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="resources/css/magnific-popup.css">
 	<link rel="stylesheet" href="resources/css/main.css">
+	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	 crossorigin="anonymous"></script>
+	<script src="resources/js/vendor/bootstrap.min.js"></script>
+	<script src="resources/js/jquery.ajaxchimp.min.js"></script>
+	<script src="resources/js/jquery.nice-select.min.js"></script>
+	<script src="resources/js/jquery.sticky.js"></script>
+	<script src="resources/js/nouislider.min.js"></script>
+	<script src="resources/js/countdown.js"></script>
+	<script src="resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="resources/js/owl.carousel.min.js"></script>
+	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="resources/js/gmaps.min.js"></script>
+	<script src="resources/js/main.js"></script>
 	
 	
 			<!-- Required meta tags -->
@@ -73,18 +88,18 @@
 						<div class="row single-slide align-items-center d-flex">
 							<div class="col-lg-5 col-md-6">
 								<div class="banner-content">
-									<h1>Nike New <br>Collection!</h1>
+									<h1>Ensport<br>soccer!</h1>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
 										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
 									<div class="add-bag d-flex align-items-center">
 										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-										<span class="add-text text-uppercase">Add to Bag</span>
+										<span class="add-text text-uppercase">Go to play</span>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-7">
 								<div class="banner-img">
-									<img class="img-fluid" src="resources/img/banner/banner-img.png" alt="">
+									<img class="img-fluid" src="resources/img/banner/soccer.png" alt="">
 								</div>
 							</div>
 						</div>
@@ -92,18 +107,18 @@
 						<div class="row single-slide">
 							<div class="col-lg-5">
 								<div class="banner-content">
-									<h1>Nike New <br>Collection!</h1>
+									<h1>Ensport<br>baseball!</h1>
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
 										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
 									<div class="add-bag d-flex align-items-center">
 										<a class="add-btn" href=""><span class="lnr lnr-cross"></span></a>
-										<span class="add-text text-uppercase">Add to Bag</span>
+										<span class="add-text text-uppercase">Go to play</span>
 									</div>
 								</div>
 							</div>
 							<div class="col-lg-7">
 								<div class="banner-img">
-									<img class="img-fluid" src="resources/img/banner/banner-img.png" alt="">
+									<img class="img-fluid" src="resources/img/banner/baseball.png" alt="">
 								</div>
 							</div>
 						</div>
@@ -172,8 +187,8 @@
 						<div class="col-lg-8 col-md-8">
 							<div class="single-deal">
 								<div class="overlay"></div>
-								<img class="img-fluid w-100" src="resources/img/category/c1.jpg" alt="">
-								<a href="resources/img/category/c1.jpg" class="img-pop-up" target="_blank">
+								<img class="img-fluid w-100" src="resources/img/category/1.png" alt="">
+								<a href="resources/img/category/1.png" class="img-pop-up" target="_blank">
 									<div class="deal-details">
 										<h6 class="deal-title">Sneaker for Sports</h6>
 									</div>
@@ -183,8 +198,8 @@
 						<div class="col-lg-4 col-md-4">
 							<div class="single-deal">
 								<div class="overlay"></div>
-								<img class="img-fluid w-100" src="resources/img/category/c2.jpg" alt="">
-								<a href="resources/img/category/c2.jpg" class="img-pop-up" target="_blank">
+								<img class="img-fluid w-100" src="resources/img/category/2.png" alt="">
+								<a href="resources/img/category/2.png" class="img-pop-up" target="_blank">
 									<div class="deal-details">
 										<h6 class="deal-title">Sneaker for Sports</h6>
 									</div>
@@ -194,8 +209,8 @@
 						<div class="col-lg-4 col-md-4">
 							<div class="single-deal">
 								<div class="overlay"></div>
-								<img class="img-fluid w-100" src="resources/img/category/c3.jpg" alt="">
-								<a href="resources/img/category/c3.jpg" class="img-pop-up" target="_blank">
+								<img class="img-fluid w-100" src="resources/img/category/3.png" alt="">
+								<a href="resources/img/category/3.png" class="img-pop-up" target="_blank">
 									<div class="deal-details">
 										<h6 class="deal-title">Product for Couple</h6>
 									</div>
@@ -205,8 +220,8 @@
 						<div class="col-lg-8 col-md-8">
 							<div class="single-deal">
 								<div class="overlay"></div>
-								<img class="img-fluid w-100" src="resources/img/category/c4.jpg" alt="">
-								<a href="resources/img/category/c4.jpg" class="img-pop-up" target="_blank">
+								<img class="img-fluid w-100" src="resources/img/category/4.png" alt="">
+								<a href="resources/img/category/4.png" class="img-pop-up" target="_blank">
 									<div class="deal-details">
 										<h6 class="deal-title">Sneaker for Sports</h6>
 									</div>
@@ -218,8 +233,8 @@
 				<div class="col-lg-4 col-md-6">
 					<div class="single-deal">
 						<div class="overlay"></div>
-						<img class="img-fluid w-100" src="resources/img/category/c5.jpg" alt="">
-						<a href="resources/img/category/c5.jpg" class="img-pop-up" target="_blank">
+						<img class="img-fluid w-100" src="resources/img/category/5.png" alt="">
+						<a href="resources/img/category/5.png" class="img-pop-up" target="_blank">
 							<div class="deal-details">
 								<h6 class="deal-title">Sneaker for Sports</h6>
 							</div>
@@ -943,7 +958,7 @@
 	
 		<div class="section bg-light">
 			
-			<h2 class="heading mb-5 text-center">Testimonials</h2>
+			<h2 class="heading mb-5 text-center">이용 후기</h2>
 	
 			<div class="text-center mb-5">
 				<div id="prevnext-testimonial">
@@ -963,7 +978,7 @@
 					<div class="item">
 						<blockquote class="block-testimonial">
 							<div class="author">
-								<img src="img/person_1.jpg" alt="Free template by TemplateUX">
+								<img src="resources/img/person_1.jpg" alt="Free template by TemplateUX">
 								<h3>John Doe</h3>
 								<p class="position mb-5">CEO, Founder</p>
 							</div>
@@ -976,7 +991,7 @@
 					<div class="item">
 						<blockquote class="block-testimonial">
 							<div class="author">
-								<img src="img/person_2.jpg" alt="Free template by TemplateUX">
+								<img src="resources/img/person_2.jpg" alt="Free template by TemplateUX">
 								<h3>James Woodland</h3>
 								<p class="position mb-5">Designer at Facebook</p>
 							</div>
@@ -990,7 +1005,7 @@
 					<div class="item">
 						<blockquote class="block-testimonial">
 							<div class="author">
-								<img src="img/person_3.jpg" alt="Free template by TemplateUX">
+								<img src="resources/img/person_3.jpg" alt="Free template by TemplateUX">
 								<h3>Rob Smith</h3>
 								<p class="position mb-5">Product Designer at Twitter</p>
 							</div>
@@ -1003,7 +1018,7 @@
 					<div class="item">
 						<blockquote class="block-testimonial">
 							<div class="author">
-								<img src="img/person_1.jpg" alt="Free template by TemplateUX">
+								<img src="resources/img/person_1.jpg" alt="Free template by TemplateUX">
 								<h3>John Doe</h3>
 								<p class="position mb-5">CEO, Founder</p>
 							</div>
@@ -1016,7 +1031,7 @@
 					<div class="item">
 						<blockquote class="block-testimonial">
 							<div class="author">
-								<img src="img/person_2.jpg" alt="Free template by TemplateUX">
+								<img src="resources/img/person_2.jpg" alt="Free template by TemplateUX">
 								<h3>James Woodland</h3>
 								<p class="position mb-5">Designer at Facebook</p>
 							</div>
@@ -1030,7 +1045,7 @@
 					<div class="item">
 						<blockquote class="block-testimonial">
 							<div class="author">
-								<img src="img/person_3.jpg" alt="Free template by TemplateUX">
+								<img src="resources/img/person_3.jpg" alt="Free template by TemplateUX">
 								<h3>Rob Smith</h3>
 								<p class="position mb-5">Product Designer at Twitter</p>
 							</div>
@@ -1057,21 +1072,7 @@
 	<%@ include file="views/common/footer.jsp" %> 
 	
 
-	<script src="resources/js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
-	<script src="resources/js/vendor/bootstrap.min.js"></script>
-	<script src="resources/js/jquery.ajaxchimp.min.js"></script>
-	<script src="resources/js/jquery.nice-select.min.js"></script>
-	<script src="resources/js/jquery.sticky.js"></script>
-	<script src="resources/js/nouislider.min.js"></script>
-	<script src="resources/js/countdown.js"></script>
-	<script src="resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="resources/js/owl.carousel.min.js"></script>
-	<!--gmaps Js-->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="resources/js/gmaps.min.js"></script>
-	<script src="resources/js/main.js"></script>
+
 </body>
 
 </html>
