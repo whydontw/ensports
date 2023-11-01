@@ -132,7 +132,6 @@
 	
 	
 	<script>
-		
 		var msg = "${alertMsg}";
 		
         if(msg != 'null' || msg != ''){        
