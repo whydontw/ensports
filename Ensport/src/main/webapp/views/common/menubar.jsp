@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<% String contextPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,13 +54,13 @@
 					</button>
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
-						<ul class="nav navbar-nav menu_nav ml-auto">
+						<ul class="nav navbar-nav menu_nav ml-auto"> 
 							<li class="nav-item active"><a class="nav-link" href="<%=request.getContextPath()%>/">Home</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">경기매칭</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.html">축구</a></li>
+									<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/list.so">축구</a></li>
 									<li class="nav-item"><a class="nav-link" href="single-product.html">야구</a></li>
 									
 								</ul>
@@ -102,5 +103,26 @@
 		</div>
 		
 	</header>
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+    var currentURL = window.location.pathname; // 현재 페이지 URL
+
+    var menuItems = document.querySelectorAll('.nav-item'); // 모든 메뉴 항목
+
+    // 모든 메뉴 항목에서 "active" 클래스를 제거합니다.
+    menuItems.forEach(function(item) {
+        item.classList.remove('active');
+    });
+
+    // 현재 URL에 해당하는 메뉴 항목에 "active" 클래스를 추가합니다.
+    menuItems.forEach(function(item) {
+        var link = item.querySelector('.nav-link');
+        if (link && link.getAttribute('href') === currentURL) {
+            item.classList.add('active');
+        }
+    });
+});
+</script>
+	
 </body>
 </html>

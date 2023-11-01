@@ -22,14 +22,14 @@
 	<!--
             CSS
             ============================================= -->
-	<link rel="stylesheet" href="../../resources/css/linearicons.css">
-	<link rel="stylesheet" href="../../resources/css/owl.carousel.css">
-	<link rel="stylesheet" href="../../resources/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../../resources/css/themify-icons.css">
-	<link rel="stylesheet" href="../../resources/css/nice-select.css">
-	<link rel="stylesheet" href="../../resources/css/nouislider.min.css">
-	<link rel="stylesheet" href="../../resources/css/bootstrap.css">
-	<link rel="stylesheet" href="../../resources/css/main.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/linearicons.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/owl.carousel.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/themify-icons.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/nice-select.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/nouislider.min.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.css">
+	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/main.css">
 </head>
 
 <body id="category">
@@ -276,7 +276,7 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="../../resources/img/product/p1.jpg" alt="">
+								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p1.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -309,7 +309,7 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="../../resources/img/product/p2.jpg" alt="">
+								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p2.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -342,7 +342,7 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="../../resources/img/product/p3.jpg" alt="">
+								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p3.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -375,7 +375,7 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="../../resources/img/product/p4.jpg" alt="">
+								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p4.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -408,7 +408,7 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="../../resources/img/product/p5.jpg" alt="">
+								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p5.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -441,7 +441,106 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="../../resources/img/product/p6.jpg" alt="">
+								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p6.jpg" alt="">
+								<div class="product-details">
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-heart"></span>
+											<p class="hover-text">Wishlist</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-move"></span>
+											<p class="hover-text">view more</p>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- single product -->
+						<div class="col-lg-4 col-md-6">
+							<div class="single-product">
+								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p4.jpg" alt="">
+								<div class="product-details">
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-heart"></span>
+											<p class="hover-text">Wishlist</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-move"></span>
+											<p class="hover-text">view more</p>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- single product -->
+						<div class="col-lg-4 col-md-6">
+							<div class="single-product">
+								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p5.jpg" alt="">
+								<div class="product-details">
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
+									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-heart"></span>
+											<p class="hover-text">Wishlist</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
+										<a href="" class="social-info">
+											<span class="lnr lnr-move"></span>
+											<p class="hover-text">view more</p>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- single product -->
+						<div class="col-lg-4 col-md-6">
+							<div class="single-product">
+								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p6.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -569,23 +668,23 @@
 			</div>
 		</div>
 	</div>
-
+	<img src="img/공간.png" alt="">
 
 	<%@ include file="../common/footer.jsp" %> 
-	<script src="../../resources/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="<%= request.getContextPath() %>/resources/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
-	<script src="../../resources/js/vendor/bootstrap.min.js"></script>
-	<script src="../../resources/js/jquery.ajaxchimp.min.js"></script>
-	<script src="../../resources/js/jquery.nice-select.min.js"></script>
-	<script src="../../resources/js/jquery.sticky.js"></script>
-	<script src="../../resources/js/nouislider.min.js"></script>
-	<script src="../../resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="../../resources/js/owl.carousel.min.js"></script>
+	<script src="<%= request.getContextPath() %>/resources/js/vendor/bootstrap.min.js"></script>
+	<script src="<%= request.getContextPath() %>/resources/js/jquery.ajaxchimp.min.js"></script>
+	<script src="<%= request.getContextPath() %>/resources/js/jquery.nice-select.min.js"></script>
+	<script src="<%= request.getContextPath() %>/resources/js/jquery.sticky.js"></script>
+	<script src="<%= request.getContextPath() %>/resources/js/nouislider.min.js"></script>
+	<script src="<%= request.getContextPath() %>/resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="<%= request.getContextPath() %>/resources/js/owl.carousel.min.js"></script>
 	<!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="../../resources/js/gmaps.min.js"></script>
-	<script src="../../resources/js/main.js"></script>
+	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
+	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
 </body>
 
 </html>
