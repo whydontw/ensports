@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+
+	<entry key="loginMember">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_ID = ?
+		AND USER_PASSWORD = ?
+		AND STATUS = 'Y'
+	</entry>
+	
+
 	<entry key="insertMember">
 	INSERT INTO MEMBER(
 						USER_NO
@@ -18,21 +28,23 @@
 						,STATUS
 						)
 						VALUES(
-						SEQ_MNO.NEXTVAL
-						, ?
-						, ?
-						, ?
-						, ?
-						, ?
-						, ?
-						, DEFAULT
-						, ?
-						, ?
-						, ?
-						, null
-						, 'Y')
-	
+						SEQ_MNO.NEXTVAL, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?, ?, null, 'Y')
 	</entry>
 	
+	
+	<entry key="idDuplCheck">
+		SELECT COUNT(*) COUNT
+		FROM MEMBER
+		WHERE USER_ID = ?
+		AND STATUS = 'Y'
+	</entry>
+	
+	
+	<entry key="phoneDuplCheck">
+		SELECT COUNT(*) COUNT
+		FROM MEMBER
+		WHERE PHONE = ?
+		AND STATUS = 'Y'
+	</entry>
 	
 </properties>
