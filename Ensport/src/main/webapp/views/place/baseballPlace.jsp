@@ -17,7 +17,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>축구 경기매칭</title>
+	<title>야구 경기장 예약</title>
 
 	<!--
             CSS
@@ -40,10 +40,10 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>야구 경기매칭</h1>
+					<h1>야구 경기장</h1>
 					<nav class="d-flex align-items-center">
 						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">경기매칭<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">경기장 예약<span class="lnr lnr-arrow-right"></span></a>
 						<a href="category.html">야구</a>
 					</nav>
 				</div>
