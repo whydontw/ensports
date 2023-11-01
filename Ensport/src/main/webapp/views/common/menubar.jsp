@@ -1,6 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% String contextPath = request.getContextPath(); %>
+<%@page import="com.ensport.member.model.vo.Member"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="contextPath" value="${pageContext.request.contextPath }"/>
+<c:set var="loginUser" value="${loginUser}" scope="session"/>
+<c:set var="alertMsg" value="${alertMsg}" scope="session"/>
+
+<%
+	
+	//쿠키정보
+	Cookie[] cookies = request.getCookies();		//반환타입: 배열
+	
+	//쿠키 배열에서 필요한 쿠키 정보를 추출하기
+	//반복으로 돌려서 해당 쿠키의 이름을 찾고 그 쿠키의 값을 담아두기
+	
+	String saveId = "";
+	if(cookies!=null){
+		for(Cookie c : cookies){
+			if((c.getName()).equals("userId")){
+				saveId = c.getValue();
+			}
+		}
+	}
+%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,29 +47,29 @@
 	<meta charset="UTF-8">
 	<!-- Site Title -->
 	<title>Ensport</title>
-	<!--
-		CSS
-		============================================= -->
-	<link rel="stylesheet" href="../../resources/css/linearicons.css">
-	<link rel="stylesheet" href="../../resources/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../../resources/css/themify-icons.css">
-	<link rel="stylesheet" href="../../resources/css/bootstrap.css">
-	<link rel="stylesheet" href="../../resources/css/owl.carousel.css">
-	<link rel="stylesheet" href="../../resources/css/nice-select.css">
-	<link rel="stylesheet" href="../../resources/css/nouislider.min.css">
-	<link rel="stylesheet" href="../../resources/css/ion.rangeSlider.css" />
-	<link rel="stylesheet" href="../../resources/css/ion.rangeSlider.skinFlat.css" />
-	<link rel="stylesheet" href="../../resources/css/magnific-popup.css">
-	<link rel="stylesheet" href="../../resources/css/main.css">
-    
+	<!-- CSS
+	============================================= -->
+	
+	<link rel="stylesheet" href="${contextPath}/resources/css/linearicons.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/themify-icons.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/owl.carousel.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/nice-select.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/nouislider.min.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/ion.rangeSlider.css" />
+	<link rel="stylesheet" href="${contextPath}/resources/css/ion.rangeSlider.skinFlat.css" />
+	<link rel="stylesheet" href="${contextPath}/resources/css/magnific-popup.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 </head>
-<body> 
+
+<body>
     <header class="header_area sticky-header">
 		<div class="main_menu">
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img src="<%= request.getContextPath() %>/resources/img/logo(temp).jpg" />
+					<a class="navbar-brand logo_h" href="index.html"><img src="${contextPath}/resources/img/logo(temp).jpg" />
 </a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,12 +80,12 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto"> 
-							<li class="nav-item active"><a class="nav-link" href="<%=request.getContextPath()%>/">Home</a></li>
+							<li class="nav-item active"><a class="nav-link" href="${contextPath}/">Home</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">경기매칭</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/list.so">축구</a></li>
+									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.so">축구</a></li>
 									<li class="nav-item"><a class="nav-link" href="single-product.html">야구</a></li>
 									
 								</ul>
@@ -83,16 +108,18 @@
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">로그인</a>
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">로그인</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="login.html">로그인</a></li>
-
+									<li class="nav-item"><a class="nav-link" href="${contextPath}/myPage.me">마이페이지</a></li>
 								</ul>
+							</li>
+
+							<li class="nav-item submenu dropdown">
+								<a href="${contextPath }/login.me" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">로그인</a>
 							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+							<li class="nav-item"><a href="#" class="cart"><span class="ti-briefcase"></span></a></li>
 							<li class="nav-item">
 								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 							</li>
@@ -101,28 +128,18 @@
 				</div>
 			</nav>
 		</div>
-		
 	</header>
-	<script>
-	document.addEventListener("DOMContentLoaded", function() {
-    var currentURL = window.location.pathname; // 현재 페이지 URL
-
-    var menuItems = document.querySelectorAll('.nav-item'); // 모든 메뉴 항목
-
-    // 모든 메뉴 항목에서 "active" 클래스를 제거합니다.
-    menuItems.forEach(function(item) {
-        item.classList.remove('active');
-    });
-
-    // 현재 URL에 해당하는 메뉴 항목에 "active" 클래스를 추가합니다.
-    menuItems.forEach(function(item) {
-        var link = item.querySelector('.nav-link');
-        if (link && link.getAttribute('href') === currentURL) {
-            item.classList.add('active');
-        }
-    });
-});
-</script>
 	
+	
+	<script>
+		
+		var msg = "${alertMsg}";
+		
+        if(msg != 'null' || msg != ''){        
+            alert(msg);
+        }
+		
+	</script>
+
 </body>
 </html>

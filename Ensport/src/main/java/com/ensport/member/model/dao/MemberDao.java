@@ -3,6 +3,7 @@ package com.ensport.member.model.dao;
 import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -30,6 +31,69 @@ public class MemberDao {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	//로그인 기능
+	public Member loginMember(Connection conn, String userId, String userPwd) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		
+		//회원정보를 담아갈 객체 준비하기
+		Member m = null;
+		
+		System.out.println("Dao:" +  userId + " " + userPwd);
+		
+		//xml 파일에서 키값으로 sql 구문 가져오기
+		String sql = prop.getProperty("loginMember");
+		
+		try {
+			//미완성 sql 구문 전달하기
+			pstmt = conn.prepareStatement(sql);
+			
+			//미완성부분 (위치홀더) 채우기
+			pstmt.setString(1, userId);			//1번 ?에 userId 넣기
+			pstmt.setString(2, userPwd);		//2번 ?에 userPwd 넣기
+			
+			
+			//완성시켰으면 쿼리구문 실행해서 결과값 받아오기
+			rset = pstmt.executeQuery();
+			
+			//조회된 결과는 한 행 또는 없음이므로(userId unique 제약조건) if문으로 조건 확인하기
+			if(rset.next()) {	//조회된 결과가 있다면 회원정보 꺼내오기
+				
+				m = new Member(rset.getInt("USER_NO")
+							, rset.getString("USER_ID")
+							, rset.getString("USER_PASSWORD")
+							, rset.getString("USER_NICKNAME")
+							, rset.getString("USER_NAME")
+							, rset.getString("EMAIL")
+							, rset.getString("PHONE")
+							, rset.getDate("ENROLLDATE")
+							, rset.getString("GENDER")
+							, rset.getString("ADDRESS")
+							, rset.getString("PREFER")
+							, rset.getString("IMAGES")
+							, rset.getString("STATUS")
+							);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			
+			//생성의 역순으로 반납하기
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		System.out.println("로그인객체:" + m);
+		
+		return m;
+	}
+
+	
+	
 	
 	
 	//회원가입
@@ -72,5 +136,70 @@ public class MemberDao {
 		
 		return result;
 	}
+
+
+	//아이디 중복 확인
+	public int idDuplCheck(Connection conn, String checkId) {
+		//숫자를 세어 넣을 변수(아이디 있는지 없는지 판별용)
+		int count = 0;
+		
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("idDuplCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, checkId);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("COUNT");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return count;
+	}
+	
+	
+	//전화번호 중복 확인
+	public int phoneDuplCheck(Connection conn, String checkPhone) {
+		//숫자를 세어 넣을 변수(아이디 있는지 없는지 판별용)
+		int count = 0;
+		
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("phoneDuplCheck");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, checkPhone);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				count = rset.getInt("COUNT");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return count;
+	}
+
 
 }
