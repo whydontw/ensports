@@ -21,7 +21,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Ensport</title>
+	<title>메뉴바</title>
 	<!--
 		CSS
 		============================================= -->
@@ -38,13 +38,20 @@
 	<link rel="stylesheet" href="../../resources/css/main.css">
     
 </head>
+
+
+
+
+
+
+
 <body> 
     <header class="header_area sticky-header">
 		<div class="main_menu">
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img src="<%= request.getContextPath() %>/resources/img/logo(temp).jpg" />
+					<a class="navbar-brand logo_h" href="<%=request.getContextPath()%>/"><img src="<%= request.getContextPath() %>/resources/img/logo(temp).jpg" />
 </a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,13 +62,14 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto"> 
-							<li class="nav-item active"><a class="nav-link" href="<%=request.getContextPath()%>/">Home</a></li>
+							<li class="nav-item "><a class="nav-link" href="<%=request.getContextPath()%>/" id="home">Home</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">경기매칭</a>
 								<ul class="dropdown-menu">
+								
 									<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/list.so">축구</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-product.html">야구</a></li>
+									<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/list.ba">야구</a></li>
 									
 								</ul>
 							</li>
@@ -69,8 +77,8 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">경기장</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.html">축구</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-product.html">야구</a></li>
+									<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/place.so">축구</a></li>
+									<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/place.ba">야구</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
@@ -103,26 +111,34 @@
 		</div>
 		
 	</header>
-	<script>
-	document.addEventListener("DOMContentLoaded", function() {
-    var currentURL = window.location.pathname; // 현재 페이지 URL
-
-    var menuItems = document.querySelectorAll('.nav-item'); // 모든 메뉴 항목
-
-    // 모든 메뉴 항목에서 "active" 클래스를 제거합니다.
-    menuItems.forEach(function(item) {
-        item.classList.remove('active');
-    });
-
-    // 현재 URL에 해당하는 메뉴 항목에 "active" 클래스를 추가합니다.
-    menuItems.forEach(function(item) {
-        var link = item.querySelector('.nav-link');
-        if (link && link.getAttribute('href') === currentURL) {
-            item.classList.add('active');
-        }
-    });
-});
-</script>
 	
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 현재 URL을 가져옵니다.
+        var currentURL = '<%= request.getRequestURI() %>';
+        var menuItems = document.querySelectorAll('.nav-item');
+
+        // 클릭 이벤트를 각 메뉴 항목에 연결합니다.
+        menuItems.forEach(function(item) {
+            var link = item.querySelector('.nav-link');
+            var value = link.getAttribute('value');
+            var id = link.getAttribute('id');
+
+            // 클릭 이벤트 핸들러를 등록합니다.
+            link.addEventListener('click', function() {
+                // 모든 메뉴 항목의 "active" 클래스를 제거합니다.
+                menuItems.forEach(function(item) {
+                    item.classList.remove('active');
+                });
+
+                // 현재 클릭한 링크의 value 또는 id 값이 현재 URL과 일치하면 "active" 클래스를 추가합니다.
+                if (value === currentURL || id === currentURL) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
