@@ -22,19 +22,19 @@
 	<!--
             CSS
             ============================================= -->
-	<link rel="stylesheet" href="../../resourcescss/linearicons.css">
-	<link rel="stylesheet" href="../../resourcescss/owl.carousel.css">
-	<link rel="stylesheet" href="../../resourcescss/font-awesome.min.css">
-	<link rel="stylesheet" href="../../resourcescss/themify-icons.css">
-	<link rel="stylesheet" href="../../resourcescss/nice-select.css">
-	<link rel="stylesheet" href="../../resourcescss/nouislider.min.css">
-	<link rel="stylesheet" href="../../resourcescss/bootstrap.css">
-	<link rel="stylesheet" href="../../resourcescss/main.css">
+	<link rel="stylesheet" href="../../resources/css/linearicons.css">
+	<link rel="stylesheet" href="../../resources/css/owl.carousel.css">
+	<link rel="stylesheet" href="../../resources/css/font-awesome.min.css">
+	<link rel="stylesheet" href="../../resources/css/themify-icons.css">
+	<link rel="stylesheet" href="../../resources/css/nice-select.css">
+	<link rel="stylesheet" href="../../resources/css/nouislider.min.css">
+	<link rel="stylesheet" href="../../resources/css/bootstrap.css">
+	<link rel="stylesheet" href="../../resources/css/main.css">
 </head>
 
 <body id="category">
-	<%@ include file="../common/menubar.jsp" %>  
 
+	<%@ include file="../common/menubar.jsp" %> 
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
@@ -211,10 +211,10 @@
 						
 					</ul>
 				</div>
-				<div class="sidebar-filter mt-50">
+				<div class="sidebar-filter mt-50" hidden>
 					<div class="top-filter-head">Product Filters</div>
 					<div class="common-filter">
-						<div class="head">Brands</div>
+						<div class="head" >Brands</div>
 						<form action="#">
 							<ul>
 								<li class="filter-list"><input class="pixel-radio" type="radio" id="apple" name="brand"><label for="apple">Apple<span>(29)</span></label></li>
@@ -276,7 +276,7 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="img/product/p1.jpg" alt="">
+								<img class="img-fluid" src="../../resources/img/product/p1.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -309,7 +309,7 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="img/product/p2.jpg" alt="">
+								<img class="img-fluid" src="../../resources/img/product/p2.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -342,7 +342,7 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="img/product/p3.jpg" alt="">
+								<img class="img-fluid" src="../../resources/img/product/p3.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -375,7 +375,7 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="img/product/p4.jpg" alt="">
+								<img class="img-fluid" src="../../resources/img/product/p4.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -408,7 +408,7 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="img/product/p5.jpg" alt="">
+								<img class="img-fluid" src="../../resources/img/product/p5.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -441,7 +441,7 @@
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
-								<img class="img-fluid" src="img/product/p6.jpg" alt="">
+								<img class="img-fluid" src="../../resources/img/product/p6.jpg" alt="">
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
@@ -472,6 +472,8 @@
 							</div>
 						</div>
 					</div>
+					
+					
 				</section>
 				<!-- End Best Seller -->
 				<!-- Start Filter Bar -->
@@ -498,143 +500,7 @@
 		</div>
 	</div>
 
-	<!-- Start related-product Area -->
-	<section class="related-product-area section_gap">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-6 text-center">
-					<div class="section-title">
-						<h1>Deals of the Week</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
-							magna aliqua.</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-9">
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r1.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r2.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r3.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r5.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r6.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r7.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r9.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r10.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="img/r11.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<div class="ctg-right">
-						<a href="#" target="_blank">
-							<img class="img-fluid d-block mx-auto" src="img/category/c5.jpg" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End related-product Area -->
-	<%@ include file="../common/footer.jsp" %> 
+	
 
 
 	<!-- Modal Quick Product View -->
@@ -705,21 +571,24 @@
 	</div>
 
 
-
-	<script src="../../resourcesjs/vendor/jquery-2.2.4.min.js"></script>
+	<%@ include file="../common/footer.jsp" %> 
+	<script src="../../resources/js/vendor/jquery-2.2.4.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
 	 crossorigin="anonymous"></script>
-	<script src="../../resourcesjs/vendor/bootstrap.min.js"></script>
-	<script src="../../resourcesjs/jquery.ajaxchimp.min.js"></script>
-	<script src="../../resourcesjs/jquery.nice-select.min.js"></script>
-	<script src="../../resourcesjs/jquery.sticky.js"></script>
-	<script src="../../resourcesjs/nouislider.min.js"></script>
-	<script src="../../resourcesjs/jquery.magnific-popup.min.js"></script>
-	<script src="../../resourcesjs/owl.carousel.min.js"></script>
+	<script src="../../resources/js/vendor/bootstrap.min.js"></script>
+	<script src="../../resources/js/jquery.ajaxchimp.min.js"></script>
+	<script src="../../resources/js/jquery.nice-select.min.js"></script>
+	<script src="../../resources/js/jquery.sticky.js"></script>
+	<script src="../../resources/js/nouislider.min.js"></script>
+	<script src="../../resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="../../resources/js/owl.carousel.min.js"></script>
 	<!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="../../resourcesjs/gmaps.min.js"></script>
-	<script src="../../resourcesjs/main.js"></script>
+	<script src="../../resources/js/gmaps.min.js"></script>
+	<script src="../../resources/js/main.js"></script>
+</body>
+
+</html>
 </body>
 
 </html>
