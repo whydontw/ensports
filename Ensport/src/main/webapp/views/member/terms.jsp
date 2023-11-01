@@ -17,7 +17,7 @@
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-    <title>Karma Shop</title>
+    <title>이용약관</title>
 
     <!-- CSS ============================================= -->
     <link rel="stylesheet" href="../../resources/css/linearicons.css">
