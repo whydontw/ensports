@@ -57,9 +57,9 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a data-toggle="collapse" href="#fruitsVegetable" aria-expanded="false" aria-controls="fruitsVegetable"><span
+						<li class="main-nav-list"><a data-toggle="collapse" href="#seoul" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								 class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a>
-							<ul class="collapse" id="fruitsVegetable" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+							<ul class="collapse" id="seoul" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
 								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
@@ -68,19 +68,30 @@
 							</ul>
 						</li>
 
-						<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-							class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a>
-					   <ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
-						   <li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
-					   </ul>
-				   </li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#meatFish" aria-expanded="false" aria-controls="meatFish"><span
-								 class="lnr lnr-arrow-right"></span>부산<span class="number">(53)</span></a>
-							<ul class="collapse" id="meatFish" data-toggle="collapse" aria-expanded="false" aria-controls="meatFish">
+						<li class="main-nav-list"><a data-toggle="collapse" href="#gyeonggido" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a>
+					   		<ul class="collapse" id="gyeonggido" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
+					   		</ul>
+				   		</li>
+
+						<li class="main-nav-list"><a data-toggle="collapse" href="#incheon" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a>
+					   		<ul class="collapse" id="incheon" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
+					   		</ul>
+				   		</li>
+						<li class="main-nav-list"><a data-toggle="collapse" href="#daegu" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>대구<span class="number">(53)</span></a>
+							<ul class="collapse" id="daegu" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
 								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
@@ -88,9 +99,10 @@
 								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
 							</ul>
 						</li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-								 class="lnr lnr-arrow-right"></span>대구<span class="number">(53)</span></a>
-							<ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
+
+						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
+							<ul class="collapse" id="jeonbuk" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
 								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
@@ -98,29 +110,9 @@
 								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
 							</ul>
 						</li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-							class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a>
-					   <ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
-						   <li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
-					   </ul>
-				   </li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-							class="lnr lnr-arrow-right"></span>광주<span class="number">(53)</span></a>
-					   <ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
-						   <li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
-					   </ul>
-				   </li>
-				   		<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-								 class="lnr lnr-arrow-right"></span>대전<span class="number">(53)</span></a>
-							<ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
+						<li class="main-nav-list"><a data-toggle="collapse" href="#gwangju" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>광주<span class="number">(53)</span></a>
+							<ul class="collapse" id="gwangju" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
 								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
@@ -128,19 +120,10 @@
 								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
 							</ul>
 						</li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-							class="lnr lnr-arrow-right"></span>울산<span class="number">(53)</span></a>
-					   <ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
-						   <li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
-					   </ul>
-				   </li>
-				   		<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-								 class="lnr lnr-arrow-right"></span>세종<span class="number">(53)</span></a>
-							<ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
+
+						<li class="main-nav-list"><a data-toggle="collapse" href="#daejeon" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>대전<span class="number">(53)</span></a>
+							<ul class="collapse" id="daejeon" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
 								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
@@ -148,19 +131,10 @@
 								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
 							</ul>
 						</li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-							class="lnr lnr-arrow-right"></span>경남<span class="number">(53)</span></a>
-					   <ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
-						   <li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
-					   </ul>
-				   </li>
-				   		<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-								 class="lnr lnr-arrow-right"></span>경북<span class="number">(53)</span></a>
-							<ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
+
+						<li class="main-nav-list"><a data-toggle="collapse" href="#ulsan" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>울산<span class="number">(53)</span></a>
+							<ul class="collapse" id="ulsan" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
 								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
@@ -168,19 +142,10 @@
 								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
 							</ul>
 						</li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-							class="lnr lnr-arrow-right"></span>전남<span class="number">(53)</span></a>
-					   <ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
-						   <li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
-					   </ul>
-				   </li>
-				   		<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-								 class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
-							<ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
+
+						<li class="main-nav-list"><a data-toggle="collapse" href="#sejong" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>세종<span class="number">(53)</span></a>
+							<ul class="collapse" id="sejong" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
 								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
@@ -188,26 +153,72 @@
 								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
 							</ul>
 						</li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-							class="lnr lnr-arrow-right"></span>강원<span class="number">(53)</span></a>
-					   <ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
-						   <li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
-					   </ul>
-				   </li>
-						<li class="main-nav-list"><a data-toggle="collapse" href="#cooking" aria-expanded="false" aria-controls="cooking"><span
-							class="lnr lnr-arrow-right"></span>제주<span class="number">(53)</span></a>
-					   <ul class="collapse" id="cooking" data-toggle="collapse" aria-expanded="false" aria-controls="cooking">
-						   <li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
-						   <li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
-					   </ul>
-				   </li>
+
+						<li class="main-nav-list"><a data-toggle="collapse" href="#gyeongnam" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>경남<span class="number">(53)</span></a>
+							<ul class="collapse" id="gyeongnam" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
+							</ul>
+						</li>
+
+						<li class="main-nav-list"><a data-toggle="collapse" href="#gyeongbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>경북<span class="number">(53)</span></a>
+							<ul class="collapse" id="gyeongbuk" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
+							</ul>
+						</li>
+
+						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonnam" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>전남<span class="number">(53)</span></a>
+							<ul class="collapse" id="jeonnam" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
+							</ul>
+						</li>
+
+						<li class="main-nav-list"><a data-toggle="collapse" href="#busan" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>부산<span class="number">(53)</span></a>
+							<ul class="collapse" id="busan" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
+							</ul>
+						</li>
+
+						<li class="main-nav-list"><a data-toggle="collapse" href="#gangwon" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>강원<span class="number">(53)</span></a>
+							<ul class="collapse" id="gangwon" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
+							</ul>
+						</li>
+
+						<li class="main-nav-list"><a data-toggle="collapse" href="#jeju" aria-expanded="false" aria-controls="fruitsVegetable"><span
+								class="lnr lnr-arrow-right"></span>제주<span class="number">(53)</span></a>
+							<ul class="collapse" id="jeju" data-toggle="collapse" aria-expanded="false" aria-controls="fruitsVegetable">
+								<li class="main-nav-list child"><a href="#">Frozen Fish<span class="number">(13)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Dried Fish<span class="number">(09)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Fresh Fish<span class="number">(17)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat Alternatives<span class="number">(01)</span></a></li>
+								<li class="main-nav-list child"><a href="#">Meat<span class="number">(11)</span></a></li>
+							</ul>
+						</li>
 						
 					</ul>
 				</div>
