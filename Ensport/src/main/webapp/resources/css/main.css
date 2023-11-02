@@ -55,22 +55,22 @@
 /* Start Gradient Area css
 ============================================================================================ */
 .gradient-bg, .primary-btn, .add-bag .add-btn, .single-product .product-details .prd-bottom .social-info span:after, .grid-btn:hover, .list-btn:hover, .grid-btn.active, .list-btn.active, .pagination a.active, .pagination a:hover, .s_Product_carousel .owl-dots div.active, .s_product_text .card_area .icon_btn:after, .product_description_area .nav.nav-tabs li a.active, .blog-pagination .page-item.active .page-link, .single-footer-widget .click-btn {
-  background: -webkit-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
-  background: -moz-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
-  background: -o-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
-  background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%); }
+  background: -webkit-linear-gradient(90deg, #a0b976 0%, #6296ac 100%);
+  background: -moz-linear-gradient(90deg, #a0b976 0%, #6296ac 100%);
+  background: -o-linear-gradient(90deg, #a0b976 0%, #6296ac 100%);
+  background: linear-gradient(90deg, #a0b976 0%, #6296ac 100%); }
 
 .gradient-bg-reverse, #search_input_box {
-  background: -webkit-linear-gradient(270deg, #ffba00 0%, #ff6c00 100%);
-  background: -moz-linear-gradient(270deg, #ffba00 0%, #ff6c00 100%);
-  background: -o-linear-gradient(270deg, #ffba00 0%, #ff6c00 100%);
-  background: linear-gradient(270deg, #ffba00 0%, #ff6c00 100%); }
+  background: -webkit-linear-gradient(270deg, #a0b976 0%, #6296ac 100%);
+  background: -moz-linear-gradient(270deg, #a0b976 0%, #6296ac 100%);
+  background: -o-linear-gradient(270deg, #a0b976 0%, #6296ac 100%);
+  background: linear-gradient(270deg, #a0b976 0%, #6296ac 100%); }
 
 .gradient-color, .s_product_text h2, .s_product_text .list li a.active, .product_description_area .tab-content .total_rate .box_total h4, .single-footer-widget .bb-btn {
-  background: -webkit-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
-  background: -moz-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
-  background: -o-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
-  background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+  background: -webkit-linear-gradient(90deg, #a0b976 0%, #6296ac 100%);
+  background: -moz-linear-gradient(90deg, #a0b976 0%, #6296ac 100%);
+  background: -o-linear-gradient(90deg, #a0b976 0%, #6296ac 100%);
+  background: linear-gradient(90deg, #a0b976 0%, #6296ac 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; }
 
@@ -198,7 +198,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #777777; }
 
 .button-area {
-  background: #a0b976; }
+  background: #fff; }
   .button-area .border-top-generic {
     padding: 70px 15px;
     border-top: 1px dotted #eee; }
@@ -1020,7 +1020,7 @@ h1, h2, h3, h4, h5, h6 {
     -o-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s; }
   .header_area .navbar {
-    background: #a0b976;
+    background: #fff;
     padding: 0px;
     border: 0px;
     border-radius: 0px; }
@@ -1207,7 +1207,6 @@ h1, h2, h3, h4, h5, h6 {
 ============================================================================================ */
 .banner-area {
   background: url(../img/banner/banner-bg.jpg) center no-repeat;
-  
   background-size: cover;
   position: relative; }
   @media (max-width: 768px) {
@@ -1292,10 +1291,10 @@ h1, h2, h3, h4, h5, h6 {
   @media (max-width: 767px) {
     .organic-breadcrumb {
       background: none;
-      background: -webkit-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
-      background: -moz-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
-      background: -o-linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
-      background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%); } }
+      background: -webkit-linear-gradient(90deg, #a0b976 0%, #6296ac 100%);
+      background: -moz-linear-gradient(90deg, #a0b976 0%, #6296ac 100%);
+      background: -o-linear-gradient(90deg, #a0b976 0%, #6296ac 100%);
+      background: linear-gradient(90deg, #a0b976 0%, #6296ac 100%); } }
 
 #category .organic-breadcrumb {
   margin-bottom: 100px; }
