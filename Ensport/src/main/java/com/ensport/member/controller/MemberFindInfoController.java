@@ -6,19 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class MemberInsertInfoController
+ * Servlet implementation class MemberFindInfoController
  */
-@WebServlet("/memberInsertInfo.me")
-public class MemberInsertInfoController extends HttpServlet {
+
+//아이디 및 비밀번호 찾기
+@WebServlet("/findInfo.me")
+public class MemberFindInfoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberInsertInfoController() {
+    public MemberFindInfoController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,14 +28,7 @@ public class MemberInsertInfoController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		HttpSession session = request.getSession();
-		session.removeAttribute("loginUser");		//loginUser 키 값 데이터 지우기
-		
-		//사용자에게는 메인화면 보여주기(재요청)
-		response.sendRedirect(request.getContextPath());		// ContextPath == "/jsp"
-
-		session.invalidate();
+		request.getRequestDispatcher("views/member/memberFindInfo.jsp").forward(request, response);
 	}
 
 	/**

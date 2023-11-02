@@ -30,7 +30,8 @@ public class MemberIdCheckController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String checkId = request.getParameter("checkId");
-		System.out.println(checkId);
+		
+		System.out.println("넘어오나 보자: " + checkId);
 		
 		int count = new MemberService().idDuplCheck(checkId);
 		

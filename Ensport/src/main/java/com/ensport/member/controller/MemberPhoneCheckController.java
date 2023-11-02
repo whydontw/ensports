@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.ensport.member.model.service.MemberService;
 
 /**
- * Servlet implementation class MemberePhoneCheckController
+ * Servlet implementation class MemberPhoneCheckController
  */
 @WebServlet("/phoneDuplCheck.me")
-public class MemberePhoneCheckController extends HttpServlet {
+public class MemberPhoneCheckController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MemberePhoneCheckController() {
+    public MemberPhoneCheckController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,12 +28,11 @@ public class MemberePhoneCheckController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String phone = request.getParameter("checkPhone");
 		
-		String checkPhone = request.getParameter("checkPhone");
+		System.out.println("넘어오나 보자: " + phone);
 		
-		System.out.println(checkPhone);
-		
-		int count = new MemberService().phoneDuplCheck(checkPhone);
+		int count = new MemberService().phoneDuplCheck(phone);
 		
 		if(count > 0) {	//중복인 경우
 			//사용 불가 NNNNN
@@ -45,7 +44,6 @@ public class MemberePhoneCheckController extends HttpServlet {
 		}
 	}
 
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

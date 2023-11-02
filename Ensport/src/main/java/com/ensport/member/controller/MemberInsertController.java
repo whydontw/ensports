@@ -20,7 +20,7 @@ import com.ensport.member.model.vo.Member;
 /**
  * Servlet implementation class MemberInsertController
  */
-@WebServlet("/insertMember.me")
+@WebServlet("/memberInsert.me")
 public class MemberInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -51,7 +51,7 @@ public class MemberInsertController extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String userPassword = request.getParameter("userPassword");
 		String phone = request.getParameter("phone");
-		String address = request.getParameter("address") + request.getParameter("addressDetail");
+		String address = request.getParameter("address") + " " + request.getParameter("addressDetail");
 		String email = request.getParameter("email");
 		String gender = request.getParameter("gender");
 		String[] prefers = request.getParameterValues("prefer");
@@ -63,7 +63,7 @@ public class MemberInsertController extends HttpServlet {
 			prefer = String.join(",", prefers);
 		}
 		
-		//별명 비워두면 랜덤 생성하기
+		//별명 랜덤 생성
 		if(userNickname == null || userNickname == "") {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
 			userNickname = "PLAYER" + sdf.format(new Date()) + (int)(Math.random()*100000); 
@@ -92,15 +92,15 @@ public class MemberInsertController extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			//menubar에 작성되어 있는 알림 활용하기
-			session.setAttribute("alertMsg", "회원가입 성공~");
 			
-			response.sendRedirect(request.getContextPath());	// ==/jsp
+			session.setAttribute("alertMsg", "회원가입에 성공하였습니다.");
+			response.sendRedirect(request.getContextPath() + "/login.me");
 			
 		}else {		//실패(실패시 화면)
 			HttpSession session = request.getSession();
 			
 			//뢰원가입 실패시 request에 에러 메시지 담고 errorPage로 포워딩해보기
-			request.setAttribute("alertMsg", "회원가입 실패~");
+			request.setAttribute("alertMsg", "회원가입에 실패하였습니다.");
 
 			//request.getRequestDispatcher 객체에 보여줄 뷰 페이지 정보(경로) 설정한 뒤 위임하기(forward)하기
 			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);	//한줄처리로 슝~

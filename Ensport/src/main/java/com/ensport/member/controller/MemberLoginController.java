@@ -47,7 +47,7 @@ public class MemberLoginController extends HttpServlet {
 		
 				//++ 편의기능 추가: 체크박스 아이디 저장기능
 				//아이디저장 체크박스 값 추출하기(체크 안 하면 null 체크하면 on)
-				String saveId = request.getParameter("saveId");
+				String saveId = request.getParameter("selector");
 				
 				//만약 체크가 되어 넘어왔다면 쿠키에 해당 userId를 저장하고 보내기
 				//쿠키: 키와 밸류값으로 이루어진 데이터 파일
@@ -118,19 +118,15 @@ public class MemberLoginController extends HttpServlet {
 //					view.forward(request, response);	//위임(포워딩)
 					
 					//로그인 작업이 처리된 후 이전 페이지로 다시 돌아가기 요청하기
-					session.setAttribute("alertMsg", "로그인 실패");
-					response.sendRedirect(before);
+					session.setAttribute("alertMsg", "아이디 혹은 비밀번호를 확인하세요.");
+					response.sendRedirect(request.getContextPath() + "/login.me");
 				
 				}else {
-					//로그인에 성공했다면 -> index(시작 페이지)로 보내는 작업 수행하기
 					
-					//로그인 회원 정보를 계속 들고있어야 한다.(페이지가 변경되어도 로그인 유지될 수 있도록)
-					//해당 회원 정보를 session 객체에 담아서 사용해야 한다.
-					//Servlet에서 jsp 내장 객체인 Session객체를 사용하려면 Session 객체를 얻어와야 한다.
-					//세션 객체 얻기: request.getSession(); 메소드를 통해 반환받는다.
-//					HttpSession session = request.getSession();
 					session.setAttribute("loginUser", loginUser);	//로그인 회원정보 담기
-					session.setAttribute("alertMsg", "로그인 성공");	//사용자에게 보여줄 메시지
+					
+					String msg = loginUser.getUserNickname() + " 님 환영합니다.";
+					session.setAttribute("alertMsg",  msg);	//사용자에게 보여줄 메시지
 					
 					//+) forward방식은 요청을 이어주는 방식
 					//	데이터를 가지고 다른 페이지에 가야 할 경우에는 흐름을 이어줘야 한다.
@@ -151,7 +147,8 @@ public class MemberLoginController extends HttpServlet {
 //					response.sendRedirect("/jsp");		//context root. 메인페이지(index) 보여주기
 					//== response.sendRedirect(request.getContextPath());
 
-					response.sendRedirect(before);
+//					response.sendRedirect(before);
+					response.sendRedirect(request.getContextPath());
 			
 		}
 	}

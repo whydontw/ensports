@@ -321,7 +321,7 @@
                                 <div class="switch-wrap d-flex justify-content-around">
                                     <h4 class="mt-50">Ensport 이용 약관에 모두 동의합니다.</h4>
                                     <div class="primary-checkbox">
-                                        <input type="checkbox" id="default-checkbox3" name="termsChk">
+                                        <input type="checkbox" id="default-checkbox3">
                                         <label for="default-checkbox3"></label>
                                     </div>
                                 </div>
@@ -347,6 +347,8 @@
 
 
 	<script type="text/javascript">
+	
+
 		$(function() {
 
 			//전체동의 클릭시 전부 체크
@@ -354,10 +356,6 @@
 				$("#default-checkbox, #default-checkbox2").prop("checked", true);
 			});
 			
-			
-			if ($("#default-checkbox").prop("checked", false) || $("#default-checkbox2").prop("checked", false)) {
-			    $("#default-checkbox3").prop("checked", false);
-			}
 			
 			//전체동의 되지 않은 상태로 회원가입 버튼 클릭시 페이지 이동 막기
 			$("#insertMemberNext").on("click", function() {
@@ -367,7 +365,7 @@
 					return false;
 				}
 				
-				location.href='${contextPath}/insertMember.me';
+				location.href='${contextPath}/memberInsert.me';
 				
 			});
 		})
