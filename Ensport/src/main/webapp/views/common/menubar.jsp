@@ -141,13 +141,14 @@
 		</div>
 	</header>
 	
-	
 	<script>
-		var msg = "${alertMsg}";
+		const msg = "${alertMsg}";
+		
 		console.log(msg);
+
 		if (msg != null && msg != '') {
 		    alert(msg);
-		    <c:remove var="alertMsg" scope="session" />
+		   <c:remove var="alertMsg" scope="session" />
 		}
 	</script>
 

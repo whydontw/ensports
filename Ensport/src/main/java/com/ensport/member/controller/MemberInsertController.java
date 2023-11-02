@@ -55,6 +55,12 @@ public class MemberInsertController extends HttpServlet {
 		String email = request.getParameter("email");
 		String gender = request.getParameter("gender");
 		String[] prefers = request.getParameterValues("prefer");
+		
+		
+		for(String s : prefers) {
+			System.out.println("선호종목:" + s);
+		}
+		
 
 		String prefer = "";
 
@@ -62,6 +68,9 @@ public class MemberInsertController extends HttpServlet {
 		if (prefers != null) {
 			prefer = String.join(",", prefers);
 		}
+		
+		
+		System.out.println("닉네임:" + userNickname);
 		
 		//별명 랜덤 생성
 		if(userNickname == null || userNickname == "") {
