@@ -1,4 +1,4 @@
-package com.ensport.place;
+package com.ensport.place.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BaseballPlaceController
+ * Servlet implementation class SoccerPlaceController
  */
-@WebServlet("/place.ba")
-public class BaseballPlaceController extends HttpServlet {
+@WebServlet("/place.so")
+public class SoccerPlaceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BaseballPlaceController() {
+    public SoccerPlaceController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class BaseballPlaceController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/place/baseballPlace.jsp").forward(request, response);
+		request.getRequestDispatcher("views/place/soccerPlace.jsp").forward(request, response);
 	}
 
 	/**
