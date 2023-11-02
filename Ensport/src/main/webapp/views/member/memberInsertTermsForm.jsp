@@ -1,40 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
-<head>
-    <!-- Mobile Specific Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="img/fav.png">
-    <!-- Author Meta -->
-    <meta name="author" content="CodePixar">
-    <!-- Meta Description -->
-    <meta name="description" content="">
-    <!-- Meta Keyword -->
-    <meta name="keywords" content="">
-    <!-- meta character set -->
-    <meta charset="UTF-8">
-    <!-- Site Title -->
-    <title>이용약관</title>
-
-    <!-- CSS ============================================= -->
-    <link rel="stylesheet" href="../../resources/css/linearicons.css">
-    <link rel="stylesheet" href="../../resources/css/owl.carousel.css">
-    <link rel="stylesheet" href="../../resources/css/themify-icons.css">
-    <link rel="stylesheet" href="../../resources/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../resources/css/nice-select.css">
-    <link rel="stylesheet" href="../../resources/css/nouislider.min.css">
-    <link rel="stylesheet" href="../../resources/css/bootstrap.css">
-    <link rel="stylesheet" href="../../resources/css/main.css">
-</head>
-
 <body>
 
-    <%@ include file="../common/menubar.jsp" %> 
-    
-
+	<%@ include file="../common/menubar.jsp" %>
+	
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
         <div class="container">
@@ -54,7 +27,6 @@
     <!--================Checkout Area =================-->
     <section class="checkout_area section_gap">
         <div class="container">
-
 
             <div class="section-top-border">
                 
@@ -192,7 +164,7 @@
                                 <div class="switch-wrap d-flex justify-content-around">
                                     <h4>이용약관에 동의합니다.</h4>
                                     <div class="primary-checkbox">
-                                        <input type="checkbox" id="default-checkbox">
+                                        <input type="checkbox" id="default-checkbox" name="termsChk">
                                         <label for="default-checkbox"></label>
                                     </div>
                                 </div>
@@ -337,13 +309,12 @@
                                 <div class="switch-wrap d-flex justify-content-around">
                                     <h4>Ensport 개인정보 이용 약관에 동의합니다.</h4>
                                     <div class="primary-checkbox">
-                                        <input type="checkbox" id="default-checkbox2">
+                                        <input type="checkbox" id="default-checkbox2" name="termsChk">
                                         <label for="default-checkbox2"></label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="col-lg-5 mx-auto" style="margin-top: 50px;">
                             <div class="single-element-widget mt-50">
@@ -364,35 +335,43 @@
 
         <div class="row contact_form">
             <div class="col-md-12 text-center mt-50">
-                <button type="" value="" class="primary-btn" onclick="">회원가입</button>
+                <button class="primary-btn" id="insertMemberNext">회원가입</button>
             </div>
         </div>
     </section>
 
 
     <!--================End Checkout Area =================-->
-
-	<%@ include file="../common/footer.jsp" %> 
-
-
-    
+	<%@ include file="../common/footer.jsp" %>
 
 
-    <script src="../../resources/js/vendor/jquery-2.2.4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
-    <script src="../../resources/js/vendor/bootstrap.min.js"></script>
-    <script src="../../resources/js/jquery.ajaxchimp.min.js"></script>
-    <script src="../../resources/js/jquery.nice-select.min.js"></script>
-    <script src="../../resources/js/jquery.sticky.js"></script>
-    <script src="../../resources/js/nouislider.min.js"></script>
-    <script src="../../resources/js/jquery.magnific-popup.min.js"></script>
-    <script src="../../resources/js/owl.carousel.min.js"></script>
-    <!--gmaps Js-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-    <script src="../../resources/js/gmaps.min.js"></script>
-    <script src="../../resources/js/main.js"></script>
+
+	<script type="text/javascript">
+	
+
+		$(function() {
+
+			//전체동의 클릭시 전부 체크
+			$("#default-checkbox3").on("click", function() {
+				$("#default-checkbox, #default-checkbox2").prop("checked", true);
+			});
+			
+			
+			//전체동의 되지 않은 상태로 회원가입 버튼 클릭시 페이지 이동 막기
+			$("#insertMemberNext").on("click", function() {
+				// default-checkbox1과 default-checkbox2 체크 여부를 확인하고 alert 표시
+				if (!($("#default-checkbox").prop("checked") && $("#default-checkbox2").prop("checked"))) {
+					alert("이용 약관에 모두 동의해야 합니다.");
+					return false;
+				}
+				
+				location.href='${contextPath}/memberInsert.me';
+				
+			});
+		})
+	</script>
+
+
 </body>
 
 </html>

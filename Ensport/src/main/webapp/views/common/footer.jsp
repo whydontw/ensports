@@ -21,17 +21,17 @@
 	<!--
 		CSS
 		============================================= -->
-	<link rel="stylesheet" href="../../resources/css/linearicons.css">
-	<link rel="stylesheet" href="../../resources/css/font-awesome.min.css">
-	<link rel="stylesheet" href="../../resources/css/themify-icons.css">
-	<link rel="stylesheet" href="../../resources/css/bootstrap.css">
-	<link rel="stylesheet" href="../../resources/css/owl.carousel.css">
-	<link rel="stylesheet" href="../../resources/css/nice-select.css">
-	<link rel="stylesheet" href="../../resources/css/nouislider.min.css">
-	<link rel="stylesheet" href="../../resources/css/ion.rangeSlider.css" />
-	<link rel="stylesheet" href="../../resources/css/ion.rangeSlider.skinFlat.css" />
-	<link rel="stylesheet" href="../../resources/css/magnific-popup.css">
-	<link rel="stylesheet" href="../../resources/css/main.css">
+<!-- 	<link rel="stylesheet" href="../../resources/css/linearicons.css"> -->
+<!-- 	<link rel="stylesheet" href="../../resources/css/font-awesome.min.css"> -->
+<!-- 	<link rel="stylesheet" href="../../resources/css/themify-icons.css"> -->
+<!-- 	<link rel="stylesheet" href="../../resources/css/bootstrap.css"> -->
+<!-- 	<link rel="stylesheet" href="../../resources/css/owl.carousel.css"> -->
+<!-- 	<link rel="stylesheet" href="../../resources/css/nice-select.css"> -->
+<!-- 	<link rel="stylesheet" href="../../resources/css/nouislider.min.css"> -->
+<!-- 	<link rel="stylesheet" href="../../resources/css/ion.rangeSlider.css" /> -->
+<!-- 	<link rel="stylesheet" href="../../resources/css/ion.rangeSlider.skinFlat.css" /> -->
+<!-- 	<link rel="stylesheet" href="../../resources/css/magnific-popup.css"> -->
+<!-- 	<link rel="stylesheet" href="../../resources/css/main.css"> -->
 </head>
 
 <body>
@@ -105,29 +105,33 @@
 			</div>
 			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
 				<p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
+					Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+					<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+				</p>
 			</div>
 		</div>
 	</footer>
 	<!-- End footer Area -->
 
-	<script src="../../resources/js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
-	<script src="../../resources/js/vendor/bootstrap.min.js"></script>
-	<script src="../../resources/js/jquery.ajaxchimp.min.js"></script>
-	<script src="../../resources/js/jquery.nice-select.min.js"></script>
-	<script src="../../resources/js/jquery.sticky.js"></script>
-	<script src="../../resources/js/nouislider.min.js"></script>
-	<script src="../../resources/js/countdown.js"></script>
-	<script src="../../resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="../../resources/js/owl.carousel.min.js"></script>
+	<!-- 23.11.02 Ajax 추가 -->
+	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+	<script src="${contextPath}/resources/js/vendor/jquery-2.2.4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="${contextPath}/resources/js/vendor/bootstrap.min.js"></script>
+	<script src="${contextPath}/resources/js/jquery.ajaxchimp.min.js"></script>
+	<script src="${contextPath}/resources/js/jquery.nice-select.min.js"></script>
+	<script src="${contextPath}/resources/js/jquery.sticky.js"></script>
+	<script src="${contextPath}/resources/js/nouislider.min.js"></script>
+	<script src="${contextPath}/resources/js/countdown.js"></script>
+	<script src="${contextPath}/resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="${contextPath}/resources/js/owl.carousel.min.js"></script>
 	<!--gmaps Js-->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="../../resources/js/gmaps.min.js"></script>
-	<script src="../../resources/js/main.js"></script>
+	<script src="${contextPath}/resources/js/gmaps.min.js"></script>
+	<script src="${contextPath}/resources/js/main.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
 </body>
 
 </html>
