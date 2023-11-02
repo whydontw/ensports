@@ -66,7 +66,7 @@
 								<input type="text" class="form-control" id="loginId" name="loginId" placeholder="ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ID'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="text" class="form-control" id="loginPassword" name="loginPassword" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
+								<input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 							</div>
 							<div class="col-md-12 form-group">
 								<div class="creat_account">
@@ -76,8 +76,9 @@
 							</div>
 							<div class="col-md-12 form-group">
 								<button type="submit" value="submit" class="primary-btn">Log In</button>
-								<span><a href="#">아이디 찾기</a></span>
-								<span><a href="#">비밀번호 찾기</a></span>
+							</div>
+							<div class="col-md-12 form-group">
+								<span><a href="${contextPath }/findInfo.me">아이디 찾기 / 비밀번호 찾기</a></span>
 							</div>
 						</form>
 					</div>
@@ -86,6 +87,21 @@
 		</div>
 	</section>
 	<!--================End Login Box Area =================-->
+
+
+
+
+	<script type="text/javascript">
+	   $(function(){
+		   	//쿠키 아이디값 가지고 오기
+		   	var saveId = "<%= saveId %>";
+		   	
+		   	if(saveId != ""){
+				$("input[name=userId]").val(saveId);
+				$("input[name=selector]").attr("checked", true);
+		   	}
+	   });
+	</script>
 
 	<!-- start footer Area -->
 	<%@ include file="../common/footer.jsp" %>

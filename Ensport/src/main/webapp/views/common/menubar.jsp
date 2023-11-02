@@ -2,10 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.ensport.member.model.vo.Member"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
-<c:set var="loginUser" value="${loginUser}" scope="session"/>
-<c:set var="alertMsg" value="${alertMsg}" scope="session"/>
 
 <%
 	
@@ -69,7 +66,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.html"><img src="${contextPath}/resources/img/logo(temp).jpg" />
+					<a class="navbar-brand logo_h" href="${contextPath }"><img src="${contextPath}/resources/img/logo(temp).jpg" />
 </a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,13 +77,13 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto"> 
-							<li class="nav-item active"><a class="nav-link" href="${contextPath}/">Home</a></li>
+							<li class="nav-item active"><a class="nav-link" href="${contextPath}">Home</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">경기매칭</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.so">축구</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-product.html">야구</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">야구</a></li>
 									
 								</ul>
 							</li>
@@ -94,29 +91,43 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">경기장</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="category.html">축구</a></li>
-									<li class="nav-item"><a class="nav-link" href="single-product.html">야구</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">축구</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">야구</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">커뮤니티</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="blog.html">자유게시판</a></li>
-									<li class="nav-item"><a class="nav-link" href="tracking.html">공지사항</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">자유게시판</a></li>
+									<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
 									
 								</ul>
 							</li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">로그인</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="${contextPath}/myPage.me">마이페이지</a></li>
-								</ul>
-							</li>
+							
+							<c:choose>
+								<c:when test="${loginUser == null }">
+									<li class="nav-item submenu">
+										<a href="${contextPath }/login.me" class="nav-link">로그인</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="nav-item submenu dropdown">
+										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${loginUser.userNickname } 님 환영합니다!</a>
+										<ul class="dropdown-menu">
+											<c:if test="${loginUser.userNo == 1 }">
+												<li class="nav-item"><a class="nav-link" href="#">관리자 페이지</a></li>
+											</c:if>
+											<c:if test="${loginUser.userNo != 1 }">
+												<li class="nav-item"><a class="nav-link" href="${contextPath }/myPage.do">마이페이지</a></li>
+											</c:if>
+											<li class="nav-item"><a class="nav-link" href="${contextPath }/logout.me" onclick="return confirm('로그아웃 하시겠습니까?')">로그아웃</a></li>
+										</ul>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
 
-							<li class="nav-item submenu dropdown">
-								<a href="${contextPath }/login.me" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">로그인</a>
-							</li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item"><a href="#" class="cart"><span class="ti-briefcase"></span></a></li>
@@ -132,13 +143,12 @@
 	
 	
 	<script>
-		
-// 		var msg = "${alertMsg}";
-		
-//         if(msg != 'null' || msg != ''){        
-//             alert(msg);
-//         }
-		
+		var msg = "${alertMsg}";
+		console.log(msg);
+		if (msg != null && msg != '') {
+		    alert(msg);
+		    <c:remove var="alertMsg" scope="session" />
+		}
 	</script>
 
 </body>
