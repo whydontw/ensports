@@ -9,7 +9,6 @@ import com.ensport.member.model.vo.Member;
 public class MemberService {
 	
 	
-	
 	//로그인 
 	public Member loginMember(String userId, String userPwd) {
 
@@ -42,7 +41,7 @@ public class MemberService {
 	}
 
 	
-	
+	//아이디 중복 확인(ajax)
 	public int idDuplCheck(String checkId) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -55,6 +54,7 @@ public class MemberService {
 	}
 	
 	
+	//휴대폰번호 중복 확인(ajax)
 	public int phoneDuplCheck(String checkPhone) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -65,6 +65,30 @@ public class MemberService {
 		
 		return count;
 	}
+
+
+
+	public int deleteMember(int userNo, String userPwd) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new MemberDao().deleteMember(conn, userNo, userPwd);
+		
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+	
+	
+	
+	
 
 
 

@@ -14,7 +14,7 @@
 		    alert(msg);
 		    <c:remove var="alertMsg" scope="session" />
 		}
+		location.href='${contextPath}'
 	</script>
-	location.href='${contextPath}'
 </body>
 </html>

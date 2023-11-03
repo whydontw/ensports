@@ -79,13 +79,13 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto"> 
-							<li class="nav-item active"><a class="nav-link" href="${contextPath}">Home</a></li>
+							<li class="nav-item"><a class="nav-link" href="${contextPath}">Home</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">경기매칭</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.so">축구</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">야구</a></li>
+									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.ba">야구</a></li>
 									
 								</ul>
 							</li>
@@ -93,8 +93,8 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">경기장</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="#">축구</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">야구</a></li>
+									<li class="nav-item"><a class="nav-link" href="${contextPath}/place.so">축구</a></li>
+									<li class="nav-item"><a class="nav-link" href="${contextPath}/place.ba">야구</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
@@ -143,13 +143,14 @@
 		</div>
 	</header>
 	
-	
 	<script>
-		var msg = "${alertMsg}";
+		const msg = "${alertMsg}";
+		
 		console.log(msg);
+
 		if (msg != null && msg != '') {
 		    alert(msg);
-		    <c:remove var="alertMsg" scope="session" />
+		   <c:remove var="alertMsg" scope="session" />
 		}
 	</script>
 

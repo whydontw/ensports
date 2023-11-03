@@ -144,7 +144,7 @@
                             
                             <!-- 별명 -->
 							<div class="col-md-12 form-group mt-50 ml-50">
-                                <input type="text" class="form-control" id="userPasswordChk" name="userPasswordChk" placeholder="별명">
+                                <input type="text" class="form-control" id="userNickname" name="userNickname" placeholder="별명">
                                 <span class="placeholder" ></span>
                             </div>
 
@@ -155,14 +155,14 @@
                                     <div class="switch-wrap d-flex justify-content-between">
                                         <p>축구</p>
                                         <div class="primary-checkbox">
-                                            <input type="checkbox" id="default-checkbox">
+                                            <input type="checkbox" id="default-checkbox" name="prefer" value="축구">
                                             <label for="default-checkbox"></label>
                                         </div>
                                     </div>
                                     <div class="switch-wrap d-flex justify-content-between">
                                         <p>야구</p>
                                         <div class="primary-checkbox">
-                                            <input type="checkbox" id="primary-checkbox">
+                                            <input type="checkbox" id="primary-checkbox" name="prefer" value="야구">
                                             <label for="primary-checkbox"></label>
                                         </div>
                                     </div>
@@ -362,7 +362,6 @@
 					$("#phone").focus();
 					return false;
 				}
-
 				
 				if (email == null || email == '') {
 					alert("이메일을 입력하세요");
@@ -371,7 +370,7 @@
 					
 				}else{
 					
-					var regExp = /.*@.*/;
+					var regExp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 					
 					if (!regExp.test(email)) { 
 						alert("올바르지 않은 이메일 형식입니다.");
