@@ -17,7 +17,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>축구 경기매칭</title>
+	<title>경기 축구 경기매칭</title>
 
 	<!--
             CSS
@@ -42,13 +42,13 @@
 				<div class="col-first">
 					<h1>축구 경기매칭</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">경기매칭<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">축구</a>
+						<a href="index.html">경기매칭<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">축구<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">경기</a>
 					</nav>
 				</div>
 			</div>
-		</div>                       
+		</div>
 	</section>
 	<!-- End Banner Area -->
 	<div class="container">
@@ -57,11 +57,8 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						
 						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToSeoulPage()"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
-						
-
-						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span><b>경기</b><span class="number">(53)</span></a></li>
 
 						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToIncheonPage()"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
 						
@@ -139,7 +136,11 @@
 						</select>
 					</div>
 					<div class="sorting mr-auto">
-						<!-- 원래 개수 섹션 -->
+						<select>
+							<option value="1">Show 8</option>
+							<option value="1">Show 10</option>
+							<option value="1">Show 12</option>
+						</select>
 					</div>
 					<div class="pagination">
 						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
@@ -582,7 +583,6 @@
         window.location.href = '<%= request.getContextPath() %>/sc.incheon';
     }
 	</script>
-	
 </body>
 
 </html>

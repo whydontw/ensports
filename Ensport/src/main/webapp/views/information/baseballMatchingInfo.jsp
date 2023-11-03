@@ -95,6 +95,11 @@
 								</select>
 							</div>
 						</div>
+						<br>
+							<div class="datasheet p-3 mb-2  text-white" style="background-color: #e8f0f2;">
+							<a href="" id="participantCount"
+						class="text-black" style="color: black;">참여인원: </a>
+						</div>
 						<br><br>
 						<div class="card_area d-flex align-items-center">
 							<a class="primary-btn" href="#">예약하기</a>
