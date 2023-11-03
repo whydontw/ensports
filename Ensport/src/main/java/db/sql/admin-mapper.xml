@@ -3,9 +3,19 @@
 
 <properties>
 	<entry key="placeEnroll">
-		INSERT INTO PLACE
+		INSERT INTO PLACE(PLACE_NO
+						 ,PLACE_NAME
+						 ,PLACE_SIZE
+						 ,PARKING_YN
+						 ,PLACE_DATE
+						 ,PLACE_COUNT
+						 ,PLACE_START_TIME
+						 ,PLACE_END_TIME
+						 ,MAX_CAPACITY
+						 ,CATEGORY_NO
+						 ,LOCAL_NAME
+						 ,PLACE_SUB_INFO)
 		VALUES(SEQ_PNO.NEXTVAL
-			  ,?
 			  ,?
 			  ,?
 			  ,? 
@@ -13,6 +23,7 @@
 			  ,0
 			  ,DEFAULT
 			  ,DEFAULT
+			  ,?
 			  ,?
 			  ,?
 			  ,?)				 

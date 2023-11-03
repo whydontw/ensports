@@ -61,7 +61,7 @@
                                 <div class="input-group">
                                     <div class="rs-select2 js-select-simple select--no-search">
                                         <select name="localName">
-                                            <option selected="selected"value="2">서울</option>
+                                            <option selected="selected"value="서울">서울</option>
                                             <option value="부산">부산</option>
                                             <option value="대구">대구</option>
                                             <option value="인천">인천</option>
@@ -88,7 +88,7 @@
                             <label class="label label--block">카테고리 </label>
                             <div class="p-t-15">
                                 <label class="radio-container m-r-55">축구
-                                    <input type="radio" checked="checked" name="categoryNo" value="1" id="soccer">
+                                    <input type="radio" checked="checked"name="categoryNo" value="1" id="soccer">
                                     <span class="checkmark"></span>
                                 </label>
                                 <label class="radio-container">야구
@@ -97,7 +97,7 @@
                                 </label>
                             </div>
                         </div>
-                      	<input type="hidden" id="inputMaxCapacity"name="max_capacity" value="1">
+                      	<input type="hidden" id="inputMaxCapacity"name="max_capacity" value="22">
                         
                         <div class="form-row p-t-20" id="slideDownSoccerSize">
                             <label class="label label--block">경기장 규격</label>
@@ -124,16 +124,16 @@
                         <div class="form-row p-t-20" id="slideDownBaseballSize" style="display: none;">
                             <label class="label label--block">경기장 규격</label>
                             <div class="p-t-15">
-                                <label class="radio-container" value="좌우: 100  좌우중간:125">좌우: 100  좌우중간:125
-                                    <input type="radio" checked="checked" name="place_size">
+                                <label class="radio-container" >좌우: 100  좌우중간:125
+                                    <input type="radio" checked="checked" name="place_size"value="좌우: 100  좌우중간:125">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label class="radio-container" value="좌우: 99  좌우중간:122">좌우: 99  좌우중간:122
-                                    <input type="radio" name="place_size">
+                                <label class="radio-container" >좌우: 99  좌우중간:122
+                                    <input type="radio" name="place_size" value="좌우: 99  좌우중간:122">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label class="radio-container" value="좌우: 108  좌우중간:120">좌우: 108  좌우중간:120
-                                    <input type="radio" name="place_size">
+                                <label class="radio-container" >좌우: 108  좌우중간:120
+                                    <input type="radio" name="place_size" value="좌우: 108  좌우중간:120">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
@@ -184,25 +184,27 @@
 
 	<script>
 		$(function(){
+			
+			
 			$("#baseball").click(function(){
-				$("#inputMaxCapacity").val("18"); //야구 수용인원
 				
 				//slideDown
 				if($("#slideDownBaseballSize").css("display")=="none"){ //야구 사이즈 창 닫혀있을때
+					$("#inputMaxCapacity").val("18"); //야구 수용인원
 					
 					$("#slideDownSoccerSize").slideUp();
 					$("#slideDownBaseballSize").slideDown();
 				}else{ //야구 사이즈 창 열려있을때
+					
 					$("#slideDownBaseballSize").slideUp();
 				}
 			});
 			
 			$("#soccer").click(function(){
-				$("#inputMaxCapacity").val("22");
 				
 				//slideDown
 				if($("#slideDownSoccerSize").css("display")=="none"){ //축구 사이즈 창 닫혀있을때
-					
+					$("#inputMaxCapacity").val("22");
 					$("#slideDownBaseballSize").slideUp();
 					$("#slideDownSoccerSize").slideDown();
 				}else{ //축구 사이즈 창 열려있을때

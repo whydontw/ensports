@@ -18,6 +18,7 @@ public class AdminService {
 		
 		int result2 = new AdminDao().insertPlacePhoto(list,conn);
 		
+		
 		if(result*result2 > 0) {
 			JDBCTemplate.commit(conn);
 		}else {

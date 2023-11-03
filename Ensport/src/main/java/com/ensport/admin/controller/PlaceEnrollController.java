@@ -58,6 +58,7 @@ public class PlaceEnrollController extends HttpServlet {
 			
 			MultipartRequest multiRequest = new MultipartRequest(request,savePath,maxSize,"UTF-8", new MyFileRenamePolicy());
 			
+			
 			String placeName = multiRequest.getParameter("placeName");
 			String localName = multiRequest.getParameter("localName");
 			String categoryNo = multiRequest.getParameter("categoryNo");
@@ -66,10 +67,10 @@ public class PlaceEnrollController extends HttpServlet {
 			String parking_yn = multiRequest.getParameter("parking_yn");
 			String place_sub_info = multiRequest.getParameter("place_sub_info");
 			
-
+			System.out.println(max_capacity);
+			
 			Place p = new Place(placeName,place_sub_info,place_size,parking_yn,max_capacity,categoryNo,localName);
 			
-			System.out.println(p);
 			
 			ArrayList<Attachment> list = new ArrayList<>();
 			

@@ -78,7 +78,7 @@
                                                     <td>${p.placeNo }</td>
                                                     <td>${p.placeName }</td>
                                                     <td>${p.localName }</td>
-                                                    <td>${p.placeCount }</td>
+                                                    <td>${p.place_count }</td>
                                                     <td>${p.place_date }</td>
                                                     <td>${p.categoryNo }</td>
                                                 </tr>

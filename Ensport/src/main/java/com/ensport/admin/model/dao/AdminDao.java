@@ -1,5 +1,7 @@
 package com.ensport.admin.model.dao;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,12 +21,18 @@ public class AdminDao {
 	public AdminDao() {
 		
 		String filePath = AdminDao.class.getResource("/db/sql/admin-mapper.xml").getPath();
+		
+		try {
+			prop.loadFromXML(new FileInputStream(filePath));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
 	public int placeEnroll(Place p, Connection conn) {
 		
-		System.out.println(p);
 		int result = 0;
 		PreparedStatement pstmt = null;
 		
@@ -34,25 +42,31 @@ public class AdminDao {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1,p.getPlaceName());
-			pstmt.setString(2,p.getPlace_sub_info());
-			pstmt.setString(3,p.getPlace_size());
-			pstmt.setString(4,p.getParking_yn());
-			pstmt.setInt(5,p.getMax_capacity());
-			pstmt.setInt(6,Integer.parseInt(p.getCategoryNo()));
-			pstmt.setString(7,p.getLocalName());
+			pstmt.setString(2,p.getPlace_size());
+			pstmt.setString(3,p.getParking_yn());
+			pstmt.setInt(4,p.getMax_capacity());
+			pstmt.setInt(5,Integer.parseInt(p.getCategoryNo()));
+			pstmt.setString(6,p.getLocalName());
+			pstmt.setString(7,p.getPlace_sub_info());
 			
 			result = pstmt.executeUpdate();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
 		}
+		
 		return result;
+		
 	}
+	
+	
 	
 	public int insertPlacePhoto(ArrayList<Attachment> list, Connection conn) {
 		
-		int result = 0;
+		int result = 1;
 		PreparedStatement pstmt = null;
 		
 		
@@ -74,6 +88,7 @@ public class AdminDao {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			result = 0;
 			e.printStackTrace();
 		}
 		
