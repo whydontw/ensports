@@ -58,6 +58,8 @@
 	<link rel="stylesheet" href="${contextPath}/resources/css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="${contextPath}/resources/css/magnific-popup.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/4.0.0-beta.98/jodit.min.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/4.0.0-beta.98/jodit.min.js"></script>
 </head>
 
 <body>
@@ -99,7 +101,7 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">커뮤니티</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="#">자유게시판</a></li>
+									<li class="nav-item"><a class="nav-link" href="boardList.bo">자유게시판</a></li>
 									<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
 									
 								</ul>
@@ -140,6 +142,7 @@
 			</nav>
 		</div>
 	</header>
+	
 	
 	
 	<script>

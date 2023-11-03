@@ -39,6 +39,15 @@ public class Board {
 		this.createDate = createDate;
 		this.boardCount = boardCount;
 	}
+	
+	
+
+	public Board(String userNo, String boardTitle, String boardContent) {
+		super();
+		this.userNo = userNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+	}
 
 	public int getBoardNo() {
 		return boardNo;
