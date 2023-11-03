@@ -68,28 +68,80 @@ public class MemberService {
 
 
 
-	public int deleteMember(int userNo, String userPwd) {
-		
-		Connection conn = JDBCTemplate.getConnection();
-		
-		int result = new MemberDao().deleteMember(conn, userNo, userPwd);
-		
-		
-		if(result > 0) {
-			JDBCTemplate.commit(conn);
-		}else {
-			JDBCTemplate.rollback(conn);
+
+
+	//회원정보 수정 메소드
+		public Member updateMember(Member m) {
+			
+			Connection conn = JDBCTemplate.getConnection();
+			
+			int result = new MemberDao().updateMember(conn, m);
+			
+			Member updateMember = null;
+			
+			//처리된 행 수를 토대로 dml구문이니 트랜잭션 처리하기(commit/rollback)
+			if(result > 0) {	//성공
+				JDBCTemplate.commit(conn);		//확정(커밋)
+				updateMember = new MemberDao().selectMember(conn, m.getUserNo());
+				
+			}else {				
+				JDBCTemplate.rollback(conn);	//되돌리기(롤백)
+			}
+			
+			//갱신정보 반환
+			return updateMember;
 		}
 		
-		JDBCTemplate.close(conn);
 		
-		return result;
-	}
+		
+		
+		//비밀번호 변경 메소드
+		public Member chagePwd(int userNo, String userPwd, String newPwd) {
+			
+			Connection conn = JDBCTemplate.getConnection();
+			
+			int result = new MemberDao().chagePwd(conn, userNo, userPwd, newPwd);
+			
+			Member updateMember = null;
+			
+			if(result > 0) {	//성공
+				JDBCTemplate.commit(conn);
+				
+				//수정한 회원정보 조회하기
+				updateMember = new MemberDao().selectMember(conn, userNo);
+				
+			}else {
+				JDBCTemplate.rollback(conn);	//되돌리기
+			}
+			
+			//트랜잭션 처리가 끝났으므로 Connection 반납하기
+			JDBCTemplate.close(conn);
+			
+			return updateMember;		//변경된 회원정보 조회한 객체 반환
+		}
 	
-	
-	
-	
-
-
+		
+		
+		
+		//회원 탈퇴
+		public int deleteMember(int userNo, String userPwd) {
+			
+			Connection conn = JDBCTemplate.getConnection();
+			
+			int result = new MemberDao().deleteMember(conn, userNo, userPwd);
+			
+			
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+			
+			JDBCTemplate.close(conn);
+			
+			return result;
+		}
+		
+		
 
 }

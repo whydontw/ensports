@@ -18,20 +18,6 @@
 	<meta charset="UTF-8">
 	<!-- Site Title -->
 	<title>footer</title>
-	<!--
-		CSS
-		============================================= -->
-<!-- 	<link rel="stylesheet" href="../../resources/css/linearicons.css"> -->
-<!-- 	<link rel="stylesheet" href="../../resources/css/font-awesome.min.css"> -->
-<!-- 	<link rel="stylesheet" href="../../resources/css/themify-icons.css"> -->
-<!-- 	<link rel="stylesheet" href="../../resources/css/bootstrap.css"> -->
-<!-- 	<link rel="stylesheet" href="../../resources/css/owl.carousel.css"> -->
-<!-- 	<link rel="stylesheet" href="../../resources/css/nice-select.css"> -->
-<!-- 	<link rel="stylesheet" href="../../resources/css/nouislider.min.css"> -->
-<!-- 	<link rel="stylesheet" href="../../resources/css/ion.rangeSlider.css" /> -->
-<!-- 	<link rel="stylesheet" href="../../resources/css/ion.rangeSlider.skinFlat.css" /> -->
-<!-- 	<link rel="stylesheet" href="../../resources/css/magnific-popup.css"> -->
-<!-- 	<link rel="stylesheet" href="../../resources/css/main.css"> -->
 </head>
 
 <body>

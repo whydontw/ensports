@@ -44,6 +44,8 @@
 	<!-- End Banner Area -->
 
 
+
+
     <!--================Blog Categorie Area =================-->
     <section class="blog_categorie_area">
         <div class="container">
@@ -51,7 +53,7 @@
                 <div class="col-lg-6">
                     <div class="categories_post">
                         <img src="${contextPath }/resources/img/blog/cat-post/cat-post-1.jpg" alt="post">
-                        <div class="categories_details"  onclick="location.href='${contextPath}/findInfoId.me'">
+                        <div class="categories_details"  data-toggle="modal" data-target="#findUserId">
                             <div class="categories_text">
                                 <a href="blog-details.html">
                                     <h5>아이디 찾기</h5>
@@ -65,7 +67,7 @@
                 <div class="col-lg-6">
                     <div class="categories_post">
                         <img src="${contextPath }/resources/img/blog/cat-post/cat-post-2.jpg" alt="post" >
-                        <div class="categories_details" onclick="location.href='${contextPath}/findInfoPassword.me'">
+                        <div class="categories_details"  data-toggle="modal" data-target="#findUserPassword">
                             <div class="categories_text">
                                 <a href="blog-details.html">
                                     <h5>비밀번호 찾기</h5>
@@ -82,17 +84,59 @@
     <!--================Blog Categorie Area =================-->
 
 
-	<script type="text/javascript">
-		
-		
-	</script>
+
+	<!-- 아이디 찾기 모달 -->
+	<!-- The Modal -->
+	<div class="modal fade" id="findUserId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">아이디 찾기</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	       	아이디 찾기
+	      </div>
+	      <div class="modal-footer">
+	      	<div class="button-group-area mt-40 text-center">
+				<a href="#" class="genric-btn primary" data-dismiss="modal">제출</a>
+			</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	
+	<!-- 비밀번호 찾기 모달 -->
+	<!-- The Modal -->
+	<div class="modal fade" id="findUserPassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">비밀번호 찾기</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        비밀번호 찾기
+	      </div>
+	      <div class="modal-footer mx-auto">
+	      	<div class="button-group-area mt-40 text-center">
+				<a href="#" class="genric-btn primary" data-dismiss="modal">제출</a>
+			</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 
-	<!-- start footer Area -->
+
 	<%@ include file="../common/footer.jsp" %>
-	<!-- End footer Area -->
-
-
+	
+	
 </body>
 
 </html>
