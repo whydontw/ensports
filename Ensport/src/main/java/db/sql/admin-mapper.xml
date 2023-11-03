@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+	<entry key="placeEnroll">
+		INSERT INTO PLACE
+		VALUES(SEQ_PNO.NEXTVAL
+			  ,?
+			  ,?
+			  ,?
+			  ,? 
+			  ,SYSDATE
+			  ,0
+			  ,DEFAULT
+			  ,DEFAULT
+			  ,?
+			  ,?
+			  ,?)				 
+		
+	</entry>
+	<entry key="insertPlacePhoto">
+		INSERT INTO ATTACHMENT(AT_NO
+							  ,REF_NO
+							  ,ORIGIN_NAME
+							  ,CHANGE_NAME
+							  ,UPLOAD_DATE
+							  ,FILE_PATH
+							  ,FILE_LEVEL
+							  ,FILE_TYPE)
+		VALUES(SEQ_FNO.NEXTVAL
+			  ,SEQ_PNO.CURRVAL
+			  ,?
+			  ,?
+			  ,SYSDATE
+			  ,?
+			  ,?
+			  ,2)							  
+	</entry>
+	<entry key="selectPlaceList">
+		SELECT PLACE_NO
+			  ,PLACE_NAME
+			  ,PLACE_SUB_INFO
+			  ,PLACE_SIZE
+			  ,PARKING_YN
+			  ,PLACE_DATE
+			  ,PLACE_COUNT
+			  ,PLACE_START_TIME
+			  ,PLACE_END_TIME
+			  ,MAX_CAPACITY
+			  ,CATEGORY_NAME
+			  ,LOCAL_NAME
+		FROM PLACE
+		JOIN CATEGORY USING(CATEGORY_NO)
+	</entry>
+</properties>

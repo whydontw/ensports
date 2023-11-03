@@ -1,5 +1,4 @@
 package com.ensport.common;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -8,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
-
 public class JDBCTemplate {
 	
 	
@@ -18,11 +16,8 @@ public class JDBCTemplate {
 		Properties prop = new Properties();
 		
 		String filePath = JDBCTemplate.class.getResource("/db/driver/driver.properties").getPath();
-
 		Connection conn = null;
-
 		try {
-
 			prop.load(new FileInputStream(filePath));
 			
 			Class.forName(prop.getProperty("driver"));
@@ -39,7 +34,6 @@ public class JDBCTemplate {
 		return conn;
 	}
 		
-
 	public static void commit(Connection conn) {
 		try {
 			if(conn != null && !conn.isClosed()) {
@@ -78,7 +72,6 @@ public class JDBCTemplate {
 		}
 	}
 	
-
 	public static void close(ResultSet rset){
 		try {
 			
@@ -93,7 +86,6 @@ public class JDBCTemplate {
 	}
 	
 	
-
 	public static void close(Statement stmt){
 		try {
 			if(stmt != null && !stmt.isClosed()) {
