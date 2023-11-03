@@ -1,4 +1,4 @@
-package com.ensport.matching;
+package com.ensport.matching.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class SoccerMatchingcontroller
+ * Servlet implementation class BaseballMatchingController
  */
-@WebServlet("/list.so")
-public class SoccerMatchingcontroller extends HttpServlet {
+@WebServlet("/list.ba")
+public class BaseballMatchingController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SoccerMatchingcontroller() {
+    public BaseballMatchingController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +26,7 @@ public class SoccerMatchingcontroller extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("views/matching/soccerMatching.jsp").forward(request, response);
+		request.getRequestDispatcher("views/matching/baseballMatching.jsp").forward(request, response);
 	}
 
 	/**

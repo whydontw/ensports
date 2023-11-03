@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.ensport.matching.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -17,24 +19,27 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>축구 경기매칭</title>
+	<title>서울 축구 경기매칭</title>
 
-	<!--
-            CSS
-            ============================================= -->
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/linearicons.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/owl.carousel.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/font-awesome.min.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/themify-icons.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/nice-select.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/nouislider.min.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/main.css">
+<!-- 	<!-- -->
+<!--             CSS -->
+<!--             ============================================= --> -->
+<%-- 	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/linearicons.css"> --%>
+<%-- 	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/owl.carousel.css"> --%>
+<%-- 	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/font-awesome.min.css"> --%>
+<%-- 	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/themify-icons.css"> --%>
+<%-- 	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/nice-select.css"> --%>
+<%-- 	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/nouislider.min.css"> --%>
+<%-- 	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.css"> --%>
+<%-- 	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/main.css"> --%>
 </head>
 
 <body id="category">
 
 	<%@ include file="../common/menubar.jsp" %> 
+	
+
+	 
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
@@ -42,13 +47,13 @@
 				<div class="col-first">
 					<h1>축구 경기매칭</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">경기매칭<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">축구</a>
+						<a href="index.html">경기매칭<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">축구<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">서울</a>
 					</nav>
 				</div>
 			</div>
-		</div>                       
+		</div>
 	</section>
 	<!-- End Banner Area -->
 	<div class="container">
@@ -57,9 +62,7 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						
 						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToSeoulPage()"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
-						
 
 						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
 
@@ -139,7 +142,7 @@
 						</select>
 					</div>
 					<div class="sorting mr-auto">
-						<!-- 원래 개수 섹션 -->
+					<!-- 개수 섹션 -->
 					</div>
 					<div class="pagination">
 						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
@@ -156,305 +159,30 @@
 				<section class="lattest-product-area pb-40 category-list">
 					<div class="row">
 						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p1.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
+						<c:forEach var="item" items="${slist}">
+							<div class="col-lg-4 col-md-6">
+								<div class="single-product">
+									<img class="img-fluid"
+										src="${contextPath}${item.filePath}${item.changeName}" alt="">
+									<div class="product-details">
+										<input type="text" value="${item.placeName}">
+										<h3>${item.placeName}</h3>
+										<div class="datasheet p-3 mb-2  text-white"
+											style="background-color: #e8f0f2;">
+											<a href="" id="participantCount" class="text-black"
+												style="color: black;">참여인원: </a>
+										</div>
+										<div class="prd-bottom">
+											<a href="" class="social-info"> <span
+												class="lnr lnr-move"></span>
+												<p class="hover-text">view more</p>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p2.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p3.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p4.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p5.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p6.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p4.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p5.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p6.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					
+						</c:forEach>
+						
 				</section>
 				<!-- End Best Seller -->
 				<!-- Start Filter Bar -->
@@ -582,7 +310,6 @@
         window.location.href = '<%= request.getContextPath() %>/sc.incheon';
     }
 	</script>
-	
 </body>
 
 </html>
