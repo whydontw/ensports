@@ -41,8 +41,6 @@ public class MemberDao {
 		//회원정보를 담아갈 객체 준비하기
 		Member m = null;
 		
-		System.out.println("Dao:" +  userId + " " + userPwd);
-		
 		//xml 파일에서 키값으로 sql 구문 가져오기
 		String sql = prop.getProperty("loginMember");
 		
@@ -86,8 +84,6 @@ public class MemberDao {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-		
-		System.out.println("로그인객체:" + m);
 		
 		return m;
 	}
@@ -201,5 +197,32 @@ public class MemberDao {
 		return count;
 	}
 
+	
 
+	//회원 탈퇴
+	public int deleteMember(Connection conn, int userNo, String userPwd) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("deleteMember");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userNo);
+			pstmt.setString(2, userPwd);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;		//처리된 행 수 돌려주기
+	}
+	
 }

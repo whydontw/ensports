@@ -44,6 +44,7 @@
     .form-group {
         margin-bottom: 10px;
         .form-control {
+		.form-control1{
             font-size: 13px;
             line-height: 26px;
             color: #999;
@@ -58,6 +59,7 @@
             @include placeholder {
                 color: #999;
             }
+        }
         }
         textarea {
             resize: none;
