@@ -206,10 +206,10 @@
 				return false;
 			}else{
 				
-				var regExp = /^[A-Za-z0-9]{6,10}$/;
+				var regExp = /^[a-zA-Z0-9]{4,10}$/;
 				
 				if (!regExp.test(userId.val())) { //아이디 검사를 통과하지 못했다면
-					alert("아이디는 6~10자리 영문 및 숫자 조합이어야 합니다.");
+					alert("아이디는 4~10자리 영문 및 숫자 조합이어야 합니다.");
 					userId.val("");
 					$("#userId").focus(); //해당 요소에 포커스 된다.
 					return false;

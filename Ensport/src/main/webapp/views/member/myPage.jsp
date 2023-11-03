@@ -3,6 +3,11 @@
 <!DOCTYPE html>
 <html>
 
+<style>
+.pdt-7{ padding-top : 7px; }
+</style>
+
+
 <body>
 
 	<%@ include file="../common/menubar.jsp" %>
@@ -97,45 +102,45 @@
                                 </li>
                             </ul>
                         </aside>
+
+                        <!-- 내 경기 정보 -->
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">나의 캐시</h4>
+                            <ul class="list cat-list">
+                                <li>
+                                    <a href="#" class="d-flex justify-content-between">
+                                        <p>캐시 충전하기 (후순위)</p>
+                                        <p>￦</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </aside>
                     </div>
                 </div>
-
+				
+				<!-- ### 내 정보 수정하기 ### -->
                 <div class="col-xl-8 posts-list">
                     <div class="row">
                         <div class="col-lg-12">
                             <h3>내 정보 수정</h3>
-                            <form class="row contact_form" action="${contextPath }/memberUpdate.me" method="post" novalidate="novalidate" style="margin-top: 40px;">
-                                <input type="hidden" name="userNo" value="${loginUser.userNo}">
+                            <form class="row contact_form" id="myInformationForm" action="${contextPath}/memberUpdate.me" method="post" novalidate="novalidate" style="margin-top: 40px;">
+								 <input type="hidden" name="userNo" value="${loginUser.userNo}">
                                 
                                 <!-- ID -->
-                                <span class="col-md-4">아이디</span>
+                                <span class="col-md-4 pdt-7">아이디</span>
                                 <div class="col-md-8 form-group p_star">
                                     <input type="text" class="form-control" id="userId" name="userId" placeholder="ID" value="${loginUser.userId}" readonly>
                                     <span class="placeholder"></span>
                                 </div>                             
     							
-    							<span class="col-md-4">이름</span>
+    							<span class="col-md-4 pdt-7">이름</span>
                                 <div class="col-md-8 form-group p_star">
                                     <input type="text" class="form-control" id="userName" name="userName" value="${loginUser.userName}" placeholder="이름">
                                     <span class="placeholder"></span>
                                 </div>
                                 
-
-                                <!-- 변경할 비밀번호 -->
-    							<span class="col-md-4">변경할 비밀번호</span>
-                                <div class="col-md-8 form-group p_star">
-                                    <input type="password" class="form-control" id="userPassword" name="userPasswordChk" placeholder="새로운 비밀번호">
-                                    <span class="placeholder" ></span>
-                                </div>
-                                <!-- 변경할 비밀번호 확인하기 -->
-    							<span class="col-md-4">비밀번호 확인하기</span>
-                                <div class="col-md-8 form-group p_star">
-                                    <input type="password" class="form-control" id="userPasswordChk" name="userPasswordChk" placeholder="새로운 비밀번호 확인">
-                                    <span class="placeholder" ></span>
-                                </div>
-                                
                                 <!-- 전화번호 -->
-    							<span class="col-md-4">전화번호</span>
+    							<span class="col-md-4 pdt-7">전화번호</span>
                                 <div class="col-md-8 form-group p_star">
                                     <input type="text" class="form-control" id="phone" name="phone" placeholder="전화번호" value="${loginUser.phone}" readonly>
                                     <span class="placeholder"></span>
@@ -143,9 +148,9 @@
                                 
     
                                 <!-- 주소 -->
-                                <span class="col-md-4">주소</span>
+                                <span class="col-md-4 pdt-7">주소</span>
                                 <div class="col-md-6 form-group p_star">
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="주소" value="${loginUser.address }" readonly>
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="주소" value="${loginUser.address}" readonly>
                                     <span class="placeholder"></span>
                                 </div>
     
@@ -153,7 +158,9 @@
                                 <div class="button-group-area" id="address_kakao">
                                     <a href="#" class="genric-btn primary mt-0">주소검색</a>
                                 </div>
-                                <span class="col-md-4">상세주소</span>
+                                
+                                <!-- 상세주소 -->
+                                <span class="col-md-4 pdt-7"></span>
                                 <div class="col-md-8 form-group">
                                     <input type="text" class="form-control" id="addressDetail" name="addressDetail" placeholder="상세주소" >
                                     <span class="placeholder"></span>
@@ -177,48 +184,34 @@
     
     
                               <!-- 이메일 -->
-                              <span class="col-md-4">이메일</span>
+                              <span class="col-md-4 pdt-7">이메일</span>
                                <div class="col-md-8 form-group p_star">
                                   <input type="text" class="form-control" id="email" name="email" value="${loginUser.email}" placeholder="이메일 (example@example.kr)">
                                   <span class="placeholder"></span>
                               </div>
 
                               <!-- 성별 -->
-                              <span class="col-md-4">성별</span>
-                                <div class="col-md-8 form-group p_star">
-                                    <select class="country_select col-md-8" name="gender" id="gender">
-                                        <option value="">-- 성별 선택 --</option>
-                                       	<option value="M">남자</option>
-                                       	<option value="F">여자</option>
-                                    </select>
-                                </div>
-                                
-                                <script type="text/javascript">
-                                	$(function(){
-                                		
-                                		var gender = ${loginUser.gender};
-                                		
-                                		if(gender == 'M'){
-                                			$('select option[value="M"]').prop("selected", "selected");
-                                		}else{
-                                			$('select option[value="F"]').prop("selected", "selected");
-                                		}
-                                		
-                                	})
-                                </script>
-    
+                              <span class="col-md-4 pdt-7">성별</span>
+                              <div class="col-md-8 form-group p_star">
+                                  <select class="country_select" name="gender" id="gender">
+                                     <option value="">-- 성별 선택 --</option>
+                                     <option value="M">남자</option>
+                                     <option value="F">여자</option>
+                                  </select>
+                              </div>
+
                                 
                                 <!-- 별명 -->
-                                <div class="col-md-4 align-middle"><span>별명</span></div>
+                                <div class="col-md-4 pdt-7"><span>별명</span></div>
                                 <div class="col-md-8 form-group">
-                                    <input type="text" class="form-control" id="userNickname" name="userNickname" placeholder="별명" >
+                                    <input type="text" class="form-control" id="userNickname" name="userNickname" placeholder="별명" value="${loginUser.userNickname}">
                                     <span class="placeholder"></span>
                                 </div>
     
                                 <!-- 선호하는 종목 -->
-                                <div class="col-md-12 form-group d-flex mt-50">
-                                    <div class="col-md-5 single-element-widget">
-                                        <h5 class="mb-30"><b>선호하는 종목</b></h5>
+                                <div class="col-md-12 form-group d-flex mt-50 pdt-7">
+                                    <div class="col-md-3 single-element-widget">
+                                        <h5 class="mb-30 "><b>선호하는 종목</b></h5>
                                         <div class="switch-wrap d-flex justify-content-between">
                                             <p>축구</p>
                                             <div class="primary-checkbox">
@@ -235,12 +228,47 @@
                                         </div>
                                     </div>
                                 </div>
+                                
     
                                 <div class="col-md-12 form-group p_star">
                                     <div class="row contact_form">
                                         <div class="col-md-12 text-center mt-50">
-                                            <button type="submit" value="" class="primary-btn" onclick="return memberUpdate();">정보수정</button>
-                                            <button type="button" class="primary-btn" onclick="memberDelete();">회원탈퇴</button>
+                                            <button type="submit" value="" class="primary-btn" onclick="return memberUpdate();">정보 수정</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                            
+                            <!-- ### 내 정보 수정하기 ### -->
+                            <form class="row contact_form" id="myChangePwdForm" action="${contextPath}/changePwd.me" method="post" novalidate="novalidate" style="display: none; margin-top: 40px;">
+								<input type="hidden" name="userNo" value="${loginUser.userNo}">
+                                
+                                <!-- 현재 비밀번호 -->
+                                <span class="col-md-4 pdt-7">현재 비밀번호</span>
+                                <div class="col-md-8 form-group">
+                                    <input type="password" class="form-control" id="userPassword" name="userPassword" placeholder="현재 비밀번호">
+                                    <span class="placeholder"></span>
+                                </div>                             
+    							
+    							<!-- 새로운 비밀번호 -->
+    							<span class="col-md-4 pdt-7">새로운 비밀번호</span>
+                                <div class="col-md-8 form-group">
+                                    <input type="password" class="form-control" id="newUserPassword" name="newUserPassword" placeholder="새로운 비밀번호 비밀번호 (6~15자리 영문 및 숫자 조합)">
+                                    <span class="placeholder"></span>
+                                </div>
+                                
+                                <!-- 새로운 비밀번호 확인 -->
+    							<span class="col-md-4 pdt-7">새로운 비밀번호 확인</span>
+                                <div class="col-md-8 form-group">
+                                    <input type="password" class="form-control" id="newUserPasswordChk" name="newUserPasswordChk" placeholder="새로운 비밀번호 확인 (6~15자리 영문 및 숫자 조합)">
+                                    <span class="placeholder"></span>
+                                </div>
+    
+                                <div class="col-md-12 form-group p_star">
+                                    <div class="row contact_form">
+                                        <div class="col-md-12 text-center mt-50">
+                                            <button type="submit" class="primary-btn" onclick="chagePwdDone();">비밀번호 변경하기</button>
                                         </div>
                                     </div>
                                 </div>
@@ -248,30 +276,145 @@
                             
                         </div>
                     </div>
+	                <div class="blog_post">
+	                   <div class="blog_details text-right">
+	                       <a href="#" class="white_bg_btn" id="changePwdbtn" onclick="changePwdForm();">비밀번호 변경</a>
+	                       <a href="#" class="white_bg_btn" onclick="memberDelete();">회원 탈퇴하기</a>
+	                   </div>
+	                </div>
                 </div>
             </div>
         </div>
     </section>
     <!--================Blog Area =================-->
+	
+    
+    
+    
+    
+    <script type="text/javascript">
+    
+    
+    	//성별 선택하기
+	    document.addEventListener('DOMContentLoaded', function() {
+	        var gender = "${loginUser.gender}";
+	        var selectElement = document.getElementById('gender');
+	
+	        if (gender === 'M') {
+	          // 'M'를 선택
+	          for (var i = 0; i < selectElement.options.length; i++) {
+	            if (selectElement.options[i].value === 'M') {
+	              selectElement.options[i].selected = true;
+	              break;
+	            }
+	          }
+	        } else if (gender === 'F') {
+	          // 'F'를 선택
+	          for (var i = 0; i < selectElement.options.length; i++) {
+	            if (selectElement.options[i].value === 'F') {
+	              selectElement.options[i].selected = true;
+	              break;
+	            }
+	          }
+	        }
+	      });
+	    
+	    
+    	
+	    //선호종목 체크박스
+	    document.addEventListener('DOMContentLoaded', function() {
+	        var prefers = "${loginUser.prefer}";
+	        var inputElements = document.querySelectorAll('input[name="prefer"]');
 
+	        // 순차적으로 요소를 확인하며 처리
+	        inputElements.forEach(function(inputElement) {
+	          var value = inputElement.value;
 
-	<script type="text/javascript">
-		function memberDelete(){
+	          // loginUser.prefer에 현재 value가 포함되어 있는지 확인
+	          if (prefers.includes(value)) {
+	            // 값이 있다면 현재 요소에 checked 속성을 추가
+	            inputElement.checked = true;
+	          }
+	        });
+	      });
+	  	
+	    
+	    
+	    //회원정보 수정하기
+    	function memberUpdate(){
+    		
+    		if(confirm("회원 정보를 수정하시겠습니까?")){
+    			return true;
+    		}else{
+        		return false;
+    		}
+    	}
+    	
+	    
+    	
+    	//회원 비밀번호 창 띄우기
+    	function changePwdForm(){
+    		$("#myInformationForm").hide();
+    		$("#changePwdbtn").hide();
+    		
+    		$("#myChangePwdForm").css("display","");
+    	}
+    	
+    	
+    	//회원 비밀번호 변경
+    	function changePwdDone(){
+    		
+    		
+    		var userPwd = $("#userPassword").val();
+    		var newPwd = $("#newUserPassword").val();
+    		var newPwdChk = $("#newUserPasswordChk").val();
+    		
+    		
+			if (userPwd == null || userPwd == '') {
+				alert("비밀번호를 입력하세요");
+				return false;
+			}
 			
+			if(newPwd == newPwdChk){
+			
+				alert("비밀번호가 일치하지 않습니다.");
+				return false;
+			
+			}else {
+				
+				var regExp = /^[A-Za-z0-9]{4,15}$/;
+
+				if (!regExp.test(newPwd)) { //비밀번호
+					alert("비밀번호는 4~15자리 영문 및 숫자 조합이어야 합니다.");
+					$("#userPassword").focus(); //해당 요소에 포커스 된다.
+					return false;
+				}
+				
+				if (userPassword != userPasswordChk) {
+					alert("비밀번호가 일치하지 않습니다.");
+					$("#userPasswordChk").focus();
+					return false;
+				}
+			}
+    	}
+    	
+    	
+	    //회원 탈퇴
+		function memberDelete(){
 		    if (confirm('회원 탈퇴하시겠습니까?')) {
 		        const password = prompt("탈퇴할 회원의 비밀번호를 입력하세요.");
 		        location.href = '${contextPath}/memberDelete.me?userNo=${loginUser.userNo}&password=${loginUser.userPassword}';
 		    }
 		}
-		
 	</script>
 	
-
-
-
-    
-    
+	
+	
+	
+	<!--================ footer =================-->
     <%@ include file="../common/footer.jsp" %>
+    
+    
  
 </body>
 </html>

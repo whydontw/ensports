@@ -88,9 +88,7 @@ public class MemberDao {
 		return m;
 	}
 
-	
-	
-	
+
 	
 	//회원가입
 	public int insertMember(Connection conn, Member m) {
@@ -199,6 +197,122 @@ public class MemberDao {
 
 	
 
+	//회원정보 수정
+	public int updateMember(Connection conn, Member m) {
+
+		//DML 구문 실행할 준비
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String sql = prop.getProperty("updateMember");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			//미완성 SQL구문 전달하며 pstmt 객체 생성
+			pstmt.setString(1, m.getUserName());
+			pstmt.setString(2, m.getPhone());
+			pstmt.setString(3, m.getAddress());
+			pstmt.setString(4, m.getEmail());
+			pstmt.setString(5, m.getGender());
+			pstmt.setString(6, m.getUserNickname());
+			pstmt.setString(7, m.getPrefer());
+			pstmt.setString(8, m.getUserId());
+			
+			//sql 구문 실행 및 결과 행 수 받기
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		//처리된 행 수 돌려주기
+		return result;
+		
+	}
+	
+	
+	
+	//멤버 조회하기
+	public Member selectMember(Connection conn, int userNo) {
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		Member m = null;
+		String sql = prop.getProperty("selectMember");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userNo);
+			
+			rset = pstmt.executeQuery();
+			
+			//조회 결과가 있다면
+			if(rset.next()) {
+				
+				m = new Member(rset.getInt("USER_NO")
+							, rset.getString("USER_ID")
+							, rset.getString("USER_PASSWORD")
+							, rset.getString("USER_NICKNAME")
+							, rset.getString("USER_NAME")
+							, rset.getString("EMAIL")
+							, rset.getString("PHONE")
+							, rset.getDate("ENROLLDATE")
+							, rset.getString("GENDER")
+							, rset.getString("ADDRESS")
+							, rset.getString("PREFER")
+							, rset.getString("IMAGES")
+							, rset.getString("STATUS")
+							);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return m;
+	}
+	
+	
+	
+	
+	public int chagePwd(Connection conn, int userNo, String userPwd, String newPwd) {
+		//DML(UPDATE)
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("updatePwd");
+
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, newPwd);			//변경할 비밀번호
+			pstmt.setString(2, userPwd);		//현재 비밀번호
+			pstmt.setInt(3, userNo);			//회원 번호
+			
+			//실행결과 받기
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	
 	//회원 탈퇴
 	public int deleteMember(Connection conn, int userNo, String userPwd) {
 		
@@ -224,5 +338,7 @@ public class MemberDao {
 		
 		return result;		//처리된 행 수 돌려주기
 	}
-	
+
+
+
 }
