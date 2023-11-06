@@ -40,7 +40,7 @@
 
 	<div class="container">
 
-		<form method="post" action="boardEnroll.bo">
+		<form action="${contextPath }/boardEnroll.bo" method="post" enctype="multipart/form-data">
 			<br>
 			<br>
 			<table class="table table-stripped"
@@ -56,18 +56,21 @@
 				<tbody>
 					<tr>
 						<td><input type="text" class="form-control"
-							placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
+							name="title" placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
 					</tr>
 					<tr>
 						<td><textarea id="editor" class="form-control"
-								placeholder="글 내용" name="bbsContent" maxlength="8192"
+								name="content" placeholder="글 내용" name="bbsContent" maxlength="8192"
 								style="height: 350px"></textarea></td>
 					</tr>
 				</tbody>
 			</table>
-
-			<input type="submit" class="btn btn-primary pull-right" value="글쓰기">
-			<input type="file">
+			<div>
+				<button type="submit" class="btn btn-primary pull-right">작성완료</button>
+			</div>
+			<div>
+				<input type="file" name="uploadFile">
+			</div>
 		</form>
 
 
