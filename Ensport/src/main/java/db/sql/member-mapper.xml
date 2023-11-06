@@ -46,6 +46,38 @@
 		WHERE PHONE = ?
 		AND STATUS = 'Y'
 	</entry>
+	
+	
+	<entry key="updateMember">
+	    UPDATE MEMBER SET
+	    USER_NAME = ?
+	    , PHONE =?
+	    , ADDRESS =?
+	    , EMAIL =?
+	    , GENDER = ?
+	    , USER_NICKNAME =?
+	    , PREFER = ?
+	    WHERE
+	    USER_ID = ?
+	</entry>
+	
+	<entry key="selectMember">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_NO = ?
+		AND STATUS = 'Y'
+	</entry>
+	
+	
+	<entry key="updatePwd">
+		UPDATE MEMBER
+		SET
+		USER_PASSWORD = ?
+		WHERE
+		USER_PASSWORD = ?
+		AND USER_NO =?
+		AND STATUS = 'Y'
+	</entry>
 
 	
 	<entry key="deleteMember">

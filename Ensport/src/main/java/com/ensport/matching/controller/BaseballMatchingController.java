@@ -1,4 +1,4 @@
-package com.ensport.matching;
+package com.ensport.matching.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
