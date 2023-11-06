@@ -78,7 +78,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="${contextPath }/qaList.qa">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>문의사항</span></a>
+                    <span>공지사항</span></a>
             </li>
 
             <!-- Divider -->
