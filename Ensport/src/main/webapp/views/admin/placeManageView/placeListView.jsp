@@ -34,7 +34,7 @@
     <div id="wrapper">
 		<%@ include file="/views/admin/common/sideBar.jsp" %>
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style="margin-top: 150px;">
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">경기장 목록</h1>
@@ -76,7 +76,7 @@
                                             <c:forEach items="${requestScope.list}" var="p">
                                                 <tr>
                                                     <td>${p.placeNo }</td>
-                                                    <td>${p.placeName }</td>
+                                                    <td><a href="">${p.placeName }</a></td>
                                                     <td>${p.localName }</td>
                                                     <td>${p.place_count }</td>
                                                     <td>${p.place_date }</td>
