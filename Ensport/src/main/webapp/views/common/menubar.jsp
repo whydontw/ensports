@@ -30,6 +30,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
@@ -117,7 +119,7 @@
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${loginUser.userNickname } 님 환영합니다!</a>
 										<ul class="dropdown-menu">
 											<c:if test="${loginUser.userNo == 1 }">
-												<li class="nav-item"><a class="nav-link" href="#">관리자 페이지</a></li>
+												<li class="nav-item"><a class="nav-link" href="${contextPath }/dashboard.hp">관리자 페이지</a></li>
 											</c:if>
 											<c:if test="${loginUser.userNo != 1 }">
 												<li class="nav-item"><a class="nav-link" href="${contextPath }/myPage.do">마이페이지</a></li>

@@ -106,7 +106,6 @@ public class MemberInsertController extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/login.me");
 			
 		}else {		//실패(실패시 화면)
-			HttpSession session = request.getSession();
 			
 			//뢰원가입 실패시 request에 에러 메시지 담고 errorPage로 포워딩해보기
 			request.setAttribute("alertMsg", "회원가입에 실패하였습니다.");

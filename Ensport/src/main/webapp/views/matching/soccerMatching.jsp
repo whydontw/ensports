@@ -48,7 +48,7 @@
 					</nav>
 				</div>
 			</div>
-		</div>
+		</div>                       
 	</section>
 	<!-- End Banner Area -->
 	<div class="container">
@@ -57,20 +57,13 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a data-toggle="collapse" href="#seoul" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								 class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a>
-							
-						</li>
+						
+						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToSeoulPage()"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+						
 
-						<li class="main-nav-list"><a data-toggle="collapse" href="#gyeonggido" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a>
-					   		
-				   		</li>
+						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a data-toggle="collapse" href="#incheon" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a>
-					   		
-				   		</li>
+						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToIncheonPage()"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
@@ -146,11 +139,7 @@
 						</select>
 					</div>
 					<div class="sorting mr-auto">
-						<select>
-							<option value="1">Show 8</option>
-							<option value="1">Show 10</option>
-							<option value="1">Show 12</option>
-						</select>
+						<!-- 원래 개수 섹션 -->
 					</div>
 					<div class="pagination">
 						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
@@ -578,6 +567,21 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
+	<script type="text/javascript">
+    function goToSeoulPage() {
+        window.location.href = '<%= request.getContextPath() %>/sc.seoul';
+    }
+	</script>
+	<script type="text/javascript">
+    function goToGyeonggiPage() {
+        window.location.href = '<%= request.getContextPath() %>/sc.gyeonggi';
+    }
+	</script>
+	<script type="text/javascript">
+    function goToIncheonPage() {
+        window.location.href = '<%= request.getContextPath() %>/sc.incheon';
+    }
+	</script>
 	
 </body>
 
