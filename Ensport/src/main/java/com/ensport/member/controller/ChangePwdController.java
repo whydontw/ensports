@@ -14,6 +14,7 @@ import com.ensport.member.model.vo.Member;
 /**
  * Servlet implementation class ChangePwdController
  */
+//비밀번호 변경
 @WebServlet("/changePwd.me")
 public class ChangePwdController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -47,21 +48,21 @@ public class ChangePwdController extends HttpServlet {
 		Member updateMember = new MemberService().chagePwd(userNo, userPwd, newPwd);
 		
 		
+		HttpSession session = request.getSession();
+		
 		//처리된 회원정보를 토대로 응답페이지 선택하기
 		if(updateMember != null) {	//성공페이지
-			
-			HttpSession session = request.getSession();
 			
 			session.setAttribute("loginUser", updateMember);
 			session.setAttribute("alertMsg", "비밀번호 변경 성공");
 			
 			//갱신후 mypage로 재요청보내기
-			response.sendRedirect(request.getContextPath() + "/myPage.do");	// == /jsp + /myPage.me
+			response.sendRedirect(request.getContextPath() + "/myPage.me");	// == /jsp + /myPage.me
 			
 		}else {	//실패 페이지
 			//errorPage에 메시지 담아서 전달하기
-			request.setAttribute("errorMsg", "비밀번호 수정에 실패하였습니다.");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			session.setAttribute("alertMsg", "비밀번호 수정에 실패하였습니다.");
+			response.sendRedirect(request.getContextPath() + "/myPage.me");
 		}
 	}
 
