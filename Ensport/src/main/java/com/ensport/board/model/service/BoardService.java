@@ -7,14 +7,15 @@ import com.ensport.board.model.dao.BoardDao;
 import com.ensport.board.model.vo.Attachment;
 import com.ensport.board.model.vo.Board;
 import com.ensport.common.JDBCTemplate;
+import com.ensport.common.model.vo.PageInfo;
 
 public class BoardService {
 
-	public ArrayList<Board> selectBoardList() {
+	public ArrayList<Board> selectBoardList(PageInfo pi) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Board> list = new BoardDao().selectBoardList(conn);
+		ArrayList<Board> list = new BoardDao().selectBoardList(conn,pi);
 		
 		JDBCTemplate.close(conn);
 		
@@ -45,8 +46,54 @@ public class BoardService {
 	}
 
 	public int increaseCount(int boardNo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new BoardDao().increaseCount(conn,boardNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	public Board selectBoard(int boardNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Board b = new BoardDao().selectBoard(conn,boardNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return b;
+	}
+
+	public Attachment selectAttachment(int boardNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Attachment a = new BoardDao().selectAttachment(conn,boardNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return a;
+	}
+
+	public int listCount() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//게시글 개수 받아줄 변수 준비
+		int count = new BoardDao().listCount(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return count; //게시글 개수 돌려주기
 	}
 
 

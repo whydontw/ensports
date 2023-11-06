@@ -24,6 +24,16 @@ public class Attachment {
 		this.uploadDate = uploadDate;
 		this.filePath = filePath;
 	}
+	
+	
+
+	public Attachment(int atNo, String originName, String changeName, String filePath) {
+		super();
+		this.atNo = atNo;
+		this.originName = originName;
+		this.changeName = changeName;
+		this.filePath = filePath;
+	}
 
 	public int getAtNo() {
 		return atNo;

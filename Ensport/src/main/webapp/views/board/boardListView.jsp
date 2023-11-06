@@ -101,7 +101,7 @@
 							<tr>
 								<td>${b.boardNo }</td>
 								<td>${b.userNo }</td>
-								<td><a href="boardDetail.bo?bno="${b.boardNo } id="post">${b.boardTitle }</a></td>
+								<td><a href="${contextPath }/boardDetail.bo?bno=${b.boardNo }" id="post">${b.boardTitle }</a></td>
 								<td>${b.createDate }</td>
 								<td>${b.boardCount }</td>
 							</tr>	
@@ -113,26 +113,36 @@
 		
 		<hr>
 		
-		<c:if test="${loginUser != null }">
-				<a href="boardEnroll.bo" class="btn btn-primary pull-right">글작성</a>
-		</c:if>
 		
 		<div class="text-center">
 			<ul class="pagination">
-				<li id="page"><a href="#">이전</a></li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">7</a></li>
-				<li><a href="#">8</a></li>
-				<li><a href="#">9</a></li>
-				<li><a href="#">10</a></li>
-				<li id="page"><a href="#">다음</a></li>
-			</ul>
-		</div>
+		  	  <c:choose>
+		  	  	<c:when test="${pi.currentPage eq 1 }">
+		  	  		<li id="page"><a><button disabled>이전</button></a></li>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<li id="page"><a href="boardList.bo?currentPage=${pi.currentPage-1}">이전</a></li>
+			  	</c:otherwise>	
+			  </c:choose>
+			  
+			  <c:forEach var="i" begin="${pi.startPage }" end="${pi.endPage }">
+			  		<li><a href="boardList.bo?currentPage=${i}">${i}</a></li>
+			  </c:forEach>
+			  
+			  <c:choose>
+			  	<c:when test="${pi.currentPage eq pi.maxPage}">
+			  		<li id="page"><a><button disabled>다음</button></a></li>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<li id="page"><a href="boardList.bo?currentPage=${pi.currentPage+1}">다음</a></li>
+			  	</c:otherwise>
+		      </c:choose>
+			</ul>      
+        </div>
+		
+		<c:if test="${loginUser != null }">
+				<a href="boardEnroll.bo" class="btn btn-primary pull-right">글작성</a>
+		</c:if>
 	</div>
 	
 	<script>
@@ -145,6 +155,7 @@
 	
 	</script>
 	
+	<br><br><br><br><br><br><br><br>
 	
 	
 

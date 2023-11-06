@@ -53,7 +53,8 @@ public class boardEnrollController extends HttpServlet {
 			throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-
+		
+		
 		// 넘어온 데이터 타입이 multipart인지 확인하기
 		if (ServletFileUpload.isMultipartContent(request)) {
 			// 파일 업로드를 위한 라이브러리 cos.jar
@@ -95,7 +96,7 @@ public class boardEnrollController extends HttpServlet {
 			b.setBoardContent(content);
 			b.setBoardTitle(title);
 			b.setUserNo(boardWriter);
-
+			
 			// 사용자가 파일을 업로드했다면 파일 정보를 추출하고 업로드하지 않았다면 게시글정보만 필요
 			Attachment at = null; // 첨부파일이 있다면 담아줄 예정
 
@@ -121,7 +122,7 @@ public class boardEnrollController extends HttpServlet {
 			if (result > 0) { // 성공
 				session.setAttribute("alertMsg", "게시글 등록 성공");
 
-				response.sendRedirect(request.getContextPath() + "/views/board/boardListView.jsp");
+				response.sendRedirect(request.getContextPath() + "/boardList.bo?currentPage=1");
 			} else { // 실패
 				// 게시글 등록에 실패했다면 서버에 업로드된 파일을 지워야한다.
 
@@ -132,7 +133,7 @@ public class boardEnrollController extends HttpServlet {
 
 				session.setAttribute("alertMsg", "게시글 등록 실패");
 
-				response.sendRedirect(request.getContextPath() + "/views/board/boardListView.jsp");
+				response.sendRedirect(request.getContextPath() + "/boardList.bo?currentPage=1");
 			}
 		} 
 
