@@ -12,6 +12,7 @@ import java.util.Properties;
 
 import com.ensport.admin.model.vo.Attachment;
 import com.ensport.admin.model.vo.Place;
+import com.ensport.admin.model.vo.QA;
 import com.ensport.common.JDBCTemplate;
 
 public class AdminDao {
@@ -132,6 +133,66 @@ public class AdminDao {
 			JDBCTemplate.close(stmt);
 		}
 		
+		return list;
+	}
+
+
+	public int insertQA(int userNo, String subject, String message, Connection conn) {
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertQA");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userNo);
+			pstmt.setString(2, subject);
+			pstmt.setString(3, message);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+
+	public ArrayList<QA> selectQAList(Connection conn) {
+
+		ArrayList<QA> list = new ArrayList<>();
+		ResultSet rset = null;
+		Statement stmt = null;
+		
+		String sql = prop.getProperty("selectQAList");
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			
+			while(rset.next()) {
+				list.add(new QA(rset.getInt("QA_NO")
+								,rset.getString("USER_NICKNAME")
+								,rset.getString("QA_TITLE")
+								,rset.getString("QA_CONTENT")
+								,rset.getDate("CREATE_DATE")));
+			}
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
 		return list;
 	}
 
