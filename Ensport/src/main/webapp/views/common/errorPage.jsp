@@ -9,12 +9,12 @@
 </head>
 <body>
 	<script type="text/javascript">
-		const msg = "${alertMsg}";
+		const msg = "${errorMsg}";
 		if (msg != null && msg != '') {
 		    alert(msg);
-		    <c:remove var="alertMsg" scope="session" />
+		    <c:remove var="errorMsg" scope="request" />
+			location.href='${contextPath}'
 		}
-		location.href='${contextPath}'
 	</script>
 </body>
 </html>

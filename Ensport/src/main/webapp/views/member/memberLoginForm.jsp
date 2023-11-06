@@ -1,24 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+	//쿠키정보
+	Cookie[] cookies = request.getCookies();		//반환타입: 배열
+	
+	//쿠키 배열에서 필요한 쿠키 정보를 추출하기
+	//반복으로 돌려서 해당 쿠키의 이름을 찾고 그 쿠키의 값을 담아두기
+	String saveId = "";
+	
+	if(cookies != null){
+		for(Cookie c : cookies){
+			if((c.getName()).equals("userId")){
+				saveId = c.getValue();
+			}
+		}
+	}
+%>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
 <head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
-	<!-- Author Meta -->
-	<meta name="author" content="CodePixar">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>메인페이지</title>
+	<title>로그인</title>
 </head>
 
 <body>
@@ -70,7 +72,7 @@
 							</div>
 							<div class="col-md-12 form-group">
 								<div class="creat_account">
-									<input type="checkbox" id="f-option2" name="selector">
+									<input type="checkbox" id="f-option2" name="saveId">
 									<label for="f-option2">아이디 저장하기</label>
 								</div>
 							</div>
@@ -97,8 +99,8 @@
 		   	var saveId = "<%= saveId %>";
 		   	
 		   	if(saveId != ""){
-				$("input[name=userId]").val(saveId);
-				$("input[name=selector]").attr("checked", true);
+				$("input[name=loginId]").val(saveId);
+				$("input[name=saveId]").attr("checked", true);
 		   	}
 	   });
 	</script>

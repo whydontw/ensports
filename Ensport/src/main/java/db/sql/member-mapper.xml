@@ -88,4 +88,32 @@
 		AND STATUS = 'Y'
 	</entry>
 	
+	
+	<entry key="boardListCount">
+		SELECT COUNT(*) AS COUNT
+		FROM BOARD
+		WHERE USER_NO = ?
+		AND STATUS = 'Y'
+	</entry>
+	
+	
+	<entry key="selectMyBoardList">
+		SELECT *
+		FROM (SELECT ROWNUM RNUM,A.*
+              FROM(                            
+                    SELECT
+                     BOARD_NO
+                    , BOARD_TITLE
+                    , BOARD_CONTENT
+                    , CREATE_DATE
+                    , BOARD_COUNT
+                    , STATUS
+                     FROM BOARD
+                     WHERE USER_NO = ?
+                     ORDER BY CREATE_DATE DESC
+                 ) A
+              )
+        WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
 </properties>
