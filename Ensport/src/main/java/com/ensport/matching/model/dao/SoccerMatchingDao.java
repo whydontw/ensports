@@ -9,8 +9,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.ensport.admin.model.vo.Attachment;
+
 import com.ensport.common.JDBCTemplate;
 import com.ensport.matching.model.vo.SoccerMatching;
+import com.ensport.place.model.vo.Place;
 
 public class SoccerMatchingDao {
 	
@@ -29,7 +32,7 @@ public class SoccerMatchingDao {
 
 	
 	//축구 경기 매칭 목록 조회
-	public ArrayList<SoccerMatching> selectSoccerMatchingList(Connection conn) {
+	public ArrayList<SoccerMatching> selectSoccerMatchingList(Connection conn,String localName) {
 		
 		
 		PreparedStatement pstmt = null;
@@ -42,16 +45,18 @@ public class SoccerMatchingDao {
 		String sql = prop.getProperty("selectSoccerMatchingList");
 		
 		try {
-			pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);		
+			pstmt.setString(1, localName);
 			
-//			pstmt.setInt(1, 1);
-			pstmt.setString(1, "서울");
 			
 			rset = pstmt.executeQuery();
 			
 			while(rset.next()) {
 				
-				sm = new SoccerMatching(rset.getString("PLACE_NAME") ,rset.getString("FILE_PATH"), rset.getString("CHANGE_NAME"));
+				sm = new SoccerMatching(rset.getInt("PLACE_NO")
+										, rset.getString("PLACE_NAME") 
+										, rset.getString("FILE_PATH")
+										, rset.getString("CHANGE_NAME"));
 				
 				slist.add(sm);
 				
@@ -64,7 +69,161 @@ public class SoccerMatchingDao {
 			JDBCTemplate.close(pstmt);
 		}
 		
+		for(SoccerMatching ssss : slist){
+			System.out.println("리스트:" +  ssss);
+		};
+		
 		return slist;
 	}
+	
+	
+	
+	//조회수 증가 메소드
+		public int increaseCount(Connection conn, int placeNo) {
+			
+			int result = 0;
+			
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("increaseCount");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1,placeNo);
+				
+				result = pstmt.executeUpdate();
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}	
+			
+			return result;
+		}
+
+		//게시글 개수 조회 메소드
+		public int listCount(Connection conn) {
+		
+			int count = 0;
+			
+			ResultSet rset = null;
+			PreparedStatement pstmt =null;
+			
+			String sql = prop.getProperty("listCount");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "서울");
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					count = rset.getInt(1);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return count;
+		}
+
+
+		//사진 상세조회 메소드
+		public ArrayList<Attachment> selectAttachmentLst(Connection conn, int placeNo) {
+			
+			ArrayList<Attachment> list = new ArrayList<>();
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("selectAttachment");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					list.add(new Attachment(rset.getInt("AT_NO")
+										   ,rset.getString("ORIGIN_NAME")
+										   ,rset.getString("CHANGE_NAME")
+										   ,rset.getString("FILE_PATH")));		
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return list;
+		}
+
+
+		//경기장 상세보기
+		public Place selectPlace(Connection conn, int placeNo) {
+			
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			Place p = null;
+			
+			String sql = prop.getProperty("selectPlace");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					p = new Place (rset.getInt("PLACE_NO")
+								  ,rset.getString("PLACE_NAME")
+								  ,rset.getString("PLACE_SUB_INFO")
+								  ,rset.getString("PLACE_SIZE")
+								  ,rset.getString("PARKING_YN")
+								  ,rset.getDate("PLACE_DATE")
+								  ,rset.getString("PLACE_START_TIME")
+								  ,rset.getString("PLACE_END_TIME")
+								  ,rset.getInt("MAX_CAPACITY")
+								  ,rset.getString("CATEGORY_NAME"));
+							
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return p;
+		}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

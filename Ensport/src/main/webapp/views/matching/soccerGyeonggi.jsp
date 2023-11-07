@@ -57,10 +57,12 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToSeoulPage()"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
-						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span><b>경기</b><span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/sc.seoul?localName=서울"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+						
 
-						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToIncheonPage()"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/sc.seoul?localName=경기"><span class="lnr lnr-arrow-right"></span><b>경기</b><span class="number">(53)</span></a></li>
+
+						<li class="main-nav-list"><a href="${contextPath }/sc.seoul?localName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
@@ -568,21 +570,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
-	<script type="text/javascript">
-    function goToSeoulPage() {
-        window.location.href = '<%= request.getContextPath() %>/sc.seoul';
-    }
-	</script>
-	<script type="text/javascript">
-    function goToGyeonggiPage() {
-        window.location.href = '<%= request.getContextPath() %>/sc.gyeonggi';
-    }
-	</script>
-	<script type="text/javascript">
-    function goToIncheonPage() {
-        window.location.href = '<%= request.getContextPath() %>/sc.incheon';
-    }
-	</script>
+
 </body>
 
 </html>

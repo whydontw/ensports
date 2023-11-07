@@ -3,16 +3,73 @@
 <properties>
 
 	<entry key="selectSoccerMatchingList">
-	SELECT PLACE_NAME
+	SELECT  PLACE_NO
+			,PLACE_NAME
 			,FILE_PATH
 		   ,CHANGE_NAME
 	FROM PLACE P
 	left JOIN ATTACHMENT AT
 	ON(PLACE_NO=REF_NO)
 	WHERE LOCAL_NAME=?
+	AND FILE_LEVEL=1
 	</entry>
 	
-
+	<entry key="increaseCount">
+	UPDATE PLACE
+	SET PLACE_COUNT = PLACE_COUNT +1
+	WHERE PLACE_NO = ?	
+	</entry>
 	
+	<entry key="listCount">
+		SELECT COUNT(*) 
+		FROM PLACE
+		WHERE LOCAL_NAME = ?
+	</entry>
+	
+	<entry key="selectAttachment">
+	SELECT AT_NO
+		  ,ORIGIN_NAME
+		  ,CHANGE_NAME
+		  ,FILE_PATH
+	FROM ATTACHMENT
+	WHERE REF_NO=?
+	AND FILE_TYPE=2
+	</entry>
+
+	<entry key = "selectPlace">
+	SELECT PLACE_NO
+      	  ,PLACE_NAME
+      	  ,PLACE_SUB_INFO
+          ,PLACE_SIZE
+          ,PARKING_YN
+          ,PLACE_DATE
+          ,PLACE_START_TIME
+          ,PLACE_END_TIME
+          ,MAX_CAPACITY
+          ,CATEGORY_NAME
+	FROM PLACE P
+	LEFT JOIN CATEGORY USING(CATEGORY_NO)
+	WHERE PLACE_NO=?
+	</entry>
 	
 </properties>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
