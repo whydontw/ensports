@@ -23,6 +23,35 @@ public class Attachment {
 
 
 
+	public Attachment(int atNo, int boardNo, String originName, String changeName, String filePath) {
+		super();
+		this.atNo = atNo;
+		this.boardNo = boardNo;
+		this.originName = originName;
+		this.changeName = changeName;
+		this.filePath = filePath;
+	}
+
+
+
+
+
+
+
+	public Attachment(int atNo, String originName, String changeName, String filePath) {
+		super();
+		this.atNo = atNo;
+		this.originName = originName;
+		this.changeName = changeName;
+		this.filePath = filePath;
+	}
+
+
+
+
+
+
+
 	public Attachment(int atNo, int boardNo, String originName, String changeName, Date uploadDate, String filePath,
 			int fileLevel, int fileType) {
 		super();
