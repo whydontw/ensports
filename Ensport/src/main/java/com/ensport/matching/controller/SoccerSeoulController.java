@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ensport.common.model.vo.PageInfo;
+
 import com.ensport.matching.model.dao.SoccerMatchingDao;
 import com.ensport.matching.model.service.SoccerMatchingService;
 import com.ensport.matching.model.vo.SoccerMatching;

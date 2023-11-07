@@ -4,25 +4,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 
-<%
-	
-	//쿠키정보
-	Cookie[] cookies = request.getCookies();		//반환타입: 배열
-	
-	//쿠키 배열에서 필요한 쿠키 정보를 추출하기
-	//반복으로 돌려서 해당 쿠키의 이름을 찾고 그 쿠키의 값을 담아두기
-	
-	String saveId = "";
-	if(cookies!=null){
-		for(Cookie c : cookies){
-			if((c.getName()).equals("userId")){
-				saveId = c.getValue();
-			}
-		}
-	}
-%>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,6 +41,8 @@
 	<link rel="stylesheet" href="${contextPath}/resources/css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="${contextPath}/resources/css/magnific-popup.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+	<link rel="icon" href="${contextPath }/resources/img/elements/baseball_icon1.png" type="image/x-icon">
+	
 </head>
 
 <body>
@@ -68,7 +51,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="${contextPath }"><img src="${contextPath}/resources/img/logo(temp).jpg" />
+					<a class="navbar-brand logo_h" href="${contextPath }"><img src="${contextPath }/resources/img/logo(temp).png" />
 </a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,7 +84,7 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">커뮤니티</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="#">자유게시판</a></li>
+									<li class="nav-item"><a class="nav-link" href="boardList.bo?currentPage=1">자유게시판</a></li>
 									<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
 									
 								</ul>
@@ -115,15 +98,15 @@
 								</c:when>
 								<c:otherwise>
 									<li class="nav-item submenu dropdown">
-										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${loginUser.userNickname } 님 환영합니다!</a>
+										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+											<img class="" src="${contextPath }/resources/img/elements/soccer_icon1.png" alt=""> ${loginUser.userNickname } 님 환영합니다!
+										</a>
 										<ul class="dropdown-menu">
 											<c:if test="${loginUser.userNo == 1 }">
 												<li class="nav-item"><a class="nav-link" href="${contextPath }/dashboard.hp">관리자 페이지</a></li>
 											</c:if>
-											<c:if test="${loginUser.userNo != 1 }">
-												<li class="nav-item"><a class="nav-link" href="${contextPath }/myPage.do">마이페이지</a></li>
-											</c:if>
-											<li class="nav-item"><a class="nav-link" href="${contextPath }/logout.me" onclick="return confirm('로그아웃 하시겠습니까?')">로그아웃</a></li>
+												<li class="nav-item"><a class="nav-link" href="${contextPath }/myPage.me">마이페이지</a></li>
+												<li class="nav-item"><a class="nav-link" href="${contextPath }/logout.me" onclick="return confirm('로그아웃 하시겠습니까?')">로그아웃</a></li>
 										</ul>
 									</li>
 								</c:otherwise>
@@ -145,12 +128,15 @@
 	
 	<script>
 		const msg = "${alertMsg}";
-		
-		console.log(msg);
-
 		if (msg != null && msg != '') {
 		    alert(msg);
 		   <c:remove var="alertMsg" scope="session" />
+		}
+
+		const errorMsg = "${errorMsg}";
+		if (errorMsg != null && errorMsg != '') {
+		    alert(errorMsg);
+		// 	<c:remove var="errorMsg" scope="request" />
 		}
 	</script>
 

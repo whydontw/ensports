@@ -67,9 +67,9 @@
 						<li class="main-nav-list"><a href="${contextPath }/sc.seoul?localName=서울"><span class="lnr lnr-arrow-right"></span><b>서울</b><span class="number">(53)</span></a></li>
 						
 
-						<li class="main-nav-list"><a href="${contextPath }/sc.seoul?localName=경기"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/sc.gyeonggi?localName=경기"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/sc.seoul?localName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/sc.incheon?localName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
 
 						<li class="main-nav-list"><a data-toggle="collapse"
 							href="#jeonbuk" aria-expanded="false"

@@ -342,11 +342,11 @@
 					return false;
 				} else {
 					
-					var regExp = /^[A-Za-z0-9]{6,15}$/;
+					var regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,15}$/;
 
-					if (!regExp.test(userPassword)) { //아이디 검사를 통과하지 못했다면
-						alert("비밀번호는 6~15자리 영문 및 숫자 조합이어야 합니다.");
-						$("#userPassword").focus(); //해당 요소에 포커스 된다.
+					if (!regExp.test(userPassword)) {
+						alert("비밀번호는 4~15자리 영문 및 숫자 조합이어야 합니다.");
+						$("#userPassword").focus();
 						return false;
 					}
 					

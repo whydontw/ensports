@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -76,7 +77,10 @@
 					<div class="single-footer-widget mail-chimp">
 						<h6 class="mb-20">공지/faq</h6>
                         <a href="">공지사항</a> <br>
-                        <a href="">자주 묻는 질문</a>
+                        <a href="">자주 묻는 질문</a> <br>
+                        <c:if test="${loginUser != null }">
+                        	<a href="${contextPath }/qaEnroll.qa">문의사항 작성</a>
+                        </c:if>
 						<ul class="instafeed d-flex flex-wrap">
 							
 						</ul>

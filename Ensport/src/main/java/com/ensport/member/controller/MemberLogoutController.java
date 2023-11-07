@@ -30,6 +30,7 @@ public class MemberLogoutController extends HttpServlet {
         HttpSession session = request.getSession();
         
         session.setAttribute("alertMsg", "로그아웃되었습니다."); // 로그아웃 메시지 설정
+        session.removeAttribute("loginUser");
 
         // 사용자에게는 메인 화면을 보여주기(재요청)
         response.sendRedirect(request.getContextPath());

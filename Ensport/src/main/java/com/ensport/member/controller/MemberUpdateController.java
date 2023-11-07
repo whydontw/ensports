@@ -1,6 +1,9 @@
 package com.ensport.member.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,6 +61,12 @@ public class MemberUpdateController extends HttpServlet {
 		if (prefers != null) {
 			prefer = String.join(",", prefers);
 		}
+		
+		//별명이 없을시 랜덤 생성
+		if(userNickname == null || userNickname == "") {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
+			userNickname = "PLAYER" + sdf.format(new Date()) + (int)(Math.random()*100000); 
+		}
 
 		// 객체에 담아주기
 		Member m = new Member();
@@ -71,17 +80,15 @@ public class MemberUpdateController extends HttpServlet {
 		m.setUserNickname(userNickname);
 		m.setPrefer(prefer);
 		
-		
 		// 서비스에 요청보내기(갱신된 회원정보를 반환)
 		Member updateMember = new MemberService().updateMember(m);
 
-		
 		
 		// 응답화면 설정하기
 		if (updateMember == null) { // 실패~
 			
 			request.setAttribute("errorMsg", "회원정보 수정에 실패하였습니다.");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+			request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);
 			
 		} else { // 성공
 
@@ -90,10 +97,8 @@ public class MemberUpdateController extends HttpServlet {
 			session.setAttribute("loginUser", updateMember);
 			session.setAttribute("alertMsg", "정보 수정이 완료되었습니다.");
 
-			response.sendRedirect(request.getContextPath() + "/myPage.do");
+			response.sendRedirect(request.getContextPath() + "/myPage.me");
 
 		}
-
 	}
-
 }

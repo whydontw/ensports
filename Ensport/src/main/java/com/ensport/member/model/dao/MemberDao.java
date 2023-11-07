@@ -5,9 +5,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Properties;
 
+import com.ensport.board.model.vo.Board;
 import com.ensport.common.JDBCTemplate;
+import com.ensport.common.model.vo.PageInfo;
 import com.ensport.member.model.vo.Member;
 
 public class MemberDao {
@@ -339,6 +342,104 @@ public class MemberDao {
 		return result;		//처리된 행 수 돌려주기
 	}
 
+	
+	
+	//마이페이지 - 내 게시글 개수
+	public int boardListCount(Connection conn, int userNo) {
 
+		// SELECT (조회)
+		int count = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("boardListCount");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userNo);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				// 조회된 게시글 개수
+				count = rset.getInt("COUNT");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return count;
+	}
+	
+	
+	
+	
+	//마이페이지 - Board List
+	public ArrayList<Board> selectMyBoardList(Connection conn, int userNo, PageInfo pi) {
+
+		// 준비물
+		ArrayList<Board> bList = new ArrayList<Board>();
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		Board board = null;
+
+		String sql = prop.getProperty("selectMyBoardList");
+		
+		// 1페이지 : 1~10 / 5페이지 : 41~50 / 10페이지 91~100
+		// 2페이지 : 11~20
+		 int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+		 int endRow = pi.getCurrentPage() * pi.getBoardLimit();
+
+		 
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, userNo);
+			
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+
+			
+			rset = pstmt.executeQuery();
+
+			while (rset.next()) {
+				
+				board = new Board();
+				
+				board.setBoardNo(rset.getInt("BOARD_NO"));
+				board.setBoardTitle(rset.getString("BOARD_TITLE"));
+				board.setBoardContent(rset.getString("BOARD_CONTENT"));
+				board.setCreateDate(rset.getDate("CREATE_DATE"));
+				board.setBoardCount(rset.getInt("BOARD_COUNT"));
+				board.setStatus(rset.getString("STATUS"));
+				
+				bList.add(board);
+			}
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		System.out.println("board list:");
+		for(Board b : bList) {
+			System.out.println(b);
+		}
+
+		return bList;
+	}
 
 }

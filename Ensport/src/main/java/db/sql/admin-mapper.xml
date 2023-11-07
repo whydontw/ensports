@@ -63,4 +63,25 @@
 		FROM PLACE
 		JOIN CATEGORY USING(CATEGORY_NO)
 	</entry>
+	<entry key="insertQA">
+		INSERT INTO QA(QA_NO
+					  ,USER_NO
+					  ,QA_TITLE
+					  ,QA_CONTENT
+					  ,CREATE_DATE)
+		VALUES(SEQ_QNO.NEXTVAL
+			  ,?
+			  ,?
+			  ,?
+			  ,SYSDATE)
+	</entry>
+	<entry key="selectQAList">
+		SELECT QA_NO
+			  ,USER_NICKNAME
+			  ,QA_TITLE
+			  ,QA_CONTENT
+			  ,CREATE_DATE
+		FROM QA
+		JOIN MEMBER USING(USER_NO)
+	</entry>
 </properties>

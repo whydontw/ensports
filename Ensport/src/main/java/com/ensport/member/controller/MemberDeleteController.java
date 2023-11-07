@@ -33,21 +33,21 @@ public class MemberDeleteController extends HttpServlet {
 		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		String userPwd = request.getParameter("password");
 		
+		System.out.println(userNo);
+		System.out.println(userPwd);
+		
 		int result = new MemberService().deleteMember(userNo, userPwd);
 		
+		
 		if(result > 0) {	//성공
-			
 			HttpSession session = request.getSession();
-			session.setAttribute("alertMsg", "Ensport 탈퇴 완료.");
-
+			session.setAttribute("alertMsg", "Ensport 탈퇴가 완료되었습니다.");
 			response.sendRedirect(request.getContextPath() + "/login.me");
 			session.invalidate();
 			
-		}else {
-			
-			//실패시 errorPage로 에러 메시지와 함께 forwarding(위임하기)
-			request.setAttribute("errorMsg", "회원 탈퇴 실패!");
-			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+		}else {	//실패
+			request.setAttribute("errorMsg", "회원 탈퇴에 실패하였습니다. 비밀번호를 확인하세요.");
+			request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);
 		}
 		
 	}
