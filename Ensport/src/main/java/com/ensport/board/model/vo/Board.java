@@ -49,13 +49,14 @@ public class Board {
 		this.boardContent = boardContent;
 	}
 
-	public Board(int boardNo, String userNo, String boardTitle, String boardContent, Date createDate) {
+	public Board(int boardNo, String userNo, String boardTitle, String boardContent, Date createDate, int boardCount) {
 		super();
 		this.boardNo = boardNo;
 		this.userNo = userNo;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
 		this.createDate = createDate;
+		this.boardCount = boardCount;
 	}
 
 	public int getBoardNo() {

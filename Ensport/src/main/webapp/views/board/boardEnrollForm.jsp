@@ -34,9 +34,19 @@
 <body>
 	<%@ include file="../common/menubar.jsp"%>
 
-	<br>
-	<br>
-	<br>
+	<section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>회원가입</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="${contextPath }">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="${contextPath }/memberInsert.me">회원가입</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
 
 	<div class="container">
 
@@ -66,18 +76,15 @@
 				</tbody>
 			</table>
 			<div>
-				<button type="submit" class="btn btn-primary pull-right">작성완료</button>
+				<button type="submit" class="primary-btn pull-right">작성완료</button>
+				<a href="${contextPath }/boardList.bo?currentPage=1" class="primary-btn pull-right">돌아가기</a>
 			</div>
-			<div>
+			<br><br><br>
 				<input type="file" name="uploadFile">
-			</div>
 		</form>
-
-
 	</div>
-
-
-
+	<br><br><br><br><br>
+	<%@ include file="../common/footer.jsp"%>
 
 </body>
 </html>
