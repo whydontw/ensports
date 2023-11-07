@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -37,6 +38,7 @@
 
 	<%@ include file="../common/menubar.jsp" %> 
 
+	
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
@@ -55,33 +57,32 @@
 	<!-- End Banner Area -->
 
 	<!--================Single Product Area =================-->
+
 	<div class="product_image_area">
 		<div class="container">
 			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="s_Product_carousel">
+				<div class="col-lg-6">				
+					<div class="s_Product_carousel" >
+					<c:forEach var="ssp" items="${list}">
 						<div class="single-prd-item">
-							<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/category/s-p1.jpg" alt="">
+							<img class="img-fluid" src="${contextPath }${ssp.filePath}${ssp.changeName}">
 						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/category/s-p1.jpg" alt="">
-						</div>
+						
+					</c:forEach>
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<h3>11월 17일 서울 경기장</h3>
+					<div class="s_product_text" >
+						<h3>${ssp.placeName}</h3>
 						<ul class="list">
-							<li><a class="active" href="#"><span>Category</span> : 축구</a></li>
+							<li><a class="active" href="#"><span>Category</span>${ssp.categoryName }</a></li>
 							
 						</ul>
-						<p>축구경기입니다</p>
-						
-						
+						<p>${ssp.subInfo }</p>
+												
 						<br>
+							<input type="date" name="dateIn">
+							<br>
 						<div class="single-element-widget mt-30">
 							<div class="default-select" id="default-select"">
 								<select>
@@ -96,8 +97,6 @@
 							</div>
 						</div>
 						<br>
-						<input type="date" name="dateIn">
-						<br><br>
 						<div class="card_area d-flex align-items-center">
 							<a class="primary-btn" href="#">예약하기</a>
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
@@ -105,8 +104,9 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>	
 	</div>
+	
 	<!--================End Single Product Area =================-->
 
 	<!--================Product Description Area =================-->
@@ -127,21 +127,8 @@
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
-						and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
-						Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to
-						London and then Hampton, she eventually married her next door neighbour from Reading, John Cook. He was an
-						officer in the Merchant Navy and after he left the sea in 1956, they bought a pub for a year before John took a
-						job in Southern Rhodesia with a motor company. Beryl bought their young son a box of watercolours, and when
-						showing him how to use it, she decided that she herself quite enjoyed painting. John subsequently bought her a
-						child’s painting set for her birthday and it was with this that she produced her first significant work, a
-						half-length portrait of a dark-skinned lady with a vacant expression and large drooping breasts. It was aptly
-						named ‘Hangover’ by Beryl’s husband and</p>
-					<p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
-						more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
-						the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
-						more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
-						streamlined plan of cooking that is more efficient for one person creating less</p>
+					<p>${ssp.subInfo }</p>
+					
 				</div>
 				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 					<div class="table-responsive">
@@ -149,66 +136,58 @@
 							<tbody>
 								<tr>
 									<td>
-										<h5>Width</h5>
+										<h5>Size</h5>
 									</td>
 									<td>
-										<h5>128mm</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Height</h5>
-									</td>
-									<td>
-										<h5>508mm</h5>
+										<h5>${ssp.placeSize }</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>Depth</h5>
+										<h5>Parking</h5>
 									</td>
 									<td>
-										<h5>85mm</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Weight</h5>
-									</td>
-									<td>
-										<h5>52gm</h5>
+										<h5>${ssp.parkingYn }</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>Quality checking</h5>
+										<h5>Date</h5>
 									</td>
 									<td>
-										<h5>yes</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Freshness Duration</h5>
-									</td>
-									<td>
-										<h5>03days</h5>
+										<h5>${ssp.placeDate}</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>When packeting</h5>
+										<h5>Start Time</h5>
 									</td>
 									<td>
-										<h5>Without touch of hand</h5>
+										<h5>${ssp.startTime}</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>Each Box contains</h5>
+										<h5>End time</h5>
 									</td>
 									<td>
-										<h5>60pcs</h5>
+										<h5>${ssp.endTime}</h5>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h5>Max Capacity</h5>
+									</td>
+									<td>
+										<h5>${ssp.maxCapacity }</h5>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h5>Category</h5>
+									</td>
+									<td>
+										<h5>${ssp.categoryName }</h5>
 									</td>
 								</tr>
 							</tbody>

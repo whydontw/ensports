@@ -17,7 +17,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>야구 경기장 예약</title>
+	<title>야구 시설예약</title>
 
 	<!--
             CSS
@@ -38,13 +38,12 @@
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
-					
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>야구 경기장</h1>
+					<h1>야구 시설예약</h1>
 					<nav class="d-flex align-items-center">
 						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">경기장 예약<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">시설 예약<span class="lnr lnr-arrow-right"></span></a>
 						<a href="category.html">야구</a>
 					</nav>
 				</div>
@@ -58,7 +57,7 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a data-toggle="collapse" href="#seoul" aria-expanded="false" aria-controls="fruitsVegetable"><span
+						<li class="main-nav-list"><a data-toggle="" href="${contextPath }/seoul.ba" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								 class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a>
 							
 						</li>
@@ -139,7 +138,13 @@
 			<div class="col-xl-9 col-lg-8 col-md-7">
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
-					<div class="sorting">					
+					<div class="sorting">
+						<select>
+							<option value="1">날짜 선택</option>
+							<option value="1">11월 16일</option>
+							<option value="1">11월 17일</option>
+							<option value="1">11월 18일</option>
+						</select>
 					</div>
 					<div class="sorting mr-auto">
 						<select>
@@ -167,19 +172,30 @@
 							<div class="single-product">
 								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p1.jpg" alt="">
 								<div class="product-details">
-									<h6>야구장이름1</h6>
-									
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
 									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
 										</a>
-										
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>
-										
 									</div>
 								</div>
 							</div>
@@ -189,19 +205,30 @@
 							<div class="single-product">
 								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p2.jpg" alt="">
 								<div class="product-details">
-									<h6>야구장이름2</h6>
-									
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
 									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
 										</a>
-										
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>
-										
 									</div>
 								</div>
 							</div>
@@ -211,19 +238,30 @@
 							<div class="single-product">
 								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p3.jpg" alt="">
 								<div class="product-details">
-									<h6>야구장이름3</h6>
-									
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
 									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
 										</a>
-										
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>
-										
 									</div>
 								</div>
 							</div>
@@ -233,19 +271,30 @@
 							<div class="single-product">
 								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p4.jpg" alt="">
 								<div class="product-details">
-									<h6>야구장이름4</h6>
-									
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
 									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
 										</a>
-										
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>
-										
 									</div>
 								</div>
 							</div>
@@ -255,19 +304,30 @@
 							<div class="single-product">
 								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p5.jpg" alt="">
 								<div class="product-details">
-									<h6>야구장이름5</h6>
-									
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
 									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
 										</a>
-										
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>
-										
 									</div>
 								</div>
 							</div>
@@ -277,19 +337,30 @@
 							<div class="single-product">
 								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p6.jpg" alt="">
 								<div class="product-details">
-									<h6>야구장이름6</h6>
-									
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
 									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
 										</a>
-										
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>
-										
 									</div>
 								</div>
 							</div>
@@ -299,19 +370,30 @@
 							<div class="single-product">
 								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p4.jpg" alt="">
 								<div class="product-details">
-									<h6>야구장이름7</h6>
-									
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
 									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
 										</a>
-										
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>
-										
 									</div>
 								</div>
 							</div>
@@ -321,19 +403,30 @@
 							<div class="single-product">
 								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p5.jpg" alt="">
 								<div class="product-details">
-									<h6>야구장이름8</h6>
-									
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
 									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
 										</a>
-										
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>
-										
 									</div>
 								</div>
 							</div>
@@ -343,19 +436,30 @@
 							<div class="single-product">
 								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p6.jpg" alt="">
 								<div class="product-details">
-									<h6>야구장이름9</h6>
-									
+									<h6>addidas New Hammer sole
+										for Sports person</h6>
+									<div class="price">
+										<h6>$150.00</h6>
+										<h6 class="l-through">$210.00</h6>
+									</div>
 									<div class="prd-bottom">
+
+										<a href="" class="social-info">
+											<span class="ti-bag"></span>
+											<p class="hover-text">add to bag</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Wishlist</p>
 										</a>
-										
+										<a href="" class="social-info">
+											<span class="lnr lnr-sync"></span>
+											<p class="hover-text">compare</p>
+										</a>
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>
-										
 									</div>
 								</div>
 							</div>

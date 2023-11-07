@@ -1,28 +1,23 @@
-package com.ensport.matching.controller;
+package com.ensport.place.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ensport.matching.model.service.SoccerMatchingService;
-import com.ensport.matching.model.vo.SoccerMatching;
-
 /**
- * Servlet implementation class SoccerSeoulController
+ * Servlet implementation class SoccerPlaceGyeonggiController
  */
-@WebServlet("/sc.seoul")
-public class SoccerSeoulController extends HttpServlet {
+@WebServlet("/gyeonggi.so")
+public class SoccerPlaceGyeonggiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SoccerSeoulController() {
+    public SoccerPlaceGyeonggiController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +26,8 @@ public class SoccerSeoulController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ArrayList<SoccerMatching> list = new SoccerMatchingService().selectSoccerMatchingList();
-		
-		
-		
-		request.setAttribute("slist", list);
-		request.getRequestDispatcher("views/matching/soccerSeoul.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		request.getRequestDispatcher("views/place/soccerplacegyeonggi.jsp").forward(request, response);
 	}
 
 	/**
