@@ -35,7 +35,7 @@
             <div class="row">
                 
                 <!-- 마이 페이지 메뉴 -->
-                <%@ include file="myPage_menu.jsp" %>
+                <%@ include file="myPage_profile.jsp" %>
 				
 				
 				<!-- ### 내 정보 수정하기 ### -->

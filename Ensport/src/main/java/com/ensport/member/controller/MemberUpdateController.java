@@ -50,7 +50,8 @@ public class MemberUpdateController extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String userName = request.getParameter("userName");
 		String phone = request.getParameter("phone");
-		String address = request.getParameter("address") + " " + request.getParameter("addressDetail");
+		String address = request.getParameter("address");
+		String addressDetail = request.getParameter("addressDetail");
 		String email = request.getParameter("email");
 		String gender = request.getParameter("gender");
 		String userNickname = request.getParameter("userNickname");
@@ -70,11 +71,13 @@ public class MemberUpdateController extends HttpServlet {
 
 		// 객체에 담아주기
 		Member m = new Member();
+		
 		m.setUserNo(userNo);
 		m.setUserId(userId);
 		m.setUserName(userName);
 		m.setPhone(phone);
 		m.setAddress(address);
+		m.setAddressDetail(addressDetail);
 		m.setEmail(email);
 		m.setGender(gender);
 		m.setUserNickname(userNickname);
@@ -82,6 +85,8 @@ public class MemberUpdateController extends HttpServlet {
 		
 		// 서비스에 요청보내기(갱신된 회원정보를 반환)
 		Member updateMember = new MemberService().updateMember(m);
+		
+		System.out.println("업데이트된 내 정보:" + m);
 
 		
 		// 응답화면 설정하기

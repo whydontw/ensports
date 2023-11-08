@@ -16,6 +16,7 @@ public class Member {
 	private Date enrolldate;
 	private String gender;
 	private String address;
+	private String addressDetail;
 	private String prefer;
 	private String images;
 	private String status;
@@ -26,8 +27,11 @@ public class Member {
 		super();
 	}
 
+
+
 	public Member(int userNo, String userId, String userPassword, String userNickname, String userName, String email,
-			String phone, Date enrolldate, String gender, String address, String prefer, String images, String status) {
+			String phone, Date enrolldate, String gender, String address, String addressDetail, String prefer,
+			String images, String status) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
@@ -39,10 +43,13 @@ public class Member {
 		this.enrolldate = enrolldate;
 		this.gender = gender;
 		this.address = address;
+		this.addressDetail = addressDetail;
 		this.prefer = prefer;
 		this.images = images;
 		this.status = status;
 	}
+
+
 
 	public int getUserNo() {
 		return userNo;
@@ -148,12 +155,27 @@ public class Member {
 		this.status = status;
 	}
 
+	public String getAddressDetail() {
+		return addressDetail;
+	}
+
+
+
+	public void setAddressDetail(String addressDetail) {
+		this.addressDetail = addressDetail;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPassword=" + userPassword + ", userNickname="
 				+ userNickname + ", userName=" + userName + ", email=" + email + ", phone=" + phone + ", enrolldate="
-				+ enrolldate + ", gender=" + gender + ", address=" + address + ", prefer=" + prefer + ", images="
-				+ images + ", status=" + status + "]";
+				+ enrolldate + ", gender=" + gender + ", address=" + address + ", addressDetail=" + addressDetail
+				+ ", prefer=" + prefer + ", images=" + images + ", status=" + status + "]";
 	}
+
+
+
 
 }

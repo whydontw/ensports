@@ -6,23 +6,22 @@ import java.util.Date;
 public class Reservation {
 	
 	private int reservationNo;
-	private int timeNo;
-	private int placeNo;
+	private String timeNo;					//TIME_NAME 가져오기 위해 String 처리
+	private String placeNo;					//PLACE_NAME 가져오기 위해 String 처리
 	private String reservationType;
 	private Date reservationDate;
-	private String userCapacity;
 	private String genderType;
+	private	int userCapacity;
 	
-	
-	
-	
-	public Reservation() {
-		super();
-	}
+	//마이페이지용 예약여부 확인하기
+	private String fixedYn;
+	private int currentCount;
 
 
-	public Reservation(int reservationNo, int timeNo, int placeNo, String reservationType, Date reservationDate,
-			String userCapacity, String genderType) {
+	
+	
+	public Reservation(int reservationNo, String timeNo, String placeNo, String reservationType, Date reservationDate,
+			int userCapacity, String genderType, String fixedYn) {
 		super();
 		this.reservationNo = reservationNo;
 		this.timeNo = timeNo;
@@ -31,87 +30,101 @@ public class Reservation {
 		this.reservationDate = reservationDate;
 		this.userCapacity = userCapacity;
 		this.genderType = genderType;
+		this.fixedYn = fixedYn;
 	}
 
+	public Reservation() {
+		super();
+	}
+	
+	
+	
+	
+	
 
-	
-	
 	public int getReservationNo() {
 		return reservationNo;
 	}
-
 
 	public void setReservationNo(int reservationNo) {
 		this.reservationNo = reservationNo;
 	}
 
-
-	public int getTimeNo() {
+	public String getTimeNo() {
 		return timeNo;
 	}
 
-
-	public void setTimeNo(int timeNo) {
+	public void setTimeNo(String timeNo) {
 		this.timeNo = timeNo;
 	}
 
-
-	public int getPlaceNo() {
+	public String getPlaceNo() {
 		return placeNo;
 	}
 
-
-	public void setPlaceNo(int placeNo) {
+	public void setPlaceNo(String placeNo) {
 		this.placeNo = placeNo;
 	}
-
 
 	public String getReservationType() {
 		return reservationType;
 	}
 
-
 	public void setReservationType(String reservationType) {
 		this.reservationType = reservationType;
 	}
-
 
 	public Date getReservationDate() {
 		return reservationDate;
 	}
 
-
 	public void setReservationDate(Date reservationDate) {
 		this.reservationDate = reservationDate;
 	}
 
-
-	public String getUserCapacity() {
+	public int getUserCapacity() {
 		return userCapacity;
 	}
 
-
-	public void setUserCapacity(String userCapacity) {
+	public void setUserCapacity(int userCapacity) {
 		this.userCapacity = userCapacity;
 	}
-
 
 	public String getGenderType() {
 		return genderType;
 	}
 
-
 	public void setGenderType(String genderType) {
 		this.genderType = genderType;
 	}
 
+	
+	public String getFixedYn() {
+		return fixedYn;
+	}
 
+	public void setFixedYn(String fixedYn) {
+		this.fixedYn = fixedYn;
+	}
+	
+
+	public int getCurrentCount() {
+		return currentCount;
+	}
+
+	public void setCurrentCount(int currentCount) {
+		this.currentCount = currentCount;
+	}
+
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Reservation [reservationNo=" + reservationNo + ", timeNo=" + timeNo + ", placeNo=" + placeNo
 				+ ", reservationType=" + reservationType + ", reservationDate=" + reservationDate + ", userCapacity="
-				+ userCapacity + ", genderType=" + genderType + "]";
+				+ userCapacity + ", genderType=" + genderType + ", fixedYn=" + fixedYn + "]";
 	}
 	
-
+	
 }

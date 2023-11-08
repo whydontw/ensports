@@ -51,17 +51,12 @@ public class MemberInsertController extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String userPassword = request.getParameter("userPassword");
 		String phone = request.getParameter("phone");
-		String address = request.getParameter("address") + " " + request.getParameter("addressDetail");
+		String address = request.getParameter("address");
+		String addressDetail = request.getParameter("addressDetail");
 		String email = request.getParameter("email");
 		String gender = request.getParameter("gender");
 		String[] prefers = request.getParameterValues("prefer");
 		
-		
-		for(String s : prefers) {
-			System.out.println("선호종목:" + s);
-		}
-		
-
 		String prefer = "";
 
 		// null값을 java에서 미리 처리하고 나면 프론트에서 null값을 따로 처리할 필요가 없다.
@@ -84,6 +79,7 @@ public class MemberInsertController extends HttpServlet {
 		m.setUserName(userName);
 		m.setPhone(phone);
 		m.setAddress(address);
+		m.setAddressDetail(addressDetail);
 		m.setEmail(email);
 		m.setGender(gender);
 		m.setPrefer(prefer);

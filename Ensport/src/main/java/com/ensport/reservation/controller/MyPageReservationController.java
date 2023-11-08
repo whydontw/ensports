@@ -86,6 +86,7 @@ public class MyPageReservationController extends HttpServlet {
 		request.getRequestDispatcher("views/member/myPageReservation.jsp").forward(request, response);
 	}
 
+
     
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
