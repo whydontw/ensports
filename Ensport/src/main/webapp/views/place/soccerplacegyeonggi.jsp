@@ -178,7 +178,7 @@
 								</div>
 							</div>
 						</c:forEach>
-						
+						</div>
 				</section>
 				<!-- End Best Seller -->
 				<!-- Start Filter Bar -->

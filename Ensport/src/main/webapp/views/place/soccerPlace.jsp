@@ -141,9 +141,8 @@
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting">
 						<label for="date">
-							 	 <input type="date" id="date" max="2023-11-18" min="2023-11-16"
-							 	 	value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) %>" />
-							</label>
+						 	 <input type="date" id="date" max="2023-11-18" min="2023-11-16" name="soccerChoiceDate"/>
+						</label>
 					</div>
 					<div class="sorting mr-auto">
 						
@@ -166,18 +165,19 @@
 						<c:forEach var="item" items="${list}">
 							<div class="col-lg-4 col-md-6">
 								<div class="single-product">
-									<input type="hidden" value="${item.placeNo }" name="sno" /> <img
-										class="img-fluid"
+									<input type="hidden" value="${item.placeNo }" name="sno" /> 
+									<img class="img-fluid"
 										src="${contextPath}${item.filePath}${item.changeName}" alt="">
 									<div class="product-details">
-										<input type="text" value="${item.placeName}">
+										<input type="text" value="${item.placeName}" >
 										<h3>${item.placeName}</h3>
 										
-										<div class="prd-bottom">
-											<a href="${contextPath }/detail.bo?sno=${item.placeNo}"
-												class="social-info"> <span class="lnr lnr-move"></span>
-												<p class="hover-text">view more</p>
-											</a>
+										<div class="prd-bottom">																						
+												<div class="prd-bottom" id="viewMore">
+													<a href="#" class="social-info"> <span class="lnr lnr-move"></span>
+														<p class="hover-text">view more</p>
+													</a>
+												</div>									
 										</div>
 									</div>
 								</div>
@@ -290,21 +290,26 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
+
 	<script>
 	$(document).ready(function() {
-		
-	    $(".single-product").click(function() {
-	    	
-	        console.log(sno);
-	    	
-	        var sno = $(this).find("input[name=sno]").val();
-	        
-	        
-	        location.href = "detail.bo?sno" +sno;
+	    $(".single-product, #viewMore p").on("click", function(event) {
+	        var selectedDate  = $("#date").val(); // 선택된 날짜 값을 가져옵니다
+	        if (!selectedDate  || selectedDate  === "날짜선택") {
+	            alert("날짜를 먼저 선택하세요");
+	            event.preventDefault();
+	        } else {
+	            var sno = $(this).find("input[name=sno]").val();
+	            location.href = "detail.bo?sno=" + sno + "&date=" + selectedDate ;
+	            // 원하는 작업을 수행하는 대신 페이지 이동을 수행합니다.
+	            // location.href = '${contextPath}/sc.seoul';
+	        }
 	    });
 	});
-
 	</script>
+	
+	
+	
 	
 </body>
 

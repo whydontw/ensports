@@ -87,9 +87,9 @@
 						
 							<br>
 						<div class="single-element-widget mt-30">
-							<div class="default-select" id="default-select"">
-								<select>
-									<option value="">시간 선택</option>
+							<div class="default-select" id="default-select">
+								<select id="selected-time">
+									<option value="0">시간 선택</option>
 									<option value="1">13:00~15:00</option>
 									<option value="2">16:00~18:00</option>
 									<option value="3">19:00~21:00</option>									
@@ -97,14 +97,74 @@
 							</div>
 						</div>
 						<br>
-						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">예약하기</a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+						<div class="card_area d-flex align-items-center" id="btnWrap">
+							<button type="button" class="primary-btn" data-toggle="modal" data-target="#exampleModal">
+							  예약하기
+							</button>		
+												
 						</div>
+						
 					</div>
 				</div>
 			</div>
 		</div>	
+	</div>
+		
+	<script>
+	
+	$(document).ready(function() {
+
+		$(".primary-btn").on("click",function() {
+			
+			var selectedTime = $("#selected-time option:selected").val(); 
+			var selectedTimeText = $("#selected-time option:selected").text(); 
+			
+			if(selectedTime == 0) {
+				alert ("시간을 먼저 선택하세요");
+				return false;
+			} else {
+				
+				var sno = $(this).find("selectedTime").val();
+				  $("#exampleModal .modal-body .rt").text(selectedTimeText);
+				  				
+			}
+						
+		});
+		
+	});
+		
+	</script>
+	
+	
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">예약 내역</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      
+	      <div class="modal-body" >
+	      	<br>
+	        [예약 경기장] : ${ssp.placeName}
+	        <br> <br>
+	        [예약 날짜] :  ${placeDate}
+	        <br> <br>
+	        [예약 시간] : <a class="rt"></a>
+	        <br> <br>	        
+	      </div>
+	      
+	      <div class="modal-footer">
+		      <div class="button-group-area mt-40">
+		        <button type="button" class="genric-btn primary" data-dismiss="modal">닫기</button>
+		        <button type="button" class="genric-btn info">결제하기</button>
+		      </div>
+	      </div>
+	    </div>
+	  </div>
 	</div>
 	
 	<!--================End Single Product Area =================-->

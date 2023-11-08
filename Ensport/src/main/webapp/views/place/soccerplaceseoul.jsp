@@ -125,23 +125,12 @@
 					<div class="sorting">
 							<label for="date">
 							 	 <input type="date" id="date" max="2023-11-18"  min="2023-11-16" name="soccerChoiceDate"
-							 	 	value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) %>" />
+							 	 	 />
 							</label>
 						
 					</div>
 					
-					<script>
-						//날짜를 선택했을때
-// 						$(function(){
-// 							$("#date").click(function(){
-// 								console.log("=========================");
-// 								var date = $("#date").val();
-// 								console.log(date);
-// 								console.log("=========================");								
-// 							})							
-// 						});
-					
-					</script>	
+	
 									
 					<div class="sorting mr-auto">
 					
@@ -161,43 +150,47 @@
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
 				<section class="lattest-product-area pb-40 category-list">
-					<div class="row">
+					<div class="row" >
 						<!-- single product -->
 						<c:forEach var="sp" items="${list}">
 							<div class="col-lg-4 col-md-6">
 								<div class="single-product">
-									<input type="hidden" value=${sp.placeNo } />
+									<input type="hidden" value=${sp.placeNo } name="sno" />
 									<img class="img-fluid"
 										src="${contextPath }${sp.filePath}${sp.changeName}" alt="">
 									<div class="product-details">
 										<input type="text" value="${sp.placeName}">
 										<h3>${sp.placeName}</h3>
 										
-										<div class="prd-bottom">
-											<a href="${contextPath }/detail.bo?sno=${sp.placeNo}" class="social-info"> <span
-												class="lnr lnr-move"></span>
-												<p class="hover-text">view more</p>
-											</a>
+										<div class="prd-bottom">																						
+												<div class="prd-bottom" id="viewMore">
+													<a href="#" class="social-info"> <span class="lnr lnr-move"></span>
+														<p class="hover-text">view more</p>
+													</a>
+												</div>									
 										</div>
 									</div>
 								</div>
 							</div>
 						</c:forEach>
-						
+						</div>
 				</section>
 				
 				<script>
-					//글 클릭했을 때 
-					$(function(){
-						$(".single-product").click(function(){
-							
-							let date = $("#date").val();
-							
-							location.href="detail.bo?sno="+$(this).children().eq(0).val() + "&date=" + date;
-						});
+					$(document).ready(function() {
+					    $(".single-product, #viewMore p").on("click", function(event) {
+					        var selectedDate  = $("#date").val(); // 선택된 날짜 값을 가져옵니다
+					        if (!selectedDate  || selectedDate  === "날짜선택") {
+					            alert("날짜를 먼저 선택하세요");
+					            event.preventDefault();
+					        } else {
+					            var sno = $(this).find("input[name=sno]").val();
+					            location.href = "detail.bo?sno=" + sno + "&date=" + selectedDate ;
+					            // 원하는 작업을 수행하는 대신 페이지 이동을 수행합니다.
+					            // location.href = '${contextPath}/sc.seoul';
+					        }
+					    });
 					});
-				
-				
 				</script>
 				
 				
