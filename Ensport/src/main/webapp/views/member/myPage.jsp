@@ -20,8 +20,8 @@
 	<title>My Page</title>
 
 <style>
-.pdt-7{ padding-top : 7px; }
-.pdb-7{ padding-bottom : 7px; }
+	.pdt-7{ padding-top : 7px; }
+	.pdb-7{ padding-bottom : 7px; }
 </style>
 
 
@@ -51,10 +51,8 @@
         <div class="container">
             <div class="row">
                 
-                
                 <!-- 마이 페이지 메뉴 -->
                 <%@ include file="myPage_menu.jsp" %>
-				
 				
 				
 				<!-- ====================### 내 정보 수정하기 ###======================== -->
