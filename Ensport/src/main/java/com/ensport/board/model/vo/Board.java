@@ -13,6 +13,14 @@ public class Board {
 	private String status;
 	private String adminYN;
 	
+	
+	//마이페이지 REPLY용
+	private int replyNo;
+	private String replyContent;
+	private Date replyCreateDate;
+	
+	
+	
 	public Board() {
 		super();
 	}
@@ -58,6 +66,7 @@ public class Board {
 		this.createDate = createDate;
 		this.boardCount = boardCount;
 	}
+	
 
 	public int getBoardNo() {
 		return boardNo;
@@ -122,7 +131,38 @@ public class Board {
 	public void setAdminYN(String adminYN) {
 		this.adminYN = adminYN;
 	}
+	
+	
+	
+	
+	
+	
+	//reply
+	public int getReplyNo() {
+		return replyNo;
+	}
+	
+	public void setReplyNo(int replyNo) {
+		this.replyNo = replyNo;
+	}
+	
+	public String getReplyContent() {
+		return replyContent;
+	}
 
+	public void setReplyContent(String replyContent) {
+		this.replyContent = replyContent;
+	}
+
+	public Date getReplyCreateDate() {
+		return replyCreateDate;
+	}
+
+	public void setReplyCreateDate(Date replyCreateDate) {
+		this.replyCreateDate = replyCreateDate;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", userNo=" + userNo + ", boardTitle=" + boardTitle + ", boardContent="

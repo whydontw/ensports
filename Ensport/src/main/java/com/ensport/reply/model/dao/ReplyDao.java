@@ -1,7 +1,6 @@
-package com.ensport.qa.model.dao;
+package com.ensport.reply.model.dao;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,49 +8,51 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import com.ensport.board.model.vo.Board;
+import com.ensport.board.model.vo.Reply;
 import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.PageInfo;
-import com.ensport.qa.model.vo.Qa;
 
-public class QaDao {
-	
+public class ReplyDao {
+
+
 	private Properties prop = new Properties();
-
-	// 매퍼파일 읽어오는 작업 (기본생성자에 추가)
-	// DAO로 메소드를 호출하는 시점에서 파일이 읽힌다.
-	public QaDao() {
-
+	
+	//기본생성자가 생성되는 시점(메소드 호출 시점)에 파일 읽어오기
+	public ReplyDao() {
+		
+		//컴파일된 파일 기준으로 읽어올 xml파일 경로 찾기
+		String filePath = ReplyDao.class.getResource("/db/sql/reply-mapper.xml").getPath();
+		
 		try {
-			String filePath = QaDao.class.getResource("/db/sql/qa-mapper.xml").getPath();
+			//찾은 경로를 넣고 해당 파일 읽어오기
 			prop.loadFromXML(new FileInputStream(filePath));
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	
-	//내 QA 게시글 수
-	public int qalistCount(Connection conn, int userNo) {
-		
+	
+	
+	//마이페이지 Reply 개수
+	public int replyListCount(Connection conn, String userId) {
+
 		// SELECT (조회)
 		int count = 0;
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
 
-		String sql = prop.getProperty("qaListCount");
+		String sql = prop.getProperty("replyListCount");
 		
-
 		try {
 			
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setInt(1, userNo);
-
+			pstmt.setString(1, userId);
 			rset = pstmt.executeQuery();
 
 			if (rset.next()) {
-				// 조회된 게시글 개수
 				count = rset.getInt("COUNT");
 			}
 			
@@ -64,21 +65,20 @@ public class QaDao {
 		}
 		return count;
 	}
+
 	
 	
-	
-	
-	//마이페이지 Qa List
-	public ArrayList<Qa> selectMyQaList(Connection conn, int userNo, PageInfo pi) {
+	//마이페이지 Reply 리스트
+	public ArrayList<Board> selectMyReplyList(Connection conn, String userId, PageInfo pi) {
 
 		// 준비물
-		ArrayList<Qa> qList = new ArrayList<Qa>();
+		ArrayList<Board> reviewList = new ArrayList<Board>();
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
 		
-		Qa qa = null;
+		Board bReply = null;
 
-		String sql = prop.getProperty("selectMyQaList");
+		String sql = prop.getProperty("selectMyReplyList");
 		
 		// 1페이지 : 1~10 / 5페이지 : 41~50 / 10페이지 91~100
 		// 2페이지 : 11~20
@@ -90,29 +90,29 @@ public class QaDao {
 			
 			pstmt = conn.prepareStatement(sql);
 
-			
-			pstmt.setInt(1, userNo);
+			pstmt.setString(1, userId);
 			
 			pstmt.setInt(2, startRow);
 			pstmt.setInt(3, endRow);
 
+			
 			rset = pstmt.executeQuery();
 
 			while (rset.next()) {
 				
-				qa = new Qa();
+				bReply = new Board();
 				
-				qa.setQaNo(rset.getInt("QA_NO"));
-				qa.setQaTitle(rset.getString("QA_TITLE"));
-				qa.setQaContent(rset.getString("QA_CONTENT"));
-				qa.setQaWriteDate(rset.getDate("WRITEDATE"));
-				qa.setQaAnswer(rset.getString("QA_ANSWER"));
-				qa.setQaAnswerDate(rset.getDate("ANSWERDATE"));
+				bReply.setBoardNo(rset.getInt("BOARDNO"));
+				bReply.setReplyNo(rset.getInt("REPLY_NO"));
+				bReply.setBoardTitle(rset.getString("BOARD_TITLE"));
+				bReply.setBoardContent(rset.getString("BOARD_CONTENT"));
+				bReply.setCreateDate(rset.getDate("BOARD_CREATEDATE"));
+				bReply.setReplyContent(rset.getString("REPLY_CONTENT"));
+				bReply.setReplyCreateDate(rset.getDate("REPLY_CREATEDATE"));
 				
-				qList.add(qa);
+				reviewList.add(bReply);
 			}
 			
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -120,13 +120,8 @@ public class QaDao {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
 		}
-
-		return qList;
+		
+		return reviewList;
 	}
-	
-	
-	
-	
-	
 
 }

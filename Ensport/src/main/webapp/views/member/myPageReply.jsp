@@ -34,34 +34,45 @@
         <div class="container">
             <div class="row">
                 
+                
                 <!-- 마이 페이지 메뉴 -->
                 <%@ include file="myPage_menu.jsp" %>
 				
 				
-				<!-- ### 내 정보 수정하기 ### -->
+				
                 <div class="col-lg-8 posts-list">
                     <div class="row">
                         <div class="col-md-12">
-                            <h3>MY BOARD</h3>
-
-								<!-- ===================== 게시판 ======================= -->
-		                         <c:forEach items="${bList}" var="b" varStatus="status">
+                            <h3>MY REPLY</h3>
+								
+ 							
+ 								<!-- ===================== 게시판 ======================= -->
+		                         <c:forEach items="${replyList}" var="rl" varStatus="status">
 			                        <div class="comments-area">
-		                            
-		                            	<!-- 내 질문 -->
+				                        
+				                        <div class="comment-list" >
+				                            <div class="single-comment justify-content-between d-flex">
+				                                <div class="user justify-content-between d-flex" style="display:none">
+				                                	<div class="desc">
+				                                        <h5><b>내가 쓴 댓글</b></h5>
+				                                        <div class="br"></div>
+				                                        <p class="comment">${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }</p>
+				                                        <p class="date">댓글 작성시간: ${rl.replyCreateDate }</p>
+				                                    </div>
+				                                </div>
+				                            </div>
+				                        </div>
+				                        <!-- 내 질문 -->
 				                        <div class="comment-list">
 				                            <div class="single-comment justify-content-between d-flex">
 				                                <div class=" justify-content-between d-flex">
 				                                    <div class="desc">
-				                                        <h5><a href="${contextPath }/boardDetail.bo?bno=${b.boardNo }">${b.boardTitle }</a></h5>
-				                                        <p class="date">작성일: ${b.createDate }</p>
-				                                        <p class="date">조회수: ${b.boardCount }</p>
-<%-- 				                                        <p class="comment">${b.qaContent }</p> --%>
+				                                        <h5><b>댓글 단 게시글</b></h5>
+				                                        <p><a href="${contextPath }/boardDetail.bo?bno=${rl.boardNo }">${rl.boardTitle }</a></p>
 				                                    </div>
 				                                </div>
-				                                <div class="reply-btn">
-				                                    <a href="${contextPath }/update.bo?bno=${b.boardNo }" class="btn-reply text-uppercase">수정</a>
-				                                    <a href="${contextPath }/delete.bo?bno=${b.boardNo }" class="btn-reply text-uppercase">삭제</a>
+				                                <div class="reply-btn text-right">
+				                                    <a href="#" class="btn-reply text-uppercase">댓글삭제</a>
 				                                </div>
 				                            </div>
 				                        </div>
@@ -69,6 +80,8 @@
 								</c:forEach>
 		                    
 	                        <!-- ===================== 게시판 ======================= --> 
+ 							
+ 							
  							
  							<!--====== paging ======-->
 		                    <nav class="blog-pagination justify-content-center d-flex">
@@ -85,7 +98,7 @@
 									</c:when>
 									<c:otherwise>
 									 	<li class="page-item">
-			                                <a href="${contextPath }/myPageBoard.me?currentPage=${pi.currentPage-1}" class="page-link" aria-label="Previous">
+			                                <a href="${contextPath }/myPageReply.me?currentPage=${pi.currentPage-1}" class="page-link" aria-label="Previous">
 			                                    <span aria-hidden="true">
 			                                        <span class="lnr lnr-chevron-left"></span>
 			                                    </span>
@@ -96,7 +109,7 @@
 			                    
 			                    <!-- 해당 페이지에 active 속성 부여해야함 (어떻게 해야할지 궁리좀 해보자) -->
 	                    		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
-		                            <li class="page-item"><a href="${contextPath }/myPageBoard.me?currentPage=${i}" class="page-link">${i}</a></li>
+		                            <li class="page-item"><a href="${contextPath }/myPageReply.me?currentPage=${i}" class="page-link">${i}</a></li>
 								</c:forEach>
 								
 								
@@ -112,7 +125,7 @@
 									</c:when>
 									<c:otherwise>
 									 	<li class="page-item">
-			                                <a href="${contextPath }/myPageBoard.me?currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+			                                <a href="${contextPath }/myPageReply.me?currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
 			                                    <span aria-hidden="true">
 			                                        <span class="lnr lnr-chevron-right"></span>
 			                                    </span>
@@ -123,7 +136,7 @@
 		                       </ul>
 		                    </nav>
 							<!--====== page ======-->
-                            
+ 							
                         </div>
                     </div>
                 </div>
@@ -132,15 +145,7 @@
     </section>
     <!--================Blog Area =================-->
 	
-    
-    
-    
-    
-    <script type="text/javascript">
-    
-    
-	</script>
-	
+
 	
 	
 	

@@ -1,4 +1,4 @@
-package com.ensport.member.controller;
+package com.ensport.review.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -26,7 +26,7 @@ public class MyPageReviewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int userNo = Integer.parseInt(request.getParameter("userNo"));
+//		int userNo = Integer.parseInt(request.getParameter("userNo"));
 		
 		request.getRequestDispatcher("views/member/myPageReview.jsp").forward(request, response);
 	}

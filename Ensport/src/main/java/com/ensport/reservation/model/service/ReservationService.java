@@ -1,4 +1,4 @@
-package com.ensport.qa.model.service;
+package com.ensport.reservation.model.service;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -7,16 +7,18 @@ import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.PageInfo;
 import com.ensport.qa.model.dao.QaDao;
 import com.ensport.qa.model.vo.Qa;
+import com.ensport.reservation.model.dao.ReservationDao;
+import com.ensport.reservation.model.vo.Reservation;
 
-public class QaService {
+public class ReservationService {
 
 	
 	//마이페이지 내 Qa 개수 조회 메소드
-	public int qalistCount(int userNo) {
+	public int reservationListCount(int userNo) {
 		Connection conn = JDBCTemplate.getConnection();
 		
 		//게시글 개수 받아줄 변수 준비
-		int count = new QaDao().qalistCount(conn, userNo);
+		int count = new ReservationDao().reservationListCount(conn, userNo);
 		
 		JDBCTemplate.close(conn);
 		
@@ -25,13 +27,13 @@ public class QaService {
 	
 	
 	//마이페이지 내 Qa 불러오기
-	public ArrayList<Qa> selectMyQaList(PageInfo pi, int userNo) {
+	public ArrayList<Reservation> selectMyReservationList(PageInfo pi, int userNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
-		ArrayList<Qa> selectMyQaList = new QaDao().selectMyQaList(conn, userNo, pi);
+		ArrayList<Reservation> selectMyReservationList = new ReservationDao().selectMyReservationList(conn, userNo, pi);
 		
-		return selectMyQaList;
+		return selectMyReservationList;
 				
 	}
 }

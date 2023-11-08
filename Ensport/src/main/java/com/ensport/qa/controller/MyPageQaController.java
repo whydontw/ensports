@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ensport.common.model.vo.PageInfo;
+import com.ensport.member.model.service.MemberService;
 import com.ensport.member.model.vo.Member;
 import com.ensport.qa.model.service.QaService;
 import com.ensport.qa.model.vo.Qa;
+import com.ensport.reply.model.service.ReplyService;
 
 /**
  * Servlet implementation class MyPageQaController
@@ -37,9 +39,10 @@ public class MyPageQaController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-		//userNo 세션에서 추출하기
+		//userNo, userId 세션에서 추출하기
 		HttpSession session = request.getSession();
 		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();			
+		String userId = ((Member)session.getAttribute("loginUser")).getUserId();			
 
 		
 		// 게시글 목록 조회해와서 뷰페이지로 포워딩 처리 하기
@@ -55,7 +58,7 @@ public class MyPageQaController extends HttpServlet {
 		int endPage; // 페이지 하단에 보여질 페이징바의 끝수
 
 		// listCount 현재 게시글 개수
-		listCount = new QaService().listCount(userNo); // 게시글 개수 조회해오기
+		listCount = new QaService().qalistCount(userNo); // 게시글 개수 조회해오기
 		// 현재페이지 정보(번호)
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
