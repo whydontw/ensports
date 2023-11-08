@@ -49,14 +49,13 @@
                             
 		                         <c:forEach items="${qList}" var="qList" varStatus="status">
 			                        <div class="comments-area">
-		                            
 
 		                            	<!-- 내 질문 -->
 				                        <div class="comment-list">
 				                            <div class="single-comment justify-content-between d-flex">
 				                                <div class="user justify-content-between d-flex">
 				                                    <div class="desc">
-				                                        <h5><a href="#">${qList.qaTitle }</a></h5>
+				                                        <h5>${qList.qaTitle }</h5>
 				                                        <p class="date">${qList.qaWriteDate }</p>
 				                                        <p class="comment">${qList.qaContent }</p>
 				                                    </div>
@@ -72,7 +71,6 @@
 				                            </div>
 				                        </div>
 				                        
-			                        	
 				                        <!-- 관리자 답변 -->
 				                        <div class="comment-list left-padding" >
 				                            <div class="single-comment justify-content-between d-flex">
@@ -94,9 +92,7 @@
 			                  	  </div>
 								</c:forEach>
 		                    
-
 	                        <!-- ===================== QNA ======================= -->   
-                            
                             
                             
                                                 
@@ -123,6 +119,7 @@
 			                            </li>
 									</c:otherwise>
 			                    </c:choose>
+			                    
 			                    
 			                    <!-- 해당 페이지에 active 속성 부여해야함 (어떻게 해야할지 궁리좀 해보자) -->
 	                    		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">

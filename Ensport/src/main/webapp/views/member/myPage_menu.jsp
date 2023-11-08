@@ -7,13 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-
+	
 	<div class="col-lg-4">
 		<div class="blog_right_sidebar">
 			<aside class="single_sidebar_widget search_widget align-self-center">
 				<img class="" src="resources/img/elements/soccer_icon1.png" alt="">
-				<span class="mx-auto"> <c:choose>
+				<span class="mx-auto">
+					<c:choose>
 						<c:when test="${loginUser.userNo == 1}">
 							<b>Lv 999. 관리자</b>
 						</c:when>
@@ -33,8 +33,7 @@
 				<div class="br"></div>
 			</aside>
 			<aside class="single_sidebar_widget author_widget">
-				<img class="author_img rounded-circle"
-					src="${contextPath}/resources/img/blog/author.png" alt="">
+				<img class="author_img rounded-circle" src="${contextPath}/resources/img/blog/sonny.jpg" alt="">
 				<h4>${loginUser.userNickname }</h4>
 				<div class="social_icon">
 					<p>${loginUser.email}</p>
@@ -48,24 +47,28 @@
 			<aside class="single_sidebar_widget post_category_widget">
 				<h4 class="widget_title">내가 쓴 글</h4>
 				<ul class="list cat-list">
-					<li><a href="${contextPath }//myPageBoard.me?currentPage=1"
-						class="d-flex justify-content-between">
+					<li>
+						<a href="${contextPath }/myPageBoard.me?currentPage=1"	class="d-flex justify-content-between">
 							<p>게시글</p>
-							<p>0</p>
-					</a></li>
-					<li><a href="${contextPath }//myPageReply.me?currentPage=1" class="d-flex justify-content-between">
+							<p>${boardCount}</p>
+						</a>
+					</li>
+					<li>
+						<a href="${contextPath }/myPageReply.me?currentPage=1" class="d-flex justify-content-between">
 							<p>댓글</p>
-							<p>0</p>
-					</a></li>
-					<li><a href="${contextPath }//myPageReview.me?currentPage=1" class="d-flex justify-content-between">
-							<p>리뷰</p>
-							<p>0</p>
-					</a></li>
-					<li><a href="${contextPath }/myPageQa.me?currentPage=1"
-						class="d-flex justify-content-between">
+							<p>${replyCount}</p>
+						</a>
+					</li>
+<%-- 				<li><a href="${contextPath }/myPageReview.me?currentPage=1" class="d-flex justify-content-between"> --%>
+<!-- 						<p>리뷰</p> -->
+<!-- 						<p>0</p> -->
+<!-- 				</a></li> -->
+					<li>
+						<a href="${contextPath }/myPageQa.me?currentPage=1" class="d-flex justify-content-between">
 							<p>문의사항</p>
-							<p>0</p>
-					</a></li>
+							<p>${qaCount}</p>
+						</a>
+					</li>
 				</ul>
 				<div class="br"></div>
 			</aside>
@@ -74,17 +77,19 @@
 			<aside class="single_sidebar_widget post_category_widget">
 				<h4 class="widget_title">나의 예약</h4>
 				<ul class="list cat-list">
-					<li><a href="#" class="d-flex justify-content-between">
+					<li>
+						<a href="#" class="d-flex justify-content-between">
 							<p>예약 내역</p>
 							<p>0</p>
-					</a></li>
-					<li>
-						<%-- 이건 후순위 구현하는 것으로 --%> <a href="#"
-						class="d-flex justify-content-between">
-							<p>나의 지난 경기</p>
-							<p>0</p>
-					</a>
+						</a>
 					</li>
+<!-- 				<li> -->
+<!-- 					이건 후순위 구현하는 것으로 -->
+<!-- 					<a href="#" class="d-flex justify-content-between">W -->
+<!-- 						<p>나의 지난 경기</p> -->
+<!-- 						<p>0</p> -->
+<!-- 					</a> -->
+<!-- 				</li> -->
 				</ul>
 				<div class="br"></div>
 			</aside>
@@ -101,9 +106,6 @@
 			</aside>
 		</div>
 	</div>
-
-
-
 
 </body>
 </html>
