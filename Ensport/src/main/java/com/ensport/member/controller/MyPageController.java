@@ -6,6 +6,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.ensport.member.model.service.MemberService;
+import com.ensport.member.model.vo.Member;
+import com.ensport.qa.model.service.QaService;
+import com.ensport.reply.model.service.ReplyService;
 
 /**
  * Servlet implementation class MyPageController
@@ -26,6 +32,23 @@ public class MyPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		HttpSession session = request.getSession();
+		String userId = ((Member)session.getAttribute("loginUser")).getUserId();
+		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();	
+		
+		
+		int boardCount = new MemberService().boardListCount(userNo);
+		int replyCount = new ReplyService().replyListCount(userId);
+		int qaCount = new QaService().qalistCount(userNo);
+		
+		request.setAttribute("boardCount", boardCount);
+		request.setAttribute("replyCount", replyCount);
+		request.setAttribute("qaCount", qaCount);
+		
+		
+		
 		request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);
 	}
 

@@ -1,4 +1,4 @@
-package com.ensport.qa.model.dao;
+package com.ensport.reservation.model.dao;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -11,18 +11,18 @@ import java.util.Properties;
 
 import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.PageInfo;
-import com.ensport.qa.model.vo.Qa;
+import com.ensport.reservation.model.vo.Reservation;
 
-public class QaDao {
+public class ReservationDao {
 	
 	private Properties prop = new Properties();
 
 	// 매퍼파일 읽어오는 작업 (기본생성자에 추가)
 	// DAO로 메소드를 호출하는 시점에서 파일이 읽힌다.
-	public QaDao() {
+	public ReservationDao() {
 
 		try {
-			String filePath = QaDao.class.getResource("/db/sql/qa-mapper.xml").getPath();
+			String filePath = ReservationDao.class.getResource("/db/sql/reservation-mapper.xml").getPath();
 			prop.loadFromXML(new FileInputStream(filePath));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -31,15 +31,15 @@ public class QaDao {
 	}
 	
 	
-	//내 QA 게시글 수
-	public int qalistCount(Connection conn, int userNo) {
+	//내 Reservation 게시글 수
+	public int reservationListCount(Connection conn, int userNo) {
 		
 		// SELECT (조회)
 		int count = 0;
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
 
-		String sql = prop.getProperty("qaListCount");
+		String sql = prop.getProperty("reservationListCount");
 		
 
 		try {
@@ -68,17 +68,17 @@ public class QaDao {
 	
 	
 	
-	//마이페이지 Qa List
-	public ArrayList<Qa> selectMyQaList(Connection conn, int userNo, PageInfo pi) {
+	//마이페이지 Reservation List
+	public ArrayList<Reservation> selectMyReservationList(Connection conn, int userNo, PageInfo pi) {
 
 		// 준비물
-		ArrayList<Qa> qList = new ArrayList<Qa>();
+		ArrayList<Reservation> revList = new ArrayList<Reservation>();
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
 		
-		Qa qa = null;
+		Reservation rev = null;
 
-		String sql = prop.getProperty("selectMyQaList");
+		String sql = prop.getProperty("selectMyReservationList");
 		
 		// 1페이지 : 1~10 / 5페이지 : 41~50 / 10페이지 91~100
 		// 2페이지 : 11~20
@@ -100,16 +100,12 @@ public class QaDao {
 
 			while (rset.next()) {
 				
-				qa = new Qa();
+				rev = new Reservation();
 				
-				qa.setQaNo(rset.getInt("QA_NO"));
-				qa.setQaTitle(rset.getString("QA_TITLE"));
-				qa.setQaContent(rset.getString("QA_CONTENT"));
-				qa.setQaWriteDate(rset.getDate("WRITEDATE"));
-				qa.setQaAnswer(rset.getString("QA_ANSWER"));
-				qa.setQaAnswerDate(rset.getDate("ANSWERDATE"));
 				
-				qList.add(qa);
+				
+				
+				revList.add(rev);
 			}
 			
 
@@ -121,7 +117,7 @@ public class QaDao {
 			JDBCTemplate.close(pstmt);
 		}
 
-		return qList;
+		return revList;
 	}
 	
 	
