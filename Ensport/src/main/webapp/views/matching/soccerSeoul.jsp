@@ -64,12 +64,18 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a href="${contextPath }/sc.seoul?localName=서울"><span class="lnr lnr-arrow-right"></span><b>서울</b><span class="number">(53)</span></a></li>
-						
+						<li class="main-nav-list"><a
+							href="${contextPath }/sc.seoul?localName=서울"><span
+								class="lnr lnr-arrow-right"></span><b>서울</b><span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/sc.gyeonggi?localName=경기"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/sc.incheon?localName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a
+							href="${contextPath }/sc.gyeonggi?localName=경기"><span
+								class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
+
+						<li class="main-nav-list"><a
+							href="${contextPath }/sc.incheon?localName=인천"><span
+								class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
 
 						<li class="main-nav-list"><a data-toggle="collapse"
 							href="#jeonbuk" aria-expanded="false"
@@ -165,13 +171,8 @@
 						</select>
 					</div>
 					<div class="sorting">
-						<select id="dateSelect"
-							onchange="this.style.color=this.options[this.selectedIndex].style.color;">
-							<option value="" style="display: none;">날짜 선택</option>
-							<option value="1" style="color: black;">11월 16일</option>
-							<option value="2" style="color: black;">11월 17일</option>
-							<option value="3" style="color: black;">11월 18일</option>
-						</select>
+						<label for="date"> <input type="date" id="date"
+							max="2023-11-18" min="2023-11-16" value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) %>">
 					</div>
 
 					<div class="sorting mr-auto">
@@ -179,7 +180,7 @@
 					</div>
 
 
-					
+
 
 				</div>
 				<!-- End Filter Bar -->
@@ -190,18 +191,15 @@
 						<c:forEach var="item" items="${slist}">
 							<div class="col-lg-4 col-md-6">
 								<div class="single-product">
-									<input type="hidden" value="${item.placeNo }" name="pno" />
-									<img class="img-fluid" src="${contextPath}${item.filePath}${item.changeName}" alt="">
+									<input type="hidden" value="${item.placeNo }" name="pno" /> <img
+										class="img-fluid"
+										src="${contextPath}${item.filePath}${item.changeName}" alt="">
 									<div class="product-details">
 										<h4>${item.placeName}</h4>
-										<div class="datasheet p-3 mb-2  text-white"
-											style="background-color: #e8f0f2;">
-											<a href="" id="participantCount" class="text-black"
-												style="color: black;">참여인원: </a>
-										</div>
+										
 										<div class="prd-bottom">
-											<a href="${contextPath }/detail.so?pno=${item.placeNo}" class="social-info"> 
-											<span class="lnr lnr-move"></span>
+											<a href="${contextPath }/detail.so?pno=${item.placeNo}"
+												class="social-info"> <span class="lnr lnr-move"></span>
 												<p class="hover-text">view more</p>
 											</a>
 										</div>
@@ -216,13 +214,10 @@
 					<div class="sorting mr-auto"></div>
 					<div class="pagination">
 						<a href="#" class="prev-arrow"><i
-							class="fa fa-long-arrow-left" aria-hidden="true"></i></a> 
-							<a href="#"class="active">1</a> 
-							<a href="#">2</a> 
-							<a href="#">3</a>
-						    <a href="#">4</a> 
-						    <a href="#"class="next-arrow">
-						    <i class="fa fa-long-arrow-right"aria-hidden="true"></i></a>
+							class="fa fa-long-arrow-left" aria-hidden="true"></i></a> <a href="#"
+							class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a
+							href="#">4</a> <a href="#" class="next-arrow"> <i
+							class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
 					</div>
 				</div>
 				<!-- End Filter Bar -->
@@ -341,22 +336,21 @@
 	<script src="<%=request.getContextPath()%>/resources/js/gmaps.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
 	<script>
-	$(document).ready(function() {
-		
-	    $(".single-product").click(function() {
-	    	
-	        console.log(pno);
-	    	
-	        var pno = $(this).find("input[name=pno]").val();
-	        
-	        
-	        location.href = "detail.so?pno=" + pno;
-	    });
-	});
+		$(document).ready(function() {
 
+			$(".single-product").click(function() {
+
+				let date = $("#date").val();
+				console.log(pno);
+
+				var pno = $(this).find("input[name=pno]").val();
+				location.href="detail.so?pno="+$(this).children().eq(0).val() + "&date=" + date;
+				<!--location.href = "detail.so?pno=" + pno;-->
+			});
+		});
 	</script>
 
-	
+
 </body>
 
 </html>
