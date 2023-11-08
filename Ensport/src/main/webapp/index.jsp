@@ -427,7 +427,7 @@
 								<p class="position mb-5">CEO, Founder</p>
 							</div>
 							<p>
-							<div class="quote">&ldquo;</div>
+							<div class="quote">&ldquo;</div> 
 							&ldquo;Far far away, behind the word mountains, far from the
 							countries Vokalia and Consonantia, there live the blind texts.
 							Separated they live in Bookmarksgrove right at the coast of the
