@@ -52,7 +52,7 @@
             <div class="row">
                 
                 <!-- 마이 페이지 메뉴 -->
-                <%@ include file="myPage_menu.jsp" %>
+                <%@ include file="myPage_profile.jsp" %>
 				
 				
 				<!-- ====================### 내 정보 수정하기 ###======================== -->
@@ -97,9 +97,9 @@
                                 </div>
                                 
                                 <!-- 상세주소 -->
-                                <span class="col-md-4 pdt-7"></span>
+                                <span class="col-md-4 pdt-7">======== ${loginUser.address}: ${loginUser.addressDetail }</span>
                                 <div class="col-md-8 form-group">
-                                    <input type="text" class="form-control" id="addressDetail" name="addressDetail" placeholder="상세주소" >
+                                    <input type="text" class="form-control" id="addressDetail" name="addressDetail" placeholder="상세주소" value="${loginUser.addressDetail}">
                                     <span class="placeholder"></span>
                                 </div>
                                 

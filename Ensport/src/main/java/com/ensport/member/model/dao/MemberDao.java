@@ -75,6 +75,7 @@ public class MemberDao {
 							, rset.getString("PREFER")
 							, rset.getString("IMAGES")
 							, rset.getString("STATUS")
+							, rset.getString("ADDRESS_DETAIL")
 							);
 			}
 			
@@ -119,6 +120,7 @@ public class MemberDao {
 			pstmt.setString(7, m.getGender());
 			pstmt.setString(8, m.getAddress());
 			pstmt.setString(9, m.getPrefer());
+			pstmt.setString(10, m.getAddressDetail());
 			
 			//sql구문 실행 후 DML 구문이니 처리된 행 수 돌려받기
 			result = pstmt.executeUpdate();
@@ -216,11 +218,12 @@ public class MemberDao {
 			pstmt.setString(1, m.getUserName());
 			pstmt.setString(2, m.getPhone());
 			pstmt.setString(3, m.getAddress());
-			pstmt.setString(4, m.getEmail());
-			pstmt.setString(5, m.getGender());
-			pstmt.setString(6, m.getUserNickname());
-			pstmt.setString(7, m.getPrefer());
-			pstmt.setString(8, m.getUserId());
+			pstmt.setString(4, m.getAddressDetail());
+			pstmt.setString(5, m.getEmail());
+			pstmt.setString(6, m.getGender());
+			pstmt.setString(7, m.getUserNickname());
+			pstmt.setString(8, m.getPrefer());
+			pstmt.setString(9, m.getUserId());
 			
 			//sql 구문 실행 및 결과 행 수 받기
 			result = pstmt.executeUpdate();
@@ -270,7 +273,11 @@ public class MemberDao {
 							, rset.getString("PREFER")
 							, rset.getString("IMAGES")
 							, rset.getString("STATUS")
-							);
+							, rset.getString("ADDRESS_DETAIL")
+						);
+				
+				System.out.println("찐찐업데이트된 내 정보" + m);
+				
 			}
 			
 		} catch (SQLException e) {

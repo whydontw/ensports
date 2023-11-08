@@ -129,7 +129,7 @@ public class MyPageQaController extends HttpServlet {
 		request.setAttribute("pi", pi);
 		request.setAttribute("qList", selectMyQaList);
 		
-		
+		System.out.println("혜진님 집 가고싶어요.");
 		request.getRequestDispatcher("views/member/myPageQa.jsp").forward(request, response);
 	}
 

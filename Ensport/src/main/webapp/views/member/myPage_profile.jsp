@@ -50,13 +50,13 @@
 					<li>
 						<a href="${contextPath }/myPageBoard.me?currentPage=1"	class="d-flex justify-content-between">
 							<p>게시글</p>
-							<p>${boardCount}</p>
+							<p id="boardCount"></p>
 						</a>
 					</li>
 					<li>
 						<a href="${contextPath }/myPageReply.me?currentPage=1" class="d-flex justify-content-between">
 							<p>댓글</p>
-							<p>${replyCount}</p>
+							<p id="replyCount"></p>
 						</a>
 					</li>
 <%-- 				<li><a href="${contextPath }/myPageReview.me?currentPage=1" class="d-flex justify-content-between"> --%>
@@ -66,7 +66,7 @@
 					<li>
 						<a href="${contextPath }/myPageQa.me?currentPage=1" class="d-flex justify-content-between">
 							<p>문의사항</p>
-							<p>${qaCount}</p>
+							<p id="qaCount"></p>
 						</a>
 					</li>
 				</ul>
@@ -78,9 +78,9 @@
 				<h4 class="widget_title">나의 예약</h4>
 				<ul class="list cat-list">
 					<li>
-						<a href="#" class="d-flex justify-content-between">
+						<a href="${contextPath }/myPageReservation.me?currentPage=1" class="d-flex justify-content-between">
 							<p>예약 내역</p>
-							<p>0</p>
+							<p id="reservationCount"></p>
 						</a>
 					</li>
 <!-- 				<li> -->
@@ -106,6 +106,49 @@
 			</aside>
 		</div>
 	</div>
+	
+	
+	<script type="text/javascript">
+	
+		$(function(){
+			
+			let userId = "${loginUser.userId}";
+			let userNo = ${loginUser.userNo};
+			
+			$.ajax({
+				url: "myPageProfile.me",
+				data: { userNo : userNo,
+						userId : userId
+				},
+				success: function(result){
+					
+					console.log("=============");
+					console.log(result);
+					console.log("=============");
+					
+					var data = JSON.parse(result);
+					
+// 					console.log(data.boardCount);
+// 					console.log(data.replyCount);
+// 					console.log(data.qaCount);
+// 					console.log(data.reservationCount);
+					
+					$("#boardCount").text(data.boardCount);
+					$("#replyCount").text(data.replyCount);
+					$("#qaCount").text(data.qaCount);
+					$("#reservationCount").text(data.reservationCount);
+					
+				},
+				error: function(){
+					console.log("불러오기 실패");	
+				}
+				
+			});
+			
+		});
+	
+	</script>
+	
 
 </body>
 </html>
