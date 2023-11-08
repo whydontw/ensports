@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.ensport.place.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -17,24 +19,15 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>축구 경기장 예약</title>
+	<title>서울 축구 경기매칭</title>
 
-	<!--
-            CSS
-            ============================================= -->
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/linearicons.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/owl.carousel.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/font-awesome.min.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/themify-icons.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/nice-select.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/nouislider.min.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.css">
-	<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/main.css">
 </head>
 
 <body id="category">
 
 	<%@ include file="../common/menubar.jsp" %> 
+	
+	 
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
@@ -42,9 +35,9 @@
 				<div class="col-first">
 					<h1>축구 시설 예약</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="index.html">HOME<span class="lnr lnr-arrow-right"></span></a>
 						<a href="#">축구 시설 예약<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">축구</a>
+						<a href="category.html">서울</a>
 					</nav>
 				</div>
 			</div>
@@ -57,36 +50,26 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-					
-						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울"><span class="lnr lnr-arrow-right"></span><b>서울</b><span class="number">(53)</span></a></li>
 
 						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.so?lacalName=경기"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/incheon.so?lacalName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
-					   		
-				   		</li>
+						<li class="main-nav-list"><a  href="${contextPath }/incheon.so?lacalName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
 						
-
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
-							
+															
 						</li>
 						
-
 						<li class="main-nav-list"><a data-toggle="collapse" href="#daejeon" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								class="lnr lnr-arrow-right"></span>대전<span class="number">(53)</span></a>
 							
-						</li>
-
-						
+						</li>						
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#sejong" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								class="lnr lnr-arrow-right"></span>세종<span class="number">(53)</span></a>
 							
 						</li>
-
-						
-					
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#busan" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								class="lnr lnr-arrow-right"></span>부산<span class="number">(53)</span></a>
@@ -140,12 +123,19 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting">
-						<label for="date">
-						 	 <input type="date" id="date" max="2023-11-18" min="2023-11-16" name="soccerChoiceDate"/>
-						</label>
-					</div>
-					<div class="sorting mr-auto">
+							<label for="date">
+							 	 <input type="date" id="date" max="2023-11-18"  min="2023-11-16" name="soccerChoiceDate"
+							 	 	 />
+							</label>
 						
+					</div>
+					
+	
+									
+					<div class="sorting mr-auto">
+					
+					
+					<!-- 개수 섹션 -->
 					</div>
 					<div class="pagination">
 						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
@@ -160,17 +150,17 @@
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
 				<section class="lattest-product-area pb-40 category-list">
-					<div class="row">
+					<div class="row" >
 						<!-- single product -->
-						<c:forEach var="item" items="${list}">
+						<c:forEach var="sp" items="${list}">
 							<div class="col-lg-4 col-md-6">
 								<div class="single-product">
-									<input type="hidden" value="${item.placeNo }" name="sno" /> 
+									<input type="hidden" value=${sp.placeNo } name="sno" />
 									<img class="img-fluid"
-										src="${contextPath}${item.filePath}${item.changeName}" alt="">
+										src="${contextPath }${sp.filePath}${sp.changeName}" alt="">
 									<div class="product-details">
-										<input type="text" value="${item.placeName}" >
-										<h3>${item.placeName}</h3>
+										<input type="text" value="${sp.placeName}">
+										<h3>${sp.placeName}</h3>
 										
 										<div class="prd-bottom">																						
 												<div class="prd-bottom" id="viewMore">
@@ -183,8 +173,27 @@
 								</div>
 							</div>
 						</c:forEach>
-						
+						</div>
 				</section>
+				
+				<script>
+					$(document).ready(function() {
+					    $(".single-product, #viewMore p").on("click", function(event) {
+					        var selectedDate  = $("#date").val(); // 선택된 날짜 값을 가져옵니다
+					        if (!selectedDate  || selectedDate  === "날짜선택") {
+					            alert("날짜를 먼저 선택하세요");
+					            event.preventDefault();
+					        } else {
+					            var sno = $(this).find("input[name=sno]").val();
+					            location.href = "detail.bo?sno=" + sno + "&date=" + selectedDate ;
+					            // 원하는 작업을 수행하는 대신 페이지 이동을 수행합니다.
+					            // location.href = '${contextPath}/sc.seoul';
+					        }
+					    });
+					});
+				</script>
+				
+				
 				<!-- End Best Seller -->
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
@@ -205,6 +214,8 @@
 			</div>
 		</div>
 	</div>
+
+	
 
 
 	<!-- Modal Quick Product View -->
@@ -291,26 +302,6 @@
 	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
 
-	<script>
-	$(document).ready(function() {
-	    $(".single-product, #viewMore p").on("click", function(event) {
-	        var selectedDate  = $("#date").val(); // 선택된 날짜 값을 가져옵니다
-	        if (!selectedDate  || selectedDate  === "날짜선택") {
-	            alert("날짜를 먼저 선택하세요");
-	            event.preventDefault();
-	        } else {
-	            var sno = $(this).find("input[name=sno]").val();
-	            location.href = "detail.bo?sno=" + sno + "&date=" + selectedDate ;
-	            // 원하는 작업을 수행하는 대신 페이지 이동을 수행합니다.
-	            // location.href = '${contextPath}/sc.seoul';
-	        }
-	    });
-	});
-	</script>
-	
-	
-	
-	
 </body>
 
 </html>
