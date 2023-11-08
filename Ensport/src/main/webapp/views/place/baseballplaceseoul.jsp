@@ -1,5 +1,7 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.ensport.place.*" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -17,7 +19,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>야구 시설예약</title>
+	<title>서울 야구 시설예약</title>
 
 	<!--
             CSS
@@ -35,16 +37,17 @@
 <body id="category">
 
 	<%@ include file="../common/menubar.jsp" %> 
+		 
 	<!-- Start Banner Area -->
 	<section class="banner-area organic-breadcrumb">
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>야구 시설예약</h1>
+					<h1>축구 경기매칭</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">시설 예약<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">야구</a>
+						<a href="index.html">시설예약<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">축구<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">서울</a>
 					</nav>
 				</div>
 			</div>
@@ -57,20 +60,11 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a data-toggle="" href="${contextPath }/seoul.ba" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								 class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a>
-							
-						</li>
+						<li class="main-nav-list"><a href="${contextPath }/seoul.ba" onclick="goToSeoulPage()"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a data-toggle="collapse" href="#gyeonggido" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a>
-					   		
-				   		</li>
+						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a data-toggle="collapse" href="#incheon" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a>
-					   		
-				   		</li>
+						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToIncheonPage()"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
@@ -147,11 +141,7 @@
 						</select>
 					</div>
 					<div class="sorting mr-auto">
-						<select>
-							<option value="1">Show 8</option>
-							<option value="1">Show 10</option>
-							<option value="1">Show 12</option>
-						</select>
+					<!-- 개수 섹션 -->
 					</div>
 					<div class="pagination">
 						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
@@ -174,24 +164,14 @@
 								<div class="product-details">
 									<h6>addidas New Hammer sole
 										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
+									<div class="datasheet p-3 mb-2  text-white"
+										style="background-color: #e8f0f2;">
+										<a href="" id="participantCount" class="text-black"
+											style="color: black;">참여인원: </a>
 									</div>
 									<div class="prd-bottom">
 
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
+										
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
@@ -213,18 +193,7 @@
 									</div>
 									<div class="prd-bottom">
 
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
+										
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
@@ -247,18 +216,6 @@
 									<div class="prd-bottom">
 
 										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
 										</a>
@@ -279,18 +236,7 @@
 									</div>
 									<div class="prd-bottom">
 
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
+										
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
@@ -312,18 +258,7 @@
 									</div>
 									<div class="prd-bottom">
 
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
+										
 										<a href="" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">view more</p>
@@ -580,6 +515,16 @@
 	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
 	
+	<script type="text/javascript">
+    function goToGyeonggiPage() {
+        window.location.href = '<%= request.getContextPath() %>/sc.gyeonggi';
+    }
+	</script>
+	<script type="text/javascript">
+    function goToIncheonPage() {
+        window.location.href = '<%= request.getContextPath() %>/sc.incheon';
+    }
+	</script>
 </body>
 
 </html>

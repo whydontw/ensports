@@ -76,6 +76,31 @@ public class SoccerMatchingService {
 			return p;
 		}
 
+		//전체 경기장 리스트 조회
+		public ArrayList<SoccerMatching> selectAllSoccerMatchingList() {
+			
+			Connection conn = JDBCTemplate.getConnection();
+			
+			ArrayList<SoccerMatching> list = new SoccerMatchingDao().selectAllSoccerMatchingList(conn);
+			
+			JDBCTemplate.close(conn);
+			
+			return list;
+		}
+
+		//인기 축구 리스트
+		public ArrayList<SoccerMatching> selectMostSoccerMatchingList() {
+			Connection conn = JDBCTemplate.getConnection();
+			
+			ArrayList<SoccerMatching> list = new SoccerMatchingDao().selectMostSoccerMatchingList(conn);
+			
+			JDBCTemplate.close(conn);
+			
+			return list;
+		}
+
+		
+
 }
 
 

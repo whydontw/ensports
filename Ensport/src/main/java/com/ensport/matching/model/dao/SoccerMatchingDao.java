@@ -6,11 +6,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
 import com.ensport.admin.model.vo.Attachment;
-
 import com.ensport.common.JDBCTemplate;
 import com.ensport.matching.model.vo.SoccerMatching;
 import com.ensport.place.model.vo.Place;
@@ -207,6 +207,82 @@ public class SoccerMatchingDao {
 			return p;
 		}
 
+
+		//전체 리스트 조회
+		public ArrayList<SoccerMatching> selectAllSoccerMatchingList(Connection conn) {
+			
+			ResultSet rset =  null;
+			Statement stmt = null;
+			
+			ArrayList<SoccerMatching> alist = new ArrayList(); 
+			SoccerMatching sm = null;
+			
+			String sql = prop.getProperty("selectAllSoccerMatchingList");
+			
+			try {
+				stmt = conn.createStatement();
+				rset = stmt.executeQuery(sql);
+				
+				while(rset.next()) {
+					sm = new SoccerMatching(rset.getInt("PLACE_NO")
+							, rset.getString("PLACE_NAME") 
+							, rset.getString("FILE_PATH")
+							, rset.getString("CHANGE_NAME"));
+	
+					alist.add(sm);
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(stmt);
+			}
+			
+			
+			return alist;
+		}
+
+
+		//인기 매칭 리스트
+		public ArrayList<SoccerMatching> selectMostSoccerMatchingList(Connection conn) {
+			Statement stmt = null;
+			ResultSet rset = null;
+			//게시글 목록 조회 리스트
+			ArrayList<SoccerMatching> mlist = new ArrayList<SoccerMatching>();
+			
+			SoccerMatching sm = null;
+			
+			String sql = prop.getProperty("selectMainSoccerMatchingList");
+			
+			try {
+				stmt = conn.createStatement();		
+				
+				rset = stmt.executeQuery(sql);
+				
+				while(rset.next()) {
+					
+					sm = new SoccerMatching(rset.getInt("PLACE_NO")
+											, rset.getString("PLACE_NAME") 
+											, rset.getString("FILE_PATH")
+											, rset.getString("CHANGE_NAME"));
+					
+					mlist.add(sm);
+					
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(stmt);
+			}
+			return mlist;
+		}
+
+
+		
 }
 
 
