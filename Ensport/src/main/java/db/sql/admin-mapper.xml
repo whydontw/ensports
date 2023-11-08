@@ -84,4 +84,39 @@
 		FROM QA
 		JOIN MEMBER USING(USER_NO)
 	</entry>
+	<entry key="selectOneQA">
+		SELECT QA_NO
+			  ,USER_NICKNAME
+			  ,QA_TITLE
+			  ,QA_CONTENT
+			  ,CREATE_DATE
+		FROM QA
+		JOIN MEMBER USING(USER_NO)
+		WHERE QA_NO = ?
+	</entry>
+	<entry key="insertQAComment">
+		INSERT INTO QA_COMMENT
+		VALUES(?,?,?,SYSDATE)
+	</entry>
+	<entry key="selectOneQAComment">
+		SELECT QA_ANSWER_NO
+			  ,QA_ANSWER
+			  ,CREATE_DATE
+		FROM QA_COMMENT
+		WHERE QA_ANSWER_NO = ?
+		
+	</entry>
+	<entry key="qaCommentUpdate">
+		UPDATE QA_COMMENT
+		SET QA_ANSWER = ?
+		    ,CREATE_DATE = SYSDATE
+		WHERE QA_ANSWER_NO = ?
+		
+	</entry>
+	<entry key="qaCommentDelete">
+		DELETE FROM QA_COMMENT
+		WHERE QA_ANSWER_NO = ?
+	</entry>
+	
+	
 </properties>

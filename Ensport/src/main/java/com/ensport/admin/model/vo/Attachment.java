@@ -17,12 +17,6 @@ public class Attachment {
 		super();
 	}
 
-	
-
-
-
-
-
 	public Attachment(int atNo, int boardNo, String originName, String changeName, Date uploadDate, String filePath,
 			int fileLevel, int fileType) {
 		super();
@@ -35,12 +29,6 @@ public class Attachment {
 		this.fileLevel = fileLevel;
 		this.fileType = fileType;
 	}
-
-
-
-
-
-
 
 	public int getFileType() {
 		return fileType;

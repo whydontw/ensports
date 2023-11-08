@@ -13,6 +13,7 @@ import java.util.Properties;
 import com.ensport.admin.model.vo.Attachment;
 import com.ensport.admin.model.vo.Place;
 import com.ensport.admin.model.vo.QA;
+import com.ensport.admin.model.vo.QAComment;
 import com.ensport.common.JDBCTemplate;
 
 public class AdminDao {
@@ -194,6 +195,151 @@ public class AdminDao {
 			JDBCTemplate.close(stmt);
 		}
 		return list;
+	}
+
+
+	public QA selectOneQA(Connection conn, int qa_no) {
+
+		QA q = null;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectOneQA");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, qa_no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				q = new QA(rset.getInt("QA_NO")
+						,rset.getString("USER_NICKNAME")
+						,rset.getString("QA_TITLE")
+						,rset.getString("QA_CONTENT")
+						,rset.getDate("CREATE_DATE"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return q;
+	}
+
+
+	public int insertQAComment(QAComment qac, Connection conn) {
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertQAComment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, qac.getQa_answer_no());
+			pstmt.setInt(2, qac.getUser_no());
+			pstmt.setString(3, qac.getQa_answer());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+
+
+	public QAComment selectOneQAComment(Connection conn, int qa_answer_no) {
+
+		QAComment qac = null;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectOneQAComment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, qa_answer_no);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				qac = new QAComment(rset.getInt("QA_ANSWER_NO")
+									,rset.getString("QA_ANSWER")
+									,rset.getDate("CREATE_DATE"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return qac;
+	}
+
+
+	public int qaCommentUpdate(int qa_answer_no, String qa_answer, Connection conn) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("qaCommentUpdate");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, qa_answer);
+			pstmt.setInt(2, qa_answer_no);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+
+	public int qaCommentDelete(int qa_answer_no, Connection conn) {
+
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("qaCommentDelete");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, qa_answer_no);
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 
 

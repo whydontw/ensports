@@ -23,11 +23,6 @@ public class Place {
 		super();
 	}
 
-	
-	
-
-
-
 	public Place(String placeName, String place_sub_info, String place_size, String parking_yn, int max_capacity,
 			String categoryNo, String localName) {
 		super();

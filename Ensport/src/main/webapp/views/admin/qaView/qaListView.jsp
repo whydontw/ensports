@@ -48,16 +48,16 @@
                                     <thead>
                                         <tr>
                                             <th>문의사항 번호</th>
-                                            <th>사용자 아이디</th>
                                             <th>문의사항 제목</th>
+                                            <th>사용자</th>
                                             <th>작성일</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                        <tr>
                                             <th>문의사항 번호</th>
-                                            <th>사용자 아이디</th>
                                             <th>문의사항 제목</th>
+                                            <th>사용자</th>
                                             <th>작성일</th>
                                         </tr>
                                     </tfoot>
@@ -72,8 +72,8 @@
                                             <c:forEach items="${list}" var="q">
                                                 <tr>
                                                     <td>${q.qa_no }</td>
-                                                    <td><a href="qaDetail.qa">${q.user_nickname}</a></td>
-                                                    <td>${q.qa_title }</td>
+                                                    <td><a href="qaDetail.qa?qno=${q.qa_no }">${q.qa_title }</a></td>
+                                                    <td>${q.user_nickname}</td>
                                                     <td>${q.create_date }</td>
                                                 </tr>
                                             </c:forEach>

@@ -1,23 +1,26 @@
 package com.ensport.admin.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ensport.admin.model.service.AdminService;
+
 /**
- * Servlet implementation class PlaceDetailController
+ * Servlet implementation class QACommentDeleteController
  */
-@WebServlet("/placeDetail.pl")
-public class PlaceDetailController extends HttpServlet {
+@WebServlet("/qaCommentDelete.qa")
+public class QACommentDeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PlaceDetailController() {
+    public QACommentDeleteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,8 +30,12 @@ public class PlaceDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		request.getRequestDispatcher("views/admin/placeManageView/placeDetailView.jsp").forward(request, response);
+		int qa_answer_no = Integer.parseInt(request.getParameter("qa_answer_no"));
 		
+		System.out.println("확인 :"+qa_answer_no);
+		int result = new AdminService().qaCommentDelete(qa_answer_no);
+		
+		response.getWriter().print(result);
 	}
 
 	/**
