@@ -165,7 +165,8 @@ public class BoardDao {
 						     ,rset.getString("USER_NICKNAME")
 						     ,rset.getString("BOARD_TITLE")
 						     ,rset.getString("BOARD_CONTENT")
-						     ,rset.getDate("CREATE_DATE"));
+						     ,rset.getDate("CREATE_DATE")
+						     ,rset.getInt("BOARD_COUNT"));
 			}
 			
 		} catch (SQLException e) {

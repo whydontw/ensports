@@ -53,7 +53,7 @@ public class boardListController extends HttpServlet {
 				//페이지 하단에 보여질 페이징바 개수
 				pageLimit = 10;
 				//한 페이지에 보여질 게시글 개수
-				boardLimit = 10;
+				boardLimit = 15;
 				
 				/*
 				 * maxPage : 가장 마지막 페이지가 몇번인지 (총 페이지수)

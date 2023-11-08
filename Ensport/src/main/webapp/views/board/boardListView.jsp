@@ -71,8 +71,21 @@
 <body>
 	
 	<%@ include file="../common/menubar.jsp" %>
-	
-	<br><br><br><br><br><br>
+	    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>회원가입</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="${contextPath }">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="${contextPath }/memberInsert.me">회원가입</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+	<br><br><br><br>
 	
 	<div id="h1">자유게시판</div>
 	
@@ -141,7 +154,7 @@
         </div>
 		
 		<c:if test="${loginUser != null }">
-				<a href="boardEnroll.bo" class="btn btn-primary pull-right">글작성</a>
+				<a class="primary-btn pull-right" href="boardEnroll.bo" style="border-radius: 0">글작성</a>
 		</c:if>
 	</div>
 	
@@ -155,10 +168,9 @@
 	
 	</script>
 	
-	<br><br><br><br><br><br><br><br>
+	<br><br><br><br><br>	
 	
-	
-
+	<%@ include file="../common/footer.jsp" %>
 
 </body>
 </html>
