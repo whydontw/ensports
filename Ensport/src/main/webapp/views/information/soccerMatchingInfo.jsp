@@ -56,60 +56,56 @@
 
 	<!--================Single Product Area =================-->
 	<div class="product_image_area">
-		<div class="container">
-			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="s_Product_carousel">
-						<div class="single-prd-item">
-							<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/category/s-p1.jpg" alt="">
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<h3>11월 17일 서울 경기장</h3>
-						<ul class="list">
-							<li><a class="active" href="#"><span>Category</span> : 축구</a></li>
-							
-						</ul>
-						<p>축구경기입니다</p>
-						
-						
-						<br>
-						<div class="single-element-widget mt-30">
-							<div class="default-select" id="default-select"">
-								<select>
-									<option value="1">7:00~9:00</option>
-									<option value="2">9:30~11:30</option>
-									<option value="3">12:00~14:00</option>
-									<option value="4">14:30~16:30</option>
-									<option value="5">17:00~19:00</option>
-									<option value="5">19:30~21:30</option>
-									<option value="5">22:00~24:00</option>
-								</select>
-							</div>
-						</div>
-						<br>
-							<div class="datasheet p-3 mb-2  text-white" style="background-color: #e8f0f2;">
-							<a href="" id="participantCount"
-						class="text-black" style="color: black;">참여인원: </a>
-						</div>
-						<br><br>
-						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">예약하기</a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row s_product_inner">
+            <div class="col-lg-6">
+                <div class="s_Product_carousel">
+                    <c:forEach var="at"  items="${slist}" >
+                        <div class="single-prd-item" width="250" height="150">
+                            <img class="img-fluid" src="${contextPath }${at.filePath}${at.changeName}" >
+                        </div>
+                       
+                        
+                    </c:forEach>
+                </div>
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    <h3>${p.placeName }</h3>
+                    <ul class="list">
+                        <li><a class="active" href="#"><span>Category</span> : ${p.categoryName }</a></li>
+                    </ul>
+                    <p>${p.subInfo }</p>
+
+                    <br>
+                    <div class="single-element-widget mt-30">
+                        <div class="default-select" id="default-select">
+                            <select>
+                                <option value="1">7:00~9:00</option>
+                                <option value="2">9:30~11:30</option>
+                                <option value="3">12:00~14:00</option>
+                                <option value="4">14:30~16:30</option>
+                                <option value="5">17:00~19:00</option>
+                                <option value="6">19:30~21:30</option>
+                                <option value="7">22:00~24:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="datasheet p-3 mb-2 text-white" style="background-color: #e8f0f2;">
+                        <a href="" id="participantCount" class="text-black" style="color: black;">참여인원: </a>
+                    </div>
+                    <br><br>
+                    <div class="card_area d-flex align-items-center">
+                        <a class="primary-btn" href="#">예약하기</a>
+                        <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 	<!--================End Single Product Area =================-->
 
 	<!--================Product Description Area =================-->
@@ -130,21 +126,8 @@
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
-						and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
-						Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to
-						London and then Hampton, she eventually married her next door neighbour from Reading, John Cook. He was an
-						officer in the Merchant Navy and after he left the sea in 1956, they bought a pub for a year before John took a
-						job in Southern Rhodesia with a motor company. Beryl bought their young son a box of watercolours, and when
-						showing him how to use it, she decided that she herself quite enjoyed painting. John subsequently bought her a
-						child’s painting set for her birthday and it was with this that she produced her first significant work, a
-						half-length portrait of a dark-skinned lady with a vacant expression and large drooping breasts. It was aptly
-						named ‘Hangover’ by Beryl’s husband and</p>
-					<p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
-						more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
-						the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
-						more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
-						streamlined plan of cooking that is more efficient for one person creating less</p>
+					<p>${p.subInfo }</p>
+					
 				</div>
 				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 					<div class="table-responsive">
@@ -152,68 +135,61 @@
 							<tbody>
 								<tr>
 									<td>
-										<h5>Width</h5>
+										<h5>size</h5>
 									</td>
 									<td>
-										<h5>128mm</h5>
+										<h5>${p.placeSize }</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>Height</h5>
+										<h5>parking</h5>
 									</td>
 									<td>
-										<h5>508mm</h5>
+										<h5>${p.parkingYn }</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>Depth</h5>
+										<h5>Date</h5>
 									</td>
 									<td>
-										<h5>85mm</h5>
+										<h5>${p.placeDate }</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>Weight</h5>
+										<h5>start time</h5>
 									</td>
 									<td>
-										<h5>52gm</h5>
+										<h5>${p.startTime }</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>Quality checking</h5>
+										<h5>end time</h5>
 									</td>
 									<td>
-										<h5>yes</h5>
+										<h5>${p.endTime }</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>Freshness Duration</h5>
+										<h5>mac capacity</h5>
 									</td>
 									<td>
-										<h5>03days</h5>
+										<h5>${p.maxCapacity }</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>When packeting</h5>
+										<h5>category</h5>
 									</td>
 									<td>
-										<h5>Without touch of hand</h5>
+										<h5>${p.categoryName }</h5>
 									</td>
 								</tr>
-								<tr>
-									<td>
-										<h5>Each Box contains</h5>
-									</td>
-									<td>
-										<h5>60pcs</h5>
-									</td>
-								</tr>
+								
 							</tbody>
 						</table>
 					</div>
@@ -328,7 +304,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
-
+	
 </body>
 
 </html>

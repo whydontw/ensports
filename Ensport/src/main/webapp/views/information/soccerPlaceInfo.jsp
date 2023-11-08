@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@page import="com.ensport.place.*" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -72,8 +72,11 @@
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
+
 					<div class="s_product_text" >
-						<h3>${ssp.placeName}</h3>
+						<h3>[ ${placeDate} ] ${ssp.placeName}</h3>
+
+
 						<ul class="list">
 							<li><a class="active" href="#"><span>Category</span>${ssp.categoryName }</a></li>
 							
@@ -81,18 +84,15 @@
 						<p>${ssp.subInfo }</p>
 												
 						<br>
-							<input type="date" name="dateIn">
+						
 							<br>
 						<div class="single-element-widget mt-30">
 							<div class="default-select" id="default-select"">
 								<select>
-									<option value="1">7:00~9:00</option>
-									<option value="2">9:30~11:30</option>
-									<option value="3">12:00~14:00</option>
-									<option value="4">14:30~16:30</option>
-									<option value="5">17:00~19:00</option>
-									<option value="5">19:30~21:30</option>
-									<option value="5">22:00~24:00</option>
+									<option value="">시간 선택</option>
+									<option value="1">13:00~15:00</option>
+									<option value="2">16:00~18:00</option>
+									<option value="3">19:00~21:00</option>									
 								</select>
 							</div>
 						</div>
@@ -127,6 +127,7 @@
 			</ul>
 			<div class="tab-content" id="myTabContent">
 				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+
 					<p>${ssp.subInfo }</p>
 					
 				</div>

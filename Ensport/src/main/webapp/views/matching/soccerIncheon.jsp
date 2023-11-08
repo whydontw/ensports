@@ -57,9 +57,12 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToSeoulPage()"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
-						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
-						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToIncheonPage()"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/sc.seoul?localName=서울"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+						
+
+						<li class="main-nav-list"><a href="${contextPath }/sc.gyeonggi?localName=경기"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
+
+						<li class="main-nav-list"><a href="${contextPath }/sc.incheon?localName=인천"><span class="lnr lnr-arrow-right"></span><b>인천</b><span class="number">(53)</span></a></li>
 						
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span

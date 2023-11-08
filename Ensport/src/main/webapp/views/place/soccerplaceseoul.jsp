@@ -123,14 +123,29 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting">
-						<select>
-							<option value="1">날짜 선택</option>
-							<option value="1">11월 16일</option>
-							<option value="1">11월 17일</option>
-							<option value="1">11월 18일</option>
-						</select>
+							<label for="date">
+							 	 <input type="date" id="date" max="2023-11-18"  min="2023-11-16" name="soccerChoiceDate"
+							 	 	value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) %>" />
+							</label>
+						
 					</div>
+					
+					<script>
+						//날짜를 선택했을때
+// 						$(function(){
+// 							$("#date").click(function(){
+// 								console.log("=========================");
+// 								var date = $("#date").val();
+// 								console.log(date);
+// 								console.log("=========================");								
+// 							})							
+// 						});
+					
+					</script>	
+									
 					<div class="sorting mr-auto">
+					
+					
 					<!-- 개수 섹션 -->
 					</div>
 					<div class="pagination">
@@ -176,7 +191,9 @@
 					$(function(){
 						$(".single-product").click(function(){
 							
-							location.href="detail.bo?sno="+$(this).children().eq(0).val();
+							let date = $("#date").val();
+							
+							location.href="detail.bo?sno="+$(this).children().eq(0).val() + "&date=" + date;
 						});
 					});
 				

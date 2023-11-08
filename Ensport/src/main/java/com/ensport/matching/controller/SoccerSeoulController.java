@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+import com.ensport.matching.model.dao.SoccerMatchingDao;
 import com.ensport.matching.model.service.SoccerMatchingService;
 import com.ensport.matching.model.vo.SoccerMatching;
 
@@ -32,11 +34,15 @@ public class SoccerSeoulController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<SoccerMatching> list = new SoccerMatchingService().selectSoccerMatchingList();
+		
+		String localName = request.getParameter("localName");
+		
+		ArrayList<SoccerMatching> list = new SoccerMatchingService().selectSoccerMatchingList(localName);
 		
 		
 		
 		request.setAttribute("slist", list);
+		
 		request.getRequestDispatcher("views/matching/soccerSeoul.jsp").forward(request, response);
 	}
 

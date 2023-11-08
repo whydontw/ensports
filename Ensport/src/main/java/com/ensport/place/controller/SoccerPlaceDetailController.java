@@ -1,7 +1,9 @@
 package com.ensport.place.controller;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ensport.admin.model.vo.Attachment;
 import com.ensport.place.model.service.SoccerPlaceService;
+import com.ensport.place.model.vo.PlaceTime;
 import com.ensport.place.model.vo.SoccerPlace;
 
 /**
@@ -41,10 +44,12 @@ public class SoccerPlaceDetailController extends HttpServlet {
 		//soccer 디테일
 		//==================================
 		
+		//시간선택 값 보내주기 
+		String placeDate = request.getParameter("date");
+		
 		//경기장 번호 으로 게시글 정보와 첨부파일 정보 조회
 		int placeNo = Integer.parseInt(request.getParameter("sno"));
 		
-				
 		//서비스 선언
 		SoccerPlaceService sps = new SoccerPlaceService();
 				
@@ -59,8 +64,10 @@ public class SoccerPlaceDetailController extends HttpServlet {
 			SoccerPlace ssp = sps.selectSoccerPlace(placeNo);			
 			ArrayList<Attachment> list = sps.selectSoccerAttachmentlist(placeNo);
 			
+			request.setAttribute("placeDate", placeDate);
 			request.setAttribute("ssp", ssp);
 			request.setAttribute("list", list);
+			
 			
 			request.getRequestDispatcher("views/information/soccerPlaceInfo.jsp").forward(request, response);
 		}else {

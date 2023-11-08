@@ -7,12 +7,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
 
 import com.ensport.admin.model.vo.Attachment;
 import com.ensport.common.JDBCTemplate;
 import com.ensport.place.model.dao.SoccerPlaceDao;
+import com.ensport.place.model.vo.PlaceTime;
 import com.ensport.place.model.vo.SoccerPlace;
 
 public class SoccerPlaceDao {
@@ -172,6 +174,41 @@ public class SoccerPlaceDao {
 		}
 		
 		return ssp;
+	}
+
+	//경기장 전체조회
+	public ArrayList<SoccerPlace> selectAllSoccerPlaceList(Connection conn) {
+
+		ResultSet rset =  null;
+		Statement stmt = null;
+		
+		ArrayList<SoccerPlace> list = new ArrayList<>();
+		SoccerPlace sp = null;
+		
+		String sql = prop.getProperty("selectAllSoccerPlaceList");
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				sp = new SoccerPlace(rset.getInt("PLACE_NO")
+						, rset.getString("PLACE_NAME")
+						, rset.getString("FILE_PATH")
+						, rset.getString("CHANGE_NAME"));
+
+				list.add(sp);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		
+		return list;
 	}
 
 	

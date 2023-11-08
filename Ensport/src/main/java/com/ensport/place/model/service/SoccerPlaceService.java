@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.ensport.admin.model.vo.Attachment;
 import com.ensport.common.JDBCTemplate;
 import com.ensport.place.model.dao.SoccerPlaceDao;
+import com.ensport.place.model.vo.PlaceTime;
 import com.ensport.place.model.vo.SoccerPlace;
 
 public class SoccerPlaceService {
@@ -63,6 +64,18 @@ public class SoccerPlaceService {
 		
 		return ssp;
 
+	}
+
+	//경기장 전체 조회
+	public ArrayList<SoccerPlace> selectAllSoccerPlaceList() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<SoccerPlace> list = new SoccerPlaceDao().selectAllSoccerPlaceList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
 	}
 
 
