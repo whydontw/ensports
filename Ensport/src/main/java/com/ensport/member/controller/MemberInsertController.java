@@ -70,8 +70,6 @@ public class MemberInsertController extends HttpServlet {
 		}
 		
 		
-		System.out.println("닉네임:" + userNickname);
-		
 		//별명 랜덤 생성
 		if(userNickname == null || userNickname == "") {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");

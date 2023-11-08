@@ -1,5 +1,6 @@
 package com.ensport.matching.model.vo;
 
+import java.sql.Connection;
 import java.util.Date;
 
 public class SoccerMatching {
@@ -29,6 +30,31 @@ public class SoccerMatching {
 	
 	
 	
+
+
+
+
+
+	public SoccerMatching(int placeNo, String placeName, String filePath, String changeName) {
+		super();
+		this.placeNo = placeNo;
+		this.placeName = placeName;
+		this.filePath = filePath;
+		this.changeName = changeName;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public SoccerMatching(String placeName, String filePath, String changeName) {
 		super();
 		this.placeName = placeName;
@@ -210,6 +236,14 @@ public class SoccerMatching {
 				+ ", placeStartTime=" + placeStartTime + ", placeEndTime=" + placeEndTime + ", maxCapacity="
 				+ maxCapacity + ", categoryNo=" + categoryNo + ", localName=" + localName + "]";
 	}
+
+
+
+
+
+
+
+
 	
 	
 	

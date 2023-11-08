@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-	<entry key="selectBoardList">
-		SELECT BOARD_NO,USER_NICKNAME,BOARD_TITLE,CREATE_DATE,BOARD_COUNT
-		FROM BOARD B
-		JOIN MEMBER M USING(USER_NO)
-		WHERE B.STATUS = 'Y'
-		ORDER BY BOARD_NO DESC
-	</entry>
-	
+
 	<entry key="insertBoard">
 		INSERT INTO BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT)
 				VALUES(SEQ_BNO.NEXTVAL
@@ -18,17 +11,70 @@
 	</entry>
 	
 	<entry key="insertAttachment">
-		INSERT INTO ATTACHMENT(FILE_NO
-							  ,REF_BNO
+		INSERT INTO ATTACHMENT(AT_NO
+							  ,REF_NO
 							  ,ORIGIN_NAME
 							  ,CHANGE_NAME
-							  ,FILE_PATH)
+							  ,FILE_PATH
+							  ,FILE_TYPE)
                VALUES(SEQ_FNO.NEXTVAL
                		 ,SEQ_BNO.CURRVAL
                		 ,?
                		 ,?
-               		 ,?)
+               		 ,?
+               		 ,1)
 	</entry>
+	
+	<entry key="increaseCount">
+		UPDATE BOARD 
+		SET BOARD_COUNT = BOARD_COUNT + 1
+		WHERE BOARD_NO = ?
+		AND STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectBoard">
+		SELECT BOARD_NO
+		      ,USER_NICKNAME
+		      ,BOARD_TITLE
+		      ,BOARD_CONTENT
+		      ,CREATE_DATE
+		      ,BOARD_COUNT
+		FROM BOARD B
+		JOIN MEMBER M USING (USER_NO)
+		WHERE BOARD_NO = ?
+		AND B.STATUS = 'Y'
+	</entry>
+	
+	<entry key="selectAttachment">
+		SELECT AT_NO
+			  ,ORIGIN_NAME
+			  ,CHANGE_NAME
+			  ,FILE_PATH
+    	FROM ATTACHMENT
+		WHERE REF_NO = ? 
+	</entry>
+	
+	<entry key="selectBoardList">
+		SELECT *
+		FROM (SELECT ROWNUM RNUM,A.*
+		     		FROM (SELECT BOARD_NO,
+		                    USER_NICKNAME,
+		                    BOARD_TITLE,
+		                    CREATE_DATE,
+		                    BOARD_COUNT
+		                    FROM BOARD B
+		                    JOIN MEMBER N USING (USER_NO)
+		                    WHERE B.STATUS = 'Y'
+		                    ORDER BY BOARD_NO DESC) A)
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="listCount">
+		SELECT COUNT(*) COUNT
+		FROM BOARD
+		WHERE STATUS = 'Y'
+	</entry>
+	
 	
 	
 	

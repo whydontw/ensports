@@ -1,11 +1,16 @@
 package com.ensport.matching.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.ensport.matching.model.service.SoccerMatchingService;
+import com.ensport.matching.model.vo.SoccerMatching;
 
 /**
  * Servlet implementation class SoccerMatchingcontroller
@@ -27,6 +32,11 @@ public class SoccerMatchingController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		ArrayList<SoccerMatching> list = new SoccerMatchingService().selectAllSoccerMatchingList();
+		
+		
+		
+		request.setAttribute("alist", list);
 		request.getRequestDispatcher("views/matching/soccerMatching.jsp").forward(request, response);
 	}
 

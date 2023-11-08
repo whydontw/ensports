@@ -71,8 +71,21 @@
 <body>
 	
 	<%@ include file="../common/menubar.jsp" %>
-	
-	<br><br><br><br><br><br>
+	    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>회원가입</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="${contextPath }">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="${contextPath }/memberInsert.me">회원가입</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
+	<br><br><br><br>
 	
 	<div id="h1">자유게시판</div>
 	
@@ -101,7 +114,7 @@
 							<tr>
 								<td>${b.boardNo }</td>
 								<td>${b.userNo }</td>
-								<td><a href="boardDetail.bo?bno="${b.boardNo } id="post">${b.boardTitle }</a></td>
+								<td><a href="${contextPath }/boardDetail.bo?bno=${b.boardNo }" id="post">${b.boardTitle }</a></td>
 								<td>${b.createDate }</td>
 								<td>${b.boardCount }</td>
 							</tr>	
@@ -113,26 +126,36 @@
 		
 		<hr>
 		
-		<c:if test="${loginUser != null }">
-				<a href="boardEnroll.bo" class="btn btn-primary pull-right">글작성</a>
-		</c:if>
 		
 		<div class="text-center">
 			<ul class="pagination">
-				<li id="page"><a href="#">이전</a></li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">7</a></li>
-				<li><a href="#">8</a></li>
-				<li><a href="#">9</a></li>
-				<li><a href="#">10</a></li>
-				<li id="page"><a href="#">다음</a></li>
-			</ul>
-		</div>
+		  	  <c:choose>
+		  	  	<c:when test="${pi.currentPage eq 1 }">
+		  	  		<li id="page"><a><button disabled>이전</button></a></li>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<li id="page"><a href="boardList.bo?currentPage=${pi.currentPage-1}">이전</a></li>
+			  	</c:otherwise>	
+			  </c:choose>
+			  
+			  <c:forEach var="i" begin="${pi.startPage }" end="${pi.endPage }">
+			  		<li><a href="boardList.bo?currentPage=${i}">${i}</a></li>
+			  </c:forEach>
+			  
+			  <c:choose>
+			  	<c:when test="${pi.currentPage eq pi.maxPage}">
+			  		<li id="page"><a><button disabled>다음</button></a></li>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<li id="page"><a href="boardList.bo?currentPage=${pi.currentPage+1}">다음</a></li>
+			  	</c:otherwise>
+		      </c:choose>
+			</ul>      
+        </div>
+		
+		<c:if test="${loginUser != null }">
+				<a class="primary-btn pull-right" href="boardEnroll.bo" style="border-radius: 0">글작성</a>
+		</c:if>
 	</div>
 	
 	<script>
@@ -145,9 +168,9 @@
 	
 	</script>
 	
+	<br><br><br><br><br>	
 	
-	
-
+	<%@ include file="../common/footer.jsp" %>
 
 </body>
 </html>

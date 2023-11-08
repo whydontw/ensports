@@ -3,8 +3,25 @@
 <!DOCTYPE html>
 <html>
 
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="CodePixar">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>My Page</title>
+
 <style>
-.pdt-7{ padding-top : 7px; }
+	.pdt-7{ padding-top : 7px; }
+	.pdb-7{ padding-bottom : 7px; }
 </style>
 
 
@@ -20,7 +37,7 @@
                     <h1>마이 페이지</h1>
                     <nav class="d-flex align-items-center">
                         <a href="${contextPath }">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="${contextPath }/myPage.do">마이 페이지</a>
+                        <a href="${contextPath }/myPage.me">마이 페이지</a>
                     </nav>
                 </div>
             </div>
@@ -33,96 +50,16 @@
 	<section class="blog_area single-post-area section_gap">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget search_widget align-self-center">
-                            <img class="author_img rounded-top" src="${contextPath}/resources/img/elements/baseball_icon1.png" alt="">
-                            <span class="mx-auto"><b>Lv 1. 슛돌이</b></span>
-                            <div class="br"></div>
-                        </aside>
-                        <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="${contextPath}/resources/img/blog/author.png" alt="">
-                            <h4>${loginUser.userNickname }</h4>
-                            <div class="social_icon">
-	                            <p>${loginUser.email}</p>
-                                <!-- <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-github"></i></a>
-                                <a href="#"><i class="fa fa-behance"></i></a> -->
-                            </div>
-                            <div class="br"></div>
-                        </aside>
-                        <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">내가 쓴 글</h4>
-                            <ul class="list cat-list">
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>게시글</p>
-                                        <p>37</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>댓글</p>
-                                        <p>24</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>리뷰</p>
-                                        <p>59</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>문의사항</p>
-                                        <p>29</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="br"></div>
-                        </aside>
-
-                        <!-- 내 경기 정보 -->
-                        <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">나의 예약</h4>
-                            <ul class="list cat-list">
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>예약 내역</p>
-                                        <p>2</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <%-- 이건 후순위 구현하는 것으로 --%>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>나의 지난 경기</p>
-                                        <p>15</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </aside>
-
-                        <!-- 내 경기 정보 -->
-                        <aside class="single_sidebar_widget post_category_widget">
-                            <h4 class="widget_title">나의 캐시</h4>
-                            <ul class="list cat-list">
-                                <li>
-                                    <a href="#" class="d-flex justify-content-between">
-                                        <p>캐시 충전하기 (후순위)</p>
-                                        <p>￦</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </aside>
-                    </div>
-                </div>
+                
+                <!-- 마이 페이지 메뉴 -->
+                <%@ include file="myPage_menu.jsp" %>
 				
-				<!-- ### 내 정보 수정하기 ### -->
-                <div class="col-xl-8 posts-list">
+				
+				<!-- ====================### 내 정보 수정하기 ###======================== -->
+                <div class="col-lg-8 posts-list">
                     <div class="row">
-                        <div class="col-lg-12">
-                            <h3>내 정보 수정</h3>
+                        <div class="col-md-12">
+                            <h3>MY INFORMATION</h3>
                             <form class="row contact_form" id="myInformationForm" action="${contextPath}/memberUpdate.me" method="post" novalidate="novalidate" style="margin-top: 40px;">
 								 <input type="hidden" name="userNo" value="${loginUser.userNo}">
                                 
@@ -254,21 +191,21 @@
     							<!-- 새로운 비밀번호 -->
     							<span class="col-md-4 pdt-7">새로운 비밀번호</span>
                                 <div class="col-md-8 form-group">
-                                    <input type="password" class="form-control" id="newUserPassword" name="newUserPassword" placeholder="새로운 비밀번호 비밀번호 (6~15자리 영문 및 숫자 조합)">
+                                    <input type="password" class="form-control" id="newUserPassword" name="newUserPassword" placeholder="새로운 비밀번호 (4~15자리 영문 및 숫자 조합)">
                                     <span class="placeholder"></span>
                                 </div>
                                 
                                 <!-- 새로운 비밀번호 확인 -->
     							<span class="col-md-4 pdt-7">새로운 비밀번호 확인</span>
                                 <div class="col-md-8 form-group">
-                                    <input type="password" class="form-control" id="newUserPasswordChk" name="newUserPasswordChk" placeholder="새로운 비밀번호 확인 (6~15자리 영문 및 숫자 조합)">
+                                    <input type="password" class="form-control" id="newUserPasswordChk" name="newUserPasswordChk" placeholder="새로운 비밀번호 확인 (4~15자리 영문 및 숫자 조합)">
                                     <span class="placeholder"></span>
                                 </div>
     
                                 <div class="col-md-12 form-group p_star">
                                     <div class="row contact_form">
                                         <div class="col-md-12 text-center mt-50">
-                                            <button type="submit" class="primary-btn" onclick="chagePwdDone();">비밀번호 변경하기</button>
+                                            <button type="submit" class="primary-btn" onclick="return changePwdDone();">비밀번호 변경하기</button>
                                         </div>
                                     </div>
                                 </div>
@@ -279,138 +216,247 @@
 	                <div class="blog_post">
 	                   <div class="blog_details text-right">
 	                       <a href="#" class="white_bg_btn" id="changePwdbtn" onclick="changePwdForm();">비밀번호 변경</a>
-	                       <a href="#" class="white_bg_btn" onclick="memberDelete();">회원 탈퇴하기</a>
+	                       <a href="#" class="white_bg_btn" data-toggle="modal" data-target="#memberDelete">회원 탈퇴하기</a>
 	                   </div>
 	                </div>
                 </div>
+                <!-- ====================### 내 정보 수정하기 ###======================== -->
+                
             </div>
         </div>
     </section>
     <!--================Blog Area =================-->
 	
-    
-    
-    
-    
-    <script type="text/javascript">
-    
-    
-    	//성별 선택하기
-	    document.addEventListener('DOMContentLoaded', function() {
-	        var gender = "${loginUser.gender}";
-	        var selectElement = document.getElementById('gender');
 	
-	        if (gender === 'M') {
-	          // 'M'를 선택
-	          for (var i = 0; i < selectElement.options.length; i++) {
-	            if (selectElement.options[i].value === 'M') {
-	              selectElement.options[i].selected = true;
-	              break;
-	            }
-	          }
-	        } else if (gender === 'F') {
-	          // 'F'를 선택
-	          for (var i = 0; i < selectElement.options.length; i++) {
-	            if (selectElement.options[i].value === 'F') {
-	              selectElement.options[i].selected = true;
-	              break;
-	            }
-	          }
-	        }
-	      });
-	    
-	    
-    	
-	    //선호종목 체크박스
-	    document.addEventListener('DOMContentLoaded', function() {
-	        var prefers = "${loginUser.prefer}";
-	        var inputElements = document.querySelectorAll('input[name="prefer"]');
+	
+	
+	
+	
+	<!--=============== #### 회원탈퇴 모달 #### ===============-->4
+	<!-- The Modal -->
+	<div class="modal fade" id="memberDelete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title text-center" id="staticBackdropLabel"><b>ENSPORT 회원 탈퇴</b></h4>
+	      </div>
+	      <div class="modal-body">
+			<div class="col-md-12">
+				<div class="text-left pdb-7"><h4><b>환불 규정 동의</b></h4></div>
+				<blockquote class="generic-blockquote" style="overflow: scroll; overflow-x: hidden; height: 150px;">
+					KH정보교육원 회원 약관 제 1 장 총칙 제 1 조 목적 이 약관은 KH정보교육원이 제공하는 서비스인
+					http://www.iei.or.kr의 이용조건 및 절차에 관한 사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+					제 2 조 약관의 효력과 변경 1) 약관은 이용자에게 공시함으로써 효력을 발생합니다. 2) KH정보교육원은 교육원
+					사정상 변경의 경우와 영업상 중요사유가 있을 때 약관을 변경할 수 있으며, 변경된 약관은 전항과 같은 방법으로 효력을
+					발생합니다. 제 3 조 약관 외 준칙 이 약관에 명시되지 않은 사항이 관계법령에 규정되어 있을 경우에는 그 규정에
+					따릅니다.KH정보교육원 회원 약관 제 1 장 총칙 제 1 조 목적 이 약관은 KH정보교육원이 제공하는 서비스인
+					http://www.iei.or.kr의 이용조건 및 절차에 관한 사항과 기타 필요한 사항을 규정함을 목적으로 합니다.
+					제 2 조 약관의 효력과 변경 1) 약관은 이용자에게 공시함으로써 효력을 발생합니다. 2) KH정보교육원은 교육원
+					사정상 변경의 경우와 영업상 중요사유가 있을 때 약관을 변경할 수 있으며, 변경된 약관은 전항과 같은 방법으로 효력을
+					발생합니다. 제 3 조 약관 외 준칙 이 약관에 명시되지 않은 사항이 관계법령에 규정되어 있을 경우에는 그 규정에
+					따릅니다.
+				</blockquote>
+				<div class="col-lg-8 mx-auto">
+					<div class="single-element-widget">
+						<div class="switch-wrap d-flex justify-content-around" style="margin:30px auto">
+							<h5>환불 규정에 동의합니다.</h5>
+							<div class="primary-checkbox">
+								<input type="checkbox" id="cashRefundAgree" name="">
+								<label for="cashRefundAgree"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="col-md-12 form-group">
+				<div class="text-left pdb-7"><h4><b>해당 계정 비밀번호 확인</b></h4></div>
+                <input type="password" class="form-control" id="deletePwdChk" name="deletePwdChk" placeholder="비밀번호 작성하세요">
+                <span class="placeholder"></span>
+            </div>
+		</div>	
+	      <div class="modal-footer">
+			<div class="button-group-area mt-40 text-center">
+				<a href="#" class="genric-btn primary" onclick="memberDeleteDone();">회원 탈퇴하기</a>	<!--  data-dismiss="modal" : alert작동시 modal 닫힘. (삭제) -->
+				<a href="#" class="genric-btn primary close" data-dismiss="modal">닫기</a>
+			</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!--=============== #### 회원탈퇴 모달 #### ===============-->
 
-	        // 순차적으로 요소를 확인하며 처리
-	        inputElements.forEach(function(inputElement) {
-	          var value = inputElement.value;
 
-	          // loginUser.prefer에 현재 value가 포함되어 있는지 확인
-	          if (prefers.includes(value)) {
-	            // 값이 있다면 현재 요소에 checked 속성을 추가
-	            inputElement.checked = true;
-	          }
-	        });
-	      });
-	  	
-	    
-	    
-	    //회원정보 수정하기
-    	function memberUpdate(){
-    		
-    		if(confirm("회원 정보를 수정하시겠습니까?")){
-    			return true;
-    		}else{
-        		return false;
-    		}
-    	}
-    	
-	    
-    	
-    	//회원 비밀번호 창 띄우기
-    	function changePwdForm(){
-    		$("#myInformationForm").hide();
-    		$("#changePwdbtn").hide();
-    		
-    		$("#myChangePwdForm").css("display","");
-    	}
-    	
-    	
-    	//회원 비밀번호 변경
-    	function changePwdDone(){
-    		
-    		
-    		var userPwd = $("#userPassword").val();
-    		var newPwd = $("#newUserPassword").val();
-    		var newPwdChk = $("#newUserPasswordChk").val();
-    		
-    		
+
+
+
+	<script type="text/javascript">
+		//성별 선택하기
+		document.addEventListener('DOMContentLoaded', function() {
+			var gender = "${loginUser.gender}";
+			var selectElement = document.getElementById('gender');
+
+			if (gender === 'M') {
+				// 'M'를 선택
+				for (var i = 0; i < selectElement.options.length; i++) {
+					if (selectElement.options[i].value === 'M') {
+						selectElement.options[i].selected = true;
+						break;
+					}
+				}
+			} else if (gender === 'F') {
+				// 'F'를 선택
+				for (var i = 0; i < selectElement.options.length; i++) {
+					if (selectElement.options[i].value === 'F') {
+						selectElement.options[i].selected = true;
+						break;
+					}
+				}
+			}
+		});
+
+		//선호종목 체크박스
+		document.addEventListener('DOMContentLoaded', function() {
+			var prefers = "${loginUser.prefer}";
+			var inputElements = document
+					.querySelectorAll('input[name="prefer"]');
+
+			// 순차적으로 요소를 확인하며 처리
+			inputElements.forEach(function(inputElement) {
+				var value = inputElement.value;
+
+				// loginUser.prefer에 현재 value가 포함되어 있는지 확인
+				if (prefers.includes(value)) {
+					// 값이 있다면 현재 요소에 checked 속성을 추가
+					inputElement.checked = true;
+				}
+			});
+		});
+
+		//회원정보 수정하기
+		function memberUpdate() {
+
+			var userName = $("#userName").val();
+			var address = $("#address").val();
+			var email = $("#email").val();
+			var gender = $("#gender").val();
+
+			if (confirm("회원 정보를 수정하시겠습니까?")) {
+
+				if (userName == '' || userName == null) {
+					alert('이름을 입력하세요.');
+					return false;
+				}
+				if (address == '' || address == null) {
+					alert('주소를 입력하세요.');
+					return false;
+				}
+				if (email == '' || email == null) {
+					alert('이메일을 입력하세요.');
+					return false;
+				} else {
+
+					var regExp = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+					if (!regExp.test(email)) {
+						alert("이메일 형식이 올바르지 않습니다.");
+						$("#email").focus(); //해당 요소에 포커스
+						return false;
+					}
+
+				}
+
+				if (gender == '' || gender == null) {
+					alert('성별을 입력하세요.');
+					return false;
+				}
+
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		//회원 비밀번호 창 띄우기
+		function changePwdForm() {
+			$("#myInformationForm").hide();
+			$("#changePwdbtn").hide();
+
+			$("#myChangePwdForm").css("display", "");
+			$("#userPassword").focus();
+
+		}
+
+		
+		//회원 비밀번호 변경
+		function changePwdDone() {
+
+			var userPwd = $("#userPassword").val();
+			var newPwd = $("#newUserPassword").val();
+			var newPwdChk = $("#newUserPasswordChk").val();
+
+			console.log(newPwd);
+			console.log(newPwdChk);
+
+			//현재 비밀번호 값이 비어있음
 			if (userPwd == null || userPwd == '') {
 				alert("비밀번호를 입력하세요");
 				return false;
-			}
-			
-			if(newPwd == newPwdChk){
-			
-				alert("비밀번호가 일치하지 않습니다.");
-				return false;
-			
-			}else {
-				
-				var regExp = /^[A-Za-z0-9]{4,15}$/;
+			} else {
 
-				if (!regExp.test(newPwd)) { //비밀번호
+				var regExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,15}$/;
+
+				if (!regExp.test(newPwd)) { //변경 비밀번호가 4~15조합 아닐때
 					alert("비밀번호는 4~15자리 영문 및 숫자 조합이어야 합니다.");
-					$("#userPassword").focus(); //해당 요소에 포커스 된다.
+					$("#newUserPassword").focus(); //해당 요소에 포커스 된다.
 					return false;
 				}
-				
-				if (userPassword != userPasswordChk) {
+
+				//새 비밀번호랑 비밀번호 확인이 불일치할때
+				if (newPwd != newPwdChk) {
 					alert("비밀번호가 일치하지 않습니다.");
-					$("#userPasswordChk").focus();
 					return false;
 				}
 			}
-    	}
-    	
-    	
-	    //회원 탈퇴
-		function memberDelete(){
-		    if (confirm('회원 탈퇴하시겠습니까?')) {
-		        const password = prompt("탈퇴할 회원의 비밀번호를 입력하세요.");
-		        location.href = '${contextPath}/memberDelete.me?userNo=${loginUser.userNo}&password=${loginUser.userPassword}';
-		    }
+
+			if (confirm("비밀번호를 변경하시겠습니까?")) {
+				return true;
+			} else {
+				return false;
+			}
+
+		}
+		
+
+		//회원 탈퇴
+		function memberDeleteDone() {
+			const delPwd = $("#deletePwdChk").val();
+			const userNo = "${loginUser.userNo}";
+			
+			//환불규정 비동의시
+			if (!($("#cashRefundAgree").is(":checked"))) {
+				alert('환불 규정에 동의하세요.');
+				return false;
+			}
+
+			//비밀번호 기입 안했을 시
+			if (delPwd == null || delPwd == '') {
+				alert('비밀번호를 작성하세요.');
+				$("#deletePwdChk").focus();
+				return false;
+			}
+			
+			//회원탈퇴 여부
+			if (confirm('회원 탈퇴하시겠습니까?\n탈퇴시 해당 아이디 및 전화번호로 재가입이 불가합니다.')) { //yes
+				location.href = '${contextPath}/memberDelete.me?userNo='+ userNo +'&password=' + delPwd;
+			}
+
+			return false;
 		}
 	</script>
-	
-	
-	
-	
+
+
+
+
 	<!--================ footer =================-->
     <%@ include file="../common/footer.jsp" %>
     
