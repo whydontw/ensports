@@ -1,4 +1,4 @@
-package com.ensport.matching.controller;
+package com.ensport.main.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,18 +11,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ensport.matching.model.service.SoccerMatchingService;
 import com.ensport.matching.model.vo.SoccerMatching;
+import com.google.gson.Gson;
+
+
 
 /**
- * Servlet implementation class SoccerMatchingcontroller
+ * Servlet implementation class Ajax1controller
  */
-@WebServlet("/list.so")
-public class SoccerMatchingController extends HttpServlet {
+@WebServlet("/ajax1.do")
+public class Ajax1controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SoccerMatchingController() {
+    public Ajax1controller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,13 +34,24 @@ public class SoccerMatchingController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		ArrayList<SoccerMatching> list = new  SoccerMatchingService().selectMostSoccerMatchingList();
 		
-		ArrayList<SoccerMatching> list = new SoccerMatchingService().selectAllSoccerMatchingList();
+		for(SoccerMatching sm : list) {
+			System.out.println(sm);
+		}
+		
+		request.setAttribute("mlist", list);
 		
 		
 		
-		request.setAttribute("alist", list);
-		request.getRequestDispatcher("views/matching/soccerMatching.jsp").forward(request, response);
+        Gson gson = new Gson();
+        String json = gson.toJson(list);
+        
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
+		
 	}
 
 	/**
@@ -49,3 +63,8 @@ public class SoccerMatchingController extends HttpServlet {
 	}
 
 }
+
+
+
+
+

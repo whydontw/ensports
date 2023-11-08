@@ -174,13 +174,8 @@
 						</select>
 					</div>
 					<div class="sorting">
-						<select id="dateSelect"
-							onchange="this.style.color=this.options[this.selectedIndex].style.color;">
-							<option value="" style="display: none;">날짜 선택</option>
-							<option value="1" style="color: black;">11월 16일</option>
-							<option value="2" style="color: black;">11월 17일</option>
-							<option value="3" style="color: black;">11월 18일</option>
-						</select>
+						<label for="date"> <input type="date" id="date"
+							max="2023-11-18" min="2023-11-16" value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) %>">
 					</div>
 				</div>
 				<!-- End Filter Bar -->
@@ -196,11 +191,7 @@
 										src="${contextPath}${item.filePath}${item.changeName}" alt="">
 									<div class="product-details">
 										<h4>${item.placeName}</h4>
-										<div class="datasheet p-3 mb-2  text-white"
-											style="background-color: #e8f0f2;">
-											<a href="" id="participantCount" class="text-black"
-												style="color: black;">참여인원: </a>
-										</div>
+										
 										<div class="prd-bottom">
 											<a href="${contextPath }/detail.so?pno=${item.placeNo}"
 												class="social-info"> <span class="lnr lnr-move"></span>
@@ -344,13 +335,13 @@
 	$(document).ready(function() {
 		
 	    $(".single-product").click(function() {
-	    	
+	    	let date = $("#date").val();
 	        console.log(pno);
 	    	
 	        var pno = $(this).find("input[name=pno]").val();
 	        
 	        
-	        location.href = "detail.so?pno=" + pno;
+	        location.href = "detail.so?pno=" + $(this).children().eq(0).val() + "&date=" + date;
 	    });
 	});
 

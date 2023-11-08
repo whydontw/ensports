@@ -35,6 +35,8 @@ public class SoccerMatchingDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String matchingDate = request.getParameter("date");
+		
 		int placeNo = Integer.parseInt(request.getParameter("pno"));
 		System.out.println("pno번호: "+placeNo);
 		
@@ -48,6 +50,7 @@ public class SoccerMatchingDetailController extends HttpServlet {
 			
 			request.setAttribute("p", p);
 			request.setAttribute("slist", list);
+			request.setAttribute("matchingDate", matchingDate);
 			request.getRequestDispatcher("views/information/soccerMatchingInfo.jsp").forward(request, response);
 			
 		}else {
