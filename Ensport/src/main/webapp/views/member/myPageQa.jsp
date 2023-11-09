@@ -43,11 +43,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h3>MY QNA</h3>
-                            
                         
                             <!-- ===================== QNA ======================= -->
                             
-		                         <c:forEach items="${qList}" var="qList" varStatus="status">
+		                         <c:forEach items="${qList}" var="qList" varStatus="index">
 			                        <div class="comments-area">
 
 		                            	<!-- 내 질문 -->
@@ -62,22 +61,28 @@
 				                                </div>
 				                                <div class="reply-btn">
 			                                    	<c:if test="${empty qList.qaAnswer }">
-			                                    		<h4><b>미답변</b></h4>
+			                                    		
+			                                    		<div class="reply-btn">
+						                                    <a href="#" class="btn-reply text-uppercase" style="pointer-events: none;">미답변</a>
+						                                </div>
+			                                    		
 			                                    	</c:if>
 			                                    	<c:if test="${not empty qList.qaAnswer }">
-			                                    		<h4><b>답변완료</b></h4>
+			                                    		<div class="reply-btn">
+						                                    <a href="#" class="btn-reply text-uppercase" id="checkAdminAnswer" data-toggle="collapse" data-target="#qaAdminAnswer${index.count}">답변보기</a>
+						                                </div>
 			                                    	</c:if>
 				                                </div>
 				                            </div>
 				                        </div>
-				                        
+				                        				                        
 				                        <!-- 관리자 답변 -->
 				                        <div class="comment-list left-padding" >
 				                            <div class="single-comment justify-content-between d-flex">
 				                                <div class="user justify-content-between d-flex" style="display:none">
 				                                	
 				                                	<c:if test="${not empty qList.qaAnswer }">	
-					                                    <div class="desc">
+					                                    <div id="qaAdminAnswer${index.count }" class="collapse desc">
 					                                        <h5><b>▶ 관리자</b></h5>
 					                                  		<p class="comment">${qList.qaAnswer }</p>
 					                                        <p class="date">${qList.qaAnswerDate }</p>
@@ -94,6 +99,7 @@
 								</c:forEach>
 		                    
 	                        <!-- ===================== QNA ======================= -->   
+                            
                             
                             
                                                 

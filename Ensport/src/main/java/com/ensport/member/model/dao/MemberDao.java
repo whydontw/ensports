@@ -62,21 +62,21 @@ public class MemberDao {
 			//조회된 결과는 한 행 또는 없음이므로(userId unique 제약조건) if문으로 조건 확인하기
 			if(rset.next()) {	//조회된 결과가 있다면 회원정보 꺼내오기
 				
-				m = new Member(rset.getInt("USER_NO")
-							, rset.getString("USER_ID")
-							, rset.getString("USER_PASSWORD")
-							, rset.getString("USER_NICKNAME")
-							, rset.getString("USER_NAME")
-							, rset.getString("EMAIL")
-							, rset.getString("PHONE")
-							, rset.getDate("ENROLLDATE")
-							, rset.getString("GENDER")
-							, rset.getString("ADDRESS")
-							, rset.getString("PREFER")
-							, rset.getString("IMAGES")
-							, rset.getString("STATUS")
-							, rset.getString("ADDRESS_DETAIL")
-							);
+				m = new Member();
+				m.setUserNo(rset.getInt("USER_NO"));
+				m.setUserId(rset.getString("USER_ID"));
+				m.setUserPassword(rset.getString("USER_PASSWORD"));
+				m.setUserNickname(rset.getString("USER_NICKNAME"));
+				m.setUserName(rset.getString("USER_NAME"));
+				m.setEmail(rset.getString("EMAIL"));
+				m.setPhone(rset.getString("PHONE"));
+				m.setEnrolldate(rset.getDate("ENROLLDATE"));
+				m.setGender(rset.getString("GENDER"));
+				m.setAddress(rset.getString("ADDRESS"));
+				m.setPrefer(rset.getString("PREFER"));
+				m.setImages(rset.getString("IMAGES"));
+				m.setStatus(rset.getString("STATUS"));
+				m.setAddressDetail(rset.getString("ADDRESS_DETAIL"));
 			}
 			
 		} catch (SQLException e) {
@@ -385,7 +385,6 @@ public class MemberDao {
 	
 	
 	
-	
 	//마이페이지 - Board List
 	public ArrayList<Board> selectMyBoardList(Connection conn, int userNo, PageInfo pi) {
 
@@ -437,12 +436,6 @@ public class MemberDao {
 		} finally {
 			JDBCTemplate.close(rset);
 			JDBCTemplate.close(pstmt);
-		}
-		
-		
-		System.out.println("board list:");
-		for(Board b : bList) {
-			System.out.println(b);
 		}
 
 		return bList;
