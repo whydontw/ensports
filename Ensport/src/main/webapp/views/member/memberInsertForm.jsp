@@ -358,8 +358,14 @@
 				}
 
 				if (phone == null || phone == '') {
-					alert("전화번호를 입력하세요");
+					alert("전화번호를 입력하세요.");
 					$("#phone").focus();
+					return false;
+				}
+
+				if (address == null || address == '') {
+					alert("주소를 입력하세요.");
+					$("#address").focus();
 					return false;
 				}
 				

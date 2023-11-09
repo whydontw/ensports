@@ -39,9 +39,6 @@ public class SoccerSeoulController extends HttpServlet {
 		
 		ArrayList<SoccerMatching> list = new SoccerMatchingService().selectSoccerMatchingList(localName);
 		
-		for(SoccerMatching sm : list) {
-			System.out.println(sm);
-		}
 		
 		
 		request.setAttribute("slist", list);

@@ -26,9 +26,10 @@
 						,PREFER
 						,IMAGES
 						,STATUS
+						,ADDRESS_DETAIL
 						)
 						VALUES(
-						SEQ_MNO.NEXTVAL, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?, ?, null, 'Y')
+						SEQ_MNO.NEXTVAL, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?, ?, null, 'Y', ?)
 	</entry>
 	
 	
@@ -51,12 +52,13 @@
 	<entry key="updateMember">
 	    UPDATE MEMBER SET
 	    USER_NAME = ?
-	    , PHONE =?
-	    , ADDRESS =?
-	    , EMAIL =?
-	    , GENDER = ?
-	    , USER_NICKNAME =?
-	    , PREFER = ?
+    , PHONE =?
+    , ADDRESS = ?
+    , ADDRESS_DETAIL =?
+    , EMAIL =?
+    , GENDER = ?
+    , USER_NICKNAME =?
+    , PREFER = ?
 	    WHERE
 	    USER_ID = ?
 	</entry>

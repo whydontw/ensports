@@ -13,7 +13,7 @@ import com.ensport.reservation.model.vo.Reservation;
 public class ReservationService {
 
 	
-	//마이페이지 내 Qa 개수 조회 메소드
+	//마이페이지 내 Reservation 개수 조회 메소드
 	public int reservationListCount(int userNo) {
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -26,7 +26,7 @@ public class ReservationService {
 	}
 	
 	
-	//마이페이지 내 Qa 불러오기
+	//마이페이지 내 Reservation 불러오기
 	public ArrayList<Reservation> selectMyReservationList(PageInfo pi, int userNo) {
 		
 		Connection conn = JDBCTemplate.getConnection();
@@ -35,5 +35,23 @@ public class ReservationService {
 		
 		return selectMyReservationList;
 				
+	}
+
+
+	//예약 취소
+	public int reservationCancel(int rvNo, int userNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new ReservationDao().reservationCancel(conn, rvNo, userNo);
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		return result;
+		
 	}
 }
