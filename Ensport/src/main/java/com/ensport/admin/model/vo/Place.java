@@ -1,7 +1,6 @@
 package com.ensport.admin.model.vo;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 
 public class Place {
@@ -23,15 +22,6 @@ public class Place {
 		super();
 	}
 
-<<<<<<< HEAD
-=======
-	
-	
-	
-
-
-
->>>>>>> branch 'main' of https://github.com/dhlove0417/Ensport.git
 	public Place(String placeName, String place_sub_info, String place_size, String parking_yn, int max_capacity,
 			String categoryNo, String localName) {
 		super();
