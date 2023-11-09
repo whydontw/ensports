@@ -44,10 +44,12 @@
 							<p id="replyCount"></p>
 						</a>
 					</li>
-<%-- 				<li><a href="${contextPath }/myPageReview.me?currentPage=1" class="d-flex justify-content-between"> --%>
-<!-- 						<p>리뷰</p> -->
-<!-- 						<p>0</p> -->
-<!-- 				</a></li> -->
+					<li>
+						<a href="#" class="d-flex justify-content-between">
+						<p>리뷰</p>
+						<p>(구현예정)</p>
+					</a>
+					</li>
 					<li>
 						<a href="${contextPath }/myPageQa.me?currentPage=1" class="d-flex justify-content-between">
 							<p>문의사항</p>
