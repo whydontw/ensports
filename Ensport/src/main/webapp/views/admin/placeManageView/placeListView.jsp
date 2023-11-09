@@ -76,7 +76,7 @@
                                             <c:forEach items="${requestScope.list}" var="p">
                                                 <tr>
                                                     <td>${p.placeNo }</td>
-                                                    <td><a href="">${p.placeName }</a></td>
+                                                    <td><a href="${contextPath}/placeDetail.pl?pno=${p.placeNo}">${p.placeName }</a></td>
                                                     <td>${p.localName }</td>
                                                     <td>${p.place_count }</td>
                                                     <td>${p.place_date }</td>

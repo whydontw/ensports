@@ -137,6 +137,84 @@ public class AdminDao {
 		return list;
 	}
 
+	public Place selectOnePlace(int placeNo, Connection conn) {
+
+		Place p = null;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectOnePlace");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, placeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				p = new Place(rset.getInt("PLACE_NO")
+						  ,rset.getString("PLACE_NAME")
+						  ,rset.getString("PLACE_SUB_INFO")
+						  ,rset.getString("PLACE_SIZE")
+						  ,rset.getString("PARKING_YN")
+						  ,rset.getDate("PLACE_DATE")
+						  ,rset.getInt("PLACE_COUNT")
+						  ,rset.getString("PLACE_START_TIME")
+						  ,rset.getString("PLACE_END_TIME")
+						  ,rset.getInt("MAX_CAPACITY")
+						  ,rset.getString("CATEGORY_NO")
+						  ,rset.getString("LOCAL_NAME"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return p;
+	}
+	
+	public ArrayList<Attachment> selectOnePlaceAttachment(int placeNo, Connection conn) {
+
+		ArrayList<Attachment> list = new ArrayList<>();
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectOnePlaceAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, placeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Attachment(rset.getInt("AT_NO"),
+										rset.getString("ORIGIN_NAME"),
+									    rset.getString("CHANGE_NAME"),
+									    rset.getInt("FILE_LEVEL")));
+			}
+			for(int i = 0; i<2; i++) {
+				
+				list.add(new Attachment());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return list;
+	}
+
 
 	public int insertQA(int userNo, String subject, String message, Connection conn) {
 
@@ -341,6 +419,171 @@ public class AdminDao {
 		}
 		return result;
 	}
+
+	public int updatePlace(Connection conn, Place p) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updatePlace");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1,p.getPlaceName());
+			pstmt.setString(2,p.getPlace_size());
+			pstmt.setString(3,p.getParking_yn());
+			pstmt.setInt(4,p.getMax_capacity());
+			pstmt.setInt(5,Integer.parseInt(p.getCategoryNo()));
+			pstmt.setString(6,p.getLocalName());
+			pstmt.setString(7,p.getPlace_sub_info());
+			pstmt.setInt(8, p.getPlaceNo());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updatePlaceAttachment(Connection conn, Attachment at) {
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updatePlaceAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, at.getOriginName());
+			pstmt.setString(2, at.getChangeName());
+			pstmt.setInt(3, at.getAtNo());
+			pstmt.setInt(4, at.getFileLevel());
+			
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+
+	public int insertNewPlaceAttachment(Connection conn, Attachment at) {
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertNewPlaceAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, at.getRefBno());
+			pstmt.setString(2, at.getOriginName());
+			pstmt.setString(3, at.getChangeName());
+			pstmt.setString(4, at.getFilePath());
+			pstmt.setInt(5, at.getFileLevel());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	public int deleteUnselectedFile(int originFileNo, Connection conn) {
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteUnselectedFile");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, originFileNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	public int deletePlace(int placeNo, Connection conn) {
+
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deletePlace");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, placeNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+	public int deletePlaceAttachment(int placeNo, Connection conn) {
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deletePlaceAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, placeNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+
+
+
+	
+
+	
 
 
 
