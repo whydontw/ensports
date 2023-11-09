@@ -53,7 +53,6 @@ public class SoccerPlaceDetailController extends HttpServlet {
 		//경기장 번호 으로 게시글 정보와 첨부파일 정보 조회
 		int placeNo = Integer.parseInt(request.getParameter("sno"));
 		
-		
 		//서비스 선언
 		SoccerPlaceService sps = new SoccerPlaceService();
 				

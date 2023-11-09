@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -81,18 +82,19 @@ th{
 
 				<tbody>
 					<tr>
-						<td colspan="1" style="font-size: 15px;">제목</td>
+						<th colspan="1" style="font-size: 15px;">제목</th>
 						<td colspan="3"><input type="text" class="form-control"
 							name="title" placeholder="글 제목" name="bbsTitle" maxlength="100" value="${b.boardTitle }" readonly="readonly"></td>
 					</tr>
 					<tr class="tr1">
-						<td colspan="1" style="font-size: 15px;">내용</td>
+						<th colspan="1" style="font-size: 15px;">내용</th>
 						<td colspan="3"><textarea id="editor" class="form-control"
 								name="content" placeholder="글 내용" name="bbsContent" maxlength="8192"
 								style="height: 350px" readonly="readonly">${b.boardContent }</textarea></td>
 					</tr>
 					<tr>
-						<th colspan="4" style="font-size: 15px; text-align: right; padding-left: 0px;">
+						<th colspan="1" style="font-size: 15px; padding-left: 0px;">첨부파일</th>
+						<th colspan="3" style="font-size: 15px; text-align: left; padding-left: 0px;">
 							<c:choose>
 								<c:when test="${empty a }">
 									첨부파일이 없습니다.
@@ -106,8 +108,9 @@ th{
 				</tbody>
 			</table>
 			<c:if test="${b.userNo eq loginUser.userNickname }">
-				<a class="primary-btn pull-right" href="#" style="border-radius: 0">삭제하기</a>
-				<a class="primary-btn pull-right" href="boardUpdate.bo?bno=${b.boardNo }" style="border-radius: 0">수정하기</a>
+				<a class="primary-btn pull-right" href="${contextPath }/boardDelete.bo?bno=${b.boardNo}"
+												 onclick="return confirm('정말 삭제하시겠습니까?')" style="border-radius: 0">삭제하기</a>
+				<a class="primary-btn pull-right" href="${contextPath }/boardUpdate.bo?bno=${b.boardNo }" style="border-radius: 0">수정하기</a>
 			</c:if>
 				<a href="${contextPath }/boardList.bo?currentPage=1" class="primary-btn pull-right" style="border-radius: 0">돌아가기</a>
 	</div>

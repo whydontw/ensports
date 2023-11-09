@@ -75,12 +75,12 @@
 					</tr>
 				</tbody>
 			</table>
+				<input type="file" name="uploadFile">
 			<div>
-				<button type="submit" class="primary-btn pull-right">작성완료</button>
-				<a href="${contextPath }/boardList.bo?currentPage=1" class="primary-btn pull-right">돌아가기</a>
+				<button type="submit" class="primary-btn pull-right" style="border-radius: 0">작성완료</button>
+				<a href="${contextPath }/boardList.bo?currentPage=1" class="primary-btn pull-right" style="border-radius: 0">돌아가기</a>
 			</div>
 			<br><br><br>
-				<input type="file" name="uploadFile">
 		</form>
 	</div>
 	<br><br><br><br><br>
