@@ -74,8 +74,10 @@
 				WHERE FILE_LEVEL = 1
 				ORDER BY PLACE_COUNT DESC
 			) 
-		WHERE ROWNUM BETWEEN 1 AND 8
+		WHERE ROWNUM BETWEEN 1 AND 4
 	</entry>
+	
+	
 </properties>
 
 

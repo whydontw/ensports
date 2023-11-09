@@ -265,7 +265,7 @@
 		</div>
 	</section>
 	<!-- End category Area -->
-
+	<img src="resources/img/공간.png" alt="">
 	<!-- start product Area -->
 <section class="owl-carousel active-product-area section_gap">
 		<!-- single product slide -->
@@ -332,16 +332,18 @@
 					<div class="col-lg-6 text-center" >
 						<div class="section-title" >
 							<h1>조회순</h1>
-							<p>어떤 경기를 해야할지 모르겠다고요~? 이건 어떠세요~?</p>
+							<p>지금 인기있는 매치 예약하러 가보실까요~?</p>
 						</div>
 					</div>
 				</div>
-				<div class="row" >
+				<div class="row" style=" margin-left: -65mm;" >
 					
 					<!-- single product -->
-					<div class="col-lg-3 col-md-6" id="resultCount" >
+					<div class="col-lg-3 col-md-6" id="resultCount" 
+					style="display: -webkit-inline-box; white-space: break-spaces;">
 
-					<div class='single-product'>
+					<div class="single-product">
+					
 <!-- 					========================================= -->
 <!-- 				    <div id="result"> -->
 <!-- 				        Ajax로 받아온 JSON 데이터를 여기에 넣을 예정 -->
@@ -352,42 +354,55 @@
 					<script>
 					
 					$(document).ready(function(){
-					    $.ajax({
-					        url: "ajax1.do",
-					        type: "get",
-					        success: function(data){
-					            $.each(data, function(index, item) {
-					                $("#resultCount").append(
-					                    "<div class='single-product'>" +
-					                    "<img class='img-fluid' src='${contextPath}" + item.filePath + item.changeName + "' alt=''>" +
-					                    "<div class='product-details'>" +
-					                    "<h6>" + item.placeName + "</h6>" +
-					                    "<div class='prd-bottom'>" +
-					                    "<a href='#' class='social-info'>" +
-					                    "<span class='lnr lnr-heart'></span>" +
-					                    "<p class='hover-text'>Wishlist</p>" +
-					                    "</a>" +
-					                    "<a href='#' class 'social-info'>" +
-					                    "<span class='lnr lnr-move'></span>" +
-					                    "<p class='hover-text'>view more</p>" +
-					                    "</a>" +
-					                    "</div>" +
-					                    "</div>" +
-					                    "</div>"
-					                );
-					            });
-					        },
-					        error: function(){
-					            console.log("실패");
-					        }
-					    });
-					});
+						
+						$.ajax({
+							url: "ajax1.do",
+							type : "get",
+							success : function(data){
+								
+								//값 뽑기
+								console.log(data);
+								
+// 				                var resultDiv = $("#resultCount");
+				                $.each(data, function(index, item) {
+				                	
+				                	$("#resultCount").append(
+				                			
+				                			"<div class='single-product' style='margin: 15px;'>" +
+				                			"<div class='col-md-13 figure'>" +
+					                        "<img class='img-fluid' src='${contextPath}" + item.filePath + item.changeName + "' alt=''>" +
+					                        "<div class='product-details'>" +
+					                        "<h6>" + item.placeName + "</h6>" +
+					                        "<div class='prd-bottom'>" +
+					                        "<a href='${contextPath}/list.so' class='social-info'>" +
+					                        
+					                        "<span class='lnr lnr-move'></span>" +
+					                        "<p class='hover-text'>예약하기</p>" +
+					                        "</a>" +
+					                        "</div>" +
+					                        "</div>" +
+					                        "</div>"+
+					                        "</div>"
+				                	
+				                	);
+				                    
 
+// 				                    resultDiv.append(html);
+				                });
+								
+
+								
+							},error : function(){
+								console.log("실패");
+							}
+						});
+						
+					})
 					
 					
 					</script>
-					</div>
-				</div>
+					
+				
 			</div>
 		</div>
 	</div>
@@ -427,7 +442,7 @@
 								<p class="position mb-5">CEO, Founder</p>
 							</div>
 							<p>
-							<div class="quote">&ldquo;</div> 
+							<div class="quote">&ldquo;</div>
 							&ldquo;Far far away, behind the word mountains, far from the
 							countries Vokalia and Consonantia, there live the blind texts.
 							Separated they live in Bookmarksgrove right at the coast of the

@@ -31,4 +31,34 @@
               )
         WHERE RNUM BETWEEN ? AND ?
 	</entry>
+	
+	
+	<!-- 참여자 -->
+	<entry key="selectPlayer">
+	SELECT COUNT(*)
+	FROM PLAYER P
+	JOIN RESERVATION R USING(RESERVATION_NO)
+	WHERE PLACE_NO=?
+	AND RESERVATION_DATE = TO_DATE(?, 'YY/MM/dd')
+	AND TIME_NO=?
+	</entry>
+	
+	
+	<!-- 전체인원 -->
+	<entry key="selectAll">
+	SELECT USERCAPACITY
+		FROM RESERVATION
+		WHERE PLACE_NO= ?
+		AND RESERVATION_DATE = TO_DATE(?, 'YY/MM/dd')
+		AND TIME_NO= ?
+	</entry>
 </properties>
+
+
+
+
+
+
+
+
+

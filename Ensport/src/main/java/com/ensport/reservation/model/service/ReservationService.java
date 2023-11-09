@@ -1,7 +1,9 @@
 package com.ensport.reservation.model.service;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.ArrayList;
+
 
 import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.PageInfo;
@@ -35,5 +37,23 @@ public class ReservationService {
 		
 		return selectMyReservationList;
 				
+	}
+
+
+	//총인원
+	public int selectAll(int placeNo, String reservationDate, int timeNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		int total = new ReservationDao().selectAll(conn, placeNo, reservationDate, timeNo);
+		return total;
+	}
+
+
+	//참여자
+	public int selectPlayer(int placeNo, String reservationDate, int timeNo) {
+	
+		Connection conn = JDBCTemplate.getConnection();
+		int player = new ReservationDao().selectPlayer(conn, placeNo, reservationDate, timeNo);
+		return player;
 	}
 }

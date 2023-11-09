@@ -94,32 +94,89 @@
 						<br>
 						<div class="single-element-widget mt-30">
 							<div class="default-select" id="default-select">
-								<select>
-									<option value="">시간 선택</option>
+								<select id="timeselct">
+									<option value="0">시간 선택</option>
 									<option value="1">13:00~15:00</option>
 									<option value="2">16:00~18:00</option>
 									<option value="3">19:00~21:00</option>
 								</select>
+								<div id="selectedTimeData"></div>
 							</div>
 						</div>
 						<br>
 						<div class="datasheet p-3 mb-2 text-white"
 							style="background-color: #e8f0f2;">
 							<a href="" id="participantCount" class="text-black"
-								style="color: black;">참여인원: </a>
+								style="color: black;">참여인원: <span id="player"></span> / <span id="totalPlayer"></span> </a>
 						</div>
-						<br>
-						<br>
-						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">예약하기</a> <a class="icon_btn"
-								href="#"><i class="lnr lnr lnr-heart"></i></a>
+						<br> <br>
+						<div class="card_area d-flex align-items-center" id="btnWrap">
+							<button type="button" class="primary-btn" data-toggle="modal"
+								data-target="#exampleModal">예약하기</button>
+
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	
+	<script>
+	$(document).ready(function(){
+		 $('#timeselct').change(function() {
+		        var selectedTime = $(this).val(); // 선택한 시간 값
+		        $.ajax({
+		            url : "ajax.time",
+		            type : "get",
+		            data : { tno : selectedTime, pno:"${pno}", matchingDate: "${matchingDate}" },
+		            success : function(data) {
+						console.log(data);
+		                $("#totalPlayer").text(data.total);
+		                $("#player").text(data.player);
+		                
+		            },
+		            error : function() {
+		                console.log("실패");
+		            }
+		        });
+		    });
+		});
+	</script>
 
+
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">예약 내역</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<br> [예약 경기장] : ${p.placeName} 
+					<br> <br> 
+					[예약 날짜] :${matchingDate} 
+					<br> <br> 
+					[예약 시간] : <a class="rt"></a> 
+					<br> <br>
+				</div>
+				<div class="modal-footer">
+					<div class="button-group-area mt-40">
+						<button type="button" class="genric-btn primary"
+							data-dismiss="modal">닫기</button>
+						<button type="button" class="genric-btn info">결제하기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!--================End Single Product Area =================-->
 
 	<!--================Product Description Area =================-->
@@ -343,6 +400,31 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/gmaps.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
+
+	<script>
+	
+	$(document).ready(function() {
+		$(".primary-btn").on("click",function() {
+			
+			var selectedTime = $("#default-select option:selected").val();
+			var selectedTimeText = $("#default-select option:selected").text();
+			
+			if(selectedTime == 0) {
+				alert ("시간을 먼저 선택하세요");
+				return false;
+			} else {
+				
+				var pno = $(this).find("selectedTime").val();
+				  $("#exampleModal .modal-body .rt").text(selectedTimeText);
+				  				
+			}
+						
+		});
+		
+	});
+		
+	</script>
+	
 
 </body>
 

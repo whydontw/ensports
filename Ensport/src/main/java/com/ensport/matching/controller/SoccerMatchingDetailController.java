@@ -36,11 +36,16 @@ public class SoccerMatchingDetailController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String matchingDate = request.getParameter("date");
+		String matchingTime = request.getParameter("time");
 		
 		int placeNo = Integer.parseInt(request.getParameter("pno"));
-		System.out.println("pno번호: "+placeNo);
+		System.out.println("안 넘어온다면서 넘어오는 pno번호: "+placeNo);
+		System.out.println(matchingDate);
+		
+	
 		
 		SoccerMatchingService ss = new SoccerMatchingService();
+		
 		int result = ss.increaseCount(placeNo);
 		HttpSession session = request.getSession();
 		
@@ -48,6 +53,8 @@ public class SoccerMatchingDetailController extends HttpServlet {
 			Place p = ss.selectPlace(placeNo);
 			ArrayList<Attachment> list = ss.selectAttachmentList(placeNo);
 			
+			request.setAttribute("time", matchingTime);
+			request.setAttribute("pno", placeNo);
 			request.setAttribute("p", p);
 			request.setAttribute("slist", list);
 			request.setAttribute("matchingDate", matchingDate);
