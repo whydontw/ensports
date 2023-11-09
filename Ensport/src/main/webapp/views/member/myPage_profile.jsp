@@ -13,22 +13,7 @@
 			<aside class="single_sidebar_widget search_widget align-self-center">
 				<img class="" src="resources/img/elements/soccer_icon1.png" alt="">
 				<span class="mx-auto">
-					<c:choose>
-						<c:when test="${loginUser.userNo == 1}">
-							<b>Lv 999. 관리자</b>
-						</c:when>
-						<c:otherwise>
-							<c:choose>
-								<c:when test="${loginUser.userNo == 2}">
-									<b>Lv 50. 킬리안 음바페</b>
-								</c:when>
-								<c:otherwise>
-									<b>Lv 1. 어린이축구교실</b>
-								</c:otherwise>
-							</c:choose>
-						</c:otherwise>
-					</c:choose>
-
+					<b id="myEnsportsLevel"></b>
 				</span>
 				<div class="br"></div>
 			</aside>
@@ -122,21 +107,33 @@
 				},
 				success: function(result){
 					
-					console.log("=============");
-					console.log(result);
-					console.log("=============");
+// 					console.log("=============");
+// 					console.log(result);
+// 					console.log("=============");
 					
+					//JSON data로 변환
 					var data = JSON.parse(result);
-					
-// 					console.log(data.boardCount);
-// 					console.log(data.replyCount);
-// 					console.log(data.qaCount);
-// 					console.log(data.reservationCount);
 					
 					$("#boardCount").text(data.boardCount);
 					$("#replyCount").text(data.replyCount);
 					$("#qaCount").text(data.qaCount);
 					$("#reservationCount").text(data.reservationCount);
+					
+					
+					var rvCount = data.reservationCount;
+					
+					//등급 산정하기
+					if(rvCount < 4){
+						$("#myEnsportsLevel").text("Lv 1. 날아라 슛돌이");
+					}else if(rvCount < 8){
+						$("#myEnsportsLevel").text("Lv 2. 브론즈볼");
+					}else if(rvCount < 13){
+						$("#myEnsportsLevel").text("Lv 3. 실버볼");
+					}else if(rvCount < 19){
+						$("#myEnsportsLevel").text("Lv 4. 골든볼");
+					}else{
+						$("#myEnsportsLevel").text("Lv 5. 다이아볼");
+					}
 					
 				},
 				error: function(){

@@ -90,6 +90,8 @@ public class MemberService {
 				JDBCTemplate.commit(conn);		//확정(커밋)
 				updateMember = new MemberDao().selectMember(conn, m.getUserNo());
 				
+				System.out.println("updateMember: " + updateMember);
+				
 			}else {				
 				JDBCTemplate.rollback(conn);	//되돌리기(롤백)
 			}

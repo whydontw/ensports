@@ -97,7 +97,7 @@
                                 </div>
                                 
                                 <!-- 상세주소 -->
-                                <span class="col-md-4 pdt-7">======== ${loginUser.address}: ${loginUser.addressDetail }</span>
+                                <span class="col-md-4 pdt-7"></span>
                                 <div class="col-md-8 form-group">
                                     <input type="text" class="form-control" id="addressDetail" name="addressDetail" placeholder="상세주소" value="${loginUser.addressDetail}">
                                     <span class="placeholder"></span>
