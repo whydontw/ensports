@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +39,6 @@ public class boardDetailController extends HttpServlet {
 				
 				//처리된 결과값 (행수)
 				int result = new BoardService().increaseCount(boardNo);
-				
 				//게시글 정보 조회 + 조회수 증가처리
 				
 				if(result>0) {
