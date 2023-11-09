@@ -5,18 +5,23 @@ import java.util.Date;
 public class Attachment {
 
 	private int atNo;
-	private int boardNo;
+	private int refBno;
 	private String originName;
 	private String changeName;
 	private Date uploadDate;
 	private String filePath;
 	private int fileLevel;
 	private int fileType;
+
 	
+
 	public Attachment() {
 		super();
 	}
 
+<<<<<<< HEAD
+	public Attachment(int atNo, String originName, String changeName, int fileLevel) {
+=======
 
 
 	public Attachment(int atNo, String originName, String changeName, String filePath) {
@@ -30,19 +35,13 @@ public class Attachment {
 
 
 	public Attachment(int atNo, int boardNo, String originName, String changeName, String filePath) {
+>>>>>>> branch 'main' of https://github.com/dhlove0417/Ensport.git
 		super();
 		this.atNo = atNo;
-		this.boardNo = boardNo;
 		this.originName = originName;
 		this.changeName = changeName;
-		this.filePath = filePath;
+		this.fileLevel = fileLevel;
 	}
-
-
-
-
-
-
 
 	public Attachment(int atNo, String originName, String changeName, String filePath) {
 		super();
@@ -52,17 +51,21 @@ public class Attachment {
 		this.filePath = filePath;
 	}
 
+	public Attachment(int atNo, int refBno, String originName, String changeName, String filePath) {
+		super();
+		this.atNo = atNo;
+		this.refBno = refBno;
+		this.originName = originName;
+		this.changeName = changeName;
+		this.filePath = filePath;
+	}
 
 
-
-
-
-
-	public Attachment(int atNo, int boardNo, String originName, String changeName, Date uploadDate, String filePath,
+	public Attachment(int atNo, int refBno, String originName, String changeName, Date uploadDate, String filePath,
 			int fileLevel, int fileType) {
 		super();
 		this.atNo = atNo;
-		this.boardNo = boardNo;
+		this.refBno = refBno;
 		this.originName = originName;
 		this.changeName = changeName;
 		this.uploadDate = uploadDate;
@@ -70,11 +73,6 @@ public class Attachment {
 		this.fileLevel = fileLevel;
 		this.fileType = fileType;
 	}
-
-
-
-
-
 
 
 	public int getFileType() {
@@ -117,12 +115,12 @@ public class Attachment {
 		this.atNo = atNo;
 	}
 
-	public int getBoardNo() {
-		return boardNo;
+	public int getRefBno() {
+		return refBno;
 	}
 
-	public void setBoardNo(int boardNo) {
-		this.boardNo = boardNo;
+	public void setRefBno(int refBno) {
+		this.refBno = refBno;
 	}
 
 	public String getOriginName() {
@@ -158,14 +156,9 @@ public class Attachment {
 	}
 
 
-
-
-
-
-
 	@Override
 	public String toString() {
-		return "Attachment [atNo=" + atNo + ", boardNo=" + boardNo + ", originName=" + originName + ", changeName="
+		return "Attachment [atNo=" + atNo + ", refBno=" + refBno + ", originName=" + originName + ", changeName="
 				+ changeName + ", uploadDate=" + uploadDate + ", filePath=" + filePath + ", fileLevel=" + fileLevel
 				+ ", fileType=" + fileType + "]";
 	}
