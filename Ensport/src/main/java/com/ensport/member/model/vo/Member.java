@@ -107,13 +107,17 @@ public class Member {
 		this.phone = phone;
 	}
 
+
+
 	public Date getEnrolldate() {
 		return enrolldate;
 	}
 
+
 	public void setEnrolldate(Date enrolldate) {
 		this.enrolldate = enrolldate;
 	}
+
 
 	public String getGender() {
 		return gender;

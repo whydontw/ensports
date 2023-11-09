@@ -52,13 +52,13 @@
 	<entry key="updateMember">
 	    UPDATE MEMBER SET
 	    USER_NAME = ?
-	    , PHONE =?
-	    , ADDRESS = ?
-	    , ADDRESS_DETAIL =?
-	    , EMAIL =?
-	    , GENDER = ?
-	    , USER_NICKNAME =?
-	    , PREFER = ?
+    , PHONE =?
+    , ADDRESS = ?
+    , ADDRESS_DETAIL =?
+    , EMAIL =?
+    , GENDER = ?
+    , USER_NICKNAME =?
+    , PREFER = ?
 	    WHERE
 	    USER_ID = ?
 	</entry>

@@ -260,23 +260,22 @@ public class MemberDao {
 			//조회 결과가 있다면
 			if(rset.next()) {
 				
-				m = new Member(rset.getInt("USER_NO")
-							, rset.getString("USER_ID")
-							, rset.getString("USER_PASSWORD")
-							, rset.getString("USER_NICKNAME")
-							, rset.getString("USER_NAME")
-							, rset.getString("EMAIL")
-							, rset.getString("PHONE")
-							, rset.getDate("ENROLLDATE")
-							, rset.getString("GENDER")
-							, rset.getString("ADDRESS")
-							, rset.getString("PREFER")
-							, rset.getString("IMAGES")
-							, rset.getString("STATUS")
-							, rset.getString("ADDRESS_DETAIL")
-						);
-				
-				System.out.println("찐찐업데이트된 내 정보" + m);
+					m = new Member();
+					
+					m.setUserNo(rset.getInt("USER_NO"));
+					m.setUserId(rset.getString("USER_ID"));
+					m.setUserPassword(rset.getString("USER_PASSWORD"));
+					m.setUserNickname(rset.getString("USER_NICKNAME"));
+					m.setUserName(rset.getString("USER_NAME"));
+					m.setEmail(rset.getString("EMAIL"));
+					m.setPhone(rset.getString("PHONE"));
+					m.setEnrolldate(rset.getDate("ENROLLDATE"));
+					m.setGender(rset.getString("GENDER"));
+					m.setAddress(rset.getString("ADDRESS"));
+					m.setPrefer(rset.getString("PREFER"));
+					m.setImages(rset.getString("IMAGES"));
+					m.setStatus(rset.getString("STATUS"));
+					m.setAddressDetail(rset.getString("ADDRESS_DETAIL"));
 				
 			}
 			
