@@ -114,9 +114,6 @@ public class ReservationDao {
 				rev.setGenderType(rset.getString("GENDER_TYPE"));
 				rev.setFixedYn(rset.getString("FIXED_YN"));
 				rev.setCurrentCount(rset.getInt("CURRENTCOUNT"));
-
-				
-				System.out.println("rev 생성:" + rev);
 				
 				revList.add(rev);
 			}
