@@ -20,7 +20,7 @@ public class Reservation {
 
 
 
-	
+
 	
 	
 	public Reservation(int userCapacity) {
@@ -45,11 +45,14 @@ public class Reservation {
 	public Reservation() {
 		super();
 	}
-	
-	
-	
-	
-	
+
+
+	public Reservation(int reservationNo, String timeNo, String placeNo) {
+		super();
+		this.reservationNo = reservationNo;
+		this.timeNo = timeNo;
+		this.placeNo = placeNo;
+	}
 
 	public int getReservationNo() {
 		return reservationNo;

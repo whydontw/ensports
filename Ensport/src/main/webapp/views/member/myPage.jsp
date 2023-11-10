@@ -102,6 +102,7 @@
                                     <input type="text" class="form-control" id="addressDetail" name="addressDetail" placeholder="상세주소" value="${loginUser.addressDetail}">
                                     <span class="placeholder"></span>
                                 </div>
+                                                                
                                 
                                 <script type="text/javascript">
                                     window.onload = function(){

@@ -50,16 +50,19 @@
 
 	<div class="container">
 
-		<form action="${contextPath }/boardEnroll.bo" method="post" enctype="multipart/form-data">
+		<form action="${contextPath }/boardEnroll.bo?bType=${bType}" method="post" enctype="multipart/form-data">
 			<br>
 			<br>
 			<table class="table table-stripped"
 				style="text-align: center; boarder: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan="2"
-							style="background-color: #eeeeee; text-align: center;">게시글
-							작성</th>
+						<th colspan="2"style="background-color: #eeeeee; text-align: center;">
+						<c:choose>
+							<c:when test="${bType=='2'}">게시글 작성</c:when>
+							<c:otherwise>공지사항 작성</c:otherwise>
+						</c:choose> 
+						</th>
 					</tr>
 				</thead>
 
@@ -75,12 +78,12 @@
 					</tr>
 				</tbody>
 			</table>
+				<input type="file" name="uploadFile">
 			<div>
-				<button type="submit" class="primary-btn pull-right">작성완료</button>
-				<a href="${contextPath }/boardList.bo?currentPage=1" class="primary-btn pull-right">돌아가기</a>
+				<button type="submit" class="primary-btn pull-right" style="border-radius: 0">작성완료</button>
+				<a href="${contextPath }/boardList.bo?currentPage=1" class="primary-btn pull-right" style="border-radius: 0">돌아가기</a>
 			</div>
 			<br><br><br>
-				<input type="file" name="uploadFile">
 		</form>
 	</div>
 	<br><br><br><br><br>

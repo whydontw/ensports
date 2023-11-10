@@ -86,9 +86,6 @@ public class MemberUpdateController extends HttpServlet {
 		// 서비스에 요청보내기(갱신된 회원정보를 반환)
 		Member updateMember = new MemberService().updateMember(m);
 		
-		System.out.println("업데이트된 내 정보:" + m);
-
-		
 		// 응답화면 설정하기
 		if (updateMember == null) { // 실패~
 			

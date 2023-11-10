@@ -1,28 +1,41 @@
 package com.ensport.board.model.vo;
 
+import java.sql.Date;
+
 public class Reply {
 	
 	private int replyNo;
 	private int boardNo;
-	private int userNo;
+	private String userId;
 	private String replyContent;
 	private int likeNum;
 	private int unlikeNum;
+	private Date createDate;
 	private String status;
 	
 	public Reply() {
 		super();
 	}
 
-	public Reply(int replyNo, int boardNo, int userNo, String replyContent, int likeNum, int unlikeNum, String status) {
+	public Reply(int replyNo, int boardNo, String userId, String replyContent, int likeNum, int unlikeNum,
+			Date createDate, String status) {
 		super();
 		this.replyNo = replyNo;
 		this.boardNo = boardNo;
-		this.userNo = userNo;
+		this.userId = userId;
 		this.replyContent = replyContent;
 		this.likeNum = likeNum;
 		this.unlikeNum = unlikeNum;
+		this.createDate = createDate;
 		this.status = status;
+	}
+	
+	public Reply(int replyNo, String userId, String replyContent,Date createDate) {
+		super();
+		this.replyNo = replyNo;
+		this.userId = userId;
+		this.replyContent = replyContent;
+		this.createDate = createDate;
 	}
 
 	public int getReplyNo() {
@@ -41,12 +54,12 @@ public class Reply {
 		this.boardNo = boardNo;
 	}
 
-	public int getUserNo() {
-		return userNo;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getReplyContent() {
@@ -73,6 +86,14 @@ public class Reply {
 		this.unlikeNum = unlikeNum;
 	}
 
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
 	public String getStatus() {
 		return status;
 	}
@@ -83,9 +104,10 @@ public class Reply {
 
 	@Override
 	public String toString() {
-		return "Reply [replyNo=" + replyNo + ", boardNo=" + boardNo + ", userNo=" + userNo + ", replyContent="
-				+ replyContent + ", likeNum=" + likeNum + ", unlikeNum=" + unlikeNum + ", status=" + status + "]";
+		return "Reply [replyNo=" + replyNo + ", boardNo=" + boardNo + ", userId=" + userId + ", replyContent="
+				+ replyContent + ", likeNum=" + likeNum + ", unlikeNum=" + unlikeNum + ", createDate=" + createDate
+				+ ", status=" + status + "]";
 	}
 	
 	
-}
+}	
