@@ -50,16 +50,19 @@
 
 	<div class="container">
 
-		<form action="${contextPath }/boardEnroll.bo" method="post" enctype="multipart/form-data">
+		<form action="${contextPath }/boardEnroll.bo?bType=${bType}" method="post" enctype="multipart/form-data">
 			<br>
 			<br>
 			<table class="table table-stripped"
 				style="text-align: center; boarder: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan="2"
-							style="background-color: #eeeeee; text-align: center;">게시글
-							작성</th>
+						<th colspan="2"style="background-color: #eeeeee; text-align: center;">
+						<c:choose>
+							<c:when test="${bType=='2'}">게시글 작성</c:when>
+							<c:otherwise>공지사항 작성</c:otherwise>
+						</c:choose> 
+						</th>
 					</tr>
 				</thead>
 
