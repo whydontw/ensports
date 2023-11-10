@@ -36,6 +36,7 @@ public class PlaceListController extends HttpServlet {
 		ArrayList<Place> list = new AdminService().selectPlaceList();
 		
 		request.setAttribute("list",list);
+		
 		request.getRequestDispatcher("views/admin/placeManageView/placeListView.jsp").forward(request, response);
 		
 	}

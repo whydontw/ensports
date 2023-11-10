@@ -63,6 +63,65 @@
 		FROM PLACE
 		JOIN CATEGORY USING(CATEGORY_NO)
 	</entry>
+	<entry key="selectOnePlace">
+		SELECT *
+		FROM PLACE
+		WHERE PLACE_NO = ?
+	</entry>
+	<entry key="selectOnePlaceAttachment">
+		SELECT ORIGIN_NAME
+		      ,CHANGE_NAME
+		      ,AT_NO
+		      ,FILE_LEVEL
+		FROM ATTACHMENT
+		WHERE REF_NO = ?
+		AND FILE_TYPE = 2
+	</entry>
+	<entry key="updatePlace">
+		UPDATE PLACE
+		SET PLACE_NAME = ?
+		   ,PLACE_SIZE = ?
+		   ,PARKING_YN = ?
+		   ,MAX_CAPACITY = ?
+		   ,CATEGORY_NO = ?
+		   ,LOCAL_NAME = ?
+		   ,PLACE_SUB_INFO = ?
+		WHERE PLACE_NO = ?
+	</entry>
+	<entry key="updatePlaceAttachment">
+		UPDATE ATTACHMENT
+		SET ORIGIN_NAME = ?
+		   ,CHANGE_NAME = ?
+		   ,UPLOAD_DATE = SYSDATE
+		WHERE AT_NO = ?
+		AND FILE_LEVEL = ?
+		AND FILE_TYPE = 2
+		
+	</entry>
+	<entry key="insertNewPlaceAttachment">
+		INSERT INTO ATTACHMENT
+        VALUES(SEQ_FNO.NEXTVAL
+        	  ,?
+        	  ,?
+        	  ,?
+        	  ,SYSDATE
+        	  ,?
+        	  ,?
+        	  ,2)
+	</entry>
+	<entry key="deleteUnselectedFile">
+		DELETE FROM ATTACHMENT
+		WHERE AT_NO = ?
+	</entry>
+	<entry key="deletePlace">
+		DELETE FROM PLACE
+		WHERE PLACE_NO = ?
+	</entry>
+	<entry key="deletePlaceAttachment">
+		DELETE FROM ATTACHMENT
+		WHERE REF_NO = ?
+		AND FILE_TYPE = 2
+	</entry>
 	<entry key="insertQA">
 		INSERT INTO QA(QA_NO
 					  ,USER_NO
@@ -84,4 +143,39 @@
 		FROM QA
 		JOIN MEMBER USING(USER_NO)
 	</entry>
+	<entry key="selectOneQA">
+		SELECT QA_NO
+			  ,USER_NICKNAME
+			  ,QA_TITLE
+			  ,QA_CONTENT
+			  ,CREATE_DATE
+		FROM QA
+		JOIN MEMBER USING(USER_NO)
+		WHERE QA_NO = ?
+	</entry>
+	<entry key="insertQAComment">
+		INSERT INTO QA_COMMENT
+		VALUES(?,?,?,SYSDATE)
+	</entry>
+	<entry key="selectOneQAComment">
+		SELECT QA_ANSWER_NO
+			  ,QA_ANSWER
+			  ,CREATE_DATE
+		FROM QA_COMMENT
+		WHERE QA_ANSWER_NO = ?
+		
+	</entry>
+	<entry key="qaCommentUpdate">
+		UPDATE QA_COMMENT
+		SET QA_ANSWER = ?
+		    ,CREATE_DATE = SYSDATE
+		WHERE QA_ANSWER_NO = ?
+		
+	</entry>
+	<entry key="qaCommentDelete">
+		DELETE FROM QA_COMMENT
+		WHERE QA_ANSWER_NO = ?
+	</entry>
+	
+	
 </properties>

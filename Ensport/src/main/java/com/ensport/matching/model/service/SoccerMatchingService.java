@@ -99,6 +99,47 @@ public class SoccerMatchingService {
 			return list;
 		}
 
+		//예약 확정
+		public int SoccerMatchingReservation(int userNo, int timeNo, int placeNo, String reservationDate) {
+		
+			Connection conn = JDBCTemplate.getConnection();
+			
+			int result = new SoccerMatchingDao().soccerMatchingReservation(conn,userNo,timeNo,placeNo,reservationDate);
+			
+			if(result>0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+			JDBCTemplate.close(conn);
+			
+			return result;
+		}
+
+		//중복확인
+		public int SoccerMatchingDuplicate(int userNo, int timeNo, int placeNo, String reservationDate) {
+			
+			Connection conn = JDBCTemplate.getConnection();
+			int duplicate = new SoccerMatchingDao().soccerMatchingDulicate(conn,userNo,timeNo,placeNo,reservationDate);
+			
+			JDBCTemplate.close(conn);
+			return duplicate;
+		}
+
+		//페이징 처리
+		public int MatchingAllListCount() {
+			Connection conn = JDBCTemplate.getConnection();
+			
+			//게시글 개수 받아줄 변수 준비
+			int count = new SoccerMatchingDao().MatchingAllListCount(conn);
+			
+			JDBCTemplate.close(conn);
+			
+			return count; //게시글 개수 돌려주기
+			
+		}
+
+		
 		
 
 		

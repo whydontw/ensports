@@ -47,6 +47,7 @@ public class Place {
 		this.categoryName = categoryName;
 	}
 
+	
 
 	public Place(int placeNo, String placeName, String subInfo, String placeSize, String parkingYn, Date placeDate,
 			int placeCount, String startTime, String endTime, int maxCapacity, String categoryName, String localName) {

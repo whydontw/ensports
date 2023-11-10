@@ -33,22 +33,6 @@ public class MyPageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		HttpSession session = request.getSession();
-		String userId = ((Member)session.getAttribute("loginUser")).getUserId();
-		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();	
-		
-		
-		int boardCount = new MemberService().boardListCount(userNo);
-		int replyCount = new ReplyService().replyListCount(userId);
-		int qaCount = new QaService().qalistCount(userNo);
-		
-		request.setAttribute("boardCount", boardCount);
-		request.setAttribute("replyCount", replyCount);
-		request.setAttribute("qaCount", qaCount);
-		
-		
-		
 		request.getRequestDispatcher("views/member/myPage.jsp").forward(request, response);
 	}
 

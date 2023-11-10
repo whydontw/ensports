@@ -32,6 +32,7 @@ public class ReservationDao {
 	}
 	
 	
+	
 	//내 Reservation 게시글 수
 	public int reservationListCount(Connection conn, int userNo) {
 		
@@ -99,12 +100,23 @@ public class ReservationDao {
 
 			rset = pstmt.executeQuery();
 
+			
 			while (rset.next()) {
 				
 				rev = new Reservation();
 				
+				rev.setReservationNo(rset.getInt("RESERVATION_NO"));
+				rev.setReservationDate(rset.getDate("RESERVATION_DATE"));
+				rev.setTimeNo(rset.getString("TIME_VALUE"));
+				rev.setUserCapacity(rset.getInt("USERCAPACITY"));
+				rev.setPlaceNo(rset.getString("PLACE_NAME"));
+				rev.setReservationType(rset.getString("RESERVATION_TYPE"));
+				rev.setGenderType(rset.getString("GENDER_TYPE"));
+				rev.setFixedYn(rset.getString("FIXED_YN"));
+				rev.setCurrentCount(rset.getInt("CURRENTCOUNT"));
+
 				
-				
+				System.out.println("rev 생성:" + rev);
 				
 				revList.add(rev);
 			}
@@ -198,4 +210,36 @@ public class ReservationDao {
 	
 	
 
+	
+	
+	
+	//마이 페이지 - 예약 취소하기
+	public int reservationCancel(Connection conn, int rvNo, int userNo) {
+		
+		// SELECT (조회)
+		int result = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("reservationCancel");
+		
+
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, rvNo);
+			pstmt.setInt(2, userNo);
+
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
 }

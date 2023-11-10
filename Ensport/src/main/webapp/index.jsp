@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -101,7 +102,7 @@
 									</h1>
 									<p>No pain no gain</p>
 									<div class="add-bag d-flex align-items-center">
-										<a class="add-btn" href="${contextPath }/list.so"><span
+										<a class="add-btn" href="${contextPath }/place.so"><span
 											class="lnr lnr-cross"></span></a> <span
 											class="add-text text-uppercase">Go to play</span>
 									</div>
@@ -123,7 +124,7 @@
 									</h1>
 									<p>No pain no gain</p>
 									<div class="add-bag d-flex align-items-center">
-										<a class="add-btn" href="${contextPath }/list.ba"><span
+										<a class="add-btn" href="${contextPath }/place.so"><span
 											class="lnr lnr-cross"></span></a> <span
 											class="add-text text-uppercase">Go to play</span>
 									</div>
@@ -265,6 +266,7 @@
 		</div>
 	</section>
 	<!-- End category Area -->
+
 	<img src="resources/img/공간.png" alt="">
 	<!-- start product Area -->
 <section class="owl-carousel active-product-area section_gap">
@@ -375,7 +377,7 @@
 					                        "<h6>" + item.placeName + "</h6>" +
 					                        "<div class='prd-bottom'>" +
 					                        "<a href='${contextPath}/list.so' class='social-info'>" +
-					                        
+
 					                        "<span class='lnr lnr-move'></span>" +
 					                        "<p class='hover-text'>예약하기</p>" +
 					                        "</a>" +
@@ -409,9 +411,6 @@
 	</section>
 	
 	<!-- end product Area -->
-	<!-- end product Area -->
-
-
 
 	<div class="section">
 

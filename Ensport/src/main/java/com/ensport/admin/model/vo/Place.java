@@ -1,7 +1,6 @@
 package com.ensport.admin.model.vo;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 
 public class Place {
@@ -23,11 +22,6 @@ public class Place {
 		super();
 	}
 
-	
-	
-
-
-
 	public Place(String placeName, String place_sub_info, String place_size, String parking_yn, int max_capacity,
 			String categoryNo, String localName) {
 		super();
@@ -44,6 +38,19 @@ public class Place {
 
 
 
+
+	public Place(int placeNo, String placeName, String place_sub_info, String place_size, String parking_yn,
+			int max_capacity, String categoryNo, String localName) {
+		super();
+		this.placeNo = placeNo;
+		this.placeName = placeName;
+		this.place_sub_info = place_sub_info;
+		this.place_size = place_size;
+		this.parking_yn = parking_yn;
+		this.max_capacity = max_capacity;
+		this.categoryNo = categoryNo;
+		this.localName = localName;
+	}
 
 	public Place(int placeNo, String placeName, String place_sub_info, String place_size, String parking_yn,
 			Date place_date, int place_count, String place_start_time, String place_end_time, int max_capacity,

@@ -282,6 +282,100 @@ public class SoccerMatchingDao {
 		}
 
 
+		//예약 확정
+		public int soccerMatchingReservation(Connection conn, int userNo, int timeNo, int placeNo,
+				String reservationDate) {
+			
+			int result = 0;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("soccerMatchingReservation");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, userNo);
+				pstmt.setInt(2,timeNo);
+				pstmt.setInt(3, placeNo);
+				pstmt.setString(4, reservationDate);
+				
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return result;
+		}
+
+
+		//중복
+		public int soccerMatchingDulicate(Connection conn, int userNo, int timeNo, int placeNo,
+				String reservationDate) {
+			
+			int duplicate = 0;
+			PreparedStatement pstmt = null;
+			String sql = prop.getProperty("soccerMatchingDuplicate");
+			ResultSet rset = null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, userNo);
+				pstmt.setInt(2, timeNo);
+				pstmt.setInt(3,placeNo);
+				pstmt.setString(4, reservationDate);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					duplicate = rset.getInt("COUNT");
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return duplicate;
+		}
+
+
+		//페이징처리
+		public int MatchingAllListCount(Connection conn) {
+			//SELECT (조회)
+			int count = 0;
+			ResultSet rset = null; //조회구문이기 때문에 필요
+			Statement stmt = null; //위치홀더 필요없으니 statement 활용
+			
+			String sql = prop.getProperty("MatchingAllListCount");
+			
+			try {
+				stmt = conn.createStatement();
+				
+				//개수 조회
+				rset = stmt.executeQuery(sql);
+				
+				if(rset.next()) {
+					//조회된 게시글 개수
+					count = rset.getInt("COUNT");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(stmt);
+			}
+			
+			return count; //게시글 개수 돌려주기
+		
+		}
+
+
 	
 
 	

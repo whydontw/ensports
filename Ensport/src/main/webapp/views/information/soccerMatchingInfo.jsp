@@ -111,9 +111,7 @@
 						</div>
 						<br> <br>
 						<div class="card_area d-flex align-items-center" id="btnWrap">
-							<button type="button" class="primary-btn" data-toggle="modal"
-								data-target="#exampleModal">예약하기</button>
-
+							<button type="button" class="primary-btn" data-toggle="modal" data-target="#exampleModal">예약하기</button>
 						</div>
 					</div>
 				</div>
@@ -121,31 +119,6 @@
 		</div>
 	</div>
 	
-	
-	<script>
-	$(document).ready(function(){
-		 $('#timeselct').change(function() {
-		        var selectedTime = $(this).val(); // 선택한 시간 값
-		        $.ajax({
-		            url : "ajax.time",
-		            type : "get",
-		            data : { tno : selectedTime, pno:"${pno}", matchingDate: "${matchingDate}" },
-		            success : function(data) {
-						console.log(data);
-		                $("#totalPlayer").text(data.total);
-		                $("#player").text(data.player);
-		                
-		            },
-		            error : function() {
-		                console.log("실패");
-		            }
-		        });
-		    });
-		});
-	</script>
-
-
-
 
 	<!-- Modal -->
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -401,30 +374,94 @@
 	<script src="<%=request.getContextPath()%>/resources/js/gmaps.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
 
-	<script>
+
+
+
+
 	
+
+	<script>
 	$(document).ready(function() {
-		$(".primary-btn").on("click",function() {
+		$(".primary-btn").on("click",function(){
 			
-			var selectedTime = $("#default-select option:selected").val();
-			var selectedTimeText = $("#default-select option:selected").text();
-			
-			if(selectedTime == 0) {
-				alert ("시간을 먼저 선택하세요");
-				return false;
-			} else {
-				
-				var pno = $(this).find("selectedTime").val();
-				  $("#exampleModal .modal-body .rt").text(selectedTimeText);
-				  				
-			}
+		
+				var selectedTime = $("#default-select option:selected").val();
+				var selectedTimeText = $("#default-select option:selected").text();
 						
-		});
+				if(selectedTime == 0) {
+						alert ("시간을 먼저 선택하세요");
+						return false;
+				} else {
+							
+					var pno = $(this).find("selectedTime").val();
+					$("#exampleModal .modal-body .rt").text(selectedTimeText);
+							  				
+				}
+									
+			});
 		
 	});
-		
-	</script>
+
 	
+	</script>
+
+	<!-- 시간을 선택하였지만 마감된곳이 있다면 예약하기 버튼을 누를 수 없다-->
+
+	<script>
+	$(document).ready(function(){
+		
+		 $('#timeselct').change(function() {
+		        var selectedTime = $(this).val(); // 선택한 시간 값
+		        $.ajax({	
+		            url : "ajax.time",
+		            type : "get",
+		            data : { tno : selectedTime, pno:"${pno}", matchingDate: "${matchingDate}" },
+		            success : function(data) {
+						console.log(data);
+		                $("#totalPlayer").text(data.total);
+		                $("#player").text(data.player);
+		               
+		                
+		                if (data.player >= data.total) {
+		                    // 인원 마감 시 버튼 비활성화
+		                    $(".primary-btn").prop("disabled", true);
+		                    alert("인원이 마감되었습니다.");
+		                } else { //인원마감되지 않았지만 
+		                	if(data.duplicate>0){ //중복이면 버튼 비활성화
+		                		$(".primary-btn").prop("disabled", true);
+			                    alert("중복예약입니다.");
+		                	}else{ // 인원이 마감도 아니고 중복도 아니면 이제 예약
+			                    $(".primary-btn").prop("disabled", false);
+			                	$(".genric-btn.info").on("click",function(){
+			            			var timeNo = $("#timeselct").val(); //시간
+			            			var placeNo = $("#placeNo").val();//장소
+			            			var reservationDate = $("#reservationDate").val();//날짜
+			            			
+			            			
+			            			if(${loginUser == null} ){ //로그인을 하지 않았으면 로그인 페이지로 이동
+			            				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다");
+			            				location.href="login.me";
+			            				event.preventDefault();
+			            				return false;
+			            			}
+			            			
+			            			location.href="matching.en?timeNo="+timeNo+"&placeNo=${p.placeNo}&reservationDate=${matchingDate}";
+			            			
+			            		});
+		                	}
+		                  
+		                }
+		               
+		            },
+		            error : function() {
+		                console.log("실패");
+		            }
+		        });
+		    });
+		});
+	
+	
+	</script>
 
 </body>
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.ensport.member.model.vo.Member"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 
@@ -71,7 +72,7 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">경기매칭</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.so">축구</a></li>
+									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.so?currentPage=1">축구</a></li>
 									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.ba">야구</a></li>
 									
 								</ul>

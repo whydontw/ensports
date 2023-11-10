@@ -12,13 +12,14 @@ public class Reservation {
 	private Date reservationDate;
 	private String genderType;
 	private	int userCapacity;
+
 	
 	//마이페이지용 예약여부 확인하기
 	private String fixedYn;
 	private int currentCount;
 
 
-	
+
 	
 	
 	
@@ -26,6 +27,7 @@ public class Reservation {
 		super();
 		this.userCapacity = userCapacity;
 	}
+
 
 	public Reservation(int reservationNo, String timeNo, String placeNo, String reservationType, Date reservationDate,
 			int userCapacity, String genderType, String fixedYn) {
@@ -134,4 +136,8 @@ public class Reservation {
 	}
 	
 	
+
 }
+
+
+

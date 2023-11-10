@@ -35,7 +35,7 @@
 
 
 				<!-- 마이 페이지 메뉴 -->
-                <%@ include file="myPage_menu.jsp" %>
+                <%@ include file="myPage_profile.jsp" %>
 
 				
 				<!-- ### 내 정보 수정하기 ### -->
@@ -62,10 +62,10 @@
 				                                </div>
 				                                <div class="reply-btn">
 			                                    	<c:if test="${empty qList.qaAnswer }">
-			                                    		<h4>미답변</h4>
+			                                    		<h4><b>미답변</b></h4>
 			                                    	</c:if>
 			                                    	<c:if test="${not empty qList.qaAnswer }">
-			                                    		<h4>답변완료</h4>
+			                                    		<h4><b>답변완료</b></h4>
 			                                    	</c:if>
 				                                </div>
 				                            </div>
@@ -79,11 +79,12 @@
 				                                	<c:if test="${not empty qList.qaAnswer }">	
 					                                    <div class="desc">
 					                                        <h5><b>▶ 관리자</b></h5>
+					                                  		<p class="comment">${qList.qaAnswer }</p>
 					                                        <p class="date">${qList.qaAnswerDate }</p>
-					                                        <p class="comment">
-					                                            ${qList.qaAnswer }
-					                                        </p>
 					                                    </div>
+				                                    </c:if>
+				                                	<c:if test="${empty qList.qaAnswer }">	
+					                                   <p class="comment"  style="color: red">＃ 답변 내역이 존재하지 않습니다.</p>
 				                                    </c:if>
 				                                    
 				                                </div>
