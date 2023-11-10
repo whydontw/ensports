@@ -266,7 +266,7 @@
 		</div>
 	</section>
 	<!-- End category Area -->
-	
+
 	<img src="resources/img/공간.png" alt="">
 	<!-- start product Area -->
 <section class="owl-carousel active-product-area section_gap">
@@ -377,6 +377,7 @@
 					                        "<h6>" + item.placeName + "</h6>" +
 					                        "<div class='prd-bottom'>" +
 					                        "<a href='${contextPath}/list.so' class='social-info'>" +
+
 					                        "<span class='lnr lnr-move'></span>" +
 					                        "<p class='hover-text'>예약하기</p>" +
 					                        "</a>" +
@@ -440,7 +441,7 @@
 								<p class="position mb-5">CEO, Founder</p>
 							</div>
 							<p>
-							<div class="quote">&ldquo;</div> 
+							<div class="quote">&ldquo;</div>
 							&ldquo;Far far away, behind the word mountains, far from the
 							countries Vokalia and Consonantia, there live the blind texts.
 							Separated they live in Bookmarksgrove right at the coast of the

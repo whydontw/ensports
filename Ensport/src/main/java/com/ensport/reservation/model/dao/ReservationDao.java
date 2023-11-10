@@ -3,6 +3,7 @@ package com.ensport.reservation.model.dao;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -131,6 +132,83 @@ public class ReservationDao {
 
 		return revList;
 	}
+
+
+	//총인원
+	public int selectAll(Connection conn, int placeNo, String reservationDate, int timeNo) {
+		
+		int total = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectAll");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			pstmt.setString(2, reservationDate );
+			pstmt.setInt(3, timeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				total = rset.getInt("USERCAPACITY");
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		System.out.println("dao"+ total);
+		
+		
+		return total;
+	}
+
+
+	//참여자
+	public int selectPlayer(Connection conn, int placeNo, String reservationDate, int timeNo) {
+		
+		int player = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectPlayer");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			pstmt.setString(2, reservationDate );
+			pstmt.setInt(3, timeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				player = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		System.out.println("dao"+ player);
+		
+		
+		return player;
+	}
+	
+	
+	
+	
+	
 
 	
 	
