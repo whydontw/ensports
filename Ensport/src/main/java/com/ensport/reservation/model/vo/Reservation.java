@@ -16,9 +16,22 @@ public class Reservation {
 	//마이페이지용 예약여부 확인하기
 	private String fixedYn;
 	private int currentCount;
+	
+	
+	//마이페이지용 Review 여부 확인
+	private int playerNo;
+	private int reviewNo;
+	private int score;
+	private String reviewContent;
 
 	
 	
+	public Reservation(int userCapacity) {
+		super();
+		this.userCapacity = userCapacity;
+	}
+
+
 	public Reservation(int reservationNo, String timeNo, String placeNo, String reservationType, Date reservationDate,
 			int userCapacity, String genderType, String fixedYn) {
 		super();
@@ -36,6 +49,8 @@ public class Reservation {
 		super();
 	}
 
+	
+	
 
 	public Reservation(int reservationNo, String timeNo, String placeNo) {
 		super();
@@ -121,12 +136,55 @@ public class Reservation {
 	
 	
 	
+	//마이페이지 리뷰
+	
+	public int getPlayerNo() {
+		return playerNo;
+	}
+
+	public void setPlayerNo(int playerNo) {
+		this.playerNo = playerNo;
+	}
+
+	
+	public int getReviewNo() {
+		return reviewNo;
+	}
+
+	public void setReviewNo(int reviewNo) {
+		this.reviewNo = reviewNo;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public String getReviewContent() {
+		return reviewContent;
+	}
+
+	public void setReviewContent(String reviewContent) {
+		this.reviewContent = reviewContent;
+	}	
+	
+	
+	
+	
+	
+		
+	
+
 	@Override
 	public String toString() {
 		return "Reservation [reservationNo=" + reservationNo + ", timeNo=" + timeNo + ", placeNo=" + placeNo
 				+ ", reservationType=" + reservationType + ", reservationDate=" + reservationDate + ", userCapacity="
 				+ userCapacity + ", genderType=" + genderType + ", fixedYn=" + fixedYn + "]";
 	}
+
 	
 	
 }

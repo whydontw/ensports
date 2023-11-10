@@ -45,9 +45,9 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="d-flex justify-content-between">
+						<a href="${contextPath }/myPageReview.me?currentPage=1" class="d-flex justify-content-between">
 						<p>리뷰</p>
-						<p>(구현예정)</p>
+						<p>#</p>
 					</a>
 					</li>
 					<li>
