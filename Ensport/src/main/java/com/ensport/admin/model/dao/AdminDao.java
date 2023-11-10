@@ -15,6 +15,7 @@ import com.ensport.admin.model.vo.Place;
 import com.ensport.admin.model.vo.QA;
 import com.ensport.admin.model.vo.QAComment;
 import com.ensport.common.JDBCTemplate;
+import com.ensport.member.model.vo.Member;
 
 public class AdminDao {
 
@@ -579,12 +580,112 @@ public class AdminDao {
 	}
 
 
+	public ArrayList<Member> selectMemberList(Connection conn) {
+		
+		ArrayList<Member> list = new ArrayList<>();
+		ResultSet rset = null;
+		Statement stmt = null;
+		
+		String sql = prop.getProperty("selectMemberList");
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			
+			while(rset.next()) {
+				list.add(new Member(rset.getInt("USER_NO")
+								   ,rset.getString("USER_NICKNAME")
+								   ,rset.getDate("ENROLLDATE")));
+			}
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return list;
+	}
 
 
+	public Member selectOneMember(Connection conn, int userNo) {
+
+		Member m = null;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectOneMember");
+		
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				
+				pstmt.setInt(1, userNo);
+				
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					m = new Member();
+					
+					m.setUserNo(rset.getInt("USER_NO"));
+					m.setUserId(rset.getString("USER_ID"));
+					m.setUserPassword(rset.getString("USER_PASSWORD"));
+					m.setUserNickname(rset.getString("USER_NICKNAME"));
+					m.setUserName(rset.getString("USER_NAME"));
+					m.setEmail(rset.getString("EMAIL"));
+					m.setPhone(rset.getString("PHONE"));
+					m.setEnrolldate(rset.getDate("ENROLLDATE"));
+					m.setGender(rset.getString("GENDER"));
+					m.setAddress(rset.getString("ADDRESS"));
+					m.setPrefer(rset.getString("PREFER"));
+					m.setImages(rset.getString("IMAGES"));
+					m.setStatus(rset.getString("STATUS"));
+					m.setAddressDetail(rset.getString("ADDRESS_DETAIL"));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
 	
+		return m;
+	}
 
-	
+
+	public int adminDeleteMember(int userNo, Connection conn) {
 
 
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("adminDeleteMember");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
 
 }
+
+
+
