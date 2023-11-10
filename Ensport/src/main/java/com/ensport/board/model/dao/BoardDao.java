@@ -13,6 +13,7 @@ import java.util.Properties;
 
 import com.ensport.board.model.vo.Attachment;
 import com.ensport.board.model.vo.Board;
+import com.ensport.board.model.vo.Reply;
 import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.PageInfo;
 
@@ -341,6 +342,65 @@ public class BoardDao {
 		}
 		
 		return result;
+	}
+
+	public int insertReply(Connection conn, Reply r) {
+		
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		String sql = prop.getProperty("insertReply");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, r.getReplyContent());
+			pstmt.setInt(2, r.getBoardNo());
+			pstmt.setString(3, r.getUserId());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	public ArrayList<Reply> selectReplyList(Connection conn, int bno) {
+		
+		ArrayList<Reply> list = new ArrayList<>();
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectReplyList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, bno);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				list.add(new Reply(rset.getInt("REPLY_NO")
+								  ,rset.getString("USER_NICKNAME")
+								  ,rset.getString("REPLY_CONTENT")
+								  ,rset.getDate("CREATE_DATE")));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
 	}
 
 }

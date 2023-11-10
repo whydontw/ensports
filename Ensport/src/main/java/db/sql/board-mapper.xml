@@ -113,6 +113,25 @@
 		WHERE BOARD_NO = ?
 	</entry>
 	
+	<entry key="insertReply">
+		INSERT INTO REPLY(REPLY_NO
+						 ,REPLY_CONTENT
+						 ,BOARD_NO
+						 ,USER_ID)
+		VALUES (SEQ_REPLY.NEXTVAL
+				,?
+				,?
+				,?)
+	</entry>
+	
+	<entry key="selectReplyList">
+		SELECT REPLY_NO,USER_NICKNAME,REPLY_CONTENT,CREATE_DATE
+		FROM REPLY R
+		JOIN MEMBER M USING(USER_ID)
+		WHERE R.STATUS = 'Y'
+		AND BOARD_NO = ?
+	</entry>
+	
 	
 	
 </properties>
