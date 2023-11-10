@@ -40,7 +40,8 @@ public class boardEnrollController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		String bType = request.getParameter("bType");
+		request.setAttribute("bType", bType);
 		request.getRequestDispatcher("views/board/boardEnrollForm.jsp").forward(request, response);
 
 	}
@@ -90,12 +91,14 @@ public class boardEnrollController extends HttpServlet {
 
 			// 작성자정보 (등록되는 정보가 userNo와 같으니 로그인정보에서 추출하기)
 			String boardWriter = String.valueOf(((Member) session.getAttribute("loginUser")).getUserNo()); // 번거로우니 다음에는
-																											// 히든으로 보내주기
+			int boardType = Integer.parseInt(multiRequest.getParameter("bType"));																								// 히든으로 보내주기
 
 			Board b = new Board();
 			b.setBoardContent(content);
 			b.setBoardTitle(title);
 			b.setUserNo(boardWriter);
+			b.setBoardType(boardType);
+			
 			
 			// 사용자가 파일을 업로드했다면 파일 정보를 추출하고 업로드하지 않았다면 게시글정보만 필요
 			Attachment at = null; // 첨부파일이 있다면 담아줄 예정

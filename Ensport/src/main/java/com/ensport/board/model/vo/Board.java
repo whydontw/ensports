@@ -12,6 +12,7 @@ public class Board {
 	private int boardCount;
 	private String status;
 	private String adminYN;
+	private int boardType;
 	
 	
 	//마이페이지 REPLY용
@@ -39,22 +40,24 @@ public class Board {
 	}
 	
 
-	public Board(int boardNo, String userNo, String boardTitle, Date createDate, int boardCount) {
+	public Board(int boardNo, String userNo, String boardTitle, Date createDate, int boardCount, int boardType) {
 		super();
 		this.boardNo = boardNo;
 		this.userNo = userNo;
 		this.boardTitle = boardTitle;
 		this.createDate = createDate;
 		this.boardCount = boardCount;
+		this.boardType = boardType;
 	}
 	
 	
 
-	public Board(String userNo, String boardTitle, String boardContent) {
+	public Board(String userNo, String boardTitle, String boardContent, int boardType) {
 		super();
 		this.userNo = userNo;
 		this.boardTitle = boardTitle;
 		this.boardContent = boardContent;
+		this.boardType = boardType;
 	}
 
 	public Board(int boardNo, String userNo, String boardTitle, String boardContent, Date createDate, int boardCount) {
@@ -67,6 +70,14 @@ public class Board {
 		this.boardCount = boardCount;
 	}
 	
+
+	public int getBoardType() {
+		return boardType;
+	}
+
+	public void setBoardType(int boardType) {
+		this.boardType = boardType;
+	}
 
 	public int getBoardNo() {
 		return boardNo;
