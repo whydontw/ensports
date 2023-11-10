@@ -69,4 +69,22 @@
 	</entry>
 	
 	
+	<entry key="soccerPlaceReservation">
+		INSERT INTO PLAYER
+		VALUES(SEQ_PLAYER.NEXTVAL, ?,
+		        (SELECT RESERVATION_NO
+		            FROM RESERVATION
+		            WHERE
+		            TIME_NO = ?
+		            AND PLACE_NO = ?
+		            AND RESERVATION_DATE = TO_DATE(?, 'YY/MM/DD')),
+		            DEFAULT
+		)	
+	</entry>
+	
+	<entry key="placeAllListCount">
+		SELECT COUNT(*) AS COUNT
+		FROM PLACE
+	</entry>
+	
 </properties>

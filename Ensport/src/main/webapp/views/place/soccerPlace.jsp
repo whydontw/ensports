@@ -148,13 +148,61 @@
 						
 					</div>
 					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+					
+						<c:choose>
+			                        <c:when test="${pi.currentPage eq 1}">
+										 <li class="page-item">
+			                                <a href="#" class="page-link" aria-label="Previous">
+			                                    <span aria-hidden="true">
+			                                        <span class="lnr lnr-chevron-left"></span>
+			                                    </span>
+			                                </a>
+			                            </li>
+									</c:when>
+									<c:otherwise>
+									 	<li class="page-item">
+			                                <a href="${contextPath }/place.so?currentPage=${pi.currentPage-1}" class="page-link" aria-label="Previous">
+			                                    <span aria-hidden="true">
+			                                        <span class="lnr lnr-chevron-left"></span>
+			                                    </span>
+			                                </a>
+			                            </li>
+									</c:otherwise>
+			             </c:choose>
+						
+						<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
+		                            <li class="page-item"><a href="${contextPath }/place.so?currentPage=${i}" class="page-link">${i}</a></li>
+								</c:forEach>
+								
+								
+			                    <c:choose>
+			                        <c:when test="${pi.currentPage eq pi.maxPage}">
+										 <li class="page-item">
+			                                <a href="#" class="page-link" aria-label="Next">
+			                                    <span aria-hidden="true">
+			                                        <span class="lnr lnr-chevron-right"></span>
+			                                    </span>
+			                                </a>
+			                            </li>
+									</c:when>
+									<c:otherwise>
+									 	<li class="page-item">
+			                                <a href="${contextPath }/place.so?currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+			                                    <span aria-hidden="true">
+			                                        <span class="lnr lnr-chevron-right"></span>
+			                                    </span>
+			                                </a>
+			                            </li>
+									</c:otherwise>
+			             </c:choose>
+						
+<!-- 							<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a> -->
+<!-- 							<a href="#" class="active">1</a> -->
+<!-- 							<a href="#">2</a> -->
+<!-- 							<a href="#">3</a> -->
+<!-- 							<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a> -->
+<!-- 							<a href="#">6</a> -->
+<!-- 							<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a> -->
 					</div>
 				</div>
 				<!-- End Filter Bar -->

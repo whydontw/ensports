@@ -72,7 +72,6 @@
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
-
 					<div class="s_product_text" >
 						<h3>[ ${placeDate} ] ${ssp.placeName}</h3>
 
@@ -110,30 +109,7 @@
 		</div>	
 	</div>
 		
-	<script>
-	
-	$(document).ready(function() {
 
-		$(".primary-btn").on("click",function() {
-			
-			var selectedTime = $("#selected-time option:selected").val(); 
-			var selectedTimeText = $("#selected-time option:selected").text(); 
-			
-			if(selectedTime == 0) {
-				alert ("시간을 먼저 선택하세요");
-				return false;
-			} else {
-				
-				var sno = $(this).find("selectedTime").val();
-				  $("#exampleModal .modal-body .rt").text(selectedTimeText);
-				  				
-			}
-						
-		});
-		
-	});
-		
-	</script>
 	
 	
 	<!-- Modal -->
@@ -149,7 +125,7 @@
 	      
 	      <div class="modal-body" >
 	      	<br>
-	        [예약 경기장] : ${ssp.placeName}
+	        [예약 경기장] : ${ssp.placeName}  
 	        <br> <br>
 	        [예약 날짜] :  ${placeDate}
 	        <br> <br>
@@ -160,12 +136,32 @@
 	      <div class="modal-footer">
 		      <div class="button-group-area mt-40">
 		        <button type="button" class="genric-btn primary" data-dismiss="modal">닫기</button>
-		        <button type="button" class="genric-btn info">결제하기</button>
+		        <button type="button" class="genric-btn info" id="reservationFixed">결제하기</button>
 		      </div>
 	      </div>
 	    </div>
 	  </div>
 	</div>
+	
+	<script>
+
+ 		$(function(){
+			
+ 			$("#reservationFixed").click(function(){
+ 								
+			    var timeNo = $("#selected-time").val();					// 시간 번호 설정
+			    var placeNo = $("#placeNo").val();						// 장소 번호 설정
+			    var reservationDate = $("#reservationDate").val();		// 예약 날짜 설정
+				
+ 				location.href = "placeEnrollForm.so?timeNo="+timeNo+"&placeNo=${ssp.placeNo}&reservationDate=${placeDate}";
+				
+ 			});
+			
+ 		})
+
+		
+	
+	</script>
 	
 	<!--================End Single Product Area =================-->
 
@@ -365,6 +361,33 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
+	
+	
+	
+	<script>
+	
+	$(document).ready(function() {
+
+		$(".primary-btn").on("click",function() {
+			
+			var selectedTime = $("#selected-time option:selected").val(); 
+			var selectedTimeText = $("#selected-time option:selected").text(); 
+			
+			if(selectedTime == 0) {
+				alert ("시간을 먼저 선택하세요");
+				return false;
+			} else {
+				
+				var sno = $(this).find("selectedTime").val();
+				  $("#exampleModal .modal-body .rt").text(selectedTimeText);
+				  				
+			}
+						
+		});
+		
+	});
+		
+	</script>
 
 </body>
 

@@ -16,6 +16,7 @@ import com.ensport.common.JDBCTemplate;
 import com.ensport.place.model.dao.SoccerPlaceDao;
 import com.ensport.place.model.vo.PlaceTime;
 import com.ensport.place.model.vo.SoccerPlace;
+import com.ensport.reservation.model.vo.Reservation;
 
 public class SoccerPlaceDao {
 	
@@ -211,5 +212,68 @@ public class SoccerPlaceDao {
 		return list;
 	}
 
+	//예약 확정 데이터 보내기 
+	public int SoccerPlaceReservation(Connection conn, int userNo, String timeNo, String placeNo, String reservationDate) {
+
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("soccerPlaceReservation");
+		
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, userNo);
+			pstmt.setInt(2, Integer.parseInt(timeNo));
+			pstmt.setInt(3, Integer.parseInt(placeNo));
+			pstmt.setString(4, reservationDate);
+			 
+			result = pstmt.executeUpdate();
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			//자원반납
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
 	
-}
+	//페이징처리
+	public int PlaceAllListCount(Connection conn) {
+		
+			//SELECT (조회)
+			int count = 0;
+			ResultSet rset = null; //조회구문이기 때문에 필요
+			Statement stmt = null; //위치홀더 필요없으니 statement 활용
+			
+			String sql = prop.getProperty("placeAllListCount");
+			
+			try {
+				stmt = conn.createStatement();
+				
+				//개수 조회
+				rset = stmt.executeQuery(sql);
+				
+				if(rset.next()) {
+					//조회된 게시글 개수
+					count = rset.getInt("COUNT");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(stmt);
+			}
+			
+			return count; //게시글 개수 돌려주기
+		}
+		
+	}
+
+	

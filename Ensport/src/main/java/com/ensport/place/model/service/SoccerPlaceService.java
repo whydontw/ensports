@@ -5,9 +5,11 @@ import java.util.ArrayList;
 
 import com.ensport.admin.model.vo.Attachment;
 import com.ensport.common.JDBCTemplate;
+import com.ensport.member.model.dao.MemberDao;
 import com.ensport.place.model.dao.SoccerPlaceDao;
 import com.ensport.place.model.vo.PlaceTime;
 import com.ensport.place.model.vo.SoccerPlace;
+import com.ensport.reservation.model.vo.Reservation;
 
 public class SoccerPlaceService {
 	
@@ -76,6 +78,38 @@ public class SoccerPlaceService {
 		JDBCTemplate.close(conn);
 		
 		return list;
+	}
+
+	//예약 확정 데이터 보내기 
+	public int SoccerPlaceReservation(int userNo, String timeNo, String placeNo, String reservationDate) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new SoccerPlaceDao().SoccerPlaceReservation(conn, userNo, timeNo, placeNo, reservationDate);
+		
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	//페이징처리
+	public int PlaceAllListCount() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		//게시글 개수 받아줄 변수 준비
+		int count = new SoccerPlaceDao().PlaceAllListCount(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return count; //게시글 개수 돌려주기
 	}
 
 
