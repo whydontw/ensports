@@ -60,7 +60,8 @@
 
 	<div class="container">
 
-		<form action="${contextPath }/boardEnroll.bo" method="post" enctype="multipart/form-data">
+		<form action="${contextPath }/boardUpdate.bo" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="boardNo" value="${b.boardNo }">
 			<br>
 			<br>
 			<table class="table table-stripped"
@@ -79,37 +80,39 @@
 
 				<tbody>
 					<tr>
-						<td colspan="1" style="font-size: 15px;">제목</td>
+						<th colspan="1" style="font-size: 15px;">제목</th>
 						<td colspan="3"><input type="text" class="form-control"
 							name="title" maxlength="100" value="${b.boardTitle }"></td>
 					</tr>
 					<tr class="tr1">
-						<td colspan="1" style="font-size: 15px;">내용</td>
+						<th colspan="1" style="font-size: 15px;">내용</th>
 						<td colspan="3"><textarea id="editor" class="form-control"
 								name="content" placeholder="글 내용" name="bbsContent" maxlength="8192"
-								style="height: 350px" readonly="readonly">${b.boardContent }</textarea></td>
+								style="height: 350px">${b.boardContent }</textarea></td>
 					</tr>
 					<tr>
-						<th style="font-size: 15px;" colspan="1">첨부파일</th>
-						<td colspan="3">
-							<c:if test="${a != null }">
-									${a.originName }
-									<input type="hidden" name="originFileNo" value="${a.fileNo }">
-									<input type="hidden" name="originFileName" value="${a.changeName }">
-							</c:if> 
-									<input type="file" name="reUploadFile">
-						</td>
+					    <th style="font-size: 15px;" colspan="1">첨부파일</th>
+					    <td colspan="3" style="font-size: 15px; text-align:left;">
+					        <c:if test="${a != null}">
+					            ${a.originName}
+					            <input type="hidden" name="originAtNo" value="${a.atNo}">
+					            <input type="hidden" name="originName" value="${a.changeName}">
+					        </c:if>
+					        <input type="file" name="reUploadFile" id="fileInput">
+					    </td>
 					</tr>
 				</tbody>
 			</table>
 			<div>
-				<button type="submit" class="primary-btn pull-right">수정완료</button>
-				<a href="${contextPath }/boardUpdate.bo" class="primary-btn pull-right">돌아가기</a>
+				<button type="submit" class="primary-btn pull-right" style="border-radius: 0">수정완료</button>
+				<button type="button" onclick="history.back();" class="primary-btn pull-right" style="border-radius: 0">돌아가기</button>
 			</div>
 			<br><br><br>
 				
 		</form>
 	</div>
+	
+	
 	<br><br><br><br><br>
 	<%@ include file="../common/footer.jsp"%>
 

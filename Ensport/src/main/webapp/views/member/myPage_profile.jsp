@@ -18,8 +18,8 @@
 				<div class="br"></div>
 			</aside>
 			<aside class="single_sidebar_widget author_widget">
-				<img class="author_img rounded-circle" src="${contextPath}/resources/img/blog/sonny.jpg" alt="">
-				<h4>${loginUser.userNickname }</h4>
+				<img class="author_img rounded-circle" src="${contextPath}/resources/img/blog/sonny.jpg" alt="" >
+				<h4><i class="bi bi-person-fill"></i> ${loginUser.userNickname }</h4>
 				<div class="social_icon">
 					<p>${loginUser.email}</p>
 					<!-- <a href="#"><i class="fa fa-facebook"></i></a>
@@ -44,10 +44,12 @@
 							<p id="replyCount"></p>
 						</a>
 					</li>
-<%-- 				<li><a href="${contextPath }/myPageReview.me?currentPage=1" class="d-flex justify-content-between"> --%>
-<!-- 						<p>리뷰</p> -->
-<!-- 						<p>0</p> -->
-<!-- 				</a></li> -->
+					<li>
+						<a href="#" class="d-flex justify-content-between">
+						<p>리뷰</p>
+						<p>(구현예정)</p>
+					</a>
+					</li>
 					<li>
 						<a href="${contextPath }/myPageQa.me?currentPage=1" class="d-flex justify-content-between">
 							<p>문의사항</p>

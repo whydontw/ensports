@@ -60,8 +60,8 @@
 				                                    </div>
 				                                </div>
 				                                <div class="reply-btn">
-				                                    <a href="${contextPath }/update.bo?bno=${b.boardNo }" class="btn-reply text-uppercase">수정</a>
-				                                    <a href="${contextPath }/delete.bo?bno=${b.boardNo }" class="btn-reply text-uppercase">삭제</a>
+				                                    <a href="${contextPath }/boardUpdate.bo?bno=${b.boardNo }" class="btn-reply text-uppercase">수정</a>
+				                                    <a href="${contextPath }/boardDelete.bo?bno=${b.boardNo }" class="btn-reply text-uppercase" onclick="return confirm('게시글을 삭제하시겠습니까?')">삭제</a>
 				                                </div>
 				                            </div>
 				                        </div>
