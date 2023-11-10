@@ -45,6 +45,8 @@
 	<link rel="stylesheet" href="${contextPath}/resources/css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="${contextPath}/resources/css/magnific-popup.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/main.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+	
 	<link rel="icon" href="${contextPath }/resources/img/elements/baseball_icon1.png" type="image/x-icon">
 	
 </head>
