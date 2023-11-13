@@ -62,7 +62,8 @@ public class BoardDao {
 										  ,rset.getString("USER_NICKNAME")
 										  ,rset.getString("BOARD_TITLE")
 										  ,rset.getDate("CREATE_DATE")
-										  ,rset.getInt("BOARD_COUNT")));
+										  ,rset.getInt("BOARD_COUNT")
+										  ,rset.getInt("BOARD_TYPE")));
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -88,6 +89,7 @@ public class BoardDao {
 			pstmt.setString(1, b.getUserNo());
 			pstmt.setString(2, b.getBoardTitle());
 			pstmt.setString(3, b.getBoardContent());
+			pstmt.setInt(4, b.getBoardType());
 			
 			result = pstmt.executeUpdate();
 			

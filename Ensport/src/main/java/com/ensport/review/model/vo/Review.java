@@ -1,77 +1,76 @@
 package com.ensport.review.model.vo;
 
+import java.util.Date;
 
 //리뷰 Review
 public class Review {
 	
 	private int reviewNo;
-	private int userNo;
-	private int placeNo;
+	private int playerNo;
 	private int score;
-	private String content;
+	private String reviewContent;
+	private Date createDate;
+	private String status;
 	
 	
 	
 	public Review() {
 		super();
 	}
-	
-	public Review(int reviewNo, int userNo, int placeNo, int score, String content) {
+	public Review(int reviewNo, int playerNo, int score, String reviewContent, Date createDate, String status) {
 		super();
 		this.reviewNo = reviewNo;
-		this.userNo = userNo;
-		this.placeNo = placeNo;
+		this.playerNo = playerNo;
 		this.score = score;
-		this.content = content;
+		this.reviewContent = reviewContent;
+		this.createDate = createDate;
+		this.status = status;
 	}
 	
 	
-
+	
 	public int getReviewNo() {
 		return reviewNo;
 	}
-
 	public void setReviewNo(int reviewNo) {
 		this.reviewNo = reviewNo;
 	}
-
-	public int getUserNo() {
-		return userNo;
+	public int getPlayerNo() {
+		return playerNo;
 	}
-
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
+	public void setPlayerNo(int playerNo) {
+		this.playerNo = playerNo;
 	}
-
-	public int getPlaceNo() {
-		return placeNo;
-	}
-
-	public void setPlaceNo(int placeNo) {
-		this.placeNo = placeNo;
-	}
-
 	public int getScore() {
 		return score;
 	}
-
 	public void setScore(int score) {
 		this.score = score;
 	}
-
-	public String getContent() {
-		return content;
+	public String getReviewContent() {
+		return reviewContent;
 	}
-
-	public void setContent(String content) {
-		this.content = content;
+	public void setReviewContent(String reviewContent) {
+		this.reviewContent = reviewContent;
 	}
-
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
 	
 	@Override
 	public String toString() {
-		return "Review [reviewNo=" + reviewNo + ", userNo=" + userNo + ", placeNo=" + placeNo + ", score=" + score
-				+ ", content=" + content + "]";
+		return "Review [reviewNo=" + reviewNo + ", playerNo=" + playerNo + ", score=" + score + ", reviewContent="
+				+ reviewContent + ", createDate=" + createDate + ", status=" + status + "]";
 	}
 	
 	

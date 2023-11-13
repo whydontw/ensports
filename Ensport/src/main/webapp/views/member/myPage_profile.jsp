@@ -18,8 +18,8 @@
 				<div class="br"></div>
 			</aside>
 			<aside class="single_sidebar_widget author_widget">
-				<img class="author_img rounded-circle" src="${contextPath}/resources/img/blog/sonny.jpg" alt="">
-				<h4>${loginUser.userNickname }</h4>
+				<img class="author_img rounded-circle" src="${contextPath}/resources/img/blog/sonny.jpg" alt="" >
+				<h4><i class="bi bi-person-fill"></i> ${loginUser.userNickname }</h4>
 				<div class="social_icon">
 					<p>${loginUser.email}</p>
 					<!-- <a href="#"><i class="fa fa-facebook"></i></a>
@@ -45,9 +45,9 @@
 						</a>
 					</li>
 					<li>
-						<a href="#" class="d-flex justify-content-between">
+						<a href="${contextPath }/myPageReview.me?currentPage=1" class="d-flex justify-content-between">
 						<p>리뷰</p>
-						<p>(구현예정)</p>
+						<p id="reviewCount"></p>
 					</a>
 					</li>
 					<li>
@@ -119,14 +119,15 @@
 					$("#boardCount").text(data.boardCount);
 					$("#replyCount").text(data.replyCount);
 					$("#qaCount").text(data.qaCount);
+					$("#reviewCount").text(data.reviewCount);
 					$("#reservationCount").text(data.reservationCount);
 					
 					
-					var rvCount = data.reservationCount;
+					var rvCount = data.reviewCount;
 					
 					//등급 산정하기
 					if(rvCount < 4){
-						$("#myEnsportsLevel").text("Lv 1. 날아라 슛돌이");
+						$("#myEnsportsLevel").text("Lv 1. 아기 슛돌이");
 					}else if(rvCount < 8){
 						$("#myEnsportsLevel").text("Lv 2. 브론즈볼");
 					}else if(rvCount < 13){

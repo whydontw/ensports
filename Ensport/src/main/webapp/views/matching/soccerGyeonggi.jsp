@@ -167,15 +167,11 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting">
-						<select>
-							<option value="1">남성 매칭</option>
-							<option value="1">여성 매칭</option>
-							<option value="1">혼성 매칭</option>
-						</select>
+					
 					</div>
 					<div class="sorting">
 						<label for="date"> <input type="date" id="date"
-							max="2023-11-18" min="2023-11-16" value="<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()) %>">
+							max="2023-11-18" min="2023-11-16" value="날짜선택">
 					</div>
 				</div>
 				<!-- End Filter Bar -->
@@ -202,6 +198,7 @@
 								</div>
 							</div>
 						</c:forEach>
+						</div>
 				</section>
 
 				<!-- End Best Seller -->
