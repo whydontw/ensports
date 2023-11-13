@@ -4,7 +4,6 @@
 
 <html lang="en">
 <head>
-<script type="text/javascript" src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
@@ -28,6 +27,10 @@
 
 .ck-content {
 	font-size: 12px;
+}
+.image{
+	height: 300px;
+	text-align: center;
 }
 </style>
 </head>
@@ -57,7 +60,7 @@
 				style="text-align: center; boarder: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan="2"
+						<th colspan="4"
 							style="background-color: #eeeeee; text-align: center;">게시글
 							작성</th>
 					</tr>
@@ -66,14 +69,22 @@
 				<tbody>
 					<tr>
 						<th colspan="1" style="font-size: 15px;">제목</th>
-						<td><input type="text" class="form-control"
-							name="title" placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
+						<td colspan="3"><input type="text" class="form-control"
+							name="title" placeholder="글 제목" name="bbsTitle" maxlength="50" required></td>
 					</tr>
 					<tr>
 						<th colspan="1" style="font-size: 15px;">내용</th>
-						<td><textarea id="editor" name="uploadImage" class="form-control"
-								name="content" placeholder="글 내용" name="bbsContent" maxlength="8192"
-								style="height: 350px"></textarea></td>
+						<td colspan="3">
+							<textarea id="editor" class="form-control"
+									name="content" placeholder="글 내용" name="bbsContent" maxlength="8192"
+									style="height: 350px" required></textarea>
+						</td>
+					</tr>
+					<tr>
+						<th style="font-size: 15px; padding-left: 0px;">이미지</th>
+						<td class="image"><div>대표이미지</div></td>
+						<td class="image"><div>이미지 2</div></td>
+						<td class="image"><div>이미지 3</div></td>
 					</tr>
 					<tr>
 						<th colspan="1" style="font-size: 15px; padding-left: 0px;">첨부파일</th>
@@ -88,14 +99,6 @@
 			<br><br><br>
 		</form>
 	</div>
-	<script type="text/javascript">
-		$(function(){
-			CKEDITOR.replace("editor",{
-				filebrowserUploadUrl: "${pageContext.request.contextPath}/ckeditor.bo"
-			});
-		});
-	
-	</script>
 	
 	<br><br><br><br><br>
 	<%@ include file="../common/footer.jsp"%>

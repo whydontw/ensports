@@ -51,9 +51,9 @@ th {
 	font-weight: bold;
 }
 
-.container {
-	padding: 30px 30px;
-}
+/* .container { */
+/* 	padding: 30px 30px; */
+/* } */
 </style>
 </head>
 <body>
@@ -103,7 +103,7 @@ th {
 					<th colspan="1" style="font-size: 15px;">내용</th>
 					<td colspan="3"><textarea id="editor" class="form-control"
 							name="content" placeholder="글 내용" name="bbsContent"
-							maxlength="8192" style="height: 350px" readonly="readonly">${b.boardContent }</textarea></td>
+							maxlength="8192" style="height: 350px" readonly="readonly"></textarea></td>
 				</tr>
 				<tr>
 					<th colspan="1" style="font-size: 15px; padding-left: 0px;">첨부파일</th>
@@ -122,7 +122,7 @@ th {
 				</tr>
 			</tbody>
 		</table>
-		<c:if test="${b.userNo eq loginUser.userNickname }">
+		<c:if test="${b.userNo eq loginUser.userNickname or loginUser.userNickname == '관리자' }">
 			<a class="primary-btn pull-right"
 				href="${contextPath }/boardDelete.bo?bno=${b.boardNo}"
 				onclick="return confirm('정말 삭제하시겠습니까?')" style="border-radius: 0; margin-right:13px;">삭제하기</a>
@@ -135,7 +135,7 @@ th {
 			class="primary-btn pull-right"
 			style="border-radius: 0; margin-right:13px;">목록으로</a>
 			<table class="table table-stripped"
-				style="text-align: center; boarder: 1px solid #dddddd; width:100%;">
+				style="text-align: center; border: 1px solid #dddddd; width:100%;">
 				<c:choose>
 					<c:when test="${loginUser != null }">
 						<thead>
@@ -143,7 +143,7 @@ th {
 								<td class="reply" colspan="1">댓글</td>
 								<td colspan="3" class="reply"><textarea id="replyContent" class="form-control"
 										rows="4" cols="50"
-										style="width: 100%; resize: none; border: 1px solid black;" placeholder="댓글 내용을 입력하세요"></textarea></td>
+										style="width: 100%; resize: none; border: 1px solid black;" placeholder="댓글 내용을 입력하세요" required></textarea></td>
 							</tr>
 							<tr>
 								<td colspan="4"><button onclick="insertReply();" class="primary-btn pull-right"
@@ -166,6 +166,7 @@ th {
 	</div>
 	<script>
 		function insertReply(){
+			
 				$.ajax({
 					url : "insertReply.bo",
 					data : {
