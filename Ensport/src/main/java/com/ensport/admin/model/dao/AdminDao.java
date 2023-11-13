@@ -686,6 +686,28 @@ public class AdminDao {
 	}
 
 
+	public int countMember(Connection conn) {
+
+		int count = 0;
+		ResultSet rset = null;
+		Statement stmt = null;
+		
+		String sql = prop.getProperty("countMember");
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
+	}
+
+
 }
 
 

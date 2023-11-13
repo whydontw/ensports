@@ -291,6 +291,14 @@ public class AdminService {
 		return result;
 	}
 
+	public int countMember() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+
+		int count = new AdminDao().countMember(conn);
+		return 0;
+	}
+
 	
 
 	

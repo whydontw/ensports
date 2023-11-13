@@ -195,5 +195,9 @@
 		SET STATUS = 'N'
 		WHERE USER_NO = ?
 	</entry>
+	<entry key="countMember">
+		SELECT COUNT(*)
+		FROM MEMBER
+	</entry>
 	
 </properties>
