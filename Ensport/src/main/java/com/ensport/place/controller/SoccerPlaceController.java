@@ -37,30 +37,27 @@ public class SoccerPlaceController extends HttpServlet {
 			
 		
 			
-			ArrayList<SoccerPlace> list = new SoccerPlaceService().selectAllSoccerPlaceList();						
 			
 			//페이징처리 
-			
-			
-			
-			int PlaceAllListCount; // 총 게시글 개수
+						
+			int placeAllListCount; // 총 게시글 개수
 			int currentPage; // 현재 페이지
 			int pageLimit; // 페이지 하단에 보여질 페이징바의 최대 개수
-			int myPageSoccerPlaceLimit; // 한페이지에 보여질 게시글 개수
+			int soccerPlaceLimit; // 한페이지에 보여질 게시글 개수
 			
 			int maxPage; // 가장 마지막 페이징바가 몇번인지 (총 페이지수)
 			int startPage; // 페이지 하단에 보여질 페이징바의 시작수
 			int endPage; // 페이지 하단에 보여질 페이징바의 끝수
 			
-			PlaceAllListCount = new SoccerPlaceService().PlaceAllListCount();
+			placeAllListCount = new SoccerPlaceService().allSoccerPlaceCount();
 			
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 			
 			pageLimit = 5;
 			
-			myPageSoccerPlaceLimit = 9;
+			soccerPlaceLimit = 9;
 			
-			maxPage = (int) Math.ceil((double) PlaceAllListCount / myPageSoccerPlaceLimit);
+			maxPage = (int) Math.ceil((double) placeAllListCount / soccerPlaceLimit);
 			
 			startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 			
@@ -70,7 +67,9 @@ public class SoccerPlaceController extends HttpServlet {
 				endPage = maxPage;
 			}
 			
-			PageInfo pi = new PageInfo(PlaceAllListCount, currentPage, pageLimit, myPageSoccerPlaceLimit, maxPage, startPage, endPage);
+			PageInfo pi = new PageInfo(placeAllListCount, currentPage, pageLimit, soccerPlaceLimit, maxPage, startPage, endPage);
+						
+			ArrayList<SoccerPlace> list = new SoccerPlaceService().selectAllSoccerPlaceList(pi);
 			
 			request.setAttribute("list", list);
 			request.setAttribute("pi", pi);

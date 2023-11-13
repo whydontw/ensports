@@ -60,7 +60,7 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울&currentPage=1"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
 
 						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.so?lacalName=경기"><span class="lnr lnr-arrow-right"></span><b>경기</b><span class="number">(53)</span></a></li>
 
