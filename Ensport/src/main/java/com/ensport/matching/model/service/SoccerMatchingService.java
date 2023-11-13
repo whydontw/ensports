@@ -10,6 +10,7 @@ import com.ensport.common.JDBCTemplate;
 import com.ensport.matching.model.dao.SoccerMatchingDao;
 import com.ensport.matching.model.vo.SoccerMatching;
 import com.ensport.place.model.vo.Place;
+import com.ensport.review.model.vo.Review;
 
 public class SoccerMatchingService {
 
@@ -137,6 +138,18 @@ public class SoccerMatchingService {
 			
 			return count; //게시글 개수 돌려주기
 			
+		}
+
+		//리뷰 리스트
+		public ArrayList<Review> selectReviewList(int pno) {
+
+			Connection conn = JDBCTemplate.getConnection();
+			
+			ArrayList<Review> rlist = new SoccerMatchingDao().selectReviewList(conn,pno);
+			
+			JDBCTemplate.close(conn);
+			
+			return rlist;
 		}
 
 		

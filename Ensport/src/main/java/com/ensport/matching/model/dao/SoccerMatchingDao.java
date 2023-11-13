@@ -14,6 +14,7 @@ import com.ensport.admin.model.vo.Attachment;
 import com.ensport.common.JDBCTemplate;
 import com.ensport.matching.model.vo.SoccerMatching;
 import com.ensport.place.model.vo.Place;
+import com.ensport.review.model.vo.Review;
 
 public class SoccerMatchingDao {
 	
@@ -373,6 +374,25 @@ public class SoccerMatchingDao {
 			
 			return count; //게시글 개수 돌려주기
 		
+		}
+
+
+		//리뷰 리스트
+		public ArrayList<Review> selectReviewList(Connection conn, int pno) {
+			
+			ResultSet rset = null;
+			ArrayList<Review> rlist = new ArrayList<Review>();
+			PreparedStatement pstmt = null;
+			String sql = prop.getProperty("selectReviewList");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return null;
 		}
 
 
