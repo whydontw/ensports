@@ -64,6 +64,10 @@
         text-decoration: underline;
         cursor: pointer;
     }
+    #noticeDesign{
+    	color: red;
+    	background-color: #EFE0D4;
+    }
     
     
 </style>
@@ -111,13 +115,26 @@
 					</c:when>
 					<c:otherwise>
 						<c:forEach items="${list }" var="b">
-							<tr>
-								<td>${b.boardNo }</td>
-								<td>${b.userNo }</td>
-								<td><a href="${contextPath }/boardDetail.bo?bno=${b.boardNo }" id="post">${b.boardTitle }</a></td>
-								<td>${b.createDate }</td>
-								<td>${b.boardCount }</td>
-							</tr>	
+							<c:choose>
+								<c:when test="${b.boardType==1 }">
+									<tr id="noticeDesign">
+										<td>${b.boardNo }</td>
+										<td>${b.userNo }</td>
+										<td>(공지)<a href="${contextPath }/boardDetail.bo?bno=${b.boardNo }" id="post">${b.boardTitle }</a></td>
+										<td>${b.createDate }</td>
+										<td>${b.boardCount }</td>
+									</tr>	
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td>${b.boardNo }</td>
+										<td>${b.userNo }</td>
+										<td><a href="${contextPath }/boardDetail.bo?bno=${b.boardNo }" id="post">${b.boardTitle }</a></td>
+										<td>${b.createDate }</td>
+										<td>${b.boardCount }</td>
+									</tr>	
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 					</c:otherwise>
 				</c:choose>
@@ -154,7 +171,11 @@
         </div>
 		
 		<c:if test="${loginUser != null }">
-				<a class="primary-btn pull-right" href="boardEnroll.bo" style="border-radius: 0">글작성</a>
+				<a class="primary-btn pull-right" href="boardEnroll.bo?bType=2" style="border-radius: 0">글작성</a>
+		</c:if>
+		
+		<c:if test="${loginUser.userId=='admin' }">
+			<a class="primary-btn pull-right" href="boardEnroll.bo?bType=1" style="border-radius: 0">공지사항 작성</a>
 		</c:if>
 	</div>
 	

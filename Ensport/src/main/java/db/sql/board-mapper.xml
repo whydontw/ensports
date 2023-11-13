@@ -3,8 +3,9 @@
 <properties>
 
 	<entry key="insertBoard">
-		INSERT INTO BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT)
+		INSERT INTO BOARD(BOARD_NO,USER_NO,BOARD_TITLE,BOARD_CONTENT,BOARD_TYPE)
 				VALUES(SEQ_BNO.NEXTVAL
+					  ,?
 					  ,?
 					  ,?
 					  ,?)
@@ -61,11 +62,12 @@
 		                    USER_NICKNAME,
 		                    BOARD_TITLE,
 		                    CREATE_DATE,
-		                    BOARD_COUNT
+		                    BOARD_COUNT,
+		                    BOARD_TYPE
 		                    FROM BOARD B
 		                    JOIN MEMBER N USING (USER_NO)
 		                    WHERE B.STATUS = 'Y'
-		                    ORDER BY BOARD_NO DESC) A)
+		                    ORDER BY BOARD_NO DESC, BOARD_TYPE ASC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
@@ -111,6 +113,25 @@
 	<entry key="deleteBoard">
 		DELETE FROM BOARD
 		WHERE BOARD_NO = ?
+	</entry>
+	
+	<entry key="insertReply">
+		INSERT INTO REPLY(REPLY_NO
+						 ,REPLY_CONTENT
+						 ,BOARD_NO
+						 ,USER_ID)
+		VALUES (SEQ_REPLY.NEXTVAL
+				,?
+				,?
+				,?)
+	</entry>
+	
+	<entry key="selectReplyList">
+		SELECT REPLY_NO,USER_NICKNAME,REPLY_CONTENT,CREATE_DATE
+		FROM REPLY R
+		JOIN MEMBER M USING(USER_ID)
+		WHERE R.STATUS = 'Y'
+		AND BOARD_NO = ?
 	</entry>
 	
 	

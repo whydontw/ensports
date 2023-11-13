@@ -266,7 +266,7 @@
 		</div>
 	</section>
 	<!-- End category Area -->
-	
+
 	<img src="resources/img/공간.png" alt="">
 		
 	<!-- start product Area -->
@@ -380,40 +380,39 @@
 									console.log(data);
 									
 // 				                var resultDiv = $("#resultCount");
-					                $.each(data, function(index, item) {
-					                	
-					                	$(".row>#resultCount").append(
-					                			
-					                			"<div class='single-product' style='margin: 15px;'>" +
-					                			"<div class='col-md-13 figure'>" +
-						                        "<img class='img-fluid' src='${contextPath}" + item.filePath + item.changeName + "' alt='' style=' width: 250px;height: 200px;'>" +
-						                        "<div class='product-details'>" +
-						                        "<h6>" + item.placeName + "</h6>" +
-						                        "<div class='prd-bottom'>" +
-						                        "<a href='${contextPath}/list.so' class='social-info'>" +
-						                        "<span class='lnr lnr-move'></span>" +
-						                        "<p class='hover-text'>예약하기</p>" +
-						                        "</a>" +
-						                        "</div>" +
-						                        "</div>" +
-						                        "</div>"+
-						                        "</div>"
-					                	
-					                	);
-					                    
-	
-	// 				                    resultDiv.append(html);
-					                });
-									
-	
-									
-								},error : function(){
-									console.log("실패");
-								}
-							});
-							
-						})
-						
+
+				                $.each(data, function(index, item) {
+				                	
+				                	$("#resultCount").append(
+				                			
+				                			"<div class='single-product' style='margin: 15px;'>" +
+				                			"<div class='col-md-13 figure'>" +
+					                        "<img class='img-fluid' src='${contextPath}" + item.filePath + item.changeName + "' alt=''>" +
+					                        "<div class='product-details'>" +
+					                        "<h6>" + item.placeName + "</h6>" +
+					                        "<div class='prd-bottom'>" +
+					                        "<a href='${contextPath}/list.so' class='social-info'>" +
+
+					                        "<span class='lnr lnr-move'></span>" +
+					                        "<p class='hover-text'>예약하기</p>" +
+					                        "</a>" +
+					                        "</div>" +
+					                        "</div>" +
+					                        "</div>"+
+					                        "</div>"
+				                	
+				                	);
+				                    
+
+// 				                    resultDiv.append(html);
+				                });
+								
+
+								
+							},error : function(){
+								console.log("실패");
+							}
+						});
 						
 						</script>
 					</div>
@@ -454,7 +453,7 @@
 								<p class="position mb-5">CEO, Founder</p>
 							</div>
 							<p>
-							<div class="quote">&ldquo;</div> 
+							<div class="quote">&ldquo;</div>
 							&ldquo;Far far away, behind the word mountains, far from the
 							countries Vokalia and Consonantia, there live the blind texts.
 							Separated they live in Bookmarksgrove right at the coast of the

@@ -4,7 +4,7 @@
 
 <html lang="en">
 <head>
-
+<script type="text/javascript" src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
@@ -50,32 +50,40 @@
 
 	<div class="container">
 
-		<form action="${contextPath }/boardEnroll.bo" method="post" enctype="multipart/form-data">
+		<form action="${contextPath }/boardEnroll.bo?bType=${bType}" method="post" enctype="multipart/form-data">
 			<br>
 			<br>
 			<table class="table table-stripped"
 				style="text-align: center; boarder: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan="2"
-							style="background-color: #eeeeee; text-align: center;">게시글
-							작성</th>
+						<th colspan="2"style="background-color: #eeeeee; text-align: center;">
+						<c:choose>
+							<c:when test="${bType=='2'}">게시글 작성</c:when>
+							<c:otherwise>공지사항 작성</c:otherwise>
+						</c:choose> 
+						</th>
 					</tr>
 				</thead>
 
 				<tbody>
 					<tr>
+						<th colspan="1" style="font-size: 15px;">제목</th>
 						<td><input type="text" class="form-control"
 							name="title" placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
 					</tr>
 					<tr>
-						<td><textarea id="editor" class="form-control"
+						<th colspan="1" style="font-size: 15px;">내용</th>
+						<td><textarea id="editor" name="uploadImage" class="form-control"
 								name="content" placeholder="글 내용" name="bbsContent" maxlength="8192"
 								style="height: 350px"></textarea></td>
 					</tr>
+					<tr>
+						<th colspan="1" style="font-size: 15px; padding-left: 0px;">첨부파일</th>
+						<td><input type="file" name="uploadFile"></td>
+					</tr>
 				</tbody>
 			</table>
-				<input type="file" name="uploadFile">
 			<div>
 				<button type="submit" class="primary-btn pull-right" style="border-radius: 0">작성완료</button>
 				<a href="${contextPath }/boardList.bo?currentPage=1" class="primary-btn pull-right" style="border-radius: 0">돌아가기</a>
@@ -83,6 +91,15 @@
 			<br><br><br>
 		</form>
 	</div>
+	<script type="text/javascript">
+		$(function(){
+			CKEDITOR.replace("editor",{
+				filebrowserUploadUrl: "${pageContext.request.contextPath}/ckeditor.bo"
+			});
+		});
+	
+	</script>
+	
 	<br><br><br><br><br>
 	<%@ include file="../common/footer.jsp"%>
 

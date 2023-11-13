@@ -40,10 +40,7 @@ public class MyPageReservationController extends HttpServlet {
 		String userId = ((Member)session.getAttribute("loginUser")).getUserId();			
 
 		
-		// 게시글 목록 조회해와서 뷰페이지로 포워딩 처리 하기
-		// 페이징 처리 (사용자에게 보여줄 페이지에 보여줄 게시글 개수)
-		// 준비물
-		int listCount; // 총 게시글 개수
+		int reservationListCount; // 총 게시글 개수
 		int currentPage; // 현재 페이지
 		int pageLimit; // 페이지 하단에 보여질 페이징바의 최대 개수
 		int myPageReservationLimit; // 한페이지에 보여질 게시글 개수
@@ -51,21 +48,13 @@ public class MyPageReservationController extends HttpServlet {
 		int maxPage; // 가장 마지막 페이징바가 몇번인지 (총 페이지수)
 		int startPage; // 페이지 하단에 보여질 페이징바의 시작수
 		int endPage; // 페이지 하단에 보여질 페이징바의 끝수
-
 		
-		// listCount 현재 게시글 개수
-		listCount = new ReservationService().reservationListCount(userNo); // 게시글 개수 조회해오기
-		// 현재페이지 정보(번호)
+		reservationListCount = new ReservationService().reservationListCount(userNo); // 게시글 개수 조회해오기
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
-		// 페이지 하단에 보여질 페이징바 개수
 		pageLimit = 5;
-		
-		// 한 페이지에 보여질 게시글 개수
 		myPageReservationLimit = 5;
-
-		maxPage = (int) Math.ceil((double) listCount / myPageReservationLimit);
-
+		maxPage = (int) Math.ceil((double) reservationListCount / myPageReservationLimit);
 		
 		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 
@@ -75,10 +64,12 @@ public class MyPageReservationController extends HttpServlet {
 			endPage = maxPage;
 		}
 
-		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, myPageReservationLimit, maxPage, startPage, endPage);
+		PageInfo pi = new PageInfo(reservationListCount, currentPage, pageLimit, myPageReservationLimit, maxPage, startPage, endPage);
 		
 		
 		ArrayList<Reservation> selectMyReservationList = new ReservationService().selectMyReservationList(pi, userNo);
+		
+
 		
 		request.setAttribute("pi", pi);
 		request.setAttribute("rvList", selectMyReservationList);
