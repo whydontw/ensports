@@ -12,6 +12,7 @@ import java.util.Properties;
 import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.PageInfo;
 import com.ensport.reservation.model.vo.Reservation;
+import com.ensport.review.model.vo.Review;
 
 public class ReviewDao {
 
@@ -127,15 +128,61 @@ public class ReviewDao {
 				JDBCTemplate.close(rset);
 				JDBCTemplate.close(pstmt);
 			}
-
 			
-			System.out.println("dao에서 review 가지고 오기: ");
-			for(Reservation r : reviewList) {
-				System.out.println(r);
-			}
 			
 			return reviewList;
 		}
+
+
+	
+
+	// 마이페이지 - 내가 쓴 리뷰 상세보기
+	public Review selectMyReviewDetail(Connection conn, int reviewNo) {
+		
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		Review reviewDetail = null;
+
+		String sql = prop.getProperty("selectMyReviewDetail");
+		
+		 
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+
+			
+			pstmt.setInt(1, reviewNo);
+
+			rset = pstmt.executeQuery();
+
+			
+			while (rset.next()) {
+				
+				reviewDetail = new Review();
+				
+				reviewDetail.setReviewNo(rset.getInt("REVIEW_NO"));
+				reviewDetail.setScore(rset.getInt("SCORE"));
+				reviewDetail.setReviewContent(rset.getString("REVIEW_CONTENT"));
+				reviewDetail.setPlayerNo(rset.getInt("PLAYER_NO"));
+				reviewDetail.setCreateDate(rset.getDate("CREATE_DATE"));
+				reviewDetail.setStatus(rset.getString("STATUS"));
+				
+			}
+			
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return reviewDetail;
+		
+	}
 
 
 }

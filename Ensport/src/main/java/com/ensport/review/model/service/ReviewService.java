@@ -7,6 +7,7 @@ import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.PageInfo;
 import com.ensport.reservation.model.vo.Reservation;
 import com.ensport.review.model.dao.ReviewDao;
+import com.ensport.review.model.vo.Review;
 
 public class ReviewService {
 
@@ -34,6 +35,17 @@ public class ReviewService {
 		ArrayList<Reservation> selectMyReviewList = new ReviewDao().selectMyReviewList(conn, userNo, pi);
 		
 		return selectMyReviewList;
+		
+	}
+
+
+	//마이페이지 - 내가 쓴 리뷰 상세보기
+	public Review selectMyReviewDetail(int reviewNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Review reviewDetail = new ReviewDao().selectMyReviewDetail(conn, reviewNo);
+		
+		return reviewDetail;
 		
 	}
 	

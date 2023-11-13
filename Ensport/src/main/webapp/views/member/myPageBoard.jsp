@@ -71,57 +71,62 @@
 	                        <!-- ===================== 게시판 ======================= --> 
  							
  							<!--====== paging ======-->
-		                    <nav class="blog-pagination justify-content-center d-flex">
-			                   <ul class="pagination">
-		                    	<c:choose>
-			                        <c:when test="${pi.currentPage eq 1}">
-										 <li class="page-item">
-			                                <a href="#" class="page-link" aria-label="Previous">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-left"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:when>
-									<c:otherwise>
-									 	<li class="page-item">
-			                                <a href="${contextPath }/myPageBoard.me?currentPage=${pi.currentPage-1}" class="page-link" aria-label="Previous">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-left"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:otherwise>
-			                    </c:choose>
-			                    
-			                    <!-- 해당 페이지에 active 속성 부여해야함 (어떻게 해야할지 궁리좀 해보자) -->
-	                    		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
-		                            <li class="page-item"><a href="${contextPath }/myPageBoard.me?currentPage=${i}" class="page-link">${i}</a></li>
-								</c:forEach>
-								
-								
-			                    <c:choose>
-			                        <c:when test="${pi.currentPage eq pi.maxPage}">
-										 <li class="page-item">
-			                                <a href="#" class="page-link" aria-label="Next">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-right"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:when>
-									<c:otherwise>
-									 	<li class="page-item">
-			                                <a href="${contextPath }/myPageBoard.me?currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-right"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:otherwise>
-			                    </c:choose>
-		                       </ul>
-		                    </nav>
+ 							<c:if test="${not empty bList }">
+			                    <nav class="blog-pagination justify-content-center d-flex">
+				                   <ul class="pagination">
+			                    	<c:choose>
+				                        <c:when test="${pi.currentPage eq 1}">
+											 <li class="page-item">
+				                                <a href="#" class="page-link" aria-label="Previous">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-left"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:when>
+										<c:otherwise>
+										 	<li class="page-item">
+				                                <a href="${contextPath }/myPageBoard.me?currentPage=${pi.currentPage-1}" class="page-link" aria-label="Previous">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-left"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:otherwise>
+				                    </c:choose>
+				                    
+				                    <!-- 해당 페이지에 active 속성 부여해야함 (어떻게 해야할지 궁리좀 해보자) -->
+		                    		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
+			                            <li class="page-item"><a href="${contextPath }/myPageBoard.me?currentPage=${i}" class="page-link">${i}</a></li>
+									</c:forEach>
+									
+									
+				                    <c:choose>
+				                        <c:when test="${pi.currentPage eq pi.maxPage}">
+											 <li class="page-item">
+				                                <a href="#" class="page-link" aria-label="Next">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-right"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:when>
+										<c:otherwise>
+										 	<li class="page-item">
+				                                <a href="${contextPath }/myPageBoard.me?currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-right"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:otherwise>
+				                    </c:choose>
+			                       </ul>
+			                    </nav>
+		                    </c:if>
+		                    <c:if test="${empty bList }">
+		                    	<div class="text-center p-t-45"><b>※ 게시글 내역이 없습니다.</b></div>
+		                    </c:if>
 							<!--====== page ======-->
                             
                         </div>

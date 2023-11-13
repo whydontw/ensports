@@ -61,7 +61,7 @@
 														    <c:when test="${empty reviewList}">
 														        <tr>
 														            <td class="text-center" colspan="3">
-														                <p><b>※ 예약 내역이 없습니다.</b></p>
+														                <p><b>※ 리뷰 내역이 없습니다.</b></p>
 														            </td>
 														        </tr>
 														    </c:when>
@@ -97,14 +97,14 @@
 <%-- 									                               		<c:set var="reservationTime"><fmt:formatDate value="${rv.reservationDate}" pattern="yyMMdd" /></c:set> --%>
 <!-- 									                                	======================================================= -->
 									                               		<c:choose>
-									                               			<c:when test="${rv.reviewNo == null}">
+									                               			<c:when test="${rv.reviewContent == null}">
 									                               				<div class="button-group-area mt-40 text-center">
 																					<a href="#" class="genric-btn primary-border small">리뷰작성</a>
 																				</div>
 									                               			</c:when>
 									                               			<c:otherwise>
 									                               				<div class="button-group-area mt-40 text-center">
-																					<a href="#" class="genric-btn primary-border small" data-toggle="modal" data-target="#viewMyReview" onclick="function viewMyReview();">리뷰보기</a>
+																					<a href="#" class="genric-btn primary-border small" data-toggle="modal" data-target="#viewMyReview" onclick="viewMyReview(${rv.reviewNo})">리뷰보기</a>
 																				</div>
 									                               			</c:otherwise>
 									                               		</c:choose>
@@ -124,57 +124,59 @@
  							
  							
  							<!--====== paging ======-->
-		                    <nav class="blog-pagination justify-content-center d-flex">
-			                   <ul class="pagination">
-		                    	<c:choose>
-			                        <c:when test="${pi.currentPage eq 1}">
-										 <li class="page-item">
-			                                <a href="#" class="page-link" aria-label="Previous">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-left"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:when>
-									<c:otherwise>
-									 	<li class="page-item">
-			                                <a href="${contextPath }/myPageReview.me?currentPage=${pi.currentPage-1}" class="page-link" aria-label="Previous">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-left"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:otherwise>
-			                    </c:choose>
-			                    
-			                    <!-- 해당 페이지에 active 속성 부여해야함 (어떻게 해야할지 궁리좀 해보자) -->
-	                    		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
-		                            <li class="page-item"><a href="${contextPath }/myPageReview.me?currentPage=${i}" class="page-link">${i}</a></li>
-								</c:forEach>
-								
-								
-			                    <c:choose>
-			                        <c:when test="${pi.currentPage eq pi.maxPage}">
-										 <li class="page-item">
-			                                <a href="#" class="page-link" aria-label="Next">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-right"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:when>
-									<c:otherwise>
-									 	<li class="page-item">
-			                                <a href="${contextPath }/myPageReview.me?currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-right"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:otherwise>
-			                    </c:choose>
-		                       </ul>
-		                    </nav>
+ 							<c:if test="${not empty reviwList }">
+			                    <nav class="blog-pagination justify-content-center d-flex">
+				                   <ul class="pagination">
+			                    	<c:choose>
+				                        <c:when test="${pi.currentPage eq 1}">
+											 <li class="page-item">
+				                                <a href="#" class="page-link" aria-label="Previous">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-left"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:when>
+										<c:otherwise>
+										 	<li class="page-item">
+				                                <a href="${contextPath }/myPageReview.me?currentPage=${pi.currentPage-1}" class="page-link" aria-label="Previous">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-left"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:otherwise>
+				                    </c:choose>
+				                    
+				                    <!-- 해당 페이지에 active 속성 부여해야함 (어떻게 해야할지 궁리좀 해보자) -->
+		                    		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
+			                            <li class="page-item"><a href="${contextPath }/myPageReview.me?currentPage=${i}" class="page-link">${i}</a></li>
+									</c:forEach>
+									
+									
+				                    <c:choose>
+				                        <c:when test="${pi.currentPage eq pi.maxPage}">
+											 <li class="page-item">
+				                                <a href="#" class="page-link" aria-label="Next">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-right"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:when>
+										<c:otherwise>
+										 	<li class="page-item">
+				                                <a href="${contextPath }/myPageReview.me?currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-right"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:otherwise>
+				                    </c:choose>
+			                       </ul>
+			                    </nav>
+			                </c:if>
 							<!--====== page ======-->
  						
                         </div>
@@ -187,67 +189,36 @@
 	
     
     
-	<!-- The Modal -->
-	<div class="modal fade" id="viewMyReview" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="review_box">
-						<h4>리뷰 작성하기</h4>
-						<p>점수:</p>
-						<ul class="list">
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-							<li><a href="#"><i class="fa fa-star"></i></a></li>
-						</ul>
-	<!-- 				<p>Outstanding</p> -->
-						<form class="row contact_form" action="#" method="post" id="contactForm" novalidate="novalidate">
-							<div class="col-md-12">
-								<div class="form-group">
-									<input type="text" class="form-control" id="number" name="number" placeholder="Phone Number" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone Number'" value="${rv.reviewContent }"  disabled>
-								</div>
-							</div>
-							<div class="col-md-12">
-								<div class="form-group">
-									<textarea class="form-control" name="message" id="message" rows="1" placeholder="Review" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Review'" value="${rv.reviewContent }" disabled></textarea>
-								</div>
-							</div>
-							<div class="col-md-12 text-right">
-								<button type="submit" value="submit" class="primary-btn">리뷰수정</button>
-								<button type="submit" value="submit" class="primary-btn">리뷰삭제</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-									                            
-     
     <script type="text/javascript">
-		
-		$(function(){
-
-			$("#viewMyReview").click(function(){
-				
-				console.log($(this).val());
-				
-			})
-
-		});
+    
+	    function viewMyReview(reviewNo) {
+	        // 팝업 창 열기
+	        window.open("${contextPath}/myPageReviewDetail.me?rvNo=" + reviewNo, "Popup", "width=600, height=380");
+	    }
+    
+    
+//     	//내 리뷰 modal 창에 띄우기
+// 		function viewMyReview(score, reviewContent){
+			
+// 			$("#myReviewContent").val(reviewContent);
+			
+// 			var star = "";
+// 			for(var i = 0; i < score; i++){
+// 				star += "<li><a href='#'><i class='fa fa-star'></i></a></li>";
+// 			}
+			
+// 			$("#starPoint").html(star);
+			
+// 		}
+    	
+    	
+//     	function updateMyReview(){
+//     		$("#myReviewScore").css("display", "");
+//     		$("#myReviewContent").css("disabled","false");
+//     	}
     
     </script>
      
-	
-
 
 
 

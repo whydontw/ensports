@@ -47,7 +47,7 @@
 					<li>
 						<a href="${contextPath }/myPageReview.me?currentPage=1" class="d-flex justify-content-between">
 						<p>리뷰</p>
-						<p>#</p>
+						<p id="reviewCount"></p>
 					</a>
 					</li>
 					<li>
@@ -119,14 +119,15 @@
 					$("#boardCount").text(data.boardCount);
 					$("#replyCount").text(data.replyCount);
 					$("#qaCount").text(data.qaCount);
+					$("#reviewCount").text(data.reviewCount);
 					$("#reservationCount").text(data.reservationCount);
 					
 					
-					var rvCount = data.reservationCount;
+					var rvCount = data.reviewCount;
 					
 					//등급 산정하기
 					if(rvCount < 4){
-						$("#myEnsportsLevel").text("Lv 1. 날아라 슛돌이");
+						$("#myEnsportsLevel").text("Lv 1. 아기 슛돌이");
 					}else if(rvCount < 8){
 						$("#myEnsportsLevel").text("Lv 2. 브론즈볼");
 					}else if(rvCount < 13){
