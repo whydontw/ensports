@@ -383,7 +383,7 @@
 
 				                $.each(data, function(index, item) {
 				                	
-				                	$("#resultCount").append(
+				                	$(".row>#resultCount").append(
 				                			
 				                			"<div class='single-product' style='margin: 15px;'>" +
 				                			"<div class='col-md-13 figure'>" +
