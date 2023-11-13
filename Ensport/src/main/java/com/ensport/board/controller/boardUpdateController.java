@@ -74,7 +74,7 @@ public class boardUpdateController extends HttpServlet {
 			
 			//변환된 multiRequest객체로 데이터 추출하기
 			int boardNo = Integer.parseInt(multiRequest.getParameter("boardNo"));
-			System.out.println(boardNo);
+		
 			String title = multiRequest.getParameter("title");
 			String content = multiRequest.getParameter("content");
 			

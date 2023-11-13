@@ -266,67 +266,82 @@
 		</div>
 	</section>
 	<!-- End category Area -->
-	
+
 	<img src="resources/img/공간.png" alt="">
+		
 	<!-- start product Area -->
-<section class="owl-carousel active-product-area section_gap">
+	<section class="owl-carousel active-product-area section_gap">
 		<!-- single product slide -->
 		<div class="single-product-slider">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1>마감임박</h1>
-							<p>마감 임박!! 지금 당장 예약하세요~</p>
+							<h1>업데이트순</h1>
+							<p>지금 바로 올라온 경기장! 누구보다 빠르게 만나보시죠</p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<!-- single product -->
-					<div class="col-lg-3 col-md-6">
-						<div class="single-product">
-							<img class="img-fluid" src="resources/img/product/p1.jpg" alt="">
-							<div class="product-details">
-								<h6>서울월드컵보조경기장</h6>
-
-								<div class="prd-bottom">
-
-									<a href="" class="social-info"> <span class="lnr lnr-heart"></span>
-										<p class="hover-text">Wishlist</p>
-									</a> <a href="" class="social-info"> <span class="lnr lnr-move"></span>
-										<p class="hover-text">view more</p>
-									</a>
-
-								</div>
-
-							</div>
-						</div>
-					</div>
-					<!-- single product -->
+							<div class="col-lg-4 col-md-4" id="updateSort" style="display: contents;">	
+								
+							<div class="single-product">
+									<script>							
+							$(function(){
+								
+								$.ajax({
+									url: "updateAjax2.do",
+									type : "get",
+									success : function(data){
+										
+										//값 뽑기
+										console.log("업데이트");
+										console.log(data);
+										
+		// 				                var resultDiv = $("#resultCount");
+						                $.each(data, function(index, item) {
+						                	
+						                	$(".row>#updateSort").append(
+						                			
+						                			"<div class='single-product' style='margin: 15px;'>" +
+						                			"<div class='col-md-13 figure'>" +
+							                        "<img class='img-fluid' src='${contextPath}" + item.filePath + item.changeName + "' alt='' style=' width: 250px;height: 200px;'>" +
+							                        "<div class='product-details'>" +
+							                        "<h6>" + item.placeName + "</h6>" +
+							                        "<div class='prd-bottom'>" +
+							                        "<a href='${contextPath}/place.so' class='social-info'>" +
+							                        "<span class='lnr lnr-move'></span>" +
+							                        "<p class='hover-text'>예약하기</p>" +
+							                        "</a>" +
+							                        "</div>" +
+							                        "</div>" +
+							                        "</div>"+
+							                        "</div>"
+						                	
+						                	);
+						                    
+		
+		// 				                    resultDiv.append(html);
+						                });
+										
+		
+										
+									},error : function(){
+										console.log("실패");
+									}
+								});
+								
+							})														
+							</script>		
+						
 					
-					
-					<!-- single product -->
-					<div class="col-lg-3 col-md-6">
-						<div class="single-product">
-							<img class="img-fluid" src="resources/img/product/p8.jpg" alt="">
-							<div class="product-details">
-								<h6>고양시현천동야구장</h6>
-
-								<div class="prd-bottom">
-
-									<a href="" class="social-info"> <span class="lnr lnr-heart"></span>
-										<p class="hover-text">Wishlist</p>
-									</a> <a href="" class="social-info"> <span class="lnr lnr-move"></span>
-										<p class="hover-text">view more</p>
-									</a>
-
-								</div>
-							</div>
 						</div>
-					</div>
+					</div>					
 				</div>
 			</div>
 		</div>
+		
 		<!-- single product slide -->
 		<div class="single-product-slider">
 			<div class="container" >
@@ -338,11 +353,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="row" style=" margin-left: -65mm;" >
+				<div class="row" >
 					
 					<!-- single product -->
-					<div class="col-lg-3 col-md-6" id="resultCount" 
-					style="display: -webkit-inline-box; white-space: break-spaces;">
+					<div class="col-lg-4 col-md-4" id="resultCount"	style="display: contents;">
 
 					<div class="single-product">
 					
@@ -353,22 +367,23 @@
 <!-- 					========================================= -->
 
 
-					<script>
-					
-					$(document).ready(function(){
+						<script>
 						
-						$.ajax({
-							url: "ajax1.do",
-							type : "get",
-							success : function(data){
-								
-								//값 뽑기
-								console.log(data);
-								
+						$(function(){
+							
+							$.ajax({
+								url: "ajax1.do",
+								type : "get",
+								success : function(data){
+									
+									//값 뽑기
+									console.log(data);
+									
 // 				                var resultDiv = $("#resultCount");
+
 				                $.each(data, function(index, item) {
 				                	
-				                	$("#resultCount").append(
+				                	$(".row>#resultCount").append(
 				                			
 				                			"<div class='single-product' style='margin: 15px;'>" +
 				                			"<div class='col-md-13 figure'>" +
@@ -377,6 +392,7 @@
 					                        "<h6>" + item.placeName + "</h6>" +
 					                        "<div class='prd-bottom'>" +
 					                        "<a href='${contextPath}/list.so' class='social-info'>" +
+
 					                        "<span class='lnr lnr-move'></span>" +
 					                        "<p class='hover-text'>예약하기</p>" +
 					                        "</a>" +
@@ -398,12 +414,9 @@
 							}
 						});
 						
-					})
-					
-					
-					</script>
-					
-				
+						</script>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -440,7 +453,7 @@
 								<p class="position mb-5">CEO, Founder</p>
 							</div>
 							<p>
-							<div class="quote">&ldquo;</div> 
+							<div class="quote">&ldquo;</div>
 							&ldquo;Far far away, behind the word mountains, far from the
 							countries Vokalia and Consonantia, there live the blind texts.
 							Separated they live in Bookmarksgrove right at the coast of the
@@ -546,6 +559,10 @@
 			</div>
 
 		</div>
+		
+	
+		
+		
 		<!-- /.untree_co-section -->
 
 		<script src="resources/js/bootstrap.bundle.min.js"></script>

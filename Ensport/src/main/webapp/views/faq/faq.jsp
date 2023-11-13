@@ -28,8 +28,9 @@
 
 	<!--================Contact Area =================-->
 	<section class="related-product-area section_gap_top section_gap_bottom">
+		<h2 class="mb-4 text-center"><b><i class="bi bi-check"></i>  <span>자주 묻는 질문</span></b></h2>
 		<div class="container">
-			<h2 class="mb-4 text-center"><b><i class="bi bi-check"></i>  <span>자주 묻는 질문</span></b></h2>
+		
 			<div class="accordion" id="accordionExample">
 				<div class="card-header" id="headingOne">
 					<h2 class="mb-0">

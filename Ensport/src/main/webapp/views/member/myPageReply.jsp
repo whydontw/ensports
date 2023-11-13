@@ -56,7 +56,7 @@
 				                                	<div class="desc">
 				                                        <h5><b>내가 쓴 댓글</b></h5>
 				                                        <div class="br"></div>
-				                                        <p class="comment">${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }${rl.replyContent }</p>
+				                                        <p class="comment">${rl.replyContent }</p>
 				                                        <p class="date">댓글 작성시간: ${rl.replyCreateDate }</p>
 				                                    </div>
 				                                </div>
@@ -84,57 +84,62 @@
  							
  							
  							<!--====== paging ======-->
-		                    <nav class="blog-pagination justify-content-center d-flex">
-			                   <ul class="pagination">
-		                    	<c:choose>
-			                        <c:when test="${pi.currentPage eq 1}">
-										 <li class="page-item">
-			                                <a href="#" class="page-link" aria-label="Previous">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-left"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:when>
-									<c:otherwise>
-									 	<li class="page-item">
-			                                <a href="${contextPath }/myPageReply.me?currentPage=${pi.currentPage-1}" class="page-link" aria-label="Previous">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-left"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:otherwise>
-			                    </c:choose>
-			                    
-			                    <!-- 해당 페이지에 active 속성 부여해야함 (어떻게 해야할지 궁리좀 해보자) -->
-	                    		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
-		                            <li class="page-item"><a href="${contextPath }/myPageReply.me?currentPage=${i}" class="page-link">${i}</a></li>
-								</c:forEach>
-								
-								
-			                    <c:choose>
-			                        <c:when test="${pi.currentPage eq pi.maxPage}">
-										 <li class="page-item">
-			                                <a href="#" class="page-link" aria-label="Next">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-right"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:when>
-									<c:otherwise>
-									 	<li class="page-item">
-			                                <a href="${contextPath }/myPageReply.me?currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
-			                                    <span aria-hidden="true">
-			                                        <span class="lnr lnr-chevron-right"></span>
-			                                    </span>
-			                                </a>
-			                            </li>
-									</c:otherwise>
-			                    </c:choose>
-		                       </ul>
-		                    </nav>
+ 							<c:if test="${not empty replyList }">
+			                    <nav class="blog-pagination justify-content-center d-flex">
+				                   <ul class="pagination">
+			                    	<c:choose>
+				                        <c:when test="${pi.currentPage eq 1}">
+											 <li class="page-item">
+				                                <a href="#" class="page-link" aria-label="Previous">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-left"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:when>
+										<c:otherwise>
+										 	<li class="page-item">
+				                                <a href="${contextPath }/myPageReply.me?currentPage=${pi.currentPage-1}" class="page-link" aria-label="Previous">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-left"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:otherwise>
+				                    </c:choose>
+				                    
+				                    <!-- 해당 페이지에 active 속성 부여해야함 (어떻게 해야할지 궁리좀 해보자) -->
+		                    		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
+			                            <li class="page-item"><a href="${contextPath }/myPageReply.me?currentPage=${i}" class="page-link">${i}</a></li>
+									</c:forEach>
+									
+									
+				                    <c:choose>
+				                        <c:when test="${pi.currentPage eq pi.maxPage}">
+											 <li class="page-item">
+				                                <a href="#" class="page-link" aria-label="Next">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-right"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:when>
+										<c:otherwise>
+										 	<li class="page-item">
+				                                <a href="${contextPath }/myPageReply.me?currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+				                                    <span aria-hidden="true">
+				                                        <span class="lnr lnr-chevron-right"></span>
+				                                    </span>
+				                                </a>
+				                            </li>
+										</c:otherwise>
+				                    </c:choose>
+			                       </ul>
+			                    </nav>
+			                 </c:if>
+			                 <c:if test="${empty replyList }">
+		                    	<div class="text-center p-t-45"><b>※ 댓글 내역이 없습니다.</b></div>
+		                    </c:if>
 							<!--====== page ======-->
  							
                         </div>

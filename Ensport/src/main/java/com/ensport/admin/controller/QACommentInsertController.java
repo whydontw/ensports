@@ -36,7 +36,6 @@ public class QACommentInsertController extends HttpServlet {
 		int user_no = Integer.parseInt(request.getParameter("user_no"));
 		String qaAnswer = request.getParameter("qaAnswer");
 		
-		System.out.println(qaAnswer);
 		QAComment qac = new QAComment(qa_answer_no,user_no,qaAnswer);
 		
 		int result = new AdminService().insertQAComment(qac);

@@ -58,11 +58,11 @@
 					<div class="head">지역</div>
 					<ul class="main-categories">
 					
-						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울&currentPage=1"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.so?lacalName=경기"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.so?localName=경기&currentPage=1"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/incheon.so?lacalName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/incheon.so?localName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
 					   		
 				   		</li>
 						
@@ -147,15 +147,7 @@
 					<div class="sorting mr-auto">
 						
 					</div>
-					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-					</div>
+					
 				</div>
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
@@ -167,7 +159,8 @@
 								<div class="single-product">
 									<input type="hidden" value="${item.placeNo }" name="sno" /> 
 									<img class="img-fluid"
-										src="${contextPath}${item.filePath}${item.changeName}" alt="">
+										src="${contextPath}${item.filePath}${item.changeName}" alt=""
+										 style=" width: 300px;height: 174px;">
 									<div class="product-details">
 										<input type="text" value="${item.placeName}" >
 										<h3>${item.placeName}</h3>
@@ -191,15 +184,51 @@
 					<div class="sorting mr-auto">
 						
 					</div>
+
+
 					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+						<c:choose>
+							<c:when test="${pi.currentPage eq 1}">
+								<li class="page-item"><a href="#" class="page-link"
+									aria-label="Previous"> <span aria-hidden="true"> <span
+											class="lnr lnr-chevron-left"></span>
+									</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a
+									href="${contextPath }/place.so?currentPage=${pi.currentPage-1}"
+									class="page-link" aria-label="Previous"> <span
+										aria-hidden="true"> <span class="lnr lnr-chevron-left"></span>
+									</span>
+								</a></li>
+							</c:otherwise>
+						</c:choose>
+
+						<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
+							<li class="page-item"><a
+								href="${contextPath }/place.so?currentPage=${i}"
+								class="page-link">${i}</a></li>
+						</c:forEach>
+
+						<c:choose>
+							<c:when test="${pi.currentPage eq pi.maxPage}">
+								<li class="page-item"><a href="#" class="page-link"
+									aria-label="Next"> <span aria-hidden="true"> <span
+											class="lnr lnr-chevron-right"></span>
+									</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item">
+									<a href="${contextPath }/place.so?currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+									<span aria-hidden="true"> <span class="lnr lnr-chevron-right"></span></span>
+								</a></li>
+							</c:otherwise>
+						</c:choose>
 					</div>
+
+
 				</div>
 				<!-- End Filter Bar -->
 			</div>

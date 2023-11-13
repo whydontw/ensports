@@ -45,10 +45,10 @@ public class QACommentDetailController extends HttpServlet {
 		
 		int qa_answer_no = Integer.parseInt(request.getParameter("qa_answer_no"));
 		
-		System.out.println(qa_answer_no);
+		
 		QAComment qac = new AdminService().selectOneQAComment(qa_answer_no);
 		
-		System.out.println(qac);
+		
 		response.setContentType("json/application; charset=UTF-8");
 		new Gson().toJson(qac,response.getWriter());
 	}

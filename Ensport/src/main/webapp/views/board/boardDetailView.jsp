@@ -177,7 +177,18 @@ th {
 								</thead>	
 							</c:otherwise>
 						</c:choose>
-						
+						<thead>
+							<tr>
+								<td class="reply" colspan="1">댓글</td>
+								<td colspan="3" class="reply"><textarea id="replyContent" class="form-control"
+										rows="4" cols="50"
+										style="width: 100%; resize: none; border: 1px solid black;" placeholder="댓글 내용을 입력하세요"></textarea></td>
+							</tr>
+							<tr>
+								<td colspan="4"><button onclick="insertReply();" class="primary-btn pull-right"
+										style="border-radius: 0; font-size: 14px;">댓글작성</button></td>
+							</tr>
+						</thead>
 					</c:when>
 					<c:otherwise>
 						<tr>

@@ -67,7 +67,7 @@ public class PlaceEnrollController extends HttpServlet {
 			String parking_yn = multiRequest.getParameter("parking_yn");
 			String place_sub_info = multiRequest.getParameter("place_sub_info");
 			
-			System.out.println(max_capacity);
+			
 			
 			Place p = new Place(placeName,place_sub_info,place_size,parking_yn,max_capacity,categoryNo,localName);
 			
