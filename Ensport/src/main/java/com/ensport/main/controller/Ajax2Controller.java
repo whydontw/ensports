@@ -9,23 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ensport.matching.model.service.SoccerMatchingService;
-import com.ensport.matching.model.vo.SoccerMatching;
+import com.ensport.place.model.service.SoccerPlaceService;
+import com.ensport.place.model.vo.SoccerPlace;
 import com.google.gson.Gson;
 
-
-
 /**
- * Servlet implementation class Ajax1controller
+ * Servlet implementation class Ajax2Controller
  */
-@WebServlet("/ajax1.do")
-public class Ajax1controller extends HttpServlet {
+@WebServlet("/updateAjax2.do")
+public class Ajax2Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Ajax1controller() {
+    public Ajax2Controller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,24 +32,19 @@ public class Ajax1controller extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		ArrayList<SoccerMatching> list = new  SoccerMatchingService().selectMostSoccerMatchingList();
-		
-//		for(SoccerMatching sm : list) {
-//			System.out.println(sm);
-//		}
-		
-		request.setAttribute("mlist", list);
+
+		ArrayList<SoccerPlace> list = new SoccerPlaceService().selectUpdateSoccerPlaceList();
 		
 		
+		request.setAttribute("list",list);
 		
-        Gson gson = new Gson();
+		Gson gson = new Gson();
         String json = gson.toJson(list);
         
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
-		
+				
 	}
 
 	/**
@@ -63,8 +56,3 @@ public class Ajax1controller extends HttpServlet {
 	}
 
 }
-
-
-
-
-

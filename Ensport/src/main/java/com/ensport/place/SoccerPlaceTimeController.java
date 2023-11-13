@@ -1,31 +1,27 @@
-package com.ensport.main.controller;
+package com.ensport.place;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ensport.matching.model.service.SoccerMatchingService;
-import com.ensport.matching.model.vo.SoccerMatching;
-import com.google.gson.Gson;
+import org.json.simple.JSONObject;
 
-
+import com.ensport.place.model.service.SoccerPlaceService;
 
 /**
- * Servlet implementation class Ajax1controller
+ * Servlet implementation class SoccerPlaceTimeController
  */
-@WebServlet("/ajax1.do")
-public class Ajax1controller extends HttpServlet {
+@WebServlet("/soccerTimeChk.time")
+public class SoccerPlaceTimeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Ajax1controller() {
+    public SoccerPlaceTimeController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,23 +30,23 @@ public class Ajax1controller extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		ArrayList<SoccerMatching> list = new  SoccerMatchingService().selectMostSoccerMatchingList();
-		
-//		for(SoccerMatching sm : list) {
-//			System.out.println(sm);
-//		}
-		
-		request.setAttribute("mlist", list);
 		
 		
 		
-        Gson gson = new Gson();
-        String json = gson.toJson(list);
-        
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(json);
+		int pno = Integer.parseInt(request.getParameter("pno"));
+		String selectTime = request.getParameter("selectTime");
+		String placeDate = request.getParameter("placeDate");					
+		
+		int count = new SoccerPlaceService().soccerTimeChk(pno, selectTime, placeDate);
+		
+		System.out.println("몇명이 예약했나요:" + count);
+		
+		JSONObject jObj = new JSONObject();
+		
+		jObj.put("reservationChk", count);
+		
+		response.getWriter().print(jObj);
+		
 		
 	}
 
@@ -63,8 +59,3 @@ public class Ajax1controller extends HttpServlet {
 	}
 
 }
-
-
-
-
-
