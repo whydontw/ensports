@@ -87,13 +87,8 @@
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">커뮤니티</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="boardList.bo?currentPage=1">자유게시판</a></li>
-									
-									
-								</ul>
+								<a href="boardList.bo?currentPage=1" class="nav-link dropdown-toggle" >커뮤니티</a>
+								
 							</li>
 							
 							<c:choose>
