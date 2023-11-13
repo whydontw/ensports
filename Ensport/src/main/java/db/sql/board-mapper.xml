@@ -67,7 +67,7 @@
 		                    FROM BOARD B
 		                    JOIN MEMBER N USING (USER_NO)
 		                    WHERE B.STATUS = 'Y'
-		                    ORDER BY BOARD_NO DESC, BOARD_TYPE ASC) A)
+		                    ORDER BY BOARD_TYPE ASC, BOARD_NO DESC) A)
 		WHERE RNUM BETWEEN ? AND ?
 	</entry>
 	
@@ -132,8 +132,16 @@
 		JOIN MEMBER M USING(USER_ID)
 		WHERE R.STATUS = 'Y'
 		AND BOARD_NO = ?
+		ORDER BY CREATE_DATE DESC
 	</entry>
-	
-	
+	<entry key="deleteReply">
+		DELETE FROM REPLY
+		WHERE REPLY_NO = ?
+	</entry>
+	<entry key="updateReply">
+		UPDATE REPLY
+		SET REPLY_CONTENT = ?
+		WHERE REPLY_NO = ?
+	</entry>
 	
 </properties>

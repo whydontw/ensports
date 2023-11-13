@@ -3,6 +3,7 @@ package com.ensport.board.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.ensport.admin.model.dao.AdminDao;
 import com.ensport.board.model.dao.BoardDao;
 import com.ensport.board.model.vo.Attachment;
 import com.ensport.board.model.vo.Board;
@@ -177,5 +178,40 @@ public class BoardService {
 		return list;
 	}
 
+	public int deleteReply(int replyNo) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new BoardDao().deleteReply(replyNo,conn);
+		
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	public int updateReply(int replyNo, String content) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new BoardDao().updateReply(replyNo,content,conn);
+		
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
 
 }
