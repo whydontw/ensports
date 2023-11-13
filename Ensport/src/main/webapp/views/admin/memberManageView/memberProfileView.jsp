@@ -19,9 +19,9 @@
 			</aside>
 			<aside class="single_sidebar_widget author_widget">
 				<img class="author_img rounded-circle" src="${contextPath}/resources/img/blog/sonny.jpg" alt="">
-				<h4>${loginUser.userNickname }</h4>
+				<h4>${m.userNickname }</h4>
 				<div class="social_icon">
-					<p>${loginUser.email}</p>
+					<p>${m.email}</p>
 					<!-- <a href="#"><i class="fa fa-facebook"></i></a>
                   <a href="#"><i class="fa fa-twitter"></i></a>
                   <a href="#"><i class="fa fa-github"></i></a>
@@ -97,8 +97,8 @@
 	
 		$(function(){
 			
-			let userId = "${loginUser.userId}";
-			let userNo = ${loginUser.userNo};
+			let userId = "${m.userId}";
+			let userNo = ${m.userNo};
 			
 			$.ajax({
 				url: "myPageProfile.me",

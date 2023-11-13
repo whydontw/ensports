@@ -91,7 +91,7 @@
 								 aria-expanded="false">커뮤니티</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="boardList.bo?currentPage=1">자유게시판</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+									
 									
 								</ul>
 							</li>

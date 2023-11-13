@@ -15,14 +15,14 @@
          <form method="post" action="${contextPath }/qaEnroll.qa">
              <input type="hidden" name="userNo" value="${loginUser.userNo }">
              <div class="form-group">
-                 <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" onfocus="this.placeholder = ''"
-                     onblur="this.placeholder = 'Subject'">
+                 <input type="text" class="form-control" id="subject" name="subject" placeholder="제목" onfocus="this.placeholder = ''"
+                     onblur="this.placeholder = '제목'">
              </div>
              <div class="form-group">
-                 <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege"
-                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required></textarea>
+                 <textarea class="form-control mb-10" rows="5" name="message" placeholder="내용"
+                     onfocus="this.placeholder = ''" onblur="this.placeholder = '내용'" required></textarea>
              </div>
-             <button type="submit" class="primary-btn submit_btn">Post Comment</button>
+             <button type="submit" class="primary-btn submit_btn" style="margin-top: 30px;">Post Comment</button>
          </form>
      </div>
 
