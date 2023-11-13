@@ -45,8 +45,6 @@
 	LEFT JOIN CATEGORY USING(CATEGORY_NO)
 	WHERE PLACE_NO=?
 	</entry>
-
-
 	
 	<entry key = "placeReservationDate">
 	SELECT PLACE_NO
@@ -153,6 +151,44 @@
 		            )A
 		        )
 		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key = "allGyeonggiListCount">
+		SELECT COUNT(*) COUNT
+		FROM PLACE 
+		WHERE LOCAL_NAME = '경기'
+	</entry>
+	
+	<entry key = "selectAllgyeonggiPlaceList">
+		SELECT * 
+		FROM (SELECT ROWNUM RNUM,A.*
+		      FROM (SELECT PLACE_NO
+                           ,PLACE_NAME
+                           ,FILE_PATH
+                           ,CHANGE_NAME
+                    FROM PLACE P
+                    JOIN ATTACHMENT AT
+                    ON(PLACE_NO=REF_NO)
+                    WHERE LOCAL_NAME= ?
+                    AND FILE_LEVEL = 1
+		            )A
+		        )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+	
+	<entry key="selectUpdateSoccerPlaceList">
+		SELECT PLACE_NO
+		      ,PLACE_NAME
+		      ,FILE_PATH
+		      ,CHANGE_NAME
+		FROM (
+		        SELECT PLACE_NO, PLACE_NAME, FILE_PATH, CHANGE_NAME
+		        FROM PLACE P
+		        LEFT JOIN ATTACHMENT AT ON (PLACE_NO = REF_NO)
+		        WHERE FILE_LEVEL = 1
+		        ORDER BY PLACE_NO DESC
+		    ) 
+		WHERE ROWNUM BETWEEN 1 AND 8
 	</entry>
 	
 </properties>

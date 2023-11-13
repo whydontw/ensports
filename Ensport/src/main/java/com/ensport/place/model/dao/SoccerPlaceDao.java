@@ -13,6 +13,7 @@ import java.util.Properties;
 import com.ensport.admin.model.vo.Attachment;
 import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.PageInfo;
+import com.ensport.matching.model.vo.SoccerMatching;
 import com.ensport.place.model.vo.SoccerPlace;
 
 public class SoccerPlaceDao {
@@ -479,6 +480,128 @@ public class SoccerPlaceDao {
 		
 				
 		return list;
+	}
+
+	//경기지역 페이징 count 처리
+	public int allGyeonggiListCount(Connection conn) {
+		
+		//SELECT (조회)
+		int count = 0;
+		ResultSet rset = null; //조회구문이기 때문에 필요
+		Statement stmt = null; //위치홀더 필요없으니 statement 활용
+		
+					
+		String sql = prop.getProperty("allGyeonggiListCount");
+					
+		try {
+			stmt = conn.createStatement();
+			
+			//개수 조회
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				//조회된 게시글 개수
+				count = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return count; //게시글 개수 돌려주기
+	}
+
+	//경기지역 select 처리 
+	public ArrayList<SoccerPlace> selectAllgyeonggiPlaceList(Connection conn, String localName, PageInfo pi) {
+		
+		PreparedStatement pstmt = null;
+		
+		ResultSet rset = null;
+		
+		//게시글 목록 조회 리스트
+		ArrayList<SoccerPlace> list = new ArrayList<SoccerPlace>();
+		
+		SoccerPlace sp = null;
+		
+		String sql = prop.getProperty("selectAllgyeonggiPlaceList");
+		
+		int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+		int endRow = pi.getCurrentPage() * pi.getBoardLimit();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);		
+			
+			pstmt.setString(1, localName);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, endRow);
+			
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				sp = new SoccerPlace(rset.getInt("PLACE_NO")
+										, rset.getString("PLACE_NAME")
+										, rset.getString("FILE_PATH")
+										, rset.getString("CHANGE_NAME"));
+				
+				list.add(sp);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+				
+		return list;
+	}
+
+	//업데이트 순 리스트
+	public ArrayList<SoccerPlace> selectUpdateSoccerPlaceList(Connection conn) {
+		
+		Statement stmt = null;
+		
+		ResultSet rset = null;
+		
+		//게시글 목록 조회 리스트		
+		ArrayList<SoccerPlace> list = new ArrayList<SoccerPlace>();
+		
+		SoccerPlace sp = null;
+		
+		String sql = prop.getProperty("selectUpdateSoccerPlaceList");
+		
+		try {
+			stmt = conn.createStatement();		
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				
+				sp = new SoccerPlace(rset.getInt("PLACE_NO")
+										, rset.getString("PLACE_NAME") 
+										, rset.getString("FILE_PATH")
+										, rset.getString("CHANGE_NAME"));
+				
+				list.add(sp);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return list;
+		
 	}
 		
 }

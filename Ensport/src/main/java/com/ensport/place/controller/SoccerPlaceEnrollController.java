@@ -82,15 +82,6 @@ public class SoccerPlaceEnrollController extends HttpServlet {
 		}
 		
 	
-//		Map<String,Integer> responseData = new HashMap<>();
-//		responseData.put("placePlayer",placePlayer);
-//				
-//		Gson gson = new Gson();
-//        String json = gson.toJson(responseData);
-//        
-//        response.setContentType("application/json");
-//        response.setCharacterEncoding("UTF-8");
-//        response.getWriter().write(json);
 		
 		
 	}

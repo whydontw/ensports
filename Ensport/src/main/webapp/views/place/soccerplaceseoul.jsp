@@ -52,9 +52,9 @@
 					<ul class="main-categories">
 						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울&currentPage=1"><span class="lnr lnr-arrow-right"></span><b>서울</b><span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.so?lacalName=경기"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.so?localName=경기&currentPage=1"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a  href="${contextPath }/incheon.so?lacalName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a  href="${contextPath }/incheon.so?localName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
