@@ -46,6 +46,7 @@
 						ORDER BY 2 DESC)
                         LEFT JOIN REVIEW USING(PLAYER_NO)
                         WHERE RESERVATION_DATE < SYSDATE
+                        ORDER BY RESERVATION_DATE DESC
 
                  ) A
               )
@@ -55,5 +56,10 @@
 	</entry>
 	
 	
+	<entry key="selectMyReviewDetail">
+		SELECT *
+		FROM REVIEW
+		WHERE REVIEW_NO = ?
+	</entry>
 
 </properties>
