@@ -48,6 +48,63 @@ public class ReviewService {
 		return reviewDetail;
 		
 	}
+
+
+	//마이페이지 - 내가 쓴 리뷰 삭제
+	public int deleteMyReview(int reviewNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new ReviewDao().deleteMyReview(conn, reviewNo);
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+	//마이페이지 - 리뷰 등록하기
+	public int insertMyReview(int score, String reviewContent, int playerNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new ReviewDao().insertMyReview(conn, score, reviewContent, playerNo);
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		return result;
+		
+	}
+		
+
+
+	//마이페이지 - 내가 쓴 리뷰 수정
+	public int updateMyReview(int reviewNo, int score, String reviewContent) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new ReviewDao().updateMyReview(conn, reviewNo, score, reviewContent);
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		return result;		
+	}
+
+
+	
 	
 	
 

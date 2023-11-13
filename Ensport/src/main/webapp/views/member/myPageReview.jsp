@@ -89,25 +89,21 @@
 									                                    </div>
 									                                </td>
 									                                <td>
-<!-- 									                                	======================================================= -->
-<!-- 									                                	오늘 날짜 생성 -->
-<%-- 									                                	<c:set var="nowTime" value="<%=new java.util.Date()%>" /> --%>
-<%-- 									                               		<c:set var="today"><fmt:formatDate value="${nowTime}" pattern="yyMMdd" /></c:set> --%>
-<!-- 									                               		예약날짜 포맷 -->
-<%-- 									                               		<c:set var="reservationTime"><fmt:formatDate value="${rv.reservationDate}" pattern="yyMMdd" /></c:set> --%>
-<!-- 									                                	======================================================= -->
-									                               		<c:choose>
-									                               			<c:when test="${rv.reviewContent == null}">
+									                                	<c:choose>
+									                               			<%-- 리뷰 쓴 적 없음  --%>
+									                               			<c:when test="${rv.reviewNo == null || rv.reviewNo == 0}">
 									                               				<div class="button-group-area mt-40 text-center">
-																					<a href="#" class="genric-btn primary-border small">리뷰작성</a>
+																					<a href="#" class="genric-btn primary-border small" onclick="insertMyReview(${rv.playerNo});">리뷰작성</a>
 																				</div>
 									                               			</c:when>
+									                               			
+									                               			<%-- 리뷰를 작성한 이력이 있음--%>
 									                               			<c:otherwise>
 									                               				<div class="button-group-area mt-40 text-center">
-																					<a href="#" class="genric-btn primary-border small" data-toggle="modal" data-target="#viewMyReview" onclick="viewMyReview(${rv.reviewNo})">리뷰보기</a>
+																					<a href="#" class="genric-btn primary-border small" onclick="viewMyReview(${rv.reviewNo});">리뷰보기</a>
 																				</div>
-									                               			</c:otherwise>
-									                               		</c:choose>
+																			</c:otherwise>
+																		</c:choose>
 									                                </td>
 									                            </tr>
 									                            
@@ -191,35 +187,18 @@
     
     <script type="text/javascript">
     
+    	//리뷰 보기 팝업창 열기
 	    function viewMyReview(reviewNo) {
-	        // 팝업 창 열기
-	        window.open("${contextPath}/myPageReviewDetail.me?rvNo=" + reviewNo, "Popup", "width=600, height=380");
+	        window.open("${contextPath}/myPageReviewDetail.me?reviewNo=" + reviewNo, "Popup", "width=600, height=380");
 	    }
-    
-    
-//     	//내 리뷰 modal 창에 띄우기
-// 		function viewMyReview(score, reviewContent){
-			
-// 			$("#myReviewContent").val(reviewContent);
-			
-// 			var star = "";
-// 			for(var i = 0; i < score; i++){
-// 				star += "<li><a href='#'><i class='fa fa-star'></i></a></li>";
-// 			}
-			
-// 			$("#starPoint").html(star);
-			
-// 		}
-    	
-    	
-//     	function updateMyReview(){
-//     		$("#myReviewScore").css("display", "");
-//     		$("#myReviewContent").css("disabled","false");
-//     	}
+	    
+	    //리뷰 등록 팝업창 열기
+	    function insertMyReview(playerNo) {
+	        window.open("${contextPath}/insertMyReview.me?playerNo=" + playerNo, "Popup", "width=600, height=380");
+	    }
     
     </script>
      
-
 
 
 	<!--================ footer =================-->

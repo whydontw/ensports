@@ -12,16 +12,16 @@ import com.ensport.review.model.service.ReviewService;
 import com.ensport.review.model.vo.Review;
 
 /**
- * Servlet implementation class MyPageReviewDetailController
+ * Servlet implementation class MyPageInsertReviewController
  */
-@WebServlet("/myPageReviewDetail.me")
-public class MyPageReviewDetailController extends HttpServlet {
+@WebServlet("/insertMyReview.me")
+public class MyPageInsertReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageReviewDetailController() {
+    public MyPageInsertReviewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,42 +31,47 @@ public class MyPageReviewDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+		int playerNo = Integer.parseInt(request.getParameter("playerNo"));
 		
+		request.setAttribute("playerNo", playerNo);
+		request.getRequestDispatcher("views/review/myPageReview_insert.jsp").forward(request, response);
 		
-		Review reviewDetail = new ReviewService().selectMyReviewDetail(reviewNo);
-		
-		
-		request.setAttribute("reviewDetail", reviewDetail);
-		
-		request.getRequestDispatcher("views/review/myPageReview_detail.jsp").forward(request, response);
 	}
 
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	//내 리뷰 수정하기(update)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-		int score = Integer.parseInt(request.getParameter("updateReviewScore"));
-		String reviewContent = request.getParameter("updateReviewContent");
+		int playerNo = Integer.parseInt(request.getParameter("playerNo"));
+		int score = Integer.parseInt(request.getParameter("reviewScore"));
+		
+		String reviewContent = request.getParameter("reviewContent");
 		
 		
-		int result = new ReviewService().updateMyReview(reviewNo, score, reviewContent);
+		System.out.println("=================");
+		System.out.println(playerNo);
+		System.out.println(score);
+		System.out.println(reviewContent);
+		System.out.println("=================");
+		
+		
+		
+		int result = new ReviewService().insertMyReview(score, reviewContent, playerNo);
+		
+		System.out.println("결과:" + result);
+		
 		
 		
 		HttpSession session = request.getSession();
 		
 		if(result > 0) {
-			session.setAttribute("alertMsg", "등록 완료!");
+			session.setAttribute("alertMsg", "리뷰 등록 완료!");
 		}else {
-			session.setAttribute("alertMsg", "등록 실패!");
+			session.setAttribute("alertMsg", "리뷰 삭제 완료!");
 		}
+		response.sendRedirect(request.getContextPath()+"/myPageReview.me?currentPage=1");
 		
-		response.sendRedirect(request.getContextPath()+"/myPageReviewDetail.me?reviewNo=" + reviewNo);
-
 	}
 
 }

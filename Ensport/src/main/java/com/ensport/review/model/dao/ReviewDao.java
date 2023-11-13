@@ -116,6 +116,7 @@ public class ReviewDao {
 					review.setReviewNo(rset.getInt("REVIEW_NO"));
 					review.setScore(rset.getInt("SCORE"));
 					review.setReviewContent(rset.getString("REVIEW_CONTENT"));
+//					review.setStatus(rset.getString("STATUS"));
 					
 					reviewList.add(review);
 				}
@@ -183,6 +184,99 @@ public class ReviewDao {
 		return reviewDetail;
 		
 	}
+
+
+	//23-11-13 마이페이지 - 내 리뷰 삭제하기
+	public int deleteMyReview(Connection conn, int reviewNo) {
+		
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteMyReview");
+		
+			
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, reviewNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+		
+	}
+
+	
+	
+	//23-11-13 마이페이지 - 내 리뷰 등록하기
+	public int insertMyReview(Connection conn, int score, String reviewContent, int playerNo) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("insertMyReview");
+		
+			
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, score);
+			pstmt.setString(2, reviewContent);
+			pstmt.setInt(3, playerNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	
+	
+
+	//23-11-13 마이페이지 - 내 리뷰 수정하기
+	public int updateMyReview(Connection conn, int reviewNo, int score, String reviewContent) {
+
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("updateMyReview");
+		
+			
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, score);
+			pstmt.setString(2, reviewContent);
+			pstmt.setInt(3, reviewNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+
 
 
 }

@@ -24,6 +24,7 @@ public class Reservation {
 	private int reviewNo;
 	private int score;
 	private String reviewContent;
+	private String status;
 
 
 
@@ -175,13 +176,18 @@ public class Reservation {
 		this.reviewContent = reviewContent;
 	}	
 	
-	
-	
-	
-	
-		
-	
 
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	
 	@Override
 	public String toString() {
 		return "Reservation [reservationNo=" + reservationNo + ", timeNo=" + timeNo + ", placeNo=" + placeNo
