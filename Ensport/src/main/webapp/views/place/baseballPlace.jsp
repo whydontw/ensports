@@ -43,7 +43,7 @@
 					<h1>야구 시설 예약</h1>
 					<nav class="d-flex align-items-center">
 						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">시설 예약<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">야구 시설 예약<span class="lnr lnr-arrow-right"></span></a>
 						<a href="category.html">야구</a>
 					</nav>
 				</div>

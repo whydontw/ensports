@@ -91,14 +91,15 @@ public class SoccerPlaceService {
 		
 		int result = new SoccerPlaceDao().SoccerPlaceReservation(conn, userNo, timeNo, placeNo, reservationDate);
 		
-		
 		if(result > 0) {
 			JDBCTemplate.commit(conn);
+			
 		}else {
 			JDBCTemplate.rollback(conn);
 		}
 		
 		JDBCTemplate.close(conn);
+		
 		
 		return result;
 	}
@@ -127,6 +128,7 @@ public class SoccerPlaceService {
 		return placePlayer;
 	}
 
+	
 	//중복확인 
 	public int SoccerPlaceDuplicate(int userNo, String timeNo, String placeNo, String reservationDate) {
 		
