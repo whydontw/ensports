@@ -47,7 +47,7 @@
 	<link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 	
 	<link rel="icon" href="${contextPath }/resources/img/elements/baseball_icon1.png" type="image/x-icon">
 	
@@ -133,6 +133,9 @@
 		const msg = "${alertMsg}";
 		if (msg != null && msg != '') {
 		    alert(msg);
+		    setTimeout(() => {
+		    	  console.log('This message will appear after 3 seconds.');
+		    	}, 3000);
 		   <c:remove var="alertMsg" scope="session" />
 		}
 
