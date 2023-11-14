@@ -1,27 +1,26 @@
-package com.ensport.review.controller;
+package com.ensport.board.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.ensport.review.model.service.ReviewService;
-import com.ensport.review.model.vo.Review;
+import com.ensport.board.model.service.BoardService;
 
 /**
- * Servlet implementation class MyPageReviewDetailController
+ * Servlet implementation class ReplyUpdateController
  */
-@WebServlet("/myPageReviewDetail.me")
-public class MyPageReviewDetailController extends HttpServlet {
+@WebServlet("/updateReply.bo")
+public class ReplyUpdateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageReviewDetailController() {
+    public ReplyUpdateController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,25 +29,23 @@ public class MyPageReviewDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-		
-		
-		Review reviewDetail = new ReviewService().selectMyReviewDetail(reviewNo);
-		
-		
-		request.setAttribute("reviewDetail", reviewDetail);
-		
-		request.getRequestDispatcher("views/review/myPageReview_detail.jsp").forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	//내 리뷰 수정하기(update)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		int replyNo = Integer.parseInt(request.getParameter("replyNo"));
+		String content = request.getParameter("content");
+		
+		int result = new BoardService().updateReply(replyNo, content);
+		
+		response.getWriter().print(result);
 	}
 
 }

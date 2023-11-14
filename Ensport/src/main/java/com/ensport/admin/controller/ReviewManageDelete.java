@@ -1,4 +1,4 @@
-package com.ensport.review.controller;
+package com.ensport.admin.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -9,19 +9,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ensport.review.model.service.ReviewService;
-import com.ensport.review.model.vo.Review;
 
 /**
- * Servlet implementation class MyPageReviewDetailController
+ * Servlet implementation class ReviewManageDelete
  */
-@WebServlet("/myPageReviewDetail.me")
-public class MyPageReviewDetailController extends HttpServlet {
+@WebServlet("/deleteReviewAdmin.re")
+public class ReviewManageDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageReviewDetailController() {
+    public ReviewManageDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,25 +29,28 @@ public class MyPageReviewDetailController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		
+		int result = new ReviewService().deleteMyReview(reviewNo);
+
+		HttpSession session = request.getSession();
 		
-		Review reviewDetail = new ReviewService().selectMyReviewDetail(reviewNo);
 		
+		if(result > 0) {
+			session.setAttribute("alertMsg", "리뷰 삭제가 완료되었습니다.");
+		}else {
+			session.setAttribute("alertMsg", "리뷰 삭제 실패하였습니다.");
+		}
 		
-		request.setAttribute("reviewDetail", reviewDetail);
-		
-		request.getRequestDispatcher("views/review/myPageReview_detail.jsp").forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/adminReviewList.re");
 	}
 
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	//내 리뷰 수정하기(update)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

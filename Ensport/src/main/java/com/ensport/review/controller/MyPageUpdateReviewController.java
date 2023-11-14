@@ -1,28 +1,26 @@
-package com.ensport.board.controller;
+package com.ensport.review.controller;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.ensport.board.model.service.BoardService;
-import com.ensport.board.model.vo.Reply;
-import com.ensport.member.model.vo.Member;
+import com.ensport.review.model.service.ReviewService;
 
 /**
- * Servlet implementation class ReplyInsertController
+ * Servlet implementation class MyPageUpdateReviewController
  */
-@WebServlet("/insertReply.bo")
-public class ReplyInsertController extends HttpServlet {
+@WebServlet("/updateMyReview.me")
+public class MyPageUpdateReviewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReplyInsertController() {
+    public MyPageUpdateReviewController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,25 +38,23 @@ public class ReplyInsertController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int bno = Integer.parseInt(request.getParameter("bno"));
-		String content = request.getParameter("content");
-		System.out.println("확인: "+content);
-		Member loginUser = (Member)request.getSession().getAttribute("loginUser"); //로그인 정보
-		String userId = loginUser.getUserId();//댓글작성자 아이디추출
+		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+		int score = Integer.parseInt(request.getParameter("updateReviewScore"));
+		String reviewContent = request.getParameter("updateReviewContent");
 		
-		Reply r = new Reply();
-		r.setBoardNo(bno);
-		r.setReplyContent(content);
-		r.setUserId(userId);
 		
-		System.out.println(r.getReplyContent());
+		int result = new ReviewService().updateMyReview(reviewNo, score, reviewContent);
 		
-		//INSERT (DML)
-		int result = new BoardService().insertReply(r);
 		
-		//처리결과에 따른 화면요소는 view에서 결정하기
-		response.getWriter().print(result);
+		HttpSession session = request.getSession();
 		
+		if(result > 0) {
+			session.setAttribute("alertMsg", "등록 완료!");
+		}else {
+			session.setAttribute("alertMsg", "등록 실패!");
+		}
+		
+		response.sendRedirect(request.getContextPath()+"/myPageReviewDetail.me?reviewNo=" + reviewNo);
 	}
 
 }

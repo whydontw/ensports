@@ -50,7 +50,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 현재 회원 수</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">100명</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="memberNum"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -68,7 +68,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 경기장 수</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">15개</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="placeNum"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -84,11 +84,11 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">활발한 회원수
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">20명</div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
@@ -115,7 +115,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 새로운 문의사항 수</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="replyNum"></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -246,6 +246,39 @@
         </div>
     </div>
 
+	<script>
+		$(function(){
+			
+			$.ajax({
+				url: "countMember.da",
+				type: "get",
+				success: function(count){
+					console.log("인원수:"+count);
+					$("#memberNum").text(count);
+				}
+			});
+		});
+		$(function(){
+			$.ajax({
+				url: "countPlace.da",
+				type: "get",
+				success: function(count){
+					console.log("경기장 수:"+count);
+					$("#placeNum").text(count);
+				}
+			});
+		});
+		$(function(){
+			$.ajax({
+				url: "countReply.da",
+				type: "get",
+				success: function(count){
+					console.log("문의사항 수:"+count);
+					$("#replyNum").text(count);
+				}
+			});
+		});
+	</script>
     <!-- Bootstrap core JavaScript-->
     <script src="${contextPath }/resources/js/vendor/jquery/jquery.min.js"></script>
     <script src="${contextPath }/resources/js/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

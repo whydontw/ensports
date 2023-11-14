@@ -1,6 +1,7 @@
-package com.ensport.review.controller;
+package com.ensport.admin.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,20 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ensport.review.model.service.ReviewService;
-import com.ensport.review.model.vo.Review;
+import com.ensport.admin.model.service.AdminService;
 
 /**
- * Servlet implementation class MyPageReviewDetailController
+ * Servlet implementation class MemberDeleteAdminController
  */
-@WebServlet("/myPageReviewDetail.me")
-public class MyPageReviewDetailController extends HttpServlet {
+@WebServlet("/AdminMemberDelete.me")
+public class MemberDeleteAdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageReviewDetailController() {
+    public MemberDeleteAdminController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,24 +31,28 @@ public class MyPageReviewDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
+		int userNo = Integer.parseInt(request.getParameter("userNo"));
+		
+		int result = new AdminService().adminDeleteMember(userNo);
 		
 		
-		Review reviewDetail = new ReviewService().selectMyReviewDetail(reviewNo);
-		
-		
-		request.setAttribute("reviewDetail", reviewDetail);
-		
-		request.getRequestDispatcher("views/review/myPageReview_detail.jsp").forward(request, response);
+		if(result > 0) {	//성공
+			HttpSession session = request.getSession();
+			session.setAttribute("alertMsg", "회원 추방 완료되었습니다.");
+			response.sendRedirect(request.getContextPath()+"/memberList.me");
+			
+		}else {	//실패
+			request.setAttribute("errorMsg", "회원 추방에 실패하였습니다.");
+			response.sendRedirect(request.getContextPath()+"/memberList.me");
+		}
 	}
 
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	//내 리뷰 수정하기(update)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

@@ -90,6 +90,14 @@
 								name="content" placeholder="글 내용" name="bbsContent" maxlength="8192"
 								style="height: 350px">${b.boardContent }</textarea></td>
 					</tr>
+					
+					<tr>
+						<th style="font-size: 15px; padding-left: 0px;">이미지</th>
+						<td><img id="titleImg" width="370" height="300"></td>
+						<td><img id="contentImg1" width="270" height="300"></td>
+						<td><img id="contentImg2" width="270" height="300"></td>
+					</tr>
+					
 					<tr>
 					    <th style="font-size: 15px;" colspan="1">첨부파일</th>
 					    <td colspan="3" style="font-size: 15px; text-align:left;">
@@ -103,12 +111,18 @@
 					</tr>
 				</tbody>
 			</table>
+			
+			<div id="file-area">
+				<input type="file" id="file1" name="file1" onchange="loadImg(this,1);">
+				<input type="file" id="file2" name="file2" onchange="loadImg(this,2);">
+				<input type="file" id="file3" name="file3" onchange="loadImg(this,3);">
+			</div>
+			
 			<div>
 				<button type="submit" class="primary-btn pull-right" style="border-radius: 0">수정완료</button>
 				<button type="button" onclick="history.back();" class="primary-btn pull-right" style="border-radius: 0">돌아가기</button>
 			</div>
 			<br><br><br>
-				
 		</form>
 	</div>
 	

@@ -12,22 +12,20 @@
 		<div class="blog_right_sidebar">
 			<aside class="single_sidebar_widget search_widget align-self-center">
 				<img class="" src="resources/img/elements/soccer_icon1.png" alt="">
-				<span class="mx-auto" data-toggle="tooltip" data-placement="bottom" title="
-					Level 1. 아기 스포츠단
-					Level 2. 동호회 에이스
-					Level 3. 국내리그 유망주
-					Level 4. 
-				
-				">
+				<span class="mx-auto">
 					<b id="myEnsportsLevel"></b>
 				</span>
 				<div class="br"></div>
 			</aside>
 			<aside class="single_sidebar_widget author_widget">
-				<img class="author_img rounded-circle" src="${contextPath}/resources/img/blog/sonny.jpg" alt="" >
-				<h4><i class="bi bi-person-fill"></i> ${loginUser.userNickname }</h4>
+				<img class="author_img rounded-circle" src="${contextPath}/resources/img/blog/sonny.jpg" alt="">
+				<h4>${m.userNickname }</h4>
 				<div class="social_icon">
-					<p>${loginUser.email}</p>
+					<p>${m.email}</p>
+					<!-- <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-github"></i></a>
+                  <a href="#"><i class="fa fa-behance"></i></a> -->
 				</div>
 				<div class="br"></div>
 			</aside>
@@ -46,12 +44,10 @@
 							<p id="replyCount"></p>
 						</a>
 					</li>
-					<li>
-						<a href="${contextPath }/myPageReview.me?currentPage=1" class="d-flex justify-content-between">
-						<p>리뷰</p>
-						<p id="reviewCount"></p>
-					</a>
-					</li>
+<%-- 				<li><a href="${contextPath }/myPageReview.me?currentPage=1" class="d-flex justify-content-between"> --%>
+<!-- 						<p>리뷰</p> -->
+<!-- 						<p>0</p> -->
+<!-- 				</a></li> -->
 					<li>
 						<a href="${contextPath }/myPageQa.me?currentPage=1" class="d-flex justify-content-between">
 							<p>문의사항</p>
@@ -84,15 +80,15 @@
 			</aside>
 
 			<!-- 내 경기 정보 -->
-<!-- 			<aside class="single_sidebar_widget post_category_widget"> -->
-<!-- 				<h4 class="widget_title">나의 캐시</h4> -->
-<!-- 				<ul class="list cat-list"> -->
-<!-- 					<li><a href="#" class="d-flex justify-content-between"> -->
-<!-- 							<p>캐시 충전하기 (후순위)</p> -->
-<!-- 							<p>0 ￦</p> -->
-<!-- 					</a></li> -->
-<!-- 				</ul> -->
-<!-- 			</aside> -->
+			<aside class="single_sidebar_widget post_category_widget">
+				<h4 class="widget_title">나의 캐시</h4>
+				<ul class="list cat-list">
+					<li><a href="#" class="d-flex justify-content-between">
+							<p>캐시 충전하기 (후순위)</p>
+							<p>0 ￦</p>
+					</a></li>
+				</ul>
+			</aside>
 		</div>
 	</div>
 	
@@ -101,12 +97,8 @@
 	
 		$(function(){
 			
-			
-			$('[data-toggle="tooltip"]').tooltip();
-			
-			
-			let userId = "${loginUser.userId}";
-			let userNo = ${loginUser.userNo};
+			let userId = "${m.userId}";
+			let userNo = ${m.userNo};
 			
 			$.ajax({
 				url: "myPageProfile.me",
@@ -125,23 +117,22 @@
 					$("#boardCount").text(data.boardCount);
 					$("#replyCount").text(data.replyCount);
 					$("#qaCount").text(data.qaCount);
-					$("#reviewCount").text(data.reviewCount);
 					$("#reservationCount").text(data.reservationCount);
 					
 					
-					var rvCount = data.reviewCount;
+					var rvCount = data.reservationCount;
 					
 					//등급 산정하기
 					if(rvCount < 4){
-						$("#myEnsportsLevel").text("Lv 1. 아기 스포츠단");
+						$("#myEnsportsLevel").text("Lv 1. 날아라 슛돌이");
 					}else if(rvCount < 8){
-						$("#myEnsportsLevel").text("Lv 2. 우리동네 에이스");
+						$("#myEnsportsLevel").text("Lv 2. 브론즈볼");
 					}else if(rvCount < 13){
-						$("#myEnsportsLevel").text("Lv 3. 동호회 ");
+						$("#myEnsportsLevel").text("Lv 3. 실버볼");
 					}else if(rvCount < 19){
-						$("#myEnsportsLevel").text("Lv 4. 국내리그 유망주");
+						$("#myEnsportsLevel").text("Lv 4. 골든볼");
 					}else{
-						$("#myEnsportsLevel").text("Lv 5. Ensports 선정 우주제일운동스타");
+						$("#myEnsportsLevel").text("Lv 5. 다이아볼");
 					}
 					
 				},
