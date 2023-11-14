@@ -23,7 +23,7 @@ public class BoardService {
 		return list;
 	}
 
-	public int insertBoard(Board b, Attachment at) {
+	public int insertBoard(Board b, Attachment at, ArrayList<Attachment> list) {
 		
 		Connection conn = JDBCTemplate.getConnection();
 		
@@ -37,13 +37,19 @@ public class BoardService {
 			result2 = new BoardDao().insertAttachment(conn,at); //요청시 0으로되면 조건식 판별
 		}
 		
-		if(result*result2>0) { //성공시 (두 dml다 0이 아닌경우 )
+		int result3 = 1;
+		
+		if(!list.isEmpty()) {
+			result3 = new BoardDao().insertAttachmentList(conn,list);
+		}
+		
+		if(result*result2*result3>0) { //성공시 (세 dml다 0이 아닌경우 )
 			JDBCTemplate.commit(conn);
-		}else { //둘 중 하나라도 0으로 돌아오면 실패 (되돌리기)
+		}else { //셋 중 하나라도 0으로 돌아오면 실패 (되돌리기)
 			JDBCTemplate.rollback(conn);
 		}
 		
-		return result*result2; //처리결과 리턴
+		return result*result2*result3; //처리결과 리턴
 	}
 
 	public int increaseCount(int boardNo) {
@@ -177,5 +183,34 @@ public class BoardService {
 		return list;
 	}
 
+	public ArrayList<Attachment> selectAttachmentList(int boardNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Attachment> list = new BoardDao().selectAttachmentList(conn, boardNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+
+	public int deleteAttachment(int boardNo) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new BoardDao().deleteAttachment(conn,boardNo);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	
 
 }

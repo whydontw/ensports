@@ -405,4 +405,96 @@ public class BoardDao {
 		return list;
 	}
 
+	public int insertAttachmentList(Connection conn, ArrayList<Attachment> list) {
+		
+		//실행 후 받은 결과를 처리할 변수 (여러개를 처리하기 위해 1로 초기화해두기)
+				int result3 = 1;
+				PreparedStatement pstmt = null;
+				String sql = prop.getProperty("insertAttachmentList");
+				
+				try {
+					
+					//list에 담겨진 각 Attachment를 꺼내서 각 데이터로 추가구문 작성하기
+					//순차적으로 전부 접근하여 추출할 수 있도록 향상된 for문 사용
+					for(Attachment at : list) {
+						pstmt = conn.prepareStatement(sql);
+						
+						pstmt.setString(1, at.getOriginName());
+						pstmt.setString(2, at.getChangeName());
+						pstmt.setString(3, at.getFilePath());
+						
+						//실행 후 받은 결과가 하나라도 0이 나오면 결과값을 0으로 만들기
+						result3 *= pstmt.executeUpdate();
+						
+					}
+					
+				} catch (SQLException e) {
+					//try구문에서 첫번째 처리에 실패가된다면 result2가 1로 전달되는것을 방지
+					result3 = 0; 
+					e.printStackTrace();
+				}finally {
+					JDBCTemplate.close(pstmt);
+				}
+				
+				return result3;
+		
+	}
+
+	public ArrayList<Attachment> selectAttachmentList(Connection conn, int boardNo) {
+		
+		ArrayList<Attachment> list = new ArrayList<>();
+		ResultSet rset = null;
+		String sql = prop.getProperty("selectImageAttachment");
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				
+				list.add(new Attachment(rset.getInt("AT_NO")
+									   ,rset.getString("ORIGIN_NAME")
+									   ,rset.getString("CHANGE_NAME")
+									   ,rset.getString("FILE_PATH")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return list;
+	}
+
+	public int deleteAttachment(Connection conn, int boardNo) {
+		
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("deleteAttachment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, boardNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
 }

@@ -103,7 +103,21 @@ th {
 					<th colspan="1" style="font-size: 15px;">내용</th>
 					<td colspan="3"><textarea id="editor" class="form-control"
 							name="content" placeholder="글 내용" name="bbsContent"
-							maxlength="8192" style="height: 350px" readonly="readonly"></textarea></td>
+							maxlength="8192" style="height: 350px" readonly="readonly">${b.boardContent }</textarea></td>
+				</tr>
+				<tr>
+						<th style="font-size: 15px; padding-left: 0px;">이미지</th>
+						<c:forEach items="${list }" var="image" varStatus="vs">
+							<c:choose>
+								<c:when test="${vs.index eq 0}">
+									<td><img id="titleImg" src="${contextPath }${image.filePath}${image.changeName}" width="370" height="300"></td>
+								</c:when>
+								<c:otherwise>
+									<td><img id="contentImg${vs.count }" src="${contextPath }${image.filePath}${image.changeName}" width="270" height="300"></td>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						
 				</tr>
 				<tr>
 					<th colspan="1" style="font-size: 15px; padding-left: 0px;">첨부파일</th>
@@ -123,13 +137,14 @@ th {
 			</tbody>
 		</table>
 		<c:if test="${b.userNo eq loginUser.userNickname or loginUser.userNickname == '관리자' }">
-			<a class="primary-btn pull-right"
-				href="${contextPath }/boardDelete.bo?bno=${b.boardNo}"
-				onclick="return confirm('정말 삭제하시겠습니까?')" style="border-radius: 0; margin-right:13px;">삭제하기</a>
+			<button class="primary-btn pull-right"
+				onclick="deleteImageList();" style="border-radius: 0; margin-right:13px;">삭제하기</button>
+		</c:if>
+		<c:if test="${b.userNo eq loginUser.userNickname}">
 			<a class="primary-btn pull-right"
 				href="${contextPath }/boardUpdate.bo?bno=${b.boardNo }"
 				style="border-radius: 0">수정하기</a>
-		</c:if>
+		</c:if>		
 		
 		<a href="${contextPath }/boardList.bo?currentPage=1"
 			class="primary-btn pull-right"
@@ -235,6 +250,8 @@ th {
 				}
 			});
 		}
+		
+		
 	</script>
 	
 	<br>
