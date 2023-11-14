@@ -362,22 +362,7 @@
 						
 		});
 		
-		
-		//예약 확정
-		$("#reservationFixed").click(function(){
-				
-		    var timeNo = $("#selected-time").val();					// 시간 번호 설정
-		    var placeNo = $("#placeNo").val();						// 장소 번호 설정
-		    var reservationDate = $("#reservationDate").val();		// 예약 날짜 설정
-			
-		    //if("${loginUser}" != ""){
-				location.href = "placeEnrollForm.ba?timeNo="+timeNo+"&placeNo=${bp.placeNo}&reservationDate=${placeDate}";
-		   // }
-				
-				
-		});
-		
-					
+							
 		//구장 예약 여부 확인하기	
  		$('#selected-time').change(function() {
 			 
@@ -388,29 +373,34 @@
 		            type : "get",
 		            data : { selectTime : selectedTime, pno: ${bp.placeNo}, placeDate: "${placeDate}" },
 		            success : function(data) {
-		                
-		                if (data.reservationChk > 0) {
+		                		               
+		            	var result = JSON.parse(data);
+		            	
+		            	if (result.reservationChk > 0) {
 		                    // 인원 마감 시 버튼 비활성화
 		                    $(".primary-btn").prop("disabled", true);
 		                    alert("인원이 마감되었습니다.");
+		                    
 		                }else{ // 인원이 마감도 아니고 중복도 아니면 이제 예약
-			                    $(".primary-btn").prop("disabled", false);
-			                	$(".genric-btn.info").on("click",function(){
+		                	
+			                    //$(".primary-btn").prop("disabled", false);
+		                
+			                	$("#reservationFixed").on("click",function(){
+			                		
 			            			var timeNo = $("#selected-time").val(); //시간
 			            			var placeNo = $("#placeNo").val();//장소
 			            			var reservationDate = $("#reservationDate").val();//날짜			            			
-			            			
-			            			//var session = "${loginUser}";
+
 			            			
 			            			if("${loginUser}" == ""){ //로그인을 하지 않았으면 로그인 페이지로 이동
 			            			
-			            				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다");
-			            			
+			            				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다");			            			
 			            				location.href='${contextPath}/login.me';
 			            				event.preventDefault();
 
 			            			}else{
-	 			            			//location.href="placeEnrollForm.ba?timeNo="+timeNo+"&placeNo=${bp.placeNo}&reservationDate=${placeDate}";
+			            				
+	 			            			location.href="placeEnrollForm.ba?timeNo="+timeNo+"&placeNo=${bp.placeNo}&reservationDate=${placeDate}";
 			            			}
 			            			
 			            		});
