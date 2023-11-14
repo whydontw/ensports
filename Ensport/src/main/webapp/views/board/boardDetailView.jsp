@@ -130,15 +130,21 @@ th {
 				</tr>
 			</tbody>
 		</table>
-		<c:if test="${b.userNo eq loginUser.userNickname || loginUser.userId eq 'admin'}">
-			<a class="primary-btn pull-right"
+		<c:choose>
+			<c:when test="${loginUser.userId eq 'admin'}">
+				<a class="primary-btn pull-right"
 				href="${contextPath }/boardDelete.bo?bno=${b.boardNo}"
 				onclick="return confirm('정말 삭제하시겠습니까?')" style="border-radius: 0; margin-right:13px;">삭제하기</a>
-			<a class="primary-btn pull-right"
+			</c:when>
+			<c:otherwise>
+				<a class="primary-btn pull-right"
+				href="${contextPath }/boardDelete.bo?bno=${b.boardNo}"
+				onclick="return confirm('정말 삭제하시겠습니까?')" style="border-radius: 0; margin-right:13px;">삭제하기</a>
+				<a class="primary-btn pull-right"
 				href="${contextPath }/boardUpdate.bo?bno=${b.boardNo }"
 				style="border-radius: 0">수정하기</a>
-		</c:if>
-		
+			</c:otherwise>
+		</c:choose>
 		<a href="${contextPath }/boardList.bo?currentPage=1"
 			class="primary-btn pull-right"
 			style="border-radius: 0; margin-right:13px;">목록으로</a>
