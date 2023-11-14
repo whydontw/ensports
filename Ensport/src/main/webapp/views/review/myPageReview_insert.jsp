@@ -82,7 +82,8 @@
 										</div>
 									</div>
 									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="primary-btn" id="insertMyReviewButton" onclick="return insertMyReviewDone();">등록완료</button>
+										<button type="button" value="submit" class="primary-btn" id="insertMyReviewButton" onclick="return insertMyReviewDone();">등록완료</button>
+										<button type="button" class="primary-btn" onclick="window.close();">닫기</button>
 									</div>
 								</form>
 							</div>
@@ -115,38 +116,51 @@
 	
 		$(function(){
 			
-			
-			var alertMsg = "${alertMsg}";
-			
-			if (alertMsg != null && alertMsg != '') {
-			    alert(alertMsg);
-			   <c:remove var="alertMsg" scope="session" />
-			   window.close();
-			   window.opener.location.reload();
-			}
-			
-			
 		})
 		
 		
 		function insertMyReviewDone(){
 			
-		if(confirm('리뷰를 등록하시겠습니까?')){
+			var playerNo = ${playerNo};
+			var score  = $("input[name=reviewScore]:checked").val();
+			var reviewContent =$("#myReviewContent").val();
 			
-			var reviewContent = $("#myReviewContent").val();
+			//팝업창 부모 window
+			var parentWindow = window.opener.location;
 			
-			if(reviewContent == '' || reviewContent == null){
-				alert('내용을 입력하세요');
-				return false;
-			}
-// 			window.close();
-			return true;
 			
+			if(confirm('리뷰를 등록하시겠습니까?')){
+		
+				$.ajax({
+					url : "/ensport/insertMyReview.me",
+					data : { 
+						playerNo : playerNo,
+						reviewScore : score,
+						reviewContent : reviewContent
+					},
+					method : "post",
+					success : function(result){
+						
+						console.log(result);
+						
+						alert('리뷰 등록이 완료되었습니다.');
+						
+						//팝업창 부모 window
+						parentWindow.reload();
+						
+						location.href = 'myPageReviewDetail.me?reviewNo=' + result.reviewNo;
+						
+					},
+					error : function(){
+						console.log("오류");
+					}
+				});
+	
 			}else{
 				return false;
 			}
 		
-		}
+	}
 		
 	</script>
 	

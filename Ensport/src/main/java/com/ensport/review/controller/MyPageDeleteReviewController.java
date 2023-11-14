@@ -36,16 +36,18 @@ public class MyPageDeleteReviewController extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		
+		
 		if(result > 0) {
-			session.setAttribute("alertMsg", "리뷰 삭제 완료!");
-			response.sendRedirect(request.getContextPath()+"/myPageReview.me?currentPage=1");
+			session.setAttribute("alertMsg", "리뷰 삭제가 완료되었습니다.");
 		}else {
-			session.setAttribute("alertMsg", "리뷰 삭제 실패!");
-			response.sendRedirect(request.getContextPath()+"/myPageReview.me?currentPage=1");
+			session.setAttribute("alertMsg", "리뷰 삭제 실패하였습니다.");
 		}
+		
+		response.sendRedirect(request.getContextPath()+"/myPageReview.me?currentPage=1");
 		
 	}
 
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

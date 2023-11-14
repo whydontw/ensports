@@ -80,7 +80,7 @@
 									</div>
 									<div class="col-md-12 text-right">
 										<button type="button" class="primary-btn" id="updateMyReviewButton">리뷰수정</button>
-										<button type="button" class="primary-btn" id="deleteMyReviewButton">리뷰삭제</button>
+										<button type="button" class="primary-btn" onclick="window.close();">닫기</button>
 									</div>
 								</form>
 							</div>
@@ -89,7 +89,7 @@
 							<!-- 리뷰 수정하기 -->
 							<div class="review_box" id="updateMyReviewForm">
 								<h4><b>리뷰 작성하기</b></h4>
-								<form class="row contact_form" action="${contextPath }/myPageReviewDetail.me" method="post" id="contactForm" novalidate="novalidate">
+								<form class="row contact_form" action="${contextPath }/updateMyReview.me" method="post" id="contactForm" novalidate="novalidate">
 									<input type="hidden" name="reviewNo" value="${rd.reviewNo}">
 									<p style="padding-left:15px">My Score: </p>
 									<ul class="list">
@@ -149,15 +149,14 @@
 	
 	<script type="text/javascript">
 	
+		
 		$(function(){
 			
-
+			//처음 켰을 때 update Form 숨겨놓기
 			$("#updateMyReviewForm").hide();
-			
 			
 			//수정폼 별점 체크하기
 			let score = ${rd.score};
-			
 			if(score == 1){
 				$("#inlineRadio1").attr("checked", "true");
 			}else if(score == 2){
@@ -171,7 +170,6 @@
 			}
 			
 			
-			
 			//리뷰 수정하기
 			$("#updateMyReviewButton").click(function(){
 				$("#originalMyReviewForm").hide();
@@ -180,26 +178,13 @@
 			});
 			
 			
-			
-			//리뷰 삭제하기
-			$("#deleteMyReviewButton").click(function(){
-				if(confirm("리뷰를 삭제하시겠습니까?")){
-					window.close();
-					location.href= '${contextPath}/deleteMyReview.me?reviewNo=' + ${rd.reviewNo};
-					window.opener.location.reload();
-				}else{
-					return false;
-				}
-			});
-			
-			
-			var alertMsg = "${alertMsg}";
-			if (msg != null && msg != '') {
-			    alert(alertMsg);
-			   <c:remove var="alertMsg" scope="session" />
-			   window.opener.location.reload();
-			}
-			
+			//message
+// 			if ("${alertMsg}" != null && "${alertMsg}" != '') {
+// // 			    alert(msg);
+// 			   <c:remove var="alertMsg" scope="session" />
+// 			   location.reload();
+// 			}
+
 		})
 		
 		

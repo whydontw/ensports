@@ -70,6 +70,14 @@
 		VALUES( SEQ_REVIEW.NEXTVAL, ?, ?, ?)
 	</entry>
 
+
+	<entry key="selectMyReviewNo">
+		SELECT REVIEW_NO
+		FROM REVIEW
+		WHERE SCORE = ?
+		AND REVIEW_CONTENT = ?
+		AND PLAYER_NO = ?
+	</entry>
 	
 	
 	<entry key="deleteMyReview">

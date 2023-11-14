@@ -277,6 +277,40 @@ public class ReviewDao {
 	}
 
 
+	//마이페이지 - reviewNo 조회하기
+	public int selectMyReviewNo(Connection conn, int score, String reviewContent, int playerNo) {
 
+		// SELECT (조회)
+		int reviewNo = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+
+		String sql = prop.getProperty("selectMyReviewNo");
+
+		try {
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, score);
+			pstmt.setString(2, reviewContent);
+			pstmt.setInt(3, playerNo);
+
+			rset = pstmt.executeQuery();
+
+			if (rset.next()) {
+				// 조회된 reviewNo
+				reviewNo = rset.getInt("REVIEW_NO");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return reviewNo;
+	}
 
 }

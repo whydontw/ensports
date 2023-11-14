@@ -53,7 +53,7 @@
 							                            <tr class="text-center">
 							                                <th scope="col">#</th>
 							                                <th scope="col">경기 상세정보</th>
-							                                <th scope="col">예약관리</th>
+							                                <th scope="col">리뷰</th>
 							                            </tr>
 							                        </thead>
 							                        <tbody>
@@ -93,20 +93,20 @@
 									                               			<%-- 리뷰 쓴 적 없음  --%>
 									                               			<c:when test="${rv.reviewNo == null || rv.reviewNo == 0}">
 									                               				<div class="button-group-area mt-40 text-center">
-																					<a href="#" class="genric-btn primary-border small" onclick="insertMyReview(${rv.playerNo});">리뷰작성</a>
+																					<a href="#" class="genric-btn primary-border small" onclick="insertMyReview(${rv.playerNo});">작성</a>
 																				</div>
 									                               			</c:when>
 									                               			
 									                               			<%-- 리뷰를 작성한 이력이 있음--%>
 									                               			<c:otherwise>
 									                               				<div class="button-group-area mt-40 text-center">
-																					<a href="#" class="genric-btn primary-border small" onclick="viewMyReview(${rv.reviewNo});">리뷰보기</a>
+									                               					<div><a href="#" class="genric-btn primary-border small" onclick="viewMyReview(${rv.reviewNo})">보기</a></div>
+																					<div><a href="#" class="genric-btn primary-border small" onclick="deleteMyReview(${rv.reviewNo})">삭제</a></div>
 																				</div>
 																			</c:otherwise>
 																		</c:choose>
 									                                </td>
 									                            </tr>
-									                            
 													        </c:forEach>
 													    </c:otherwise>
 													</c:choose>
@@ -186,17 +186,35 @@
     
     
     <script type="text/javascript">
-    
+    	let testVal ="asd";
     	//리뷰 보기 팝업창 열기
 	    function viewMyReview(reviewNo) {
-	        window.open("${contextPath}/myPageReviewDetail.me?reviewNo=" + reviewNo, "Popup", "width=600, height=380");
+	       
+    		window.open("${contextPath}/myPageReviewDetail.me?reviewNo=" + reviewNo, "Popup", "width=600, height=380");
+	        
 	    }
+    	
 	    
 	    //리뷰 등록 팝업창 열기
 	    function insertMyReview(playerNo) {
 	        window.open("${contextPath}/insertMyReview.me?playerNo=" + playerNo, "Popup", "width=600, height=380");
+	        
+	        console.log(window.opener);
 	    }
-    
+	    
+	    
+	    //리뷰 삭제하기
+	    function deleteMyReview(reviewNo) {
+	    	
+			if(confirm("리뷰를 삭제하시겠습니까?")){
+				window.close();
+				location.href= '${contextPath}/deleteMyReview.me?reviewNo=' + reviewNo;
+				window.opener.location.reload();
+			}else{
+				return false;
+			}
+	    }
+	    
     </script>
      
 

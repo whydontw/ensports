@@ -48,24 +48,6 @@ public class MyPageReviewDetailController extends HttpServlet {
 	 */
 	//내 리뷰 수정하기(update)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
-		int score = Integer.parseInt(request.getParameter("updateReviewScore"));
-		String reviewContent = request.getParameter("updateReviewContent");
-		
-		
-		int result = new ReviewService().updateMyReview(reviewNo, score, reviewContent);
-		
-		
-		HttpSession session = request.getSession();
-		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "등록 완료!");
-		}else {
-			session.setAttribute("alertMsg", "등록 실패!");
-		}
-		
-		response.sendRedirect(request.getContextPath()+"/myPageReviewDetail.me?reviewNo=" + reviewNo);
 
 	}
 

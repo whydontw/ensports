@@ -104,6 +104,16 @@ public class ReviewService {
 	}
 
 
+
+	public int selectMyReviewNo(int score, String reviewContent, int playerNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int reviewNo = new ReviewDao().selectMyReviewNo(conn, score, reviewContent, playerNo);
+		
+		return reviewNo;	
+	}
+
+
 	
 	
 	

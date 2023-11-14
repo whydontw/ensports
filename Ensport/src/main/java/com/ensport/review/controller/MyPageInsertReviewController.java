@@ -1,6 +1,7 @@
 package com.ensport.review.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.ensport.review.model.service.ReviewService;
 import com.ensport.review.model.vo.Review;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class MyPageInsertReviewController
@@ -49,28 +51,28 @@ public class MyPageInsertReviewController extends HttpServlet {
 		String reviewContent = request.getParameter("reviewContent");
 		
 		
-		System.out.println("=================");
-		System.out.println(playerNo);
-		System.out.println(score);
-		System.out.println(reviewContent);
-		System.out.println("=================");
-		
-		
-		
 		int result = new ReviewService().insertMyReview(score, reviewContent, playerNo);
-		
-		System.out.println("결과:" + result);
-		
 		
 		
 		HttpSession session = request.getSession();
 		
 		if(result > 0) {
-			session.setAttribute("alertMsg", "리뷰 등록 완료!");
+			//리뷰 등록 성공시
+			
+			//REVIEW_NO 조회하기
+			int reviewNo = new ReviewService().selectMyReviewNo(score, reviewContent, playerNo);
+			
+			//REVIEW_NO로 review 조회하기
+			Review reviewDetail = new ReviewService().selectMyReviewDetail(reviewNo);
+			
+			response.setContentType("application/json; charset=UTF-8");
+			new Gson().toJson(reviewDetail, response.getWriter());
+			
 		}else {
-			session.setAttribute("alertMsg", "리뷰 삭제 완료!");
+			//리뷰 등록 실패시
+			session.setAttribute("alertMsg", "리뷰 등록에 실패하였습니다!");
+			response.sendRedirect(request.getContextPath()+"/insertMyReview.me?playerNo=" + playerNo);
 		}
-		response.sendRedirect(request.getContextPath()+"/myPageReview.me?currentPage=1");
 		
 	}
 
