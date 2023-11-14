@@ -1,10 +1,10 @@
 package com.ensport.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,11 +48,12 @@ public class boardDetailController extends HttpServlet {
 					//해당 게시글에 첨부파일이 있다면 조회를 해와야하니 게시글 번호를 전달하여야한다.
 					Attachment at = new BoardService().selectAttachment(boardNo);
 					
-//					System.out.println(a);
-//					System.out.println(request.getContextPath());
+					ArrayList<Attachment> list = new BoardService().selectAttachmentList(boardNo);
 					
 					request.setAttribute("b", b); //게시글 정보 전달
 					request.setAttribute("a", at); //첨부파일정보도 전달
+					
+					request.setAttribute("list", list); //이미지 리스트 전달
 					
 					request.getRequestDispatcher("views/board/boardDetailView.jsp").forward(request, response);
 				}else { //실패
