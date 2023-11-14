@@ -85,7 +85,7 @@
 								 aria-expanded="false">경기장</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="${contextPath}/place.so?currentPage=1">축구</a></li>
-									<li class="nav-item"><a class="nav-link" href="${contextPath}/place.ba">야구</a></li>
+									<li class="nav-item"><a class="nav-link" href="${contextPath}/place.ba?currentPage=1">야구</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">

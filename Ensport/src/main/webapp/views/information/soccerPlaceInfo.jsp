@@ -73,7 +73,7 @@
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text" >
-						<h3>[ ${placeDate} ] ${ssp.placeName}</h3>
+						<h3>[ ${placeDate} ] ${ssp.placeName}</h3>						
 
 						<ul class="list">
 							<li><a class="active" href="#"><span>Category</span>${ssp.categoryName }</a></li>
@@ -82,8 +82,7 @@
 						<p>${ssp.subInfo }</p>
 												
 						<br>
-						
-							<br>
+						<br>
 						<div class="single-element-widget mt-30">
 							<div class="default-select" id="default-select">
 								<select id="selected-time">
@@ -374,9 +373,13 @@
 		    var placeNo = $("#placeNo").val();						// 장소 번호 설정
 		    var reservationDate = $("#reservationDate").val();		// 예약 날짜 설정
 			
+// 		    if("${loginUser}" != ""){
+		    	
 				location.href = "placeEnrollForm.so?timeNo="+timeNo+"&placeNo=${ssp.placeNo}&reservationDate=${placeDate}";
-			
 				
+// 		    }
+			
+			
 				
 		});
 		
@@ -404,14 +407,16 @@
 			            			var placeNo = $("#placeNo").val();//장소
 			            			var reservationDate = $("#reservationDate").val();//날짜			            			
 			            			
-			            			if(${loginUser == null} ){ //로그인을 하지 않았으면 로그인 페이지로 이동
+			            			if("${loginUser}" == ""){ //로그인을 하지 않았으면 로그인 페이지로 이동
 			            				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다");
-			            				location.href="login.me";
+			            				location.href="${contextPath}/login.me";
 			            				event.preventDefault();
-			            				return false;
+			            				
+			            			}else{
+//  			            				location.href="placeEnrollForm.so?timeNo="+timeNo+"&placeNo=${ssp.placeNo}&reservationDate=${placeDate}";
+			            				
 			            			}
 			            			
- 			            			location.href="placeEnrollForm.so?timeNo="+timeNo+"&placeNo=${ssp.placeNo}&reservationDate=${placeDate}";
 			            			
 			            		});
 		                	}

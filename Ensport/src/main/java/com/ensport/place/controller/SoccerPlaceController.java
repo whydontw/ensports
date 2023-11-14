@@ -34,10 +34,7 @@ public class SoccerPlaceController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
-		
-			
-			
+					
 			//페이징처리 
 						
 			int placeAllListCount; // 총 게시글 개수

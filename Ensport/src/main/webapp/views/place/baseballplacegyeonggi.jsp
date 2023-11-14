@@ -20,7 +20,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>경기 축구 시설예약</title>
+	<title>서울 야구 시설예약</title>
 
 	<!--
             CSS
@@ -44,11 +44,11 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>축구 시설예약</h1>
+					<h1>축구 경기매칭</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">시설 예약<span class="lnr lnr-arrow-right"></span></a>
+						<a href="index.html">시설예약<span class="lnr lnr-arrow-right"></span></a>
 						<a href="#">축구<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">경기</a>
+						<a href="category.html">서울</a>
 					</nav>
 				</div>
 			</div>
@@ -61,11 +61,11 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울&currentPage=1"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/seoul.ba?localName=서울&currentPage=1" onclick="goToSeoulPage()"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.so?localName=경기&currentPage=1"><span class="lnr lnr-arrow-right"></span><b>경기</b><span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.ba?localName=경기&currentPage=1" onclick="goToSeoulPage()" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a  href="${contextPath }/incheon.so?localName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToIncheonPage()"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
 								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
@@ -134,17 +134,13 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting">
-							<label for="date">
-							 	 <input type="date" id="date" max="2023-11-18"  min="2023-11-16" name="soccerChoiceDate"
-							 	 	 />
+						<label for="date">
+						 	 <input type="date" id="date" max="2023-11-18"  min="2023-11-16" name="BaseballChoiceDate"
+						 	 	 />
 							</label>
-						
 					</div>
 					
-					
 					<div class="sorting mr-auto">
-					
-					
 					<!-- 개수 섹션 -->
 					</div>
 					
@@ -152,56 +148,58 @@
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
 				<section class="lattest-product-area pb-40 category-list">
-					<div class="row" >
+					<div class="row">
 						<!-- single product -->
-							<c:forEach var="sp" items="${list}">
-								<div class="col-lg-4 col-md-6">
-									<div class="single-product">
-										<input type="hidden" value=${sp.placeNo } name="sno" />
-										<img class="img-fluid"
-											src="${contextPath }${sp.filePath}${sp.changeName}" alt=""
-											style=" width: 300px;height: 174px;">
-										<div class="product-details">
-											<input type="text" value="${sp.placeName}">
-											<h3>${sp.placeName}</h3>
-											
-											<div class="prd-bottom">																						
-													<div class="prd-bottom" id="viewMore">
-														<a href="#" class="social-info"> <span class="lnr lnr-move"></span>
-															<p class="hover-text">view more</p>
-														</a>
-													</div>									
-											</div>
+						<c:forEach var="item" items="${list}">
+							<div class="col-lg-4 col-md-6">
+								<div class="single-product">
+									<input type="hidden" value="${item.placeNo }" name="sno" /> 
+									<img class="img-fluid"
+										src="${contextPath}${item.filePath}${item.changeName}" alt=""
+										 style=" width: 300px;height: 174px;">
+									<div class="product-details">
+										<input type="text" value="${item.placeName}" >
+										<h3>${item.placeName}</h3>
+										
+										<div class="prd-bottom">																						
+												<div class="prd-bottom" id="viewMore">
+													<a href="#" class="social-info"> <span class="lnr lnr-move"></span>
+														<p class="hover-text">view more</p>
+													</a>
+												</div>									
 										</div>
 									</div>
 								</div>
-							</c:forEach>
 							</div>
-					</section>
-					
-					<script>
-						$(document).ready(function() {
-						    $(".single-product, #viewMore p").on("click", function(event) {
-						        var selectedDate  = $("#date").val(); // 선택된 날짜 값을 가져옵니다
-						        if (!selectedDate  || selectedDate  === "날짜선택") {
-						            alert("날짜를 먼저 선택하세요");
-						            event.preventDefault();
-						        } else {
-						            var sno = $(this).find("input[name=sno]").val();
-						            location.href = "detail.bo?sno=" + sno + "&date=" + selectedDate ;
-						            // 원하는 작업을 수행하는 대신 페이지 이동을 수행합니다.
-						            // location.href = '${contextPath}/sc.seoul';
-						        }
-						    });
-						});
-					</script>
+						</c:forEach>
+						
+					</div>
+										
+				</section>
 				
+				<script>
+				$(document).ready(function() {
+				    $(".single-product, #viewMore p").on("click", function(event) {
+				        var selectedDate  = $("#date").val(); // 선택된 날짜 값을 가져옵니다
+				        if (!selectedDate  || selectedDate  === "날짜선택") {
+				            alert("날짜를 먼저 선택하세요");
+				            event.preventDefault();
+				        } else {
+				            var sno = $(this).find("input[name=sno]").val();
+				            location.href = "baseballdetail.bo?sno=" + sno + "&date=" + selectedDate ;
+				            // 원하는 작업을 수행하는 대신 페이지 이동을 수행합니다.
+				            // location.href = '${contextPath}/sc.seoul';
+				        }
+				    });
+				});
+				</script>
 				
 				<!-- End Best Seller -->
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
-					<div class="sorting mr-auto">						
-				</div>
+					<div class="sorting mr-auto">
+						
+					</div>
 					
 					<div class="pagination">
 						<c:choose>
@@ -214,7 +212,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="page-item"><a
-									href="${contextPath }/gyeonggi.so?localName=경기&currentPage=${pi.currentPage-1}"
+									href="${contextPath }/gyeonggi.ba?localName=경기&currentPage=${pi.currentPage-1}"
 									class="page-link" aria-label="Previous"> <span
 										aria-hidden="true"> <span class="lnr lnr-chevron-left"></span>
 									</span>
@@ -224,7 +222,7 @@
 
 						<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
 							<li class="page-item"><a
-								href="${contextPath }/gyeonggi.so?localName=경기&currentPage=${i}"
+								href="${contextPath }/gyeonggi.ba?localName=경기&currentPage=${i}"
 								class="page-link">${i}</a></li>
 						</c:forEach>
 
@@ -238,12 +236,13 @@
 							</c:when>
 							<c:otherwise>
 								<li class="page-item">
-									<a href="${contextPath }/gyeonggi.so?localName=경기&currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+									<a href="${contextPath }/gyeonggi.ba?localName=경기&currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
 									<span aria-hidden="true"> <span class="lnr lnr-chevron-right"></span></span>
 								</a></li>
 							</c:otherwise>
 						</c:choose>
 					</div>
+					
 				</div>
 				<!-- End Filter Bar -->
 			</div>
@@ -336,9 +335,7 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
-<!-- 	<script type="text/javascript"> -->
-
-
+	
 	
 </body>
 

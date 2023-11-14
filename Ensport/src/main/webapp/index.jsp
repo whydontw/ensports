@@ -266,7 +266,7 @@
 		</div>
 	</section>
 	<!-- End category Area -->
-
+	
 	<img src="resources/img/공간.png" alt="">
 		
 	<!-- start product Area -->
@@ -277,8 +277,8 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1>업데이트순</h1>
-							<p>지금 바로 올라온 경기장! 누구보다 빠르게 만나보시죠</p>
+							<h1> <b>야구 조회순</b> </h1>
+							<p> 나처럼 되고 싶지 않으면 운동해  -유빈89- </p>
 						</div>
 					</div>
 				</div>
@@ -310,7 +310,7 @@
 							                        "<div class='product-details'>" +
 							                        "<h6>" + item.placeName + "</h6>" +
 							                        "<div class='prd-bottom'>" +
-							                        "<a href='${contextPath}/place.so' class='social-info'>" +
+							                        "<a href='${contextPath}/place.so?currentPage=1' class='social-info'>" +
 							                        "<span class='lnr lnr-move'></span>" +
 							                        "<p class='hover-text'>예약하기</p>" +
 							                        "</a>" +
@@ -348,8 +348,8 @@
 				<div class="row justify-content-center" >
 					<div class="col-lg-6 text-center" >
 						<div class="section-title" >
-							<h1>조회순</h1>
-							<p>지금 인기있는 매치 예약하러 가보실까요~?</p>
+							<h1><b>축구 조회순</b></h1>
+							<p>열정을 불태울 시간에 근육을 불태우자  -혜진-</p>
 						</div>
 					</div>
 				</div>
@@ -380,39 +380,40 @@
 									console.log(data);
 									
 // 				                var resultDiv = $("#resultCount");
-
-				                $.each(data, function(index, item) {
-				                	
-				                	$(".row>#resultCount").append(
-				                			
-				                			"<div class='single-product' style='margin: 15px;'>" +
-				                			"<div class='col-md-13 figure'>" +
-					                        "<img class='img-fluid' src='${contextPath}" + item.filePath + item.changeName + "' alt=''>" +
-					                        "<div class='product-details'>" +
-					                        "<h6>" + item.placeName + "</h6>" +
-					                        "<div class='prd-bottom'>" +
-					                        "<a href='${contextPath}/list.so' class='social-info'>" +
-
-					                        "<span class='lnr lnr-move'></span>" +
-					                        "<p class='hover-text'>예약하기</p>" +
-					                        "</a>" +
-					                        "</div>" +
-					                        "</div>" +
-					                        "</div>"+
-					                        "</div>"
-				                	
-				                	);
-				                    
-
+					                $.each(data, function(index, item) {
+					                	
+					                	$(".row>#resultCount").append(
+					                			
+					                			"<div class='single-product' style='margin: 15px;'>" +
+					                			"<div class='col-md-13 figure'>" +
+						                        "<img class='img-fluid' src='${contextPath}" + item.filePath + item.changeName + "' alt='' style=' width: 250px;height: 200px;'>" +
+						                        "<div class='product-details'>" +
+						                        "<h6>" + item.placeName + "</h6>" +
+						                        "<div class='prd-bottom'>" +
+						                        "<a href='${contextPath}/list.so?currentPage=1' class='social-info'>" +
+						                        "<span class='lnr lnr-move'></span>" +
+						                        "<p class='hover-text'>예약하기</p>" +
+						                        "</a>" +
+						                        "</div>" +
+						                        "</div>" +
+						                        "</div>"+
+						                        "</div>"
+					                	
+					                	);
+					                    
+	
 // 				                    resultDiv.append(html);
-				                });
-								
-
-								
-							},error : function(){
-								console.log("실패");
-							}
-						});
+					                });
+									
+	
+									
+								},error : function(){
+									console.log("실패");
+								}
+							});
+							
+						})
+						
 						
 						</script>
 					</div>
@@ -453,7 +454,7 @@
 								<p class="position mb-5">CEO, Founder</p>
 							</div>
 							<p>
-							<div class="quote">&ldquo;</div>
+							<div class="quote">&ldquo;</div> 
 							&ldquo;Far far away, behind the word mountains, far from the
 							countries Vokalia and Consonantia, there live the blind texts.
 							Separated they live in Bookmarksgrove right at the coast of the

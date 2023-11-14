@@ -1,14 +1,6 @@
 package com.ensport.place.controller;
 
 import java.io.IOException;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,22 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ensport.member.model.vo.Member;
+import com.ensport.place.model.service.BaseballPlaceService;
 import com.ensport.place.model.service.SoccerPlaceService;
-import com.ensport.reservation.model.vo.Player;
-import com.ensport.reservation.model.vo.Reservation;
-import com.google.gson.Gson;
 
 /**
- * Servlet implementation class SoccerPlaceEnrollController
+ * Servlet implementation class BaseballPlaceEnrollController
  */
-@WebServlet("/placeEnrollForm.so")
-public class SoccerPlaceEnrollController extends HttpServlet {
+@WebServlet("/placeEnrollForm.ba")
+public class BaseballPlaceEnrollController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SoccerPlaceEnrollController() {
+    public BaseballPlaceEnrollController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,8 +31,6 @@ public class SoccerPlaceEnrollController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	
 
 		//session에서 userNo 뽑아주기(PLAYER TABLE에 INSERT될 친구)
 		HttpSession session = request.getSession();
@@ -52,33 +40,24 @@ public class SoccerPlaceEnrollController extends HttpServlet {
 		String timeNo = request.getParameter("timeNo");
 		String placeNo = request.getParameter("placeNo");
 		String reservationDate = request.getParameter("reservationDate");
-
-		
-		
-		//insert(예약처리)
-		int result = new SoccerPlaceService().SoccerPlaceReservation(userNo, timeNo, placeNo, reservationDate);
-		//System.out.println("예약된 행:" + result);
-		
-		
-		//현재 구장에 예약된 인원
-		int placePlayer =  new SoccerPlaceService().reservationPlayer(timeNo, placeNo, reservationDate);
-		
-		
+	
+		int placePlayer =  new BaseballPlaceService().baseballreservationPlayer(timeNo, placeNo, reservationDate);
 		
 		if( placePlayer == 1) {
 			session.setAttribute("alertMsg", "예약 마감되었습니다.");
 			response.sendRedirect(request.getHeader("referer"));
 		}else {
-			int duplicate = new SoccerPlaceService().SoccerPlaceDuplicate(userNo,timeNo, placeNo, reservationDate);
+			int duplicate = new BaseballPlaceService().baseballPlaceDuplicate(userNo,timeNo, placeNo, reservationDate);
 			
 			if(duplicate>0) {
 				session.setAttribute("alertMsg", "중복예약입니다.");
 				response.sendRedirect(request.getHeader("referer"));
 			}else {
 				
+				int result = new BaseballPlaceService().baseballPlaceReservation(userNo, timeNo, placeNo, reservationDate);
+				
 				if(result > 0) {
 					session.setAttribute("alertMsg", "예약이 확정되었습니다.");
-					response.sendRedirect(request.getContextPath());
 					response.sendRedirect(request.getHeader("referer"));
 				}else {
 					request.setAttribute("errorMsg", "예약이 처리되지 않았습니다. 다시 시도해주세요.");
@@ -89,18 +68,14 @@ public class SoccerPlaceEnrollController extends HttpServlet {
 			}			
 			
 		}
-		
-	
-		
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
