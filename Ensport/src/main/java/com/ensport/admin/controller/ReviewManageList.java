@@ -1,6 +1,7 @@
 package com.ensport.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,18 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ensport.admin.model.service.AdminService;
+import com.ensport.review.model.vo.Review;
 
 /**
- * Servlet implementation class DashboardCountMember
+ * Servlet implementation class ReviewManageList
  */
-@WebServlet("/countMember.da")
-public class DashboardCountMember extends HttpServlet {
+@WebServlet("/adminReviewList.re")
+public class ReviewManageList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DashboardCountMember() {
+    public ReviewManageList() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,9 +32,11 @@ public class DashboardCountMember extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int count = new AdminService().countMember();
+		ArrayList<Review> list = new AdminService().selectReviewList();
 		
-		response.getWriter().print(count);
+		request.setAttribute("list", list);
+		request.getRequestDispatcher("views/admin/reviewManageView/reviewManageList.jsp").forward(request, response);
+		
 	}
 
 	/**

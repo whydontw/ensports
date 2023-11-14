@@ -50,13 +50,9 @@
 	<section class="blog_area single-post-area section_gap">
         <div class="container">
             <div class="row">
-                
-               <%
-               		Member m = (Member)request.getAttribute("m");
-               		request.setAttribute("m",m);
-               %>
+               
                 <!-- 마이 페이지 메뉴 -->
-                <%@ include file="/views/member/myPage_profile.jsp" %>
+                <%@ include file="/views/admin/memberManageView/memberProfileView.jsp" %>
 				
 				
 				<!-- ====================### 내 정보 수정하기 ###======================== -->
