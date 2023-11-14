@@ -11,12 +11,22 @@ public class Review {
 	private String reviewContent;
 	private Date createDate;
 	private String status;
-	
+	private String userNickname;
 	
 	
 	public Review() {
 		super();
 	}
+	
+
+	public Review(int reviewNo, String reviewContent, Date createDate, String userNickname) {
+		super();
+		this.reviewNo = reviewNo;
+		this.reviewContent = reviewContent;
+		this.createDate = createDate;
+		this.userNickname = userNickname;
+	}
+
 	public Review(int reviewNo, int playerNo, int score, String reviewContent, Date createDate, String status) {
 		super();
 		this.reviewNo = reviewNo;
@@ -29,6 +39,16 @@ public class Review {
 	
 	
 	
+	public String getUserNickname() {
+		return userNickname;
+	}
+
+
+	public void setUserNickname(String userNickname) {
+		this.userNickname = userNickname;
+	}
+
+
 	public int getReviewNo() {
 		return reviewNo;
 	}
@@ -65,13 +85,17 @@ public class Review {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
+
+
 	@Override
 	public String toString() {
 		return "Review [reviewNo=" + reviewNo + ", playerNo=" + playerNo + ", score=" + score + ", reviewContent="
-				+ reviewContent + ", createDate=" + createDate + ", status=" + status + "]";
+				+ reviewContent + ", createDate=" + createDate + ", status=" + status + ", userNickname=" + userNickname
+				+ "]";
 	}
+	
+	
+	
 	
 	
 

@@ -20,7 +20,6 @@
 		font-size: 35px;
 		color: #343a40;
 		*/
-		background-color: #eeeeee;
 		text-align: center;
 		font-size: 40px;
 		font-weight: bold;

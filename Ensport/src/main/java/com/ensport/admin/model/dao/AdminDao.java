@@ -16,6 +16,7 @@ import com.ensport.admin.model.vo.QA;
 import com.ensport.admin.model.vo.QAComment;
 import com.ensport.common.JDBCTemplate;
 import com.ensport.member.model.vo.Member;
+import com.ensport.review.model.vo.Review;
 
 public class AdminDao {
 
@@ -698,13 +699,108 @@ public class AdminDao {
 			stmt = conn.createStatement();
 			
 			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				count = rset.getInt("COUNT(*)");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
 		}
 		
 		
-		return 0;
+		return count;
+	}
+
+
+	public int countPlace(Connection conn) {
+
+		int count = 0;
+		ResultSet rset = null;
+		Statement stmt = null;
+		
+		String sql = prop.getProperty("countPlace");
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				count = rset.getInt("COUNT(*)");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		
+		return count;
+	}
+
+
+	public int countReply(Connection conn) {
+
+		int count = 0;
+		ResultSet rset = null;
+		Statement stmt = null;
+		
+		String sql = prop.getProperty("countReply");
+		
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			if(rset.next()) {
+				count = rset.getInt("COUNT(*)");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		
+		return count;
+	}
+
+
+	public ArrayList<Review> selectReviewList(Connection conn) {
+		
+		ArrayList<Review> list = new ArrayList<>();
+		ResultSet rset = null;
+		Statement stmt = null;
+		
+		String sql = prop.getProperty("selectReviewList");
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				list.add(new Review(rset.getInt("REVIEW_NO")
+								   ,rset.getString("REVIEW_CONTENT")
+								   ,rset.getDate("CREATE_DATE")
+								   ,rset.getString("USER_NICKNAME")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return list;
 	}
 
 

@@ -43,7 +43,7 @@ public class MyPageDeleteReviewController extends HttpServlet {
 			session.setAttribute("alertMsg", "리뷰 삭제 실패하였습니다.");
 		}
 		
-		response.sendRedirect(request.getContextPath()+"/myPageReview.me?currentPage=1");
+		response.sendRedirect(request.getContextPath()+"/adminReviewList.re");
 		
 	}
 

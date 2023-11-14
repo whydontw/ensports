@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.ensport.admin.model.service.AdminService;
 
 /**
- * Servlet implementation class DashboardCountMember
+ * Servlet implementation class DashboardCountReply
  */
-@WebServlet("/countMember.da")
-public class DashboardCountMember extends HttpServlet {
+@WebServlet("/countReply.da")
+public class DashboardCountReply extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DashboardCountMember() {
+    public DashboardCountReply() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,7 +30,7 @@ public class DashboardCountMember extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int count = new AdminService().countMember();
+		int count = new AdminService().countReply();
 		
 		response.getWriter().print(count);
 	}

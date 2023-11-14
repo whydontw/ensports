@@ -10,6 +10,7 @@ import com.ensport.admin.model.vo.QA;
 import com.ensport.admin.model.vo.QAComment;
 import com.ensport.common.JDBCTemplate;
 import com.ensport.member.model.vo.Member;
+import com.ensport.review.model.vo.Review;
 
 public class AdminService {
 
@@ -296,7 +297,41 @@ public class AdminService {
 		Connection conn = JDBCTemplate.getConnection();
 
 		int count = new AdminDao().countMember(conn);
-		return 0;
+		
+		JDBCTemplate.close(conn);
+		
+		return count;
+	}
+
+	public int countPlace() {
+
+		Connection conn = JDBCTemplate.getConnection();
+
+		int count = new AdminDao().countPlace(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return count;
+	}
+
+	public int countReply() {
+		Connection conn = JDBCTemplate.getConnection();
+
+		int count = new AdminDao().countReply(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return count;
+	}
+
+	public ArrayList<Review> selectReviewList() {
+		Connection conn = JDBCTemplate.getConnection();
+
+		 ArrayList<Review> list = new AdminDao().selectReviewList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
 	}
 
 	

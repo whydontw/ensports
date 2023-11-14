@@ -70,12 +70,12 @@
 					<tr>
 						<th colspan="1" style="font-size: 15px;">제목</th>
 						<td><input type="text" class="form-control"
-							name="title" placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
+							name="title" placeholder="글 제목"  maxlength="50"></td>
 					</tr>
 					<tr>
 						<th colspan="1" style="font-size: 15px;">내용</th>
 						<td><textarea id="editor" name="uploadImage" class="form-control"
-								name="content" placeholder="글 내용" name="bbsContent" maxlength="8192"
+								name="content" placeholder="글 내용"  maxlength="8192"
 								style="height: 350px"></textarea></td>
 					</tr>
 					<tr>
