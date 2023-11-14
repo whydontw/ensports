@@ -53,7 +53,17 @@ public class SoccerPlaceEnrollController extends HttpServlet {
 		String placeNo = request.getParameter("placeNo");
 		String reservationDate = request.getParameter("reservationDate");
 
+		
+		
+		//insert(예약처리)
+		int result = new SoccerPlaceService().SoccerPlaceReservation(userNo, timeNo, placeNo, reservationDate);
+		//System.out.println("예약된 행:" + result);
+		
+		
+		//현재 구장에 예약된 인원
 		int placePlayer =  new SoccerPlaceService().reservationPlayer(timeNo, placeNo, reservationDate);
+		
+		
 		
 		if( placePlayer == 1) {
 			session.setAttribute("alertMsg", "예약 마감되었습니다.");
@@ -66,10 +76,9 @@ public class SoccerPlaceEnrollController extends HttpServlet {
 				response.sendRedirect(request.getHeader("referer"));
 			}else {
 				
-				int result = new SoccerPlaceService().SoccerPlaceReservation(userNo, timeNo, placeNo, reservationDate);
-				
 				if(result > 0) {
 					session.setAttribute("alertMsg", "예약이 확정되었습니다.");
+					response.sendRedirect(request.getContextPath());
 					response.sendRedirect(request.getHeader("referer"));
 				}else {
 					request.setAttribute("errorMsg", "예약이 처리되지 않았습니다. 다시 시도해주세요.");

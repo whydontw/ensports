@@ -286,7 +286,7 @@ public class SoccerPlaceDao {
 			return count; //게시글 개수 돌려주기
 		}
 
-	//참여자
+	//구장대여 예약
 	public int reservationPlayer(Connection conn, String timeNo, String placeNo, String reservationDate) {
 		
 		int placePlayer = 0;
@@ -323,8 +323,8 @@ public class SoccerPlaceDao {
 	}
 
 	//중복확인
-	public int SoccerPlaceDuplicate(Connection conn, int userNo, String timeNo, String placeNo,
-			String reservationDate) {
+	public int SoccerPlaceDuplicate(Connection conn, int userNo, String timeNo, String placeNo,String reservationDate) {
+		
 		int duplicate = 0;
 		
 		PreparedStatement pstmt = null;

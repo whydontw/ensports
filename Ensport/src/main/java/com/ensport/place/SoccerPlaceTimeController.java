@@ -39,7 +39,7 @@ public class SoccerPlaceTimeController extends HttpServlet {
 		
 		int count = new SoccerPlaceService().soccerTimeChk(pno, selectTime, placeDate);
 		
-		System.out.println("몇명이 예약했나요:" + count);
+//		System.out.println("몇명이 예약했나요:" + count);
 		
 		JSONObject jObj = new JSONObject();
 		

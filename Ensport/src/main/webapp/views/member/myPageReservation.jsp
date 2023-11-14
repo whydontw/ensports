@@ -46,7 +46,7 @@
 
 								<!-- ===================== 예약 현황 ======================= -->
 		                         
-							        <div class="container" style="margin-top:30px">
+							        <div class="container section_gap_top_75">
 							            <div class="cart_inner">
 							                <div class="table-responsive">
 							                    <table class="table">
@@ -90,9 +90,25 @@
 									                                    </div>
 									                                </td>
 									                                <td>
-									                                    <div class="button-group-area mt-40 text-center" onclick="return confirm('취소하시겠습니까?')">
-																			<a href="${contextPath }/reservationCancel.rv?rvNo=${rv.reservationNo }" class="genric-btn primary-border small">취소</a>
-																		</div>
+									                                
+									                                	<!-- ======================================================= -->
+									                                	<!-- 오늘 날짜 생성-->
+									                                	<c:set var="nowTime" value="<%=new java.util.Date()%>" />
+									                               		<c:set var="today"><fmt:formatDate value="${nowTime}" pattern="yyMMdd" /></c:set>
+									                               		<!-- 예약날짜 포맷 -->
+									                               		<c:set var="reservationTime"><fmt:formatDate value="${rv.reservationDate}" pattern="yyMMdd" /></c:set>
+									                                	<!-- ======================================================= -->
+									                               		
+									                               		<c:if test="${reservationTime > today}">
+										                                    <div class="button-group-area mt-40 text-center" onclick="return confirm('취소하시겠습니까?')">
+																				<a href="${contextPath }/reservationCancel.rv?rvNo=${rv.reservationNo }" class="genric-btn primary-border small">취소</a>
+																			</div>
+																		</c:if>
+																		<c:if test="${reservationTime <= today}">
+										                                    <div class="button-group-area mt-40 text-center">
+																				<p>경기종료</p>
+																			</div>
+																		</c:if>
 									                                </td>
 									                            </tr>
 														        </c:forEach>

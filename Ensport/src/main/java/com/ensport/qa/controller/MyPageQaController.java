@@ -122,6 +122,10 @@ public class MyPageQaController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, myPageQaLimit, maxPage, startPage, endPage);
 		
 		
+		System.out.println("pi" + pi);
+		
+		
+		
 		//myPage Qa List
 		ArrayList<Qa> selectMyQaList = new QaService().selectMyQaList(pi, userNo);
 		

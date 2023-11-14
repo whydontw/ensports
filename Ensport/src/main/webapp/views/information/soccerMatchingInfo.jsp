@@ -94,32 +94,62 @@
 						<br>
 						<div class="single-element-widget mt-30">
 							<div class="default-select" id="default-select">
-								<select>
-									<option value="">시간 선택</option>
+								<select id="timeselct">
+									<option value="0">시간 선택</option>
 									<option value="1">13:00~15:00</option>
 									<option value="2">16:00~18:00</option>
 									<option value="3">19:00~21:00</option>
 								</select>
+								<div id="selectedTimeData"></div>
 							</div>
 						</div>
 						<br>
 						<div class="datasheet p-3 mb-2 text-white"
 							style="background-color: #e8f0f2;">
 							<a href="" id="participantCount" class="text-black"
-								style="color: black;">참여인원: </a>
+								style="color: black;">참여인원: <span id="player"></span> / <span id="totalPlayer"></span> </a>
 						</div>
-						<br>
-						<br>
-						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">예약하기</a> <a class="icon_btn"
-								href="#"><i class="lnr lnr lnr-heart"></i></a>
+						<br> <br>
+						<div class="card_area d-flex align-items-center" id="btnWrap">
+							<button type="button" class="primary-btn" data-toggle="modal" data-target="#exampleModal">예약하기</button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 
+	<!-- Modal -->
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">예약 내역</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<br> [예약 경기장] : ${p.placeName} 
+					<br> <br> 
+					[예약 날짜] :${matchingDate} 
+					<br> <br> 
+					[예약 시간] : <a class="rt"></a> 
+					<br> <br>
+				</div>
+				<div class="modal-footer">
+					<div class="button-group-area mt-40">
+						<button type="button" class="genric-btn primary"
+							data-dismiss="modal">닫기</button>
+						<button type="button" class="genric-btn info">결제하기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!--================End Single Product Area =================-->
 
 	<!--================Product Description Area =================-->
@@ -343,6 +373,95 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/gmaps.min.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
+
+
+
+
+
+	
+
+	<script>
+	$(document).ready(function() {
+		$(".primary-btn").on("click",function(){
+			
+		
+				var selectedTime = $("#default-select option:selected").val();
+				var selectedTimeText = $("#default-select option:selected").text();
+						
+				if(selectedTime == 0) {
+						alert ("시간을 먼저 선택하세요");
+						return false;
+				} else {
+							
+					var pno = $(this).find("selectedTime").val();
+					$("#exampleModal .modal-body .rt").text(selectedTimeText);
+							  				
+				}
+									
+			});
+		
+	});
+
+	
+	</script>
+
+	<!-- 시간을 선택하였지만 마감된곳이 있다면 예약하기 버튼을 누를 수 없다-->
+
+	<script>
+	$(document).ready(function(){
+		
+		 $('#timeselct').change(function() {
+		        var selectedTime = $(this).val(); // 선택한 시간 값
+		        $.ajax({	
+		            url : "ajax.time",
+		            type : "get",
+		            data : { tno : selectedTime, pno:"${pno}", matchingDate: "${matchingDate}" },
+		            success : function(data) {
+						console.log(data);
+		                $("#totalPlayer").text(data.total);
+		                $("#player").text(data.player);
+		               
+		                
+		                if (data.player >= data.total) {
+		                    // 인원 마감 시 버튼 비활성화
+		                    $(".primary-btn").prop("disabled", true);
+		                    alert("인원이 마감되었습니다.");
+		                } else { //인원마감되지 않았지만 
+		                	if(data.duplicate>0){ //중복이면 버튼 비활성화
+		                		$(".primary-btn").prop("disabled", true);
+			                    alert("중복예약입니다.");
+		                	}else{ // 인원이 마감도 아니고 중복도 아니면 이제 예약
+			                    $(".primary-btn").prop("disabled", false);
+			                	$(".genric-btn.info").on("click",function(){
+			            			var timeNo = $("#timeselct").val(); //시간
+			            			var placeNo = $("#placeNo").val();//장소
+			            			var reservationDate = $("#reservationDate").val();//날짜
+			            			
+			            			
+			            			if(${loginUser == null} ){ //로그인을 하지 않았으면 로그인 페이지로 이동
+			            				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다");
+			            				location.href="login.me";
+			            				event.preventDefault();
+			            				return false;
+			            			}
+			            			
+			            			location.href="matching.en?timeNo="+timeNo+"&placeNo=${p.placeNo}&reservationDate=${matchingDate}";
+			            			
+			            		});
+		                	}
+		                  
+		                }
+		               
+		            },
+		            error : function() {
+		                console.log("실패");
+		            }
+		        });
+		    });
+		});
+	
+	
+	</script>
 
 </body>
 

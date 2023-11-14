@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.ensport.board.model.dao.BoardDao;
 import com.ensport.board.model.vo.Attachment;
 import com.ensport.board.model.vo.Board;
+import com.ensport.board.model.vo.Reply;
 import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.PageInfo;
 
@@ -146,6 +147,34 @@ public class BoardService {
 		}
 		
 		return result;
+	}
+
+	public int insertReply(Reply r) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new BoardDao().insertReply(conn,r);
+		
+		if(result>0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+				
+		return result;
+	}
+
+	public ArrayList<Reply> selectReplyList(int bno) {
+		
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Reply> list = new BoardDao().selectReplyList(conn,bno);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
 	}
 
 
