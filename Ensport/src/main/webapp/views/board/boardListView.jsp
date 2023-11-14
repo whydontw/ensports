@@ -27,7 +27,7 @@
 	}
 	
 	.table{
-		background-color: #b7e5b1;	
+		background-color: #b7e5b1;
 	}
 	
 	thead>tr{

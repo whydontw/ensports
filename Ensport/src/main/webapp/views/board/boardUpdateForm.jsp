@@ -123,7 +123,6 @@
 				<button type="button" onclick="history.back();" class="primary-btn pull-right" style="border-radius: 0">돌아가기</button>
 			</div>
 			<br><br><br>
-				
 		</form>
 	</div>
 	

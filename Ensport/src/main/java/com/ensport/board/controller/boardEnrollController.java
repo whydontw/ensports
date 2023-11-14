@@ -91,8 +91,6 @@ public class boardEnrollController extends HttpServlet {
 			String title = multiRequest.getParameter("title");
 			String content = multiRequest.getParameter("content");
 			
-			System.out.println(content);
-
 			// 작성자정보 (등록되는 정보가 userNo와 같으니 로그인정보에서 추출하기)
 			String boardWriter = String.valueOf(((Member) session.getAttribute("loginUser")).getUserNo()); // 번거로우니 다음에는
 			int boardType = Integer.parseInt(multiRequest.getParameter("bType"));																								// 히든으로 보내주기
