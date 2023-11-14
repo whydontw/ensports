@@ -112,10 +112,7 @@ public class PlaceUpdateController extends HttpServlet {
 					}
 					
 					
-					//만약 기존에도 파일이 있었다면 파일번호와 파일명을 전달받기
-					System.out.println(i+"번째 originFileNo: "+multiRequest.getParameter("originFileNo"+i));
 					
-					System.out.println("null로 바뀌니?"+key);
 					if(key != null) {
 						//새로 첨부된 파일이 있고 기존 파일도 있다면 
 						//파일정보가 등록된 데이터에서 변경작업을 한다. update
@@ -152,11 +149,7 @@ public class PlaceUpdateController extends HttpServlet {
 				//새로운 첨부파일이 없는 경우 b,at(null) -b : update
 				//새로운 첨부파이이 있고 기존에 첨부파일이 있는경우 b,at(filaNo) -at: update
 				//새로운 첨부파일이 있고 기존에 첨부파일이 없는 경우 b, at(refBno) -at: insert
-				System.out.println("=====================");
-				System.out.println(p);
-				for(Attachment at : list) {
-					System.out.println(at);
-				}
+				
 				int result = new AdminService().updatePlace(p,list);
 				HttpSession session = request.getSession();
 				//성공시에 상세페이지로 성공메세지와 함께

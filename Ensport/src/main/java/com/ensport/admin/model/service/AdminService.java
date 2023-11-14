@@ -9,6 +9,7 @@ import com.ensport.admin.model.vo.Place;
 import com.ensport.admin.model.vo.QA;
 import com.ensport.admin.model.vo.QAComment;
 import com.ensport.common.JDBCTemplate;
+import com.ensport.member.model.vo.Member;
 
 public class AdminService {
 
@@ -249,6 +250,58 @@ public class AdminService {
 		
 		return result * result2;
 	}
+
+	public ArrayList<Member> selectMemberList() {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Member> list = new AdminDao().selectMemberList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+
+	public Member selectOneMember(int userNo) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Member m = new AdminDao().selectOneMember(conn,userNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return m;
+	}
+
+	public int adminDeleteMember(int userNo) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new AdminDao().adminDeleteMember(userNo,conn);
+		
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	public int countMember() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+
+		int count = new AdminDao().countMember(conn);
+		return 0;
+	}
+
+	
+
+	
 
 
 

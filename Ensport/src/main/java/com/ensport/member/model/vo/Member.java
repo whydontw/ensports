@@ -29,6 +29,17 @@ public class Member {
 
 
 
+
+	public Member(int userNo, String userNickname, Date enrolldate) {
+		super();
+		this.userNo = userNo;
+		this.userNickname = userNickname;
+		this.enrolldate = enrolldate;
+	}
+
+
+
+
 	public Member(int userNo, String userId, String userPassword, String userNickname, String userName, String email,
 			String phone, Date enrolldate, String gender, String address, String addressDetail, String prefer,
 			String images, String status) {

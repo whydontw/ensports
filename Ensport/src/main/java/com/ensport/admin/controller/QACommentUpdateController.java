@@ -53,13 +53,8 @@ public class QACommentUpdateController extends HttpServlet {
 		
 		int qa_answer_no = Integer.parseInt(request.getParameter("qa_answer_no"));
 		String qa_answer = request.getParameter("qa_answer");
-		
-		System.out.println(qa_answer_no);
-		System.out.println(qa_answer);
-		
+	
 		int result = new AdminService().qaCommentUpdate(qa_answer_no,qa_answer);
-		
-		System.out.println(result);
 		
 		response.getWriter().print(qa_answer_no);
 		

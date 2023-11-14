@@ -176,6 +176,28 @@
 		DELETE FROM QA_COMMENT
 		WHERE QA_ANSWER_NO = ?
 	</entry>
-	
+	<entry key="selectMemberList">
+		SELECT USER_NO
+			  ,USER_NICKNAME
+			  ,USER_ID
+			  ,ENROLLDATE
+		FROM MEMBER
+		WHERE STATUS = 'Y'
+	</entry>
+	<entry key="selectOneMember">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_NO = ?
+		AND STATUS = 'Y'
+	</entry>
+	<entry key="adminDeleteMember">
+		UPDATE MEMBER
+		SET STATUS = 'N'
+		WHERE USER_NO = ?
+	</entry>
+	<entry key="countMember">
+		SELECT COUNT(*)
+		FROM MEMBER
+	</entry>
 	
 </properties>

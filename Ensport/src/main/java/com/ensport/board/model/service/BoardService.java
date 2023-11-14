@@ -3,6 +3,7 @@ package com.ensport.board.model.service;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import com.ensport.admin.model.dao.AdminDao;
 import com.ensport.board.model.dao.BoardDao;
 import com.ensport.board.model.vo.Attachment;
 import com.ensport.board.model.vo.Board;
@@ -37,19 +38,13 @@ public class BoardService {
 			result2 = new BoardDao().insertAttachment(conn,at); //요청시 0으로되면 조건식 판별
 		}
 		
-		int result3 = 1;
-		
-		if(!list.isEmpty()) {
-			result3 = new BoardDao().insertAttachmentList(conn,list);
-		}
-		
-		if(result*result2*result3>0) { //성공시 (세 dml다 0이 아닌경우 )
+		if(result*result2>0) { //성공시 (두 dml다 0이 아닌경우 )
 			JDBCTemplate.commit(conn);
-		}else { //셋 중 하나라도 0으로 돌아오면 실패 (되돌리기)
+		}else { //둘 중 하나라도 0으로 돌아오면 실패 (되돌리기)
 			JDBCTemplate.rollback(conn);
 		}
 		
-		return result*result2*result3; //처리결과 리턴
+		return result*result2; //처리결과 리턴
 	}
 
 	public int increaseCount(int boardNo) {
@@ -212,5 +207,40 @@ public class BoardService {
 	}
 
 	
+	public int deleteReply(int replyNo) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new BoardDao().deleteReply(replyNo,conn);
+		
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	public int updateReply(int replyNo, String content) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new BoardDao().updateReply(replyNo,content,conn);
+		
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
 
 }

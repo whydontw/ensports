@@ -65,10 +65,17 @@
         cursor: pointer;
     }
     #noticeDesign{
-    	color: red;
-    	background-color: #EFE0D4;
+    	background-color: #ADD8F5;
     }
-    
+    #noticeCss{
+    	background-color: #FFE5CC;
+    	border-style: solid;
+    	border-radius: 5px;
+    	border-width: 1px;
+    	border-color: red;
+    	width: 70px;
+    	color: red;
+    }
     
 </style>
 </head>
@@ -96,9 +103,10 @@
 	<br><br>
 	
 	<div class="container">
-		<table class="table table-striped table-hover" style="background-color:#b7e5b1">
+		<table class="table table-striped table-hover" style="background-color:#b7e5b1" >
 			<thead>
 				<tr>
+					<th style="width: 50px;"></th>
 					<th width="100">글번호</th>
 					<th width="100">작성자</th>
 					<th>제목</th>
@@ -118,15 +126,17 @@
 							<c:choose>
 								<c:when test="${b.boardType==1 }">
 									<tr id="noticeDesign">
+										<td><button id="noticeCss">공지</button></td>
 										<td>${b.boardNo }</td>
 										<td>${b.userNo }</td>
-										<td>(공지)<a href="${contextPath }/boardDetail.bo?bno=${b.boardNo }" id="post">${b.boardTitle }</a></td>
+										<td><a href="${contextPath }/boardDetail.bo?bno=${b.boardNo }" id="post">${b.boardTitle }</a></td>
 										<td>${b.createDate }</td>
 										<td>${b.boardCount }</td>
 									</tr>	
 								</c:when>
 								<c:otherwise>
 									<tr>
+										<td></td>
 										<td>${b.boardNo }</td>
 										<td>${b.userNo }</td>
 										<td><a href="${contextPath }/boardDetail.bo?bno=${b.boardNo }" id="post">${b.boardTitle }</a></td>
