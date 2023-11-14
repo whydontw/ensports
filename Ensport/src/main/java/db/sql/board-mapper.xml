@@ -144,4 +144,56 @@
 		WHERE REPLY_NO = ?
 	</entry>
 	
+	<entry key="insertAttachmentList">
+		INSERT INTO ATTACHMENT(AT_NO
+							  ,REF_NO
+							  ,ORIGIN_NAME
+							  ,CHANGE_NAME
+							  ,FILE_PATH
+							  ,FILE_LEVEL
+							  ,FILE_TYPE)
+               VALUES(SEQ_FNO.NEXTVAL
+               		 ,SEQ_BNO.CURRVAL
+               		 ,?
+               		 ,?
+               		 ,?
+               		 ,1
+               		 ,1)
+	</entry>
+	
+	<entry key="selectImageAttachment">
+		SELECT AT_NO
+			  ,ORIGIN_NAME
+			  ,CHANGE_NAME
+			  ,FILE_PATH
+    	FROM ATTACHMENT
+		WHERE REF_NO = ?
+		AND FILE_LEVEL = 1 
+	</entry>
+	
+	<entry key="deleteAttachment">
+		DELETE FROM ATTACHMENT
+		WHERE REF_NO = ?
+		ORDER BY CREATE_DATE DESC
+	</entry>
+	<entry key="deleteReply">
+		DELETE FROM REPLY
+		WHERE REPLY_NO = ?
+		ORDER BY CREATE_DATE DESC
+	</entry>
+	<entry key="deleteReply">
+		DELETE FROM REPLY
+		WHERE REPLY_NO = ?
+		ORDER BY CREATE_DATE DESC
+	</entry>
+	<entry key="deleteReply">
+		DELETE FROM REPLY
+		WHERE REPLY_NO = ?
+	</entry>
+	<entry key="updateReply">
+		UPDATE REPLY
+		SET REPLY_CONTENT = ?
+		WHERE REPLY_NO = ?
+	</entry>
+	
 </properties>

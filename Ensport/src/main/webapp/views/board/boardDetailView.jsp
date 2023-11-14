@@ -50,8 +50,44 @@ th {
 	font-weight: bold;
 }
 
-.container {
-	padding: 30px 30px;
+/* .container { */
+/* 	padding: 30px 30px; */
+/* } */
+
+.hidden-td{
+	display:none;
+
+}
+.btn-td{
+	width: 3px;
+	height: 10px;
+}
+
+.hidden-td{
+	display:none;
+
+}
+.btn-td{
+	width: 3px;
+	height: 10px;
+}
+
+.hidden-td{
+	display:none;
+
+}
+.btn-td{
+	width: 3px;
+	height: 10px;
+}
+
+.hidden-td{
+	display:none;
+
+}
+.btn-td{
+	width: 3px;
+	height: 10px;
 }
 
 .hidden-td{
@@ -112,6 +148,20 @@ th {
 					<td colspan="3"><textarea id="editor" class="form-control"
 							name="content" placeholder="글 내용" name="bbsContent"
 							maxlength="8192" style="height: 350px" readonly="readonly">${b.boardContent }</textarea></td>
+				</tr>
+				<tr>
+						<th style="font-size: 15px; padding-left: 0px;">이미지</th>
+						<c:forEach items="${list }" var="image" varStatus="vs">
+							<c:choose>
+								<c:when test="${vs.index eq 0}">
+									<td><img id="titleImg" src="${contextPath }${image.filePath}${image.changeName}" width="370" height="300"></td>
+								</c:when>
+								<c:otherwise>
+									<td><img id="contentImg${vs.count }" src="${contextPath }${image.filePath}${image.changeName}" width="270" height="300"></td>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						
 				</tr>
 				<tr>
 					<th colspan="1" style="font-size: 15px; padding-left: 0px;">첨부파일</th>
@@ -198,6 +248,7 @@ th {
 	</div>
 	<script>
 		function insertReply(){
+			
 				$.ajax({
 					url : "insertReply.bo",
 					data : {
@@ -312,6 +363,8 @@ th {
 				}
 			});
 		}
+		
+		
 		
 		function deleteReply(number){
 			var replyNo = $(number).parent().next().find("input[type='hidden']").val();
@@ -505,6 +558,200 @@ th {
 			
 		}
 		
+		
+		
+		function deleteReply(number){
+			var replyNo = $(number).parent().next().find("input[type='hidden']").val();
+			var conf = confirm("삭제하시겠습니까?");
+			if(conf==true){
+			$.ajax({
+				url:"deleteReply.bo",
+				type: "get",
+				data:{
+					replyNo: replyNo
+				},
+				success: function(result){
+					alert("댓글 삭제하였습니다");
+					location.reload();
+				}
+			});
+			}
+		}
+		
+		function updateReply(element){
+			console.log("들어왔니?");
+			var content = $(element).parent().prev().prev().text();
+			console.log(content);
+			$(element).parent().prev().prev().html("<textarea id='updateContent' class='form-control' rows='4' cols='50' style='width: 100%; resize: none; border: 1px solid black;''>"+content+"</textarea>");
+			$(element).hide();
+			$(element).prev().hide();
+			$(element).parent().append("<button id='updateReplyFinalId'class='btn btn-danger btn-sm' type='button' onclick='updateReplyFinal(this);'>저장</button>"
+								+"<button id='updateCancelId' type='button' class='btn btn-sm btn-info' onclick='updateCancel();'>취소</button>");
+		}
+		function updateCancel(){
+			location.reload();
+		}
+		function updateReplyFinal(number){
+			var replyNo = $(number).parent().next().find("input[type='hidden']").val();
+			console.log("text?"+$("#updateContent").val());
+			$.ajax({
+				url: "updateReply.bo",
+				type: "post",
+				data: {
+					replyNo: replyNo,
+					content: $("#updateContent").val()
+				},
+				success: function(result){
+					
+					$("#updateContent").remove();
+					$(number).eq(0).show();
+					$(number).eq(1).show();
+					$("#updateReplyFinalId").hide();
+					$("#updateCancel").hide();
+					
+					if(result=="1"){
+						
+						alert("댓글 수정 성공했습니다.");
+						location.reload();
+					}
+					
+				},
+				error: function(){
+					console.log("통신실패");
+				}
+			});
+			
+		}
+		
+		
+		
+		function deleteReply(number){
+			var replyNo = $(number).parent().next().find("input[type='hidden']").val();
+			var conf = confirm("삭제하시겠습니까?");
+			if(conf==true){
+			$.ajax({
+				url:"deleteReply.bo",
+				type: "get",
+				data:{
+					replyNo: replyNo
+				},
+				success: function(result){
+					alert("댓글 삭제하였습니다");
+					location.reload();
+				}
+			});
+			}
+		}
+		
+		function updateReply(element){
+			console.log("들어왔니?");
+			var content = $(element).parent().prev().prev().text();
+			console.log(content);
+			$(element).parent().prev().prev().html("<textarea id='updateContent' class='form-control' rows='4' cols='50' style='width: 100%; resize: none; border: 1px solid black;''>"+content+"</textarea>");
+			$(element).hide();
+			$(element).prev().hide();
+			$(element).parent().append("<button id='updateReplyFinalId'class='btn btn-danger btn-sm' type='button' onclick='updateReplyFinal(this);'>저장</button>"
+								+"<button id='updateCancelId' type='button' class='btn btn-sm btn-info' onclick='updateCancel();'>취소</button>");
+		}
+		function updateCancel(){
+			location.reload();
+		}
+		function updateReplyFinal(number){
+			var replyNo = $(number).parent().next().find("input[type='hidden']").val();
+			console.log("text?"+$("#updateContent").val());
+			$.ajax({
+				url: "updateReply.bo",
+				type: "post",
+				data: {
+					replyNo: replyNo,
+					content: $("#updateContent").val()
+				},
+				success: function(result){
+					
+					$("#updateContent").remove();
+					$(number).eq(0).show();
+					$(number).eq(1).show();
+					$("#updateReplyFinalId").hide();
+					$("#updateCancel").hide();
+					
+					if(result=="1"){
+						
+						alert("댓글 수정 성공했습니다.");
+						location.reload();
+					}
+					
+				},
+				error: function(){
+					console.log("통신실패");
+				}
+			});
+			
+		}
+		
+		
+		
+		function deleteReply(number){
+			var replyNo = $(number).parent().next().find("input[type='hidden']").val();
+			var conf = confirm("삭제하시겠습니까?");
+			if(conf==true){
+			$.ajax({
+				url:"deleteReply.bo",
+				type: "get",
+				data:{
+					replyNo: replyNo
+				},
+				success: function(result){
+					alert("댓글 삭제하였습니다");
+					location.reload();
+				}
+			});
+			}
+		}
+		
+		function updateReply(element){
+			console.log("들어왔니?");
+			var content = $(element).parent().prev().prev().text();
+			console.log(content);
+			$(element).parent().prev().prev().html("<textarea id='updateContent' class='form-control' rows='4' cols='50' style='width: 100%; resize: none; border: 1px solid black;''>"+content+"</textarea>");
+			$(element).hide();
+			$(element).prev().hide();
+			$(element).parent().append("<button id='updateReplyFinalId'class='btn btn-danger btn-sm' type='button' onclick='updateReplyFinal(this);'>저장</button>"
+								+"<button id='updateCancelId' type='button' class='btn btn-sm btn-info' onclick='updateCancel();'>취소</button>");
+		}
+		function updateCancel(){
+			location.reload();
+		}
+		function updateReplyFinal(number){
+			var replyNo = $(number).parent().next().find("input[type='hidden']").val();
+			console.log("text?"+$("#updateContent").val());
+			$.ajax({
+				url: "updateReply.bo",
+				type: "post",
+				data: {
+					replyNo: replyNo,
+					content: $("#updateContent").val()
+				},
+				success: function(result){
+					
+					$("#updateContent").remove();
+					$(number).eq(0).show();
+					$(number).eq(1).show();
+					$("#updateReplyFinalId").hide();
+					$("#updateCancel").hide();
+					
+					if(result=="1"){
+						
+						alert("댓글 수정 성공했습니다.");
+						location.reload();
+					}
+					
+				},
+				error: function(){
+					console.log("통신실패");
+				}
+			});
+			
+		}
 		
 	</script>
 	
