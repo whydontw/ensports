@@ -365,7 +365,7 @@
 					return false;
 				}
 				
-				location.href='${contextPath}/memberInsert.me';
+				location.href='${contextPath}/memberInsert.do';
 				
 			});
 		})

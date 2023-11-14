@@ -34,8 +34,8 @@
 					<h1>내 정보 찾기</h1>
 					<nav class="d-flex align-items-center">
 						<a href="${contextPath}">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="${contextPath}/login.me">로그인<span class="lnr lnr-arrow-right"></span></a>
-						<a href="${contextPath}/findInfo.me">아이디/비밀번호 찾기</a>
+						<a href="${contextPath}/login.do">로그인<span class="lnr lnr-arrow-right"></span></a>
+						<a href="${contextPath}/findInfo.do">아이디/비밀번호 찾기</a>
 					</nav>
 				</div>
 			</div>

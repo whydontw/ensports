@@ -96,7 +96,7 @@
 							<c:choose>
 								<c:when test="${loginUser == null }">
 									<li class="nav-item submenu">
-										<a href="${contextPath }/login.me" class="nav-link">로그인</a>
+										<a href="${contextPath }/login.do" class="nav-link">로그인</a>
 									</li>
 								</c:when>
 								<c:otherwise>
