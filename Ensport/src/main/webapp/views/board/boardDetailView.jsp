@@ -124,10 +124,18 @@ th {
 		<table class="table table-stripped"
 			style="text-align: center; boarder: 1px solid #dddddd">
 			<thead>
-				<tr id="tr1">
-					<th colspan="4" class="pt-30 pb-30">게시글 상세보기</th>
-				</tr>
-
+			<c:choose>
+				<c:when test="${b.boardType==1 }">
+					<tr id="tr1">
+						<th colspan="4" class="pt-30 pb-30">공지사항 상세보기</th>
+					</tr>
+				</c:when>
+				<c:otherwise>
+					<tr id="tr1">
+						<th colspan="4" class="pt-30 pb-30">게시글 상세보기</th>
+					</tr>
+				</c:otherwise>
+			</c:choose>
 				<tr>
 					<td class="td1">글번호: ${b.boardNo }</td>
 					<td class="td1">작성자: ${b.userNo }</td>
