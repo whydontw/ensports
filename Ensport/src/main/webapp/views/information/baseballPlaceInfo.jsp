@@ -365,6 +365,8 @@
 							
 		//구장 예약 여부 확인하기	
  		$('#selected-time').change(function() {
+ 			
+ 			$(".primary-btn").prop("disabled", false);
 			 
 			 
 		        var selectedTime = $(this).val(); // 선택한 시간 값
@@ -397,6 +399,7 @@
 			            				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다");			            			
 			            				location.href='${contextPath}/login.do';
 			            				event.preventDefault();
+			            				return false;
 
 			            			}else{
 			            				

@@ -589,6 +589,8 @@ public class AdminDao {
 		ResultSet rset = null;
 		Statement stmt = null;
 		
+		Member m = null;
+		
 		String sql = prop.getProperty("selectMemberList");
 		
 		try {
@@ -598,9 +600,14 @@ public class AdminDao {
 			
 			
 			while(rset.next()) {
-				list.add(new Member(rset.getInt("USER_NO")
-								   ,rset.getString("USER_NICKNAME")
-								   ,rset.getDate("ENROLLDATE")));
+				
+				m = new Member();
+				m.setUserNo(rset.getInt("USER_NO"));
+				m.setUserId(rset.getString("USER_ID"));
+				m.setUserNickname(rset.getString("USER_NICKNAME"));
+				m.setEnrolldate(rset.getDate("ENROLLDATE"));
+				
+				list.add(m);
 			}
 			
 			

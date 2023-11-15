@@ -140,7 +140,7 @@
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting">
 						<label for="date">
-						 	 <input type="date" id="date" max="2023-11-18" min="2023-11-16" name="baseballChoiceDate"/>
+						 	 <input type="date" id="date" max="2023-11-18" min="2023-11-14" name="baseballChoiceDate"/>
 						</label>
 					</div>
 					<div class="sorting mr-auto">
