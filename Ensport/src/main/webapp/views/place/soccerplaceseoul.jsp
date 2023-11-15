@@ -192,7 +192,7 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting mr-auto">
-				</div>
+					</div>
 
 					<div class="pagination">
 						<c:choose>
@@ -205,7 +205,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="page-item"><a
-									href="${contextPath }/seoul.so?currentPage=${pi.currentPage-1}"
+									href="${contextPath }/seoul.so?localName=서울&currentPage=${pi.currentPage-1}"
 									class="page-link" aria-label="Previous"> <span
 										aria-hidden="true"> <span class="lnr lnr-chevron-left"></span>
 									</span>
@@ -215,7 +215,7 @@
 
 						<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
 							<li class="page-item"><a
-								href="${contextPath }/seoul.so?currentPage=${i}"
+								href="${contextPath }/seoul.so?localName=서울&currentPage=${i}"
 								class="page-link">${i}</a></li>
 						</c:forEach>
 
@@ -229,7 +229,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="page-item">
-									<a href="${contextPath }/seoul.so?currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+									<a href="${contextPath }/seoul.so?localName=서울&currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
 									<span aria-hidden="true"> <span class="lnr lnr-chevron-right"></span></span>
 								</a></li>
 							</c:otherwise>

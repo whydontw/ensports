@@ -15,7 +15,7 @@
                     <h1>회원가입</h1>
                     <nav class="d-flex align-items-center">
                         <a href="${contextPath }">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="${contextPath }/memberInsert.me">회원가입</a>
+                        <a href="${contextPath }/memberInsert.do">회원가입</a>
                     </nav>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-lg-8  mx-auto">
                         <h2>Member Entrance</h2>
-                        <form class="row contact_form" action="${contextPath }/memberInsert.me" method="post" novalidate="novalidate" style="margin-top: 40px;">
+                        <form class="row contact_form" action="${contextPath }/memberInsert.do" method="post" novalidate="novalidate" style="margin-top: 40px;">
                             
                             
                             <!-- ID -->

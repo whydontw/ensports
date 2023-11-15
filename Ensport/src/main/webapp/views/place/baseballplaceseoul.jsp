@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.ensport.place.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -60,9 +61,9 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a href="${contextPath }/seoul.ba" onclick="goToSeoulPage()"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/seoul.ba?localName=서울&currentPage=1" onclick="goToSeoulPage()"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
 
-						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.ba?localName=경기&currentPage=1" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
 
 						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToIncheonPage()"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
 						
@@ -133,295 +134,115 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting">
-						<select>
-							<option value="1">날짜 선택</option>
-							<option value="1">11월 16일</option>
-							<option value="1">11월 17일</option>
-							<option value="1">11월 18일</option>
-						</select>
+						<label for="date">
+						 	 <input type="date" id="date" max="2023-11-18"  min="2023-11-16" name="BaseballChoiceDate"
+						 	 	 />
+							</label>
 					</div>
+					
 					<div class="sorting mr-auto">
 					<!-- 개수 섹션 -->
 					</div>
-					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-					</div>
+					
 				</div>
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
 				<section class="lattest-product-area pb-40 category-list">
 					<div class="row">
 						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p1.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="datasheet p-3 mb-2  text-white"
-										style="background-color: #e8f0f2;">
-										<a href="" id="participantCount" class="text-black"
-											style="color: black;">참여인원: </a>
-									</div>
-									<div class="prd-bottom">
-
+						<c:forEach var="item" items="${list}">
+							<div class="col-lg-4 col-md-6">
+								<div class="single-product">
+									<input type="hidden" value="${item.placeNo }" name="sno" /> 
+									<img class="img-fluid"
+										src="${contextPath}${item.filePath}${item.changeName}" alt=""
+										 style=" width: 300px;height: 174px;">
+									<div class="product-details">
+										<input type="text" value="${item.placeName}" >
+										<h3>${item.placeName}</h3>
 										
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
+										<div class="prd-bottom">																						
+												<div class="prd-bottom" id="viewMore">
+													<a href="#" class="social-info"> <span class="lnr lnr-move"></span>
+														<p class="hover-text">view more</p>
+													</a>
+												</div>									
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p2.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p3.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p4.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p5.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p6.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p4.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p5.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<!-- single product -->
-						<div class="col-lg-4 col-md-6">
-							<div class="single-product">
-								<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/product/p6.jpg" alt="">
-								<div class="product-details">
-									<h6>addidas New Hammer sole
-										for Sports person</h6>
-									<div class="price">
-										<h6>$150.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-									<div class="prd-bottom">
-
-										<a href="" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
+						</c:forEach>
+						
 					</div>
-					
-					
+										
 				</section>
+				
+				<script>
+				$(document).ready(function() {
+				    $(".single-product, #viewMore p").on("click", function(event) {
+				        var selectedDate  = $("#date").val(); // 선택된 날짜 값을 가져옵니다
+				        if (!selectedDate  || selectedDate  === "날짜선택") {
+				            alert("날짜를 먼저 선택하세요");
+				            event.preventDefault();
+				        } else {
+				            var sno = $(this).find("input[name=sno]").val();
+				            location.href = "baseballdetail.bo?sno=" + sno + "&date=" + selectedDate ;
+				            // 원하는 작업을 수행하는 대신 페이지 이동을 수행합니다.
+				            // location.href = '${contextPath}/sc.seoul';
+				        }
+				    });
+				});
+				</script>
+				
 				<!-- End Best Seller -->
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting mr-auto">
-						<select>
-							<option value="1">Show 8</option>
-							<option value="1">Show 10</option>
-							<option value="1">Show 12</option>
-						</select>
+						
 					</div>
+					
 					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+						<c:choose>
+							<c:when test="${pi.currentPage eq 1}">
+								<li class="page-item"><a href="#" class="page-link"
+									aria-label="Previous"> <span aria-hidden="true"> <span
+											class="lnr lnr-chevron-left"></span>
+									</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a
+									href="${contextPath }/seoul.ba?localName=서울&currentPage=${pi.currentPage-1}"
+									class="page-link" aria-label="Previous"> <span
+										aria-hidden="true"> <span class="lnr lnr-chevron-left"></span>
+									</span>
+								</a></li>
+							</c:otherwise>
+						</c:choose>
+
+						<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
+							<li class="page-item"><a
+								href="${contextPath }/seoul.ba?localName=서울&currentPage=${i}"
+								class="page-link">${i}</a></li>
+						</c:forEach>
+
+						<c:choose>
+							<c:when test="${pi.currentPage eq pi.maxPage}">
+								<li class="page-item"><a href="#" class="page-link"
+									aria-label="Next"> <span aria-hidden="true"> <span
+											class="lnr lnr-chevron-right"></span>
+									</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item">
+									<a href="${contextPath }/seoul.ba?localName=서울&currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+									<span aria-hidden="true"> <span class="lnr lnr-chevron-right"></span></span>
+								</a></li>
+							</c:otherwise>
+						</c:choose>
 					</div>
+					
 				</div>
 				<!-- End Filter Bar -->
 			</div>
@@ -515,16 +336,7 @@
 	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
 	
-	<script type="text/javascript">
-    function goToGyeonggiPage() {
-        window.location.href = '<%= request.getContextPath() %>/sc.gyeonggi';
-    }
-	</script>
-	<script type="text/javascript">
-    function goToIncheonPage() {
-        window.location.href = '<%= request.getContextPath() %>/sc.incheon';
-    }
-	</script>
+	
 </body>
 
 </html>

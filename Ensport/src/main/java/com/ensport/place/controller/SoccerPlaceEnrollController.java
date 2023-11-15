@@ -43,7 +43,6 @@ public class SoccerPlaceEnrollController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	
-
 		//session에서 userNo 뽑아주기(PLAYER TABLE에 INSERT될 친구)
 		HttpSession session = request.getSession();
 		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();
@@ -53,35 +52,61 @@ public class SoccerPlaceEnrollController extends HttpServlet {
 		String placeNo = request.getParameter("placeNo");
 		String reservationDate = request.getParameter("reservationDate");
 
-		int placePlayer =  new SoccerPlaceService().reservationPlayer(timeNo, placeNo, reservationDate);
 		
-		if( placePlayer == 1) {
-			session.setAttribute("alertMsg", "예약 마감되었습니다.");
-			response.sendRedirect(request.getHeader("referer"));
-		}else {
-			int duplicate = new SoccerPlaceService().SoccerPlaceDuplicate(userNo,timeNo, placeNo, reservationDate);
+		
+//		//현재 구장에 예약된 인원
+		int currentPlayerCount =  new SoccerPlaceService().reservationPlayer(timeNo, placeNo, reservationDate);
+		
+		
+//		//현재 구장에 예약된 인원이 0명일 때
+		if(currentPlayerCount == 0) {
 			
-			if(duplicate>0) {
-				session.setAttribute("alertMsg", "중복예약입니다.");
-				response.sendRedirect(request.getHeader("referer"));
+			//insert(예약처리)
+			int result = new SoccerPlaceService().SoccerPlaceReservation(userNo, timeNo, placeNo, reservationDate);
+			
+			if(result > 0) {
+				//예약 성공
+				System.out.println("예약 성공~~~~~~");
+				
+				session.setAttribute("alertMsg", "예약이 확정되었습니다.");
+				response.sendRedirect(request.getContextPath() + "/myPageReservation.me?currentPage=1");
 			}else {
+				//예약 실패
+				System.out.println("예약 실패~~~~~~~~~~!");
 				
-				int result = new SoccerPlaceService().SoccerPlaceReservation(userNo, timeNo, placeNo, reservationDate);
-				
-				if(result > 0) {
-					session.setAttribute("alertMsg", "예약이 확정되었습니다.");
-					response.sendRedirect(request.getHeader("referer"));
-				}else {
-					request.setAttribute("errorMsg", "예약이 처리되지 않았습니다. 다시 시도해주세요.");
-					response.sendRedirect(request.getHeader("referer"));
-					
-				}
-				
-			}			
+				session.setAttribute("alertMsg", "예약에 실패하였습니다.");
+				response.sendRedirect(request.getHeader("referer"));		
+			}
 			
 		}
 		
-	
+		
+//		if( currentPlayerCount > 0) {
+//			session.setAttribute("alertMsg", "예약 마감되었습니다.");
+//			response.sendRedirect(request.getHeader("referer"));
+//			
+//		}else {
+//			
+//			//중복 개수
+//			int duplicate = new SoccerPlaceService().SoccerPlaceDuplicate(userNo,timeNo, placeNo, reservationDate);
+//			
+//			if(duplicate>0) {
+//				session.setAttribute("alertMsg", "중복예약입니다.");
+//				response.sendRedirect(request.getHeader("referer"));
+//			}else {
+//				
+//				if(result > 0) {
+//
+//					response.sendRedirect(request.getHeader("referer"));
+//				}else {
+//					request.setAttribute("errorMsg", "예약이 처리되지 않았습니다. 다시 시도해주세요.");
+//					response.sendRedirect(request.getHeader("referer"));
+//					
+//				}
+//				
+//			}			
+//			
+//		}
 		
 		
 	}

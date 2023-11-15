@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.ensport.place.*" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -60,53 +61,84 @@
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
 					<div class="s_Product_carousel">
+						<c:forEach var="bp" items="${list}">
 						<div class="single-prd-item">
-							<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/category/s-p1.jpg" alt="">
+							<img class="img-fluid" src="${contextPath }${bp.filePath}${bp.changeName}">
 						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="<%= request.getContextPath() %>/resources/img/category/s-p1.jpg" alt="">
-						</div>
+						
+					</c:forEach>
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h3>11월 17일 서울 경기장</h3>
+						<h3>[ ${placeDate} ] ${bp.placeName}</h3>
+						
 						<ul class="list">
-							<li><a class="active" href="#"><span>Category</span> : 축구</a></li>
+							<li><a class="active" href="#"><span>Category</span>${bp.categoryName }</a></li>
 							
 						</ul>
-						<p>축구경기입니다</p>
+						<p>${bp.subInfo }</p>
 						
 						
 						<br>
+						<br>
 						<div class="single-element-widget mt-30">
-							<div class="default-select" id="default-select"">
-								<select>
-									<option value="1">7:00~9:00</option>
-									<option value="2">9:30~11:30</option>
-									<option value="3">12:00~14:00</option>
-									<option value="4">14:30~16:30</option>
-									<option value="5">17:00~19:00</option>
-									<option value="5">19:30~21:30</option>
-									<option value="5">22:00~24:00</option>
+							<div class="default-select" id="default-select">
+								<select id="selected-time">
+									<option value="0">시간 선택</option>
+									<option value="1">13:00~15:00</option>
+									<option value="2">16:00~18:00</option>
+									<option value="3">19:00~21:00</option>									
 								</select>
 							</div>
 						</div>
+						
 						<br>
-						<input type="date" name="dateIn">
-						<br><br>
-						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">예약하기</a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+						
+						<div class="card_area d-flex align-items-center" id="btnWrap">
+							<button type="button" class="primary-btn" data-toggle="modal" data-target="#exampleModal" id="reservationbutton">
+							  예약하기
+							</button>														
 						</div>
+						
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="exampleModalLabel">예약 내역</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      
+		      <div class="modal-body" >
+		      	<br>
+		        [예약 경기장] : ${bp.placeName}  
+		        <br> <br>
+		        [예약 날짜] :  ${placeDate}
+		        <br> <br>
+		        [예약 시간] : <a class="rt"></a>
+		        <br> <br>	        
+		      </div>
+		      
+		      <div class="modal-footer">
+			      <div class="button-group-area mt-40">
+			        <button type="button" class="genric-btn primary" data-dismiss="modal">닫기</button>
+			        <button type="button" class="genric-btn info" id="reservationFixed">결제하기</button>
+			      </div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	
+	
 	<!--================End Single Product Area =================-->
 
 	<!--================Product Description Area =================-->
@@ -126,89 +158,71 @@
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
+			
 				<div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-					<p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
-						and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
-						Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to
-						London and then Hampton, she eventually married her next door neighbour from Reading, John Cook. He was an
-						officer in the Merchant Navy and after he left the sea in 1956, they bought a pub for a year before John took a
-						job in Southern Rhodesia with a motor company. Beryl bought their young son a box of watercolours, and when
-						showing him how to use it, she decided that she herself quite enjoyed painting. John subsequently bought her a
-						child’s painting set for her birthday and it was with this that she produced her first significant work, a
-						half-length portrait of a dark-skinned lady with a vacant expression and large drooping breasts. It was aptly
-						named ‘Hangover’ by Beryl’s husband and</p>
-					<p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we are seeing
-						more and more recipe books and Internet websites that are dedicated to the act of cooking for one. Divorce and
-						the death of spouses or grown children leaving for college are all reasons that someone accustomed to cooking for
-						more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
-						streamlined plan of cooking that is more efficient for one person creating less</p>
+
+					<p>${bp.subInfo }</p>
+					
 				</div>
+				
 				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 					<div class="table-responsive">
 						<table class="table">
 							<tbody>
 								<tr>
 									<td>
-										<h5>Width</h5>
+										<h5>Size</h5>
 									</td>
 									<td>
-										<h5>128mm</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Height</h5>
-									</td>
-									<td>
-										<h5>508mm</h5>
+										<h5>${bp.placeSize }</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>Depth</h5>
+										<h5>Parking</h5>
 									</td>
 									<td>
-										<h5>85mm</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Weight</h5>
-									</td>
-									<td>
-										<h5>52gm</h5>
+										<h5>${bp.parkingYn }</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>Quality checking</h5>
+										<h5>Date</h5>
 									</td>
 									<td>
-										<h5>yes</h5>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<h5>Freshness Duration</h5>
-									</td>
-									<td>
-										<h5>03days</h5>
+										<h5>${bp.placeDate}</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>When packeting</h5>
+										<h5>Start Time</h5>
 									</td>
 									<td>
-										<h5>Without touch of hand</h5>
+										<h5>${bp.startTime}</h5>
 									</td>
 								</tr>
 								<tr>
 									<td>
-										<h5>Each Box contains</h5>
+										<h5>End time</h5>
 									</td>
 									<td>
-										<h5>60pcs</h5>
+										<h5>${bp.endTime}</h5>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h5>Max Capacity</h5>
+									</td>
+									<td>
+										<h5>${bp.maxCapacity }</h5>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h5>Category</h5>
+									</td>
+									<td>
+										<h5>${bp.categoryName }</h5>
 									</td>
 								</tr>
 							</tbody>
@@ -326,6 +340,81 @@
 	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
 
+	<script>
+	
+	$(document).ready(function() {
+
+		//시간미선택시 예약 막기
+		$(".primary-btn").on("click",function() {
+			
+			var selectedTime = $("#selected-time option:selected").val(); 
+			var selectedTimeText = $("#selected-time option:selected").text(); 
+			
+			if(selectedTime == 0) {
+				alert ("시간을 먼저 선택하세요");
+				return false;
+			} else {
+				
+				var sno = $(this).find("selectedTime").val();
+				  $("#exampleModal .modal-body .rt").text(selectedTimeText);
+				  				
+			}
+						
+		});
+		
+							
+		//구장 예약 여부 확인하기	
+ 		$('#selected-time').change(function() {
+			 
+			 
+		        var selectedTime = $(this).val(); // 선택한 시간 값
+		        $.ajax({	
+		            url : "baseballTimeChk.time",
+		            type : "get",
+		            data : { selectTime : selectedTime, pno: ${bp.placeNo}, placeDate: "${placeDate}" },
+		            success : function(data) {
+		                		               
+		            	var result = JSON.parse(data);
+		            	
+		            	if (result.reservationChk > 0) {
+		                    // 인원 마감 시 버튼 비활성화
+		                    $(".primary-btn").prop("disabled", true);
+		                    alert("인원이 마감되었습니다.");
+		                    
+		                }else{ // 인원이 마감도 아니고 중복도 아니면 이제 예약
+		                	
+			                    //$(".primary-btn").prop("disabled", false);
+		                
+			                	$("#reservationFixed").on("click",function(){
+			                		
+			            			var timeNo = $("#selected-time").val(); //시간
+			            			var placeNo = $("#placeNo").val();//장소
+			            			var reservationDate = $("#reservationDate").val();//날짜			            			
+
+			            			
+			            			if("${loginUser}" == ""){ //로그인을 하지 않았으면 로그인 페이지로 이동
+			            			
+			            				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다");			            			
+			            				location.href='${contextPath}/login.me';
+			            				event.preventDefault();
+
+			            			}else{
+			            				
+	 			            			location.href="placeEnrollForm.ba?timeNo="+timeNo+"&placeNo=${bp.placeNo}&reservationDate=${placeDate}";
+			            			}
+			            			
+			            		});
+		                	}
+		                  
+		                },
+		            error : function() {
+		                console.log("실패");
+		            }
+		        });
+		    });		
+	});
+		
+	</script>
 </body>
 
 </html>

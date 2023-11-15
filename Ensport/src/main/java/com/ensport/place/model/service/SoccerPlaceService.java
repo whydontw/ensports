@@ -1,6 +1,7 @@
 package com.ensport.place.model.service;
 
 import java.sql.Connection;
+
 import java.util.ArrayList;
 
 import com.ensport.admin.model.vo.Attachment;
@@ -90,14 +91,15 @@ public class SoccerPlaceService {
 		
 		int result = new SoccerPlaceDao().SoccerPlaceReservation(conn, userNo, timeNo, placeNo, reservationDate);
 		
-		
 		if(result > 0) {
 			JDBCTemplate.commit(conn);
+			
 		}else {
 			JDBCTemplate.rollback(conn);
 		}
 		
 		JDBCTemplate.close(conn);
+		
 		
 		return result;
 	}
@@ -115,7 +117,8 @@ public class SoccerPlaceService {
 		return count; //게시글 개수 돌려주기
 	}
 
-	//참여
+	
+	//
 	public int reservationPlayer(String timeNo, String placeNo, String reservationDate) {
 
 		Connection conn = JDBCTemplate.getConnection();
@@ -125,6 +128,7 @@ public class SoccerPlaceService {
 		return placePlayer;
 	}
 
+	
 	//중복확인 
 	public int SoccerPlaceDuplicate(int userNo, String timeNo, String placeNo, String reservationDate) {
 		

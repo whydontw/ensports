@@ -42,7 +42,7 @@ public class ReplyInsertController extends HttpServlet {
 		
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		String content = request.getParameter("content");
-		
+		System.out.println("확인: "+content);
 		Member loginUser = (Member)request.getSession().getAttribute("loginUser"); //로그인 정보
 		String userId = loginUser.getUserId();//댓글작성자 아이디추출
 		
@@ -50,6 +50,8 @@ public class ReplyInsertController extends HttpServlet {
 		r.setBoardNo(bno);
 		r.setReplyContent(content);
 		r.setUserId(userId);
+		
+		System.out.println(r.getReplyContent());
 		
 		//INSERT (DML)
 		int result = new BoardService().insertReply(r);

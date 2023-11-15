@@ -190,14 +190,14 @@
     	//리뷰 보기 팝업창 열기
 	    function viewMyReview(reviewNo) {
 	       
-    		window.open("${contextPath}/myPageReviewDetail.me?reviewNo=" + reviewNo, "Popup", "width=600, height=380");
+    		window.open("${contextPath}/myPageReviewDetail.me?reviewNo=" + reviewNo, "Popup", "width=650, height=400");
 	        
 	    }
     	
 	    
 	    //리뷰 등록 팝업창 열기
 	    function insertMyReview(playerNo) {
-	        window.open("${contextPath}/insertMyReview.me?playerNo=" + playerNo, "Popup", "width=600, height=380");
+	        window.open("${contextPath}/insertMyReview.me?playerNo=" + playerNo, "Popup", "width=650, height=400");
 	        
 	        console.log(window.opener);
 	    }
