@@ -73,6 +73,7 @@
                                                 <tr>
                                                     <td>${m.userNo }</td>
                                                     <td><a href="memberDetail.me?userNo=${m.userNo}">${m.userNickname}</a></td>
+                                                    <td>${m.userId }</td>
                                                     <td>${m.enrolldate }</td>
                                                 </tr>
                                             </c:forEach>
