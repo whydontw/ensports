@@ -36,12 +36,11 @@ public class boardDeleteController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		int boardNo = Integer.parseInt(request.getParameter("bno"));
-		int atNo = Integer.parseInt(request.getParameter("atno"));
 		
 		int result = new BoardService().deleteBoard(boardNo);
 		int result1 = 1;
 		
-		if(atNo>0) {
+		if(request.getParameter("atno")!=null) {
 			result1 = new BoardService().deleteAttachment(boardNo);
 		}
 		

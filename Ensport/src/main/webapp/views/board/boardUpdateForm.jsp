@@ -190,6 +190,10 @@
 		
 		<script type="text/javascript">
 			
+			$.ajax({
+				
+			});
+		
 		</script>
 		
 	</div>
