@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.ensport.admin.model.vo.Attachment;
+import com.ensport.admin.model.vo.PieChart;
 import com.ensport.admin.model.vo.Place;
 import com.ensport.admin.model.vo.QA;
 import com.ensport.admin.model.vo.QAComment;
@@ -791,6 +792,61 @@ public class AdminDao {
 								   ,rset.getString("REVIEW_CONTENT")
 								   ,rset.getDate("CREATE_DATE")
 								   ,rset.getString("USER_NICKNAME")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return list;
+	}
+
+
+	public ArrayList<Integer> countAdminMember(Connection conn) {
+
+		ArrayList<Integer> list = new ArrayList<>();
+		ResultSet rset = null;
+		Statement stmt = null;
+		
+		String sql = prop.getProperty("countAdminMember");
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				list.add(rset.getInt("count"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return list;
+	}
+
+
+	public ArrayList<PieChart> countGender(Connection conn) {
+		
+		ArrayList<PieChart> list = new ArrayList<>();
+		ResultSet rset = null;
+		Statement stmt = null;
+		
+		String sql = prop.getProperty("countGender");
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				list.add(new PieChart(rset.getString("GENDER")
+									 ,rset.getInt("COUNT")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

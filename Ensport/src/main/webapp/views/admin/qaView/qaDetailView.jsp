@@ -44,7 +44,8 @@
         	
         	 <div style="margin-top: 120px; display: none;" id="commentEdit">
 	        	 	<button id="updateComment" class="btn btn-primary" style="margin-right: 10px;">답변 수정하기</button>
-	        	 	<button type="button" class="btn btn-info" id="deleteComment">답변 삭제하기</button>
+	        	 	<button type="button" class="btn btn-info" id="deleteComment" style="margin-right: 10px;">답변 삭제하기</button>
+	        	 	<button type="button" class="btn btn-secondary" onclick="history.back();">목록으로</button>
         	 </div>
         	 <div id="updateBtn" style="display: none;">
         	 	<button type="button" class="btn btn-primary" style="margin-right: 10px;" id="finalUpdate">확인</button>

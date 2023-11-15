@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.ensport.admin.model.dao.AdminDao;
 import com.ensport.admin.model.vo.Attachment;
+import com.ensport.admin.model.vo.PieChart;
 import com.ensport.admin.model.vo.Place;
 import com.ensport.admin.model.vo.QA;
 import com.ensport.admin.model.vo.QAComment;
@@ -328,6 +329,28 @@ public class AdminService {
 		Connection conn = JDBCTemplate.getConnection();
 
 		 ArrayList<Review> list = new AdminDao().selectReviewList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+
+	public ArrayList<Integer> countAdminMember() {
+
+		Connection conn = JDBCTemplate.getConnection();
+
+		ArrayList<Integer> list = new AdminDao().countAdminMember(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+
+	public ArrayList<PieChart> countGender() {
+
+		Connection conn = JDBCTemplate.getConnection();
+
+		ArrayList<PieChart> list = new AdminDao().countGender(conn);
 		
 		JDBCTemplate.close(conn);
 		
