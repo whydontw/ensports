@@ -50,11 +50,12 @@
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1>회원가입</h1>
-                    <nav class="d-flex align-items-center">
-                        <a href="${contextPath }">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="${contextPath }/memberInsert.me">회원가입</a>
-                    </nav>
+                    <h1>커뮤니티</h1>
+					<nav class="d-flex align-items-center">
+						<a href="${contextPath }">HOME<span
+							class="lnr lnr-arrow-right"></span></a> <a
+							href="${contextPath }/boardList.bo?currentPage=1">자유게시판</a>
+					</nav>
                 </div>
             </div>
         </div>
@@ -95,16 +96,20 @@
 					
 					<tr>
 						<th style="font-size: 15px; padding-left: 0px;">이미지</th>
-						<c:forEach items="${list }" var="image" varStatus="vs">
-							<c:choose>
-								<c:when test="${vs.index eq 0}">
-									<td><img id="titleImg" src="${contextPath }${image.filePath}${image.changeName}" width="370" height="300"></td>
-								</c:when>
-								<c:otherwise>
-									<td><img id="contentImg${vs.count }" src="${contextPath }${image.filePath}${image.changeName}" width="270" height="300"></td>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
+						<c:choose>
+							<c:when test="${not empty list }">
+								<c:forEach items="${list }" var="image" varStatus="vs">
+									<c:choose>
+										<c:when test="${vs.index eq 0}">
+											<td><img id="titleImg" src="${contextPath }${image.filePath}${image.changeName}" width="370" height="300"></td>
+										</c:when>
+										<c:otherwise>
+											<td><img id="contentImg${vs.count }" src="${contextPath }${image.filePath}${image.changeName}" width="270" height="300"></td>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</c:when>
+						</c:choose>	
 					</tr>
 					
 					<tr>
@@ -190,6 +195,10 @@
 		
 		<script type="text/javascript">
 			
+			$.ajax({
+				
+			});
+		
 		</script>
 		
 	</div>

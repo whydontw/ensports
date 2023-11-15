@@ -392,13 +392,115 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1> <b>야구 시설 인기순</b> </h1>
-							<p> 나처럼 되고 싶지 않으면 운동해  -유빈89- </p>
+							<h1>업데이트순</h1>
+							<p>지금 바로 올라온 경기장! 누구보다 빠르게 만나보시죠</p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<!-- single product -->
+							<div class="col-lg-4 col-md-4" id="updateSort" style="display: contents;">	
+								
+							<div class="single-product">
+									<script>							
+							$(function(){
+								
+								$.ajax({
+									url: "updateAjax2.do",
+									type : "get",
+									success : function(data){
+										
+										//값 뽑기
+										console.log("업데이트");
+										console.log(data);
+										
+		// 				                var resultDiv = $("#resultCount");
+						                $.each(data, function(index, item) {
+						                	
+						                	$(".row>#updateSort").append(
+						                			
+						                			"<div class='single-product' style='margin: 15px;'>" +
+						                			"<div class='col-md-13 figure'>" +
+							                        "<img class='img-fluid' src='${contextPath}" + item.filePath + item.changeName + "' alt='' style=' width: 250px;height: 200px;'>" +
+							                        "<div class='product-details'>" +
+							                        "<h6>" + item.placeName + "</h6>" +
+							                        "<div class='prd-bottom'>" +
+							                        "<a href='${contextPath}/place.so' class='social-info'>" +
+							                        "<span class='lnr lnr-move'></span>" +
+							                        "<p class='hover-text'>예약하기</p>" +
+							                        "</a>" +
+							                        "</div>" +
+							                        "</div>" +
+							                        "</div>"+
+							                        "</div>"
+						                	
+						                	);
+						                    
+		
+		// 				                    resultDiv.append(html);
+						                });
+										
+		
+										
+									},error : function(){
+										console.log("실패");
+									}
+								});
+								
+							})														
+							</script>		
+						
+							<div class="col-lg-4 col-md-4" id="updateSort" style="display: contents;">	
+								
+							<div class="single-product">
+									<script>							
+							$(function(){
+								
+								$.ajax({
+									url: "updateAjax2.do",
+									type : "get",
+									success : function(data){
+										
+										//값 뽑기
+										//console.log("업데이트");
+										//console.log(data);
+										
+		// 				                var resultDiv = $("#resultCount");
+						                $.each(data, function(index, item) {
+						                	
+						                	$(".row>#updateSort").append(
+						                			
+						                			"<div class='single-product' style='margin: 15px;'>" +
+						                			"<div class='col-md-13 figure'>" +
+							                        "<img class='img-fluid' src='${contextPath}" + item.filePath + item.changeName + "' alt='' style=' width: 250px;height: 200px;'>" +
+							                        "<div class='product-details'>" +
+							                        "<h6>" + item.placeName + "</h6>" +
+							                        "<div class='prd-bottom'>" +
+							                        "<a href='${contextPath}/place.so?currentPage=1' class='social-info'>" +
+							                        "<span class='lnr lnr-move'></span>" +
+							                        "<p class='hover-text'>예약하기</p>" +
+							                        "</a>" +
+							                        "</div>" +
+							                        "</div>" +
+							                        "</div>"+
+							                        "</div>"
+						                	
+						                	);
+						                    
+		
+		// 				                    resultDiv.append(html);
+						                });
+										
+		
+										
+									},error : function(){
+										console.log("실패");
+									}
+								});
+								
+							})														
+							</script>		
+						
 							<div class="col-lg-4 col-md-4" id="updateSort" style="display: contents;">	
 								
 							<div class="single-product">
@@ -492,7 +594,9 @@
 								success : function(data){
 									
 									//값 뽑기
-									//console.log(data);
+									console.log(data);
+									
+
 									
 // 				                var resultDiv = $("#resultCount");
 					                $.each(data, function(index, item) {
@@ -505,7 +609,7 @@
 						                        "<div class='product-details'>" +
 						                        "<h6>" + item.placeName + "</h6>" +
 						                        "<div class='prd-bottom'>" +
-						                        "<a href='${contextPath}/list.so?currentPage=1' class='social-info'>" +
+						                        "<a href='${contextPath}/list.so' class='social-info'>" +
 						                        "<span class='lnr lnr-move'></span>" +
 						                        "<p class='hover-text'>예약하기</p>" +
 						                        "</a>" +
@@ -517,7 +621,7 @@
 					                	);
 					                    
 	
-// 				                    resultDiv.append(html);
+	// 				                    resultDiv.append(html);
 					                });
 									
 	

@@ -1,6 +1,9 @@
 package com.ensport.review.model.vo;
 
-import java.util.Date;
+
+import java.sql.Date;
+
+
 
 //리뷰 Review
 public class Review {
@@ -8,15 +11,42 @@ public class Review {
 	private int reviewNo;
 	private int playerNo;
 	private int score;
+
 	private String reviewContent;
 	private Date createDate;
 	private String status;
+	
+	private String reviewWriter;
 	private String userNickname;
 	
 	
 	public Review() {
 		super();
 	}
+	
+
+
+
+
+
+	public Review(int reviewNo, int score, String reviewContent, Date createDate, String reviewWriter) {
+		super();
+		this.reviewNo = reviewNo;
+		this.score = score;
+		this.reviewContent = reviewContent;
+		this.createDate = createDate;
+		this.reviewWriter = reviewWriter;
+	}
+
+
+
+
+	
+	
+
+
+
+
 	
 
 	public Review(int reviewNo, String reviewContent, Date createDate, String userNickname) {
@@ -27,17 +57,15 @@ public class Review {
 		this.userNickname = userNickname;
 	}
 
-	public Review(int reviewNo, int playerNo, int score, String reviewContent, Date createDate, String status) {
-		super();
-		this.reviewNo = reviewNo;
-		this.playerNo = playerNo;
-		this.score = score;
-		this.reviewContent = reviewContent;
-		this.createDate = createDate;
-		this.status = status;
-	}
 	
+
 	
+
+
+
+	
+
+
 	
 	public String getUserNickname() {
 		return userNickname;
@@ -47,6 +75,7 @@ public class Review {
 	public void setUserNickname(String userNickname) {
 		this.userNickname = userNickname;
 	}
+
 
 
 	public int getReviewNo() {
@@ -87,12 +116,16 @@ public class Review {
 	}
 
 
+
 	@Override
 	public String toString() {
 		return "Review [reviewNo=" + reviewNo + ", playerNo=" + playerNo + ", score=" + score + ", reviewContent="
 				+ reviewContent + ", createDate=" + createDate + ", status=" + status + ", userNickname=" + userNickname
 				+ "]";
 	}
+
+	
+	
 	
 	
 	

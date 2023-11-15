@@ -33,7 +33,7 @@ public class SoccerMatchingController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<SoccerMatching> list = new SoccerMatchingService().selectAllSoccerMatchingList();
+		
 		//페이징처리
 		
 		int PlaceAllListCount; // 총 게시글 개수
@@ -65,7 +65,7 @@ public class SoccerMatchingController extends HttpServlet {
 		
 		PageInfo pi = new PageInfo(PlaceAllListCount, currentPage, pageLimit, myPageSoccerPlaceLimit, maxPage, startPage, endPage);
 		
-		
+		ArrayList<SoccerMatching> list = new SoccerMatchingService().selectAllSoccerMatchingList(pi);
 		request.setAttribute("alist", list);
 		request.setAttribute("pi", pi);
 		request.getRequestDispatcher("views/matching/soccerMatching.jsp").forward(request, response);
