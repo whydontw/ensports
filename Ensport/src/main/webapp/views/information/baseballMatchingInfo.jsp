@@ -467,7 +467,7 @@
 	        		        stars +
 	        		        "</div>" +
 	        		        "</div>" +
-	        		        "<p>" + result.rlist[i].content + "</p>" +
+	        		        "<p>" + result.rlist[i].reviewContent + "</p>" +
 	        		        "</div>");
 	        		    
 	        		    
@@ -512,7 +512,7 @@
 	        		        stars +
 	        		        "</div>" +
 	        		        "</div>" +
-	        		        "<p>" + result.slist[i].content + "</p>" +
+	        		        "<p>" + result.slist[i].reviewContent + "</p>" +
 	        		        "</div>");
 	        		    
 	        		    
@@ -568,7 +568,7 @@
 	        		        stars +
 	        		        "</div>" +
 	        		        "</div>" +
-	        		        "<p>" + result.rlist[i].content + "</p>" +
+	        		        "<p>" + result.rlist[i].reviewContent + "</p>" +
 	        		        "</div>");
 						
 	        		    $(".review_list").append(reviewItem);

@@ -48,6 +48,11 @@ public class ReviewListController extends HttpServlet {
 		
 
 		ArrayList<Review> rlist = new SoccerMatchingService().selectReviewList(placeNo);
+		
+		System.out.println("rlist 출력하기");
+		for(Review r : rlist) {
+			System.out.println(r);
+		}
 
 		
 

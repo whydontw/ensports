@@ -12,7 +12,7 @@ public class Review {
 	private int playerNo;
 	private int score;
 
-	private String content;
+	private String reviewContent;
 	private Date createDate;
 	private String status;
 	
@@ -29,40 +29,23 @@ public class Review {
 
 
 
-	public Review(int reviewNo, int score, String content, Date createDate, String reviewWriter) {
+	public Review(int reviewNo, int score, String reviewContent, Date createDate, String reviewWriter) {
 		super();
 		this.reviewNo = reviewNo;
 		this.score = score;
-		this.content = content;
+		this.reviewContent = reviewContent;
 		this.createDate = createDate;
 		this.reviewWriter = reviewWriter;
 	}
 
 
 
-	public String getReviewWriter() {
-		return reviewWriter;
-	}
+
+	
+	
 
 
 
-	public void setReviewWriter(String reviewWriter) {
-		this.reviewWriter = reviewWriter;
-	}
-
-
-
-	public Review(String reviewWriter) {
-
-	public Review(int reviewNo, String reviewContent, Date createDate, String userNickname) {
-		super();
-		this.reviewWriter = reviewWriter;
-	}
-
-
-
-	public Review(int reviewNo, int playerNo, int score, String content, Date createDate, String status,
-			String reviewWriter) {
 
 	
 
@@ -74,50 +57,13 @@ public class Review {
 		this.userNickname = userNickname;
 	}
 
-	public Review(int reviewNo, int playerNo, int score, String reviewContent, Date createDate, String status) {
-		super();
-		this.reviewNo = reviewNo;
-		this.playerNo = playerNo;
-		this.score = score;
-		this.content = content;
-		this.createDate = createDate;
-		this.status = status;
-		this.reviewWriter = reviewWriter;
-	}
-
-
-
-	public Review() {
-		super();
-	}
 	
+
 	
 
 
-	public Review(int reviewNo, int playerNo, int score, String content, Date createDate) {
-		super();
-		this.reviewNo = reviewNo;
-		this.playerNo = playerNo;
-		this.score = score;
-		this.content = content;
-		this.createDate = createDate;
-	}
 
-
-
-	public Review(int reviewNo, int playerNo, int score, String content, Date createDate, String status) {
-
-		super();
-		this.reviewNo = reviewNo;
-		this.playerNo = playerNo;
-		this.score = score;
-
-		this.content = content;
-
-
-		this.createDate = createDate;
-		this.status = status;
-	}
+	
 
 
 	
