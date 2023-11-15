@@ -403,7 +403,7 @@
 			            			//로그인을 하지 않았으면 로그인 페이지로 이동
 			            			if("${loginUser}" == ""){ 
 			            				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다");
-			            				location.href="${contextPath}/login.me";
+			            				location.href="${contextPath}/login.do";
 			            				event.preventDefault();
 			            				
 			            			}else{

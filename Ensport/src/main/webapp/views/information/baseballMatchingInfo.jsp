@@ -413,7 +413,7 @@
 			            			
 			            			if(${loginUser == null} ){ //로그인을 하지 않았으면 로그인 페이지로 이동
 			            				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다");
-			            				location.href="login.me";
+			            				location.href="login.do";
 			            				event.preventDefault();
 			            				return false;
 			            			}
