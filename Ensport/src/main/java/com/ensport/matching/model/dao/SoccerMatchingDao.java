@@ -43,7 +43,7 @@ public class SoccerMatchingDao {
 		ArrayList<SoccerMatching> slist = new ArrayList<SoccerMatching>();
 		
 		SoccerMatching sm = null;
-		
+		 
 		
 		
 		String sql = prop.getProperty("selectSoccerMatchingList");
