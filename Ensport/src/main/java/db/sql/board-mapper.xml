@@ -174,7 +174,6 @@
 	<entry key="deleteAttachment">
 		DELETE FROM ATTACHMENT
 		WHERE REF_NO = ?
-		ORDER BY CREATE_DATE DESC
 	</entry>
 	<entry key="deleteReply">
 		DELETE FROM REPLY
