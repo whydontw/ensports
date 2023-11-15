@@ -110,9 +110,9 @@ th {
 				<div class="col-first">
 					<h1>커뮤니티</h1>
 					<nav class="d-flex align-items-center">
-						<a href="${contextPath }">커뮤니티<span
+						<a href="${contextPath }">HOME<span
 							class="lnr lnr-arrow-right"></span></a> <a
-							href="${contextPath }/memberInsert.me">커뮤니티</a>
+							href="${contextPath }/boardList.bo?currentPage=1">자유게시판</a>
 					</nav>
 				</div>
 			</div>
