@@ -97,7 +97,7 @@
 				                    
 				                    <!-- 해당 페이지에 active 속성 부여해야함 (어떻게 해야할지 궁리좀 해보자) -->
 		                    		<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
-			                            <li class="page-item"><a href="${contextPath }/myPageBoard.me?currentPage=${i}" class="page-link">${i}</a></li>
+			                            <li class="page-item"  id="currentPageNm"><a href="${contextPath }/myPageBoard.me?currentPage=${i}" class="page-link">${i}</a></li>
 									</c:forEach>
 									
 									
@@ -128,6 +128,43 @@
 		                    	<div class="text-center p-t-45"><b>※ 게시글 내역이 없습니다.</b></div>
 		                    </c:if>
 							<!--====== page ======-->
+                            
+                            
+                            <script type="text/javascript">
+                            
+                            	
+                            	$(function(){
+                            		
+                            		//쿼리스트링으로 전달된 현재 페이지
+                            		var currentPageNum = ${pi.currentPage};
+                            		
+                            		//페이징 태그 내부 숫자
+                            		var currentPageNm = $("#currentPageNm a").html();
+                            		
+                            		console.log("====================")
+                            		console.log(currentPageNum)
+                            		console.log(currentPageNm)
+                            		console.log("====================")
+
+
+                            		//두 개가 같을 경우에
+                            		if(currentPageNum == currentPageNm){
+                            			//active class 추가하기
+                            			console.log("같습니다")
+                            			console.log($('#currentPageNm').find('.page-link:contains(${pi.currentPage})'));
+                            			console.log("^^");
+                            			console.log($('.page-link:contains(${pi.currentPage})').text());
+                            			
+                            			$('#currentPageNm').find('.page-link:contains(${pi.currentPage})').addClass("active");
+                            			
+                            		}else{
+                            			console.log("다릅니당")
+                            		}
+                            		
+                            	})
+                            
+                            </script>
+                            
                             
                         </div>
                     </div>
