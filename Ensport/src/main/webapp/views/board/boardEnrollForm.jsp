@@ -86,9 +86,9 @@
 					</tr>
 					<tr>
 						<th style="font-size: 15px; padding-left: 0px;">이미지</th>
-						<td><img id="titleImg" width="370" height="300"></td>
-						<td><img id="contentImg1" width="270" height="300"></td>
-						<td><img id="contentImg2" width="270" height="300"></td>
+						<td><img id="contentImg1" width="300" height="300"></td>
+						<td><img id="contentImg2" width="300" height="300"></td>
+						<td><img id="contentImg3" width="300" height="300"></td>
 					</tr>
 					<tr>
 						<th colspan="1" style="font-size: 15px; padding-left: 0px;">첨부파일</th>
@@ -118,13 +118,13 @@
             $(function(){
                 $("#file-area").hide(); //file input 숨기기
                 //대표이미지를 클릭하면 input file 요소 1번이 클릭되게 하는 함수
-                $("#titleImg").click(function(){
+                $("#contentImg1").click(function(){
                     $("#file1").click();
                 });
-                $("#contentImg1").click(function(){
+                $("#contentImg2").click(function(){
                     $("#file2").click();
                 });
-                $("#contentImg2").click(function(){
+                $("#contentImg3").click(function(){
                     $("#file3").click();
                 });
             });
@@ -151,18 +151,18 @@
                         console.log(e.target.result);
 
                         switch(num){
-                            case 1: $("#titleImg").attr("src",e.target.result); break;
-                            case 2: $("#contentImg1").attr("src",e.target.result); break;
-                            case 3: $("#contentImg2").attr("src",e.target.result); break;
+                            case 1: $("#contentImg1").attr("src",e.target.result); break;
+                            case 2: $("#contentImg2").attr("src",e.target.result); break;
+                            case 3: $("#contentImg3").attr("src",e.target.result); break;
                         }
 
                     }
 
                 }else{ //length가 1이 아니면
                     switch(num){
-                       	case 1: $("#titleImg").attr("src",null); break;
-                            case 2: $("#contentImg1").attr("src",null); break;
-                            case 3: $("#contentImg2").attr("src",null); break;
+                            case 1: $("#contentImg1").attr("src",null); break;
+                            case 2: $("#contentImg2").attr("src",null); break;
+                       		case 3: $("#contentImg3").attr("src",null); break;
                     }
                 }
             }
