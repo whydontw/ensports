@@ -70,7 +70,7 @@
 							<div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 							</div>
-							
+						
 							<!-- 아이디 저장하기 -->
 							<div class="form-check form-check-reverse py-2">
 							  <label class="form-check-label" for="reverseCheck1">아이디 저장하기</label>

@@ -269,7 +269,7 @@
 						<div class="f-icon">
 							<img src="resources/img/features/icon-baseball-field1.png" alt="">
 						</div>
-						<h6>Baseball field</h6>
+						<h6>야구 시설예약</h6>
 						<p>It ain't over till it's over.</p>
 					</div>
 				</div>
@@ -279,7 +279,7 @@
 						<div class="f-icon">
 							<img src="resources/img/features/icon-soccer-field2.png" alt="">
 						</div>
-						<h6>Soccer field</h6>
+						<h6>축구 시설예약</h6>
 						<p>love what you have.</p>
 					</div>
 				</div>
@@ -289,7 +289,7 @@
 						<div class="f-icon">
 							<img src="resources/img/features/free-icon-basebal3.png" alt="">
 						</div>
-						<h6>Baseball matching</h6>
+						<h6>야구 경기매칭</h6>
 						<p>No pain no gain.</p>
 					</div>
 				</div>
@@ -300,7 +300,7 @@
 							<img src="resources/img/features/free-icon-soccer-player4.png"
 								alt="">
 						</div>
-						<h6>Soccer matching</h6>
+						<h6>축구 경기매칭</h6>
 						<p>Slow and steady win the race.</p>
 					</div>
 				</div>
@@ -392,7 +392,7 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1> <b>야구 조회순</b> </h1>
+							<h1> <b>야구 시설 인기순</b> </h1>
 							<p> 나처럼 되고 싶지 않으면 운동해  -유빈89- </p>
 						</div>
 					</div>
@@ -411,8 +411,8 @@
 									success : function(data){
 										
 										//값 뽑기
-										console.log("업데이트");
-										console.log(data);
+										//console.log("업데이트");
+										//console.log(data);
 										
 		// 				                var resultDiv = $("#resultCount");
 						                $.each(data, function(index, item) {
@@ -463,7 +463,7 @@
 				<div class="row justify-content-center" >
 					<div class="col-lg-6 text-center" >
 						<div class="section-title" >
-							<h1><b>축구 조회순</b></h1>
+							<h1><b>축구 매칭 인기순</b></h1>
 							<p>열정을 불태울 시간에 근육을 불태우자  -혜진-</p>
 						</div>
 					</div>
@@ -492,7 +492,7 @@
 								success : function(data){
 									
 									//값 뽑기
-									console.log(data);
+									//console.log(data);
 									
 // 				                var resultDiv = $("#resultCount");
 					                $.each(data, function(index, item) {

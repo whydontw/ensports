@@ -66,13 +66,13 @@ public class SoccerPlaceEnrollController extends HttpServlet {
 			
 			if(result > 0) {
 				//예약 성공
-				System.out.println("예약 성공~~~~~~");
+				//System.out.println("예약 성공~~~~~~");
 				
 				session.setAttribute("alertMsg", "예약이 확정되었습니다.");
 				response.sendRedirect(request.getContextPath() + "/myPageReservation.me?currentPage=1");
 			}else {
 				//예약 실패
-				System.out.println("예약 실패~~~~~~~~~~!");
+				//System.out.println("예약 실패~~~~~~~~~~!");
 				
 				session.setAttribute("alertMsg", "예약에 실패하였습니다.");
 				response.sendRedirect(request.getHeader("referer"));		
