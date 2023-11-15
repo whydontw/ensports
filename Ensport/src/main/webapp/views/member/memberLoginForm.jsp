@@ -36,7 +36,7 @@
 					<h1>로그인</h1>
 					<nav class="d-flex align-items-center">
 						<a href="${contextPath}">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="${contextPath}/login.me">로그인</a>
+						<a href="${contextPath}/login.do">로그인</a>
 					</nav>
 				</div>
 			</div>
@@ -56,31 +56,32 @@
 						<div class="hover">
 							<h4>Let's Play!</h4>
 							<p>Ensport에 가입하여 다양한 Player를 만나보세요!</p>
-							<a class="primary-btn" href="${contextPath}/insertMemberTerms.me">회원가입</a>
+							<a class="primary-btn" href="${contextPath}/insertMemberTerms.do">회원가입</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-6">
 					<div class="login_form_inner">
 						<h3>Log in to enter</h3>
-						<form class="row login_form" action="${contextPath}/login.me" method="post" id="contactForm" novalidate="novalidate">
+						<form class="row login_form" action="${contextPath}/login.do" method="post" id="contactForm" novalidate="novalidate">
 							<div class="col-md-12 form-group">
 								<input type="text" class="form-control" id="loginId" name="loginId" placeholder="ID" onfocus="this.placeholder = ''" onblur="this.placeholder = 'ID'">
 							</div>
 							<div class="col-md-12 form-group">
 								<input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
 							</div>
-							<div class="col-md-12 form-group">
-								<div class="creat_account">
-									<input type="checkbox" id="f-option2" name="saveId">
-									<label for="f-option2">아이디 저장하기</label>
-								</div>
+						
+							<!-- 아이디 저장하기 -->
+							<div class="form-check form-check-reverse py-2">
+							  <label class="form-check-label" for="reverseCheck1">아이디 저장하기</label>
+							  <input class="form-check-input" type="checkbox" id="reverseCheck1" name="saveId">
 							</div>
+							
 							<div class="col-md-12 form-group">
 								<button type="submit" value="submit" class="primary-btn">Log In</button>
 							</div>
 							<div class="col-md-12 form-group">
-								<span><a href="${contextPath }/findInfo.me">아이디 찾기 / 비밀번호 찾기</a></span>
+								<span><a href="${contextPath }/findInfo.do">아이디 찾기 / 비밀번호 찾기</a></span>
 							</div>
 						</form>
 					</div>

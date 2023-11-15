@@ -37,9 +37,9 @@ public class Ajax1controller extends HttpServlet {
 	
 		ArrayList<SoccerMatching> list = new  SoccerMatchingService().selectMostSoccerMatchingList();
 		
-		for(SoccerMatching sm : list) {
-			System.out.println(sm);
-		}
+//		for(SoccerMatching sm : list) {
+//			System.out.println(sm);
+//		}
 		
 		request.setAttribute("mlist", list);
 		

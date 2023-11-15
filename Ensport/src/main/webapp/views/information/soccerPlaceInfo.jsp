@@ -72,10 +72,8 @@
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
-
 					<div class="s_product_text" >
-						<h3>[ ${placeDate} ] ${ssp.placeName}</h3>
-
+						<h3>[ ${placeDate} ] ${ssp.placeName}</h3>						
 
 						<ul class="list">
 							<li><a class="active" href="#"><span>Category</span>${ssp.categoryName }</a></li>
@@ -84,8 +82,7 @@
 						<p>${ssp.subInfo }</p>
 												
 						<br>
-						
-							<br>
+						<br>
 						<div class="single-element-widget mt-30">
 							<div class="default-select" id="default-select">
 								<select id="selected-time">
@@ -98,7 +95,7 @@
 						</div>
 						<br>
 						<div class="card_area d-flex align-items-center" id="btnWrap">
-							<button type="button" class="primary-btn" data-toggle="modal" data-target="#exampleModal">
+							<button type="button" class="primary-btn" data-toggle="modal" data-target="#exampleModal" id="reservationbutton">
 							  예약하기
 							</button>		
 												
@@ -109,31 +106,7 @@
 			</div>
 		</div>	
 	</div>
-		
-	<script>
 	
-	$(document).ready(function() {
-
-		$(".primary-btn").on("click",function() {
-			
-			var selectedTime = $("#selected-time option:selected").val(); 
-			var selectedTimeText = $("#selected-time option:selected").text(); 
-			
-			if(selectedTime == 0) {
-				alert ("시간을 먼저 선택하세요");
-				return false;
-			} else {
-				
-				var sno = $(this).find("selectedTime").val();
-				  $("#exampleModal .modal-body .rt").text(selectedTimeText);
-				  				
-			}
-						
-		});
-		
-	});
-		
-	</script>
 	
 	
 	<!-- Modal -->
@@ -149,7 +122,7 @@
 	      
 	      <div class="modal-body" >
 	      	<br>
-	        [예약 경기장] : ${ssp.placeName}
+	        [예약 경기장] : ${ssp.placeName}  
 	        <br> <br>
 	        [예약 날짜] :  ${placeDate}
 	        <br> <br>
@@ -160,13 +133,15 @@
 	      <div class="modal-footer">
 		      <div class="button-group-area mt-40">
 		        <button type="button" class="genric-btn primary" data-dismiss="modal">닫기</button>
-		        <button type="button" class="genric-btn info">결제하기</button>
+		        <button type="button" class="genric-btn info" id="reservationFixed">결제하기</button>
 		      </div>
 	      </div>
 	    </div>
 	  </div>
 	</div>
 	
+
+		
 	<!--================End Single Product Area =================-->
 
 	<!--================Product Description Area =================-->
@@ -365,6 +340,91 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/gmaps.min.js"></script>
 	<script src="<%= request.getContextPath() %>/resources/js/main.js"></script>
+	
+	
+	
+	<script>
+	
+	$(function() {
+
+		//시간미선택시 예약 막기
+		$(".primary-btn").on("click",function() {
+			
+			var selectedTime = $("#selected-time option:selected").val(); 
+			var selectedTimeText = $("#selected-time option:selected").text(); 
+			
+			if(selectedTime == 0) {
+				alert ("시간을 먼저 선택하세요");
+				return false;
+			} else {
+				
+				var sno = $(this).find("selectedTime").val();
+				  $("#exampleModal .modal-body .rt").text(selectedTimeText);
+				  				
+			}
+						
+		});
+		
+					
+		
+		//구장 예약 여부 확인하기	
+ 		$('#selected-time').change(function() {
+			 
+		        var selectedTime = $(this).val(); // 선택한 시간 값
+		        
+		        $.ajax({	
+		            url : "soccerTimeChk.time",
+		            type : "get",
+		            data : { selectTime : selectedTime, pno: ${ssp.placeNo}, placeDate: "${placeDate}" },
+		            success : function(data) {
+		            	
+						
+		            	var result = JSON.parse(data);
+		            	
+		            	console.log("16385131365435");
+		            	console.log(result.reservationChk);
+
+		            	if (result.reservationChk > 0) {
+		                    // 인원 마감 시 버튼 비활성화
+		                    $(".primary-btn").prop("disabled", true);
+		                    alert("인원이 마감되었습니다.");
+		                    
+		                }else{ // 인원이 마감도 아니고 중복도 아니면 이제 예약
+		                	
+// 			                    $(".primary-btn").prop("disabled", false);
+		                
+		                		//모달 결제하기 버튼
+			                	$("#reservationFixed").on("click",function(){
+			                		
+			            			var timeNo = $("#selected-time").val(); //시간
+			            			var placeNo = $("#placeNo").val();		//장소
+			            			var reservationDate = $("#reservationDate").val();//날짜			            			
+			            			
+			            			//로그인을 하지 않았으면 로그인 페이지로 이동
+			            			if("${loginUser}" == ""){ 
+			            				alert("로그인이 필요합니다. 로그인 페이지로 이동합니다");
+			            				location.href="${contextPath}/login.me";
+			            				event.preventDefault();
+			            				
+			            			}else{
+			            				//로그인도 됐으면 찐예약확정~
+	 			            			location.href="placeEnrollForm.so?timeNo="+timeNo+"&placeNo=${ssp.placeNo}&reservationDate=${placeDate}";
+			            			}			            			
+			            			
+			            		});
+		                	}
+		                  
+		                },
+		            error : function() {
+		                console.log("실패");
+		            }
+		        });
+		    });
+		
+		
+	});
+		
+	</script>
 
 </body>
 

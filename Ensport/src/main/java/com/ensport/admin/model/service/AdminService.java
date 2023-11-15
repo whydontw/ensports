@@ -5,10 +5,13 @@ import java.util.ArrayList;
 
 import com.ensport.admin.model.dao.AdminDao;
 import com.ensport.admin.model.vo.Attachment;
+import com.ensport.admin.model.vo.PieChart;
 import com.ensport.admin.model.vo.Place;
 import com.ensport.admin.model.vo.QA;
 import com.ensport.admin.model.vo.QAComment;
 import com.ensport.common.JDBCTemplate;
+import com.ensport.member.model.vo.Member;
+import com.ensport.review.model.vo.Review;
 
 public class AdminService {
 
@@ -249,6 +252,114 @@ public class AdminService {
 		
 		return result * result2;
 	}
+
+	public ArrayList<Member> selectMemberList() {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Member> list = new AdminDao().selectMemberList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+
+	public Member selectOneMember(int userNo) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		Member m = new AdminDao().selectOneMember(conn,userNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return m;
+	}
+
+	public int adminDeleteMember(int userNo) {
+
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int result = new AdminDao().adminDeleteMember(userNo,conn);
+		
+		
+		if(result > 0) {
+			JDBCTemplate.commit(conn);
+		}else {
+			JDBCTemplate.rollback(conn);
+		}
+		
+		JDBCTemplate.close(conn);
+		
+		return result;
+	}
+
+	public int countMember() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+
+		int count = new AdminDao().countMember(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return count;
+	}
+
+	public int countPlace() {
+
+		Connection conn = JDBCTemplate.getConnection();
+
+		int count = new AdminDao().countPlace(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return count;
+	}
+
+	public int countReply() {
+		Connection conn = JDBCTemplate.getConnection();
+
+		int count = new AdminDao().countReply(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return count;
+	}
+
+	public ArrayList<Review> selectReviewList() {
+		Connection conn = JDBCTemplate.getConnection();
+
+		 ArrayList<Review> list = new AdminDao().selectReviewList(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+
+	public ArrayList<Integer> countAdminMember() {
+
+		Connection conn = JDBCTemplate.getConnection();
+
+		ArrayList<Integer> list = new AdminDao().countAdminMember(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+
+	public ArrayList<PieChart> countGender() {
+
+		Connection conn = JDBCTemplate.getConnection();
+
+		ArrayList<PieChart> list = new AdminDao().countGender(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+
+	
+
+	
 
 
 

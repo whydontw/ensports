@@ -2,6 +2,7 @@ package com.ensport.board.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,10 +48,13 @@ public class boardUpdateController extends HttpServlet {
 		//첨부파일 정보
 		Attachment at = bs.selectAttachment(bno);
 		
+		ArrayList<Attachment> list = bs.selectAttachmentList(bno);
+		
 //		System.out.println(at.getOriginName());
 		
 		request.setAttribute("b", b);
 		request.setAttribute("a", at);
+		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("views/board/boardUpdateForm.jsp").forward(request, response);;
 		
@@ -60,6 +64,9 @@ public class boardUpdateController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
+		
 		if(ServletFileUpload.isMultipartContent(request)) {
 			
 			//전송 파일 용량 제한
@@ -74,7 +81,7 @@ public class boardUpdateController extends HttpServlet {
 			
 			//변환된 multiRequest객체로 데이터 추출하기
 			int boardNo = Integer.parseInt(multiRequest.getParameter("boardNo"));
-			System.out.println(boardNo);
+		
 			String title = multiRequest.getParameter("title");
 			String content = multiRequest.getParameter("content");
 			
@@ -116,6 +123,30 @@ public class boardUpdateController extends HttpServlet {
 				}
 				
 			}
+			
+			ArrayList<Attachment> list = new ArrayList<>();
+			
+			boolean flag1 = false;
+			
+			
+			for(int i=1; i<3; i++) {
+				
+				if(multiRequest.getParameter("reUploadFile"+i) != null) {
+					
+					list.get(i).setOriginName(multiRequest.getOriginalFileName("reUploadFile"+i));
+					
+					list.get(i).setChangeName(multiRequest.getFilesystemName("reUploadFile"+i));
+					
+					list.get(i).setFilePath("/resources/uploadFiles/");
+					
+					list.get(i).setFileLevel(1);
+					
+					
+				}
+				
+			}
+			
+			
 			
 			//서비스로 요청보내기
 			//b,at : 

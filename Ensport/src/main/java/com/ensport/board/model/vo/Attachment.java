@@ -10,12 +10,13 @@ public class Attachment {
 	private String changeName;
 	private Date uploadDate;
 	private String filePath;
+	private int fileLevel;
 	
 	public Attachment() {
 		super();
 	}
 
-	public Attachment(int atNo, int boardNo, String originName, String changeName, Date uploadDate, String filePath) {
+	public Attachment(int atNo, int boardNo, String originName, String changeName, Date uploadDate, String filePath, int fileLevel) {
 		super();
 		this.atNo = atNo;
 		this.boardNo = boardNo;
@@ -23,6 +24,7 @@ public class Attachment {
 		this.changeName = changeName;
 		this.uploadDate = uploadDate;
 		this.filePath = filePath;
+		this.fileLevel = fileLevel;
 	}
 	
 	
@@ -83,11 +85,21 @@ public class Attachment {
 		this.filePath = filePath;
 	}
 
+	public int getFileLevel() {
+		return fileLevel;
+	}
+
+	public void setFileLevel(int fileLevel) {
+		this.fileLevel = fileLevel;
+	}
+
 	@Override
 	public String toString() {
 		return "Attachment [atNo=" + atNo + ", boardNo=" + boardNo + ", originName=" + originName + ", changeName="
-				+ changeName + ", uploadDate=" + uploadDate + ", filePath=" + filePath + "]";
+				+ changeName + ", uploadDate=" + uploadDate + ", filePath=" + filePath + ", fileLevel=" + fileLevel
+				+ "]";
 	}
+
 	
 	
 }

@@ -46,6 +46,8 @@
 	<link rel="stylesheet" href="${contextPath}/resources/css/magnific-popup.css">
 	<link rel="stylesheet" href="${contextPath}/resources/css/main.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 	
 	<link rel="icon" href="${contextPath }/resources/img/elements/baseball_icon1.png" type="image/x-icon">
 	
@@ -57,8 +59,7 @@
 			<nav class="navbar navbar-expand-lg navbar-light main_box">
 				<div class="container">
 					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="${contextPath }"><img src="${contextPath }/resources/img/logo(temp).png" />
-</a>
+					<a class="navbar-brand logo_h" href="${contextPath }"><img src="${contextPath }/resources/img/logo(temp).png" /></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
@@ -73,6 +74,7 @@
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
 								 aria-expanded="false">경기매칭</a>
 								<ul class="dropdown-menu">
+
 									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.so?currentPage=1">축구</a></li>
 									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.ba?currentPage=1">야구</a></li>
 									
@@ -80,26 +82,21 @@
 							</li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">경기장</a>
+								 aria-expanded="false">시설예약</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="${contextPath}/place.so">축구</a></li>
-									<li class="nav-item"><a class="nav-link" href="${contextPath}/place.ba">야구</a></li>
+									<li class="nav-item"><a class="nav-link" href="${contextPath}/place.so?currentPage=1">축구</a></li>
+									<li class="nav-item"><a class="nav-link" href="${contextPath}/place.ba?currentPage=1">야구</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">커뮤니티</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="boardList.bo?currentPage=1">자유게시판</a></li>
-									<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
-									
-								</ul>
+								<a href="boardList.bo?currentPage=1" class="nav-link dropdown-toggle" >커뮤니티</a>
+								
 							</li>
 							
 							<c:choose>
 								<c:when test="${loginUser == null }">
 									<li class="nav-item submenu">
-										<a href="${contextPath }/login.me" class="nav-link">로그인</a>
+										<a href="${contextPath }/login.do" class="nav-link">로그인</a>
 									</li>
 								</c:when>
 								<c:otherwise>
@@ -136,6 +133,9 @@
 		const msg = "${alertMsg}";
 		if (msg != null && msg != '') {
 		    alert(msg);
+		    setTimeout(() => {
+		    	  console.log('This message will appear after 3 seconds.');
+		    	}, 3000);
 		   <c:remove var="alertMsg" scope="session" />
 		}
 

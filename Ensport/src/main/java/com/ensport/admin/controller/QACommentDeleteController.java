@@ -31,8 +31,7 @@ public class QACommentDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int qa_answer_no = Integer.parseInt(request.getParameter("qa_answer_no"));
-		
-		System.out.println("확인 :"+qa_answer_no);
+				
 		int result = new AdminService().qaCommentDelete(qa_answer_no);
 		
 		response.getWriter().print(result);

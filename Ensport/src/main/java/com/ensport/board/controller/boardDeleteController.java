@@ -1,6 +1,7 @@
 package com.ensport.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ensport.board.model.service.BoardService;
+import com.ensport.board.model.vo.Attachment;
 
 /**
  * Servlet implementation class boardDeleteController
@@ -34,10 +36,19 @@ public class boardDeleteController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		int boardNo = Integer.parseInt(request.getParameter("bno"));
+		int atNo = Integer.parseInt(request.getParameter("atno"));
 		
 		int result = new BoardService().deleteBoard(boardNo);
+		int result1 = 1;
 		
-		if(result>0) {
+		if(atNo>0) {
+			result1 = new BoardService().deleteAttachment(boardNo);
+		}
+		
+		
+		
+		
+		if(result*result1>0) {
 			session.setAttribute("alertMsg", "게시글 삭제 완료");
 			response.sendRedirect(request.getContextPath()+"/boardList.bo?currentPage=1");
 		}else {

@@ -202,12 +202,7 @@ public class ReservationDao {
 		return player;
 	}
 	
-	
-	
-	
-	
-
-	
+		
 	
 	
 	//마이 페이지 - 예약 취소하기

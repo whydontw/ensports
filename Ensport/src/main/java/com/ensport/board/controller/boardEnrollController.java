@@ -2,6 +2,7 @@ package com.ensport.board.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,7 @@ import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import com.ensport.board.model.service.BoardService;
 import com.ensport.board.model.vo.Attachment;
 import com.ensport.board.model.vo.Board;
+import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.MyFileRenamePolicy;
 import com.ensport.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
@@ -88,7 +90,7 @@ public class boardEnrollController extends HttpServlet {
 			// 사용자가 전달한 데이터도 multiPartRequest에서 추출해야한다.
 			String title = multiRequest.getParameter("title");
 			String content = multiRequest.getParameter("content");
-
+			
 			// 작성자정보 (등록되는 정보가 userNo와 같으니 로그인정보에서 추출하기)
 			String boardWriter = String.valueOf(((Member) session.getAttribute("loginUser")).getUserNo()); // 번거로우니 다음에는
 			int boardType = Integer.parseInt(multiRequest.getParameter("bType"));																								// 히든으로 보내주기
@@ -118,11 +120,40 @@ public class boardEnrollController extends HttpServlet {
 				at.setFilePath("/resources/uploadFiles/");
 
 			}
+			
+			ArrayList<Attachment> list = new ArrayList<>();
+			
+			Attachment image = null;
+			
+			//각 키값을 반복 돌리면서 요소 꺼내주기
+			
+			for(int i=1; i<=3; i++) {
+				//키값
+				String key = "file"+i;
+				
+				//키값에 해당하는 요소가 있는지 확인하기
+				if(multiRequest.getOriginalFileName(key) != null) {
+					//해당 키값에 파일이 있다면
+					//Attachment 객체 생성 후 데이터 담아주기
+					//여러개가 나올 수 있으니 Attachment객체를 list에 추가하기
+					//원본명,변경이름,파일경로,파일레벨(썸네일사진/상세사진)
+					
+					image = new Attachment();
+					
+					image.setOriginName(multiRequest.getOriginalFileName(key));
+					image.setChangeName(multiRequest.getFilesystemName(key));
+					image.setFilePath("/resources/uploadFiles/");
+					image.setFileLevel(1);
+				
+					list.add(image); //값 추출 끝났으니 리스트에 추가하기.
+				}
+			}
 
 			// 3.서비스 요청 (게시글정보와 첨부파일 정보 전달)
-			int result = new BoardService().insertBoard(b, at);
+			int result = new BoardService().insertBoard(b, at,list);
 
 			if (result > 0) { // 성공
+				
 				session.setAttribute("alertMsg", "게시글 등록 성공");
 
 				response.sendRedirect(request.getContextPath() + "/boardList.bo?currentPage=1");
@@ -132,6 +163,16 @@ public class boardEnrollController extends HttpServlet {
 				if (at != null) {// 첨부파일이 있다면 삭제작업
 					// 삭제하고자하는 파일경로로 파일객체 생성하여 delete메소드 수행
 					new File(savePath + at.getChangeName()).delete();
+				}
+				
+				for(int i=0; i<list.size(); i++) {
+				
+					if(list.get(i) !=null) {
+						
+						for(int j=0; j<list.size(); j++) {
+						    new File(savePath + list.get(j).getChangeName()).delete();
+						}
+					}
 				}
 
 				session.setAttribute("alertMsg", "게시글 등록 실패");

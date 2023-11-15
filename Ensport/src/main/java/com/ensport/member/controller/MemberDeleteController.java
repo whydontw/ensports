@@ -42,7 +42,7 @@ public class MemberDeleteController extends HttpServlet {
 		if(result > 0) {	//성공
 			HttpSession session = request.getSession();
 			session.setAttribute("alertMsg", "Ensport 탈퇴가 완료되었습니다.");
-			response.sendRedirect(request.getContextPath() + "/login.me");
+			response.sendRedirect(request.getContextPath() + "/login.do");
 			session.invalidate();
 			
 		}else {	//실패

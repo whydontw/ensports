@@ -33,10 +33,10 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>축구 시설 예약</h1>
+					<h1>축구 시설예약</h1>
 					<nav class="d-flex align-items-center">
 						<a href="index.html">HOME<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">축구 시설 예약<span class="lnr lnr-arrow-right"></span></a>
+						<a href="#">시설예약<span class="lnr lnr-arrow-right"></span></a>
 						<a href="category.html">서울</a>
 					</nav>
 				</div>
@@ -50,39 +50,39 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울"><span class="lnr lnr-arrow-right"></span><b>서울</b><span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울&currentPage=1"><span class="lnr lnr-arrow-right"></span><b>서울</b><span class="number"></span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.so?lacalName=경기"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.so?localName=경기&currentPage=1"><span class="lnr lnr-arrow-right"></span>경기<span class="number"></span></a></li>
 
-						<li class="main-nav-list"><a  href="${contextPath }/incheon.so?lacalName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a  href="${contextPath }/incheon.so?localName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number"></span></a></li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>전북<span class="number"></span></a>
 															
 						</li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#daejeon" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>대전<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>대전<span class="number"></span></a>
 							
 						</li>						
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#sejong" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>세종<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>세종<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#busan" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>부산<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>부산<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#gangwon" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>강원<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>강원<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeju" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>제주<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>제주<span class="number"></span></a>
 							
 						</li>
 						
@@ -137,15 +137,8 @@
 					
 					<!-- 개수 섹션 -->
 					</div>
-					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-					</div>
+					
+					
 				</div>
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
@@ -157,7 +150,8 @@
 								<div class="single-product">
 									<input type="hidden" value=${sp.placeNo } name="sno" />
 									<img class="img-fluid"
-										src="${contextPath }${sp.filePath}${sp.changeName}" alt="">
+										src="${contextPath }${sp.filePath}${sp.changeName}" alt=""
+										style=" width: 300px;height: 174px;">
 									<div class="product-details">
 										<input type="text" value="${sp.placeName}">
 										<h3>${sp.placeName}</h3>
@@ -198,17 +192,51 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting mr-auto">
-						
 					</div>
+
 					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+						<c:choose>
+							<c:when test="${pi.currentPage eq 1}">
+								<li class="page-item"><a href="#" class="page-link"
+									aria-label="Previous"> <span aria-hidden="true"> <span
+											class="lnr lnr-chevron-left"></span>
+									</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a
+									href="${contextPath }/seoul.so?localName=서울&currentPage=${pi.currentPage-1}"
+									class="page-link" aria-label="Previous"> <span
+										aria-hidden="true"> <span class="lnr lnr-chevron-left"></span>
+									</span>
+								</a></li>
+							</c:otherwise>
+						</c:choose>
+
+						<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
+							<li class="page-item"><a
+								href="${contextPath }/seoul.so?localName=서울&currentPage=${i}"
+								class="page-link">${i}</a></li>
+						</c:forEach>
+
+						<c:choose>
+							<c:when test="${pi.currentPage eq pi.maxPage}">
+								<li class="page-item"><a href="#" class="page-link"
+									aria-label="Next"> <span aria-hidden="true"> <span
+											class="lnr lnr-chevron-right"></span>
+									</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item">
+									<a href="${contextPath }/seoul.so?localName=서울&currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+									<span aria-hidden="true"> <span class="lnr lnr-chevron-right"></span></span>
+								</a></li>
+							</c:otherwise>
+						</c:choose>
 					</div>
+					
+					
 				</div>
 				<!-- End Filter Bar -->
 			</div>

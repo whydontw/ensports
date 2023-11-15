@@ -42,7 +42,6 @@ public class ReplyInsertController extends HttpServlet {
 		
 		int bno = Integer.parseInt(request.getParameter("bno"));
 		String content = request.getParameter("content");
-		
 		Member loginUser = (Member)request.getSession().getAttribute("loginUser"); //로그인 정보
 		String userId = loginUser.getUserId();//댓글작성자 아이디추출
 		

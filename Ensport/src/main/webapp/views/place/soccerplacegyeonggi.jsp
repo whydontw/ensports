@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="com.ensport.place.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -60,39 +61,39 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/seoul.so?localName=서울&currentPage=1"><span class="lnr lnr-arrow-right"></span>서울<span class="number"></span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.so?lacalName=경기"><span class="lnr lnr-arrow-right"></span><b>경기</b><span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.so?localName=경기&currentPage=1"><span class="lnr lnr-arrow-right"></span><b>경기</b><span class="number"></span></a></li>
 
-						<li class="main-nav-list"><a  href="${contextPath }/incheon.so?lacalName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a  href="${contextPath }/incheon.so?localName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number"></span></a></li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>전북<span class="number"></span></a>
 							
 						</li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#daejeon" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>대전<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>대전<span class="number"></span></a>
 							
 						</li>						
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#sejong" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>세종<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>세종<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#busan" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>부산<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>부산<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#gangwon" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>강원<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>강원<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeju" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>제주<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>제주<span class="number"></span></a>
 							
 						</li>
 						
@@ -133,66 +134,115 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting">
-						<select>
-							<option value="1">날짜 선택</option>
-							<option value="1">11월 16일</option>
-							<option value="1">11월 17일</option>
-							<option value="1">11월 18일</option>
-						</select>
+							<label for="date">
+							 	 <input type="date" id="date" max="2023-11-18"  min="2023-11-16" name="soccerChoiceDate"
+							 	 	 />
+							</label>
+						
 					</div>
+					
+					
 					<div class="sorting mr-auto">
+					
+					
 					<!-- 개수 섹션 -->
 					</div>
-					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-					</div>
+					
 				</div>
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
 				<section class="lattest-product-area pb-40 category-list">
-					<div class="row">
+					<div class="row" >
 						<!-- single product -->
-						<c:forEach var="sp" items="${list}">
-							<div class="col-lg-4 col-md-6">
-								<div class="single-product">
-									<input type="hidden" value=${sp.placeNo } />
-									<img class="img-fluid"
-										src="${contextPath }${sp.filePath}${sp.changeName}" alt="">
-									<div class="product-details">
-										<input type="text" value="${sp.placeName}">
-										<h3>${sp.placeName}</h3>
-										
-										<div class="prd-bottom">
-											<a href="${contextPath }/detail.bo?sno=${sp.placeNo}" class="social-info"> <span
-												class="lnr lnr-move"></span>
-												<p class="hover-text">view more</p>
-											</a>
+							<c:forEach var="sp" items="${list}">
+								<div class="col-lg-4 col-md-6">
+									<div class="single-product">
+										<input type="hidden" value=${sp.placeNo } name="sno" />
+										<img class="img-fluid"
+											src="${contextPath }${sp.filePath}${sp.changeName}" alt=""
+											style=" width: 300px;height: 174px;">
+										<div class="product-details">
+											<input type="text" value="${sp.placeName}">
+											<h3>${sp.placeName}</h3>
+											
+											<div class="prd-bottom">																						
+													<div class="prd-bottom" id="viewMore">
+														<a href="#" class="social-info"> <span class="lnr lnr-move"></span>
+															<p class="hover-text">view more</p>
+														</a>
+													</div>									
+											</div>
 										</div>
 									</div>
 								</div>
+							</c:forEach>
 							</div>
-						</c:forEach>
-						</div>
-				</section>
+					</section>
+					
+					<script>
+						$(document).ready(function() {
+						    $(".single-product, #viewMore p").on("click", function(event) {
+						        var selectedDate  = $("#date").val(); // 선택된 날짜 값을 가져옵니다
+						        if (!selectedDate  || selectedDate  === "날짜선택") {
+						            alert("날짜를 먼저 선택하세요");
+						            event.preventDefault();
+						        } else {
+						            var sno = $(this).find("input[name=sno]").val();
+						            location.href = "detail.bo?sno=" + sno + "&date=" + selectedDate ;
+						            // 원하는 작업을 수행하는 대신 페이지 이동을 수행합니다.
+						            // location.href = '${contextPath}/sc.seoul';
+						        }
+						    });
+						});
+					</script>
+				
+				
 				<!-- End Best Seller -->
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting mr-auto">						
-					</div>
+				</div>
+					
 					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+						<c:choose>
+							<c:when test="${pi.currentPage eq 1}">
+								<li class="page-item"><a href="#" class="page-link"
+									aria-label="Previous"> <span aria-hidden="true"> <span
+											class="lnr lnr-chevron-left"></span>
+									</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a
+									href="${contextPath }/gyeonggi.so?localName=경기&currentPage=${pi.currentPage-1}"
+									class="page-link" aria-label="Previous"> <span
+										aria-hidden="true"> <span class="lnr lnr-chevron-left"></span>
+									</span>
+								</a></li>
+							</c:otherwise>
+						</c:choose>
+
+						<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
+							<li class="page-item"><a
+								href="${contextPath }/gyeonggi.so?localName=경기&currentPage=${i}"
+								class="page-link">${i}</a></li>
+						</c:forEach>
+
+						<c:choose>
+							<c:when test="${pi.currentPage eq pi.maxPage}">
+								<li class="page-item"><a href="#" class="page-link"
+									aria-label="Next"> <span aria-hidden="true"> <span
+											class="lnr lnr-chevron-right"></span>
+									</span>
+								</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item">
+									<a href="${contextPath }/gyeonggi.so?localName=경기&currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+									<span aria-hidden="true"> <span class="lnr lnr-chevron-right"></span></span>
+								</a></li>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 				<!-- End Filter Bar -->

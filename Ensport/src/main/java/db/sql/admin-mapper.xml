@@ -176,6 +176,56 @@
 		DELETE FROM QA_COMMENT
 		WHERE QA_ANSWER_NO = ?
 	</entry>
-	
-	
+	<entry key="selectMemberList">
+		SELECT USER_NO
+			  ,USER_NICKNAME
+			  ,USER_ID
+			  ,ENROLLDATE
+		FROM MEMBER
+		WHERE STATUS = 'Y'
+	</entry>
+	<entry key="selectOneMember">
+		SELECT *
+		FROM MEMBER
+		WHERE USER_NO = ?
+		AND STATUS = 'Y'
+	</entry>
+	<entry key="adminDeleteMember">
+		UPDATE MEMBER
+		SET STATUS = 'N'
+		WHERE USER_NO = ?
+	</entry>
+	<entry key="countMember">
+		SELECT COUNT(*)
+		FROM MEMBER
+	</entry>
+	<entry key="countPlace">
+		SELECT COUNT(*)
+		FROM PLACE
+	</entry>
+	<entry key="countReply">
+		select count(*)
+		from qa
+		left join qa_comment on(qa_no=qa_answer_no)
+		where qa_answer is null
+	</entry>
+	<entry key="selectReviewList">
+		select review_no
+		      ,create_date
+		      ,review_content
+		      ,user_nickname
+		from review
+		join member on(player_no=user_no)
+		order by create_date desc
+	</entry>
+	<entry key="countAdminMember">
+		SELECT COUNT(user_no) AS count
+		FROM player
+		GROUP BY user_no
+	</entry>
+	<entry key="countGender">
+		SELECT GENDER, COUNT(GENDER) AS COUNT
+		FROM MEMBER
+		GROUP BY GENDER
+	</entry>
 </properties>

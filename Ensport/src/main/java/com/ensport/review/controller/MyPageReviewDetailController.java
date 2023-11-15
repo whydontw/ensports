@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ensport.review.model.service.ReviewService;
 import com.ensport.review.model.vo.Review;
@@ -30,7 +31,7 @@ public class MyPageReviewDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int reviewNo = Integer.parseInt(request.getParameter("rvNo"));
+		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		
 		
 		Review reviewDetail = new ReviewService().selectMyReviewDetail(reviewNo);
@@ -45,9 +46,9 @@ public class MyPageReviewDetailController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	//내 리뷰 수정하기(update)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
 	}
 
 }

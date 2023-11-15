@@ -72,7 +72,7 @@
 				                                    </div>
 				                                </div>
 				                                <div class="reply-btn text-right">
-				                                    <a href="#" class="btn-reply text-uppercase">댓글삭제</a>
+				                                    <a href="#" class="btn-reply text-uppercase" onclick="myPageReplyDelete(${rl.replyNo})">댓글삭제</a>
 				                                </div>
 				                            </div>
 				                        </div>
@@ -80,6 +80,8 @@
 								</c:forEach>
 		                    
 	                        <!-- ===================== 게시판 ======================= --> 
+ 							
+ 							
  							
  							
  							
@@ -152,12 +154,38 @@
 	
 
 	
-	
-	
 	<!--================ footer =================-->
     <%@ include file="../common/footer.jsp" %>
     
     
+    
+    
+    <script type="text/javascript">
+ 							
+		function myPageReplyDelete(replyNo){
+			
+			if(confirm('댓글을 삭제하시겠습니까?')){
+				
+				$.ajax({
+					url: "deleteReply.bo",
+					data: { replyNo : replyNo },
+					method: "get",
+					success: function(result){
+						if(result > 0){
+							alert('댓글 삭제 완료하였습니다.');
+							location.reload();
+						}
+					},
+					error: function(){
+						alert('댓글 삭제 실패하였습니다.');
+					}
+				})
+				
+			}else{
+				return false;
+			}
+		}
+	</script>
  
 </body>
 </html>

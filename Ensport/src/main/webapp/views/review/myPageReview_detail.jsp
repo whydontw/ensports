@@ -4,6 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath }"/>
 <c:set var="rd" value="${reviewDetail}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,14 +45,15 @@
 		<div class="container center">
 			
 			
-				
 				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
 					<div class="row">
 						<div class="col-lg-8 mx-auto">
-							<div class="review_box">
-								<h4>내 리뷰</h4>
-								<p>My Score: 
-								</p>
+						
+						
+							<!-- 리뷰보기 -->
+							<div class="review_box" id="originalMyReviewForm">
+								<h4><b>내 리뷰</b></h4>
+								<p>My Score: </p>
 								<ul class="list">
 									<c:if test="${rd.score >= 1}">
 										<li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -77,37 +79,48 @@
 										</div>
 									</div>
 									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="primary-btn">리뷰수정</button>
+										<button type="button" class="primary-btn" id="updateMyReviewButton">리뷰수정</button>
+										<button type="button" class="primary-btn" onclick="window.close();">닫기</button>
 									</div>
 								</form>
 							</div>
 							
 							
 							<!-- 리뷰 수정하기 -->
-							<div class="review_box">
-								<h4>내 리뷰</h4>
-								<div class="d-flex">
-									<p>My Score:</p>
-									<div class="default-select" id="default-select"">
-										<select name="score">
-											<option value="5">English</option>
-											<option value="4">Spanish</option>
-											<option value="3">Arabic</option>
-											<option value="2">Portuguise</option>
-											<option value="1">Bengali</option>
-										</select>
-									</div>
-								</div>
-								<p>작성일자: ${rd.createDate}</p>
-								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-									<input type="hidden" name="re" value="${rd.reviewNo }">
+							<div class="review_box" id="updateMyReviewForm">
+								<h4><b>리뷰 작성하기</b></h4>
+								<form class="row contact_form" action="${contextPath }/updateMyReview.me" method="post" id="contactForm" novalidate="novalidate">
+									<input type="hidden" name="reviewNo" value="${rd.reviewNo}">
+									<p style="padding-left:15px">My Score: </p>
+									<ul class="list">
+										<div class="form-check form-check-inline">
+										  <input class="form-check-input" type="radio" name="updateReviewScore" id="inlineRadio5" value="5">
+										  <label class="form-check-label" for="inlineRadio5">5</label>
+										</div>
+										<div class="form-check form-check-inline">
+										  <input class="form-check-input" type="radio" name="updateReviewScore" id="inlineRadio4" value="4">
+										  <label class="form-check-label" for="inlineRadio4">4</label>
+										</div>
+										<div class="form-check form-check-inline">
+										  <input class="form-check-input" type="radio" name="updateReviewScore" id="inlineRadio3" value="3">
+										  <label class="form-check-label" for="inlineRadio3">3</label>
+										</div>
+										<div class="form-check form-check-inline">
+										  <input class="form-check-input" type="radio" name="updateReviewScore" id="inlineRadio2" value="2">
+										  <label class="form-check-label" for="inlineRadio2">2</label>
+										</div>
+										<div class="form-check form-check-inline">
+										  <input class="form-check-input" type="radio" name="updateReviewScore" id="inlineRadio1" value="1">
+										  <label class="form-check-label" for="inlineRadio1">1</label>
+										</div>
+									</ul>
 									<div class="col-md-12">
 										<div class="form-group">
-											<textarea class="form-control" name="myReviewContent" id="myReviewContent">${rd.reviewContent}</textarea>
+											<textarea class="form-control" name="updateReviewContent" id="updateReviewContent">${rd.reviewContent}</textarea>
 										</div>
 									</div>
 									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="primary-btn">수정완료</button>
+										<button type="submit" value="submit" class="primary-btn" onclick="return updateMyReviewDone()">수정완료</button>
 									</div>
 								</form>
 							</div>
@@ -131,6 +144,67 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 	<script src="${contextPath}/resources/js/gmaps.min.js"></script>
 	<script src="${contextPath}/resources/js/main.js"></script>
+	
+	
+	
+	<script type="text/javascript">
+	
+		
+		$(function(){
+			
+			//처음 켰을 때 update Form 숨겨놓기
+			$("#updateMyReviewForm").hide();
+			
+			//수정폼 별점 체크하기
+			let score = ${rd.score};
+			if(score == 1){
+				$("#inlineRadio1").attr("checked", "true");
+			}else if(score == 2){
+				$("#inlineRadio2").attr("checked", "true");
+			}else if(score == 3){
+				$("#inlineRadio3").attr("checked", "true");
+			}else if(score == 4){
+				$("#inlineRadio4").attr("checked", "true");
+			}else{
+				$("#inlineRadio5").attr("checked", "true");
+			}
+			
+			
+			//리뷰 수정하기
+			$("#updateMyReviewButton").click(function(){
+				$("#originalMyReviewForm").hide();
+				$("#updateMyReviewForm").show();
+				
+			});
+			
+			
+			//message
+// 			if ("${alertMsg}" != null && "${alertMsg}" != '') {
+// // 			    alert(msg);
+// 			   <c:remove var="alertMsg" scope="session" />
+// 			   location.reload();
+// 			}
+
+		})
+		
+		
+		//수정버튼 클릭시
+		function updateMyReviewDone(){
+			
+			var reviewCnt = $("#updateReviewContent").val();
+
+			if(confirm("수정하시겠습니까?")){
+				
+				//리뷰 내용이 비어있을 경우 submit 막기
+				if(reviewCnt == null || reviewCnt == ''){
+					alert('내용을 입력하세요');
+					return false;
+				}
+			}else{
+				return false;
+			}
+		}
+	</script>
 
 </body>
 

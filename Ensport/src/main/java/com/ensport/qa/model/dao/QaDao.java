@@ -84,7 +84,6 @@ public class QaDao {
 		// 2페이지 : 11~20
 		 int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
 		 int endRow = pi.getCurrentPage() * pi.getBoardLimit();
-
 		 
 		try {
 			
