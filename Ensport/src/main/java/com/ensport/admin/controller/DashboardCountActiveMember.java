@@ -1,27 +1,27 @@
-package com.ensport.review.controller;
+package com.ensport.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
-import com.ensport.review.model.service.ReviewService;
+import com.ensport.admin.model.service.AdminService;
 
 /**
- * Servlet implementation class MyPageDeleteReviewController
+ * Servlet implementation class DashboardCountActiveMember
  */
-@WebServlet("/deleteMyReview.me")
-public class MyPageDeleteReviewController extends HttpServlet {
+@WebServlet("/countActiveMember.da")
+public class DashboardCountActiveMember extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageDeleteReviewController() {
+    public DashboardCountActiveMember() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,24 +30,18 @@ public class MyPageDeleteReviewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		
-		int result = new ReviewService().deleteMyReview(reviewNo);
-
-		HttpSession session = request.getSession();
+		ArrayList<Integer> list = new AdminService().countAdminMember();
+		int countActiveMem = 0;
 		
-		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "리뷰 삭제가 완료되었습니다.");
-		}else {
-			session.setAttribute("alertMsg", "리뷰 삭제 실패하였습니다.");
+		for(int i=0; i<list.size();i++) {
+			if(list.get(i)>=3) {
+				countActiveMem += 1;
+			}
 		}
-		
-		response.sendRedirect(request.getContextPath()+"/myPageReview.me?currentPage=1");
-		
+		response.getWriter().print(countActiveMem);
 	}
 
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

@@ -1,27 +1,29 @@
-package com.ensport.review.controller;
+package com.ensport.admin.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
-import com.ensport.review.model.service.ReviewService;
+import com.ensport.admin.model.service.AdminService;
+import com.ensport.admin.model.vo.PieChart;
+import com.google.gson.Gson;
 
 /**
- * Servlet implementation class MyPageDeleteReviewController
+ * Servlet implementation class ChartCountGender
  */
-@WebServlet("/deleteMyReview.me")
-public class MyPageDeleteReviewController extends HttpServlet {
+@WebServlet("/countGender.ch")
+public class ChartCountGender extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageDeleteReviewController() {
+    public ChartCountGender() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,24 +32,13 @@ public class MyPageDeleteReviewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int reviewNo = Integer.parseInt(request.getParameter("reviewNo"));
 		
-		int result = new ReviewService().deleteMyReview(reviewNo);
-
-		HttpSession session = request.getSession();
+		ArrayList<PieChart> list = new AdminService().countGender();
 		
-		
-		if(result > 0) {
-			session.setAttribute("alertMsg", "리뷰 삭제가 완료되었습니다.");
-		}else {
-			session.setAttribute("alertMsg", "리뷰 삭제 실패하였습니다.");
-		}
-		
-		response.sendRedirect(request.getContextPath()+"/myPageReview.me?currentPage=1");
-		
+		response.setContentType("json/application; charset=UTF-8");
+		new Gson().toJson(list,response.getWriter());
 	}
 
-	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

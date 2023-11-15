@@ -174,7 +174,7 @@
                 </div>
 
 
-                <h3 class="mb-30 mt-50"><b class="mb-30">개인정보 이용 약관</b></h3>
+                <h3 class="section_gap_top"><b class="mb-30">개인정보 이용 약관</b></h3>
                 <div class="row  mt-50">
                     <div class="col-md-12">
 
@@ -316,7 +316,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-5 mx-auto" style="margin-top: 50px;">
+                        <div class="col-lg-5 mx-auto section_gap_top" style="margin-top: 50px;">
                             <div class="single-element-widget mt-50">
                                 <div class="switch-wrap d-flex justify-content-around">
                                     <h4 class="mt-50">Ensport 이용 약관에 모두 동의합니다.</h4>
