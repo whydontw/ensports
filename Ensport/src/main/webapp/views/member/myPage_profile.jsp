@@ -12,13 +12,18 @@
 		<div class="blog_right_sidebar">
 			<aside class="single_sidebar_widget search_widget align-self-center">
 				<img class="" src="resources/img/elements/soccer_icon1.png" alt="">
-				<span class="mx-auto" data-toggle="tooltip" data-placement="bottom" title="
-					Level 1. 아기 스포츠단
-					Level 2. 동호회 에이스
-					Level 3. 국내리그 유망주
-					Level 4. 
-				
-				">
+				<span class="mx-auto" data-html="true" data-toggle="tooltip" data-placement="top" title="
+<pre>
+
+<h4>ENSPORTS Levels</h4>
+
+Level 1. 아기 스포츠단
+Level 2. 우리동네 와일드카드
+Level 3. 동호회 에이스
+Level 4. 국내리그 스타
+Level 5. 우주제일운동왕
+
+</pre>">
 					<b id="myEnsportsLevel"></b>
 				</span>
 				<div class="br"></div>
@@ -135,13 +140,13 @@
 					if(rvCount < 4){
 						$("#myEnsportsLevel").text("Lv 1. 아기 스포츠단");
 					}else if(rvCount < 8){
-						$("#myEnsportsLevel").text("Lv 2. 우리동네 에이스");
+						$("#myEnsportsLevel").text("Lv 2. 우리동네 와일드카드");
 					}else if(rvCount < 13){
-						$("#myEnsportsLevel").text("Lv 3. 동호회 ");
+						$("#myEnsportsLevel").text("Lv 3. 동호회 에이스");
 					}else if(rvCount < 19){
-						$("#myEnsportsLevel").text("Lv 4. 국내리그 유망주");
+						$("#myEnsportsLevel").text("Lv 4. 국내리그 스타");
 					}else{
-						$("#myEnsportsLevel").text("Lv 5. Ensports 선정 우주제일운동스타");
+						$("#myEnsportsLevel").text("Lv 5. 우주제일운동왕");
 					}
 					
 				},

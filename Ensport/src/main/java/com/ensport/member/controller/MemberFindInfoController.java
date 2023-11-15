@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 //아이디 및 비밀번호 찾기
-@WebServlet("/findInfo.me")
+@WebServlet("/findInfo.do")
 public class MemberFindInfoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

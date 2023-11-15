@@ -20,7 +20,7 @@ import com.ensport.member.model.vo.Member;
 /**
  * Servlet implementation class MemberInsertController
  */
-@WebServlet("/memberInsert.me")
+@WebServlet("/memberInsert.do")
 public class MemberInsertController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -97,7 +97,7 @@ public class MemberInsertController extends HttpServlet {
 			//menubar에 작성되어 있는 알림 활용하기
 			
 			session.setAttribute("alertMsg", "회원가입에 성공하였습니다.");
-			response.sendRedirect(request.getContextPath() + "/login.me");
+			response.sendRedirect(request.getContextPath() + "/login.do");
 			
 		}else {		//실패(실패시 화면)
 			

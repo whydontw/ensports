@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.ensport.member.model.service.MemberService;
 import com.ensport.member.model.vo.Member;
 
-@WebServlet("/login.me")
+@WebServlet("/login.do")
 public class MemberLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -124,7 +124,7 @@ public class MemberLoginController extends HttpServlet {
 			session.setAttribute("loginUser", loginUser);	//로그인 회원정보 담기
 			session.setAttribute("alertMsg", loginUser.getUserNickname() + "님 환영합니다.");
 
-			if(before.contains(request.getContextPath() + "/login.me")) {	//이전페이지가 로그인 페이지면
+			if(before.contains(request.getContextPath() + "/login.do")) {	//이전페이지가 로그인 페이지면
 				response.sendRedirect(request.getContextPath());	//메인 화면으로 redirect
 			}else {
 				response.sendRedirect(before);
