@@ -68,40 +68,40 @@
 					<div class="head">지역</div>
 					<ul class="main-categories">
 						
-						<li class="main-nav-list"><a href="${contextPath }/sc.seoul?localName=서울"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/sc.seoul?localName=서울&currentPage=1"><span class="lnr lnr-arrow-right"></span>서울<span class="number"></span></a></li>
 						
 
-						<li class="main-nav-list"><a href="${contextPath }/sc.gyeonggi?localName=경기"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/sc.gyeonggi?localName=경기&currentPage=1"><span class="lnr lnr-arrow-right"></span>경기<span class="number"></span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/sc.incheon?localName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/sc.incheon?localName=인천"><span class="lnr lnr-arrow-right"></span>인천<span class="number"></span></a></li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>전북<span class="number"></span></a>
 							
 						</li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#daejeon" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>대전<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>대전<span class="number"></span></a>
 							
 						</li>						
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#sejong" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>세종<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>세종<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#busan" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>부산<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>부산<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#gangwon" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>강원<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>강원<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeju" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>제주<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>제주<span class="number"></span></a>
 							
 						</li>
 						
@@ -163,7 +163,8 @@
 								<div class="single-product">
 									<input type="hidden" value="${item.placeNo }" name="pno" /> <img
 										class="img-fluid"
-										src="${contextPath}${item.filePath}${item.changeName}" alt="">
+										src="${contextPath}${item.filePath}${item.changeName}" alt=""
+										style="width : 300px; height : 174px;">
 									<div class="product-details">
 										<h4>${item.placeName}</h4>
 										
@@ -182,12 +183,13 @@
 				<!-- End Best Seller -->
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
-					<div class="sorting mr-auto"></div>
-						<div class="pagination">					
+					<div class="sorting mr-auto">
+					</div>
+					
+					<div class="pagination">					
 						<c:choose>
-			                        <c:when test="${pi.currentPage eq 1}">
-										 <li class="page-item">
-			                                <a href="#" class="page-link" aria-label="Previous">
+			                <c:when test="${pi.currentPage eq 1}">
+								<li class="page-item"><a href="#" class="page-link" aria-label="Previous">
 			                                    <span aria-hidden="true">
 			                                        <span class="lnr lnr-chevron-left"></span>
 			                                    </span>
