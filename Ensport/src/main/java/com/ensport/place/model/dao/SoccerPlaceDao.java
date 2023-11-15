@@ -211,5 +211,52 @@ public class SoccerPlaceDao {
 		return list;
 	}
 
+	//업데이튼 순 리스트
+	public ArrayList<SoccerPlace> selectUpdateSoccerPlaceList(Connection conn) {
+		Statement stmt = null;
+		
+		ResultSet rset = null;
+		
+		//게시글 목록 조회 리스트		
+		ArrayList<SoccerPlace> list = new ArrayList<SoccerPlace>();
+		
+		SoccerPlace sp = null;
+		
+		String sql = prop.getProperty("selectUpdateSoccerPlaceList");
+		
+		try {
+			stmt = conn.createStatement();		
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				
+				sp = new SoccerPlace(rset.getInt("PLACE_NO")
+										, rset.getString("PLACE_NAME")
+										, rset.getString("FILE_PATH")
+										, rset.getString("CHANGE_NAME"));
+				
+				list.add(sp);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return list;
+
+
+
+
+
+
+
+
+	}
+
 	
 }

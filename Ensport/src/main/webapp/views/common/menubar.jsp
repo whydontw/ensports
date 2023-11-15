@@ -74,7 +74,7 @@
 								 aria-expanded="false">경기매칭</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.so?currentPage=1">축구</a></li>
-									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.ba">야구</a></li>
+									<li class="nav-item"><a class="nav-link" href="${contextPath}/list.ba?currentPage=1">야구</a></li>
 									
 								</ul>
 							</li>

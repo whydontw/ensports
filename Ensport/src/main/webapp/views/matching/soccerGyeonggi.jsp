@@ -68,57 +68,57 @@
 					<div class="head">지역</div>
 					<ul class="main-categories">
 						<li class="main-nav-list"><a
-							href="${contextPath }/sc.seoul?localName=서울"><span
-								class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+							href="${contextPath }/sc.seoul?localName=서울&currentPage=1"><span
+								class="lnr lnr-arrow-right"></span>서울<span class="number"></span></a></li>
 
 
 						<li class="main-nav-list"><a
-							href="${contextPath }/sc.gyeonggi?localName=경기"><span
-								class="lnr lnr-arrow-right"></span><b>경기</b><span class="number">(53)</span></a></li>
+							href="${contextPath }/sc.gyeonggi?localName=경기&currentPage=1"><span
+								class="lnr lnr-arrow-right"></span><b>경기</b><span class="number"></span></a></li>
 
 						<li class="main-nav-list"><a
 							href="${contextPath }/sc.incheon?localName=인천"><span
-								class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+								class="lnr lnr-arrow-right"></span>인천<span class="number"></span></a></li>
 
 						<li class="main-nav-list"><a data-toggle="collapse"
 							href="#jeonbuk" aria-expanded="false"
 							aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>전북<span class="number"></span></a>
 
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse"
 							href="#daejeon" aria-expanded="false"
 							aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>대전<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>대전<span class="number"></span></a>
 
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse"
 							href="#sejong" aria-expanded="false"
 							aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>세종<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>세종<span class="number"></span></a>
 
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse"
 							href="#busan" aria-expanded="false"
 							aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>부산<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>부산<span class="number"></span></a>
 
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse"
 							href="#gangwon" aria-expanded="false"
 							aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>강원<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>강원<span class="number"></span></a>
 
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse"
 							href="#jeju" aria-expanded="false"
 							aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>제주<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>제주<span class="number"></span></a>
 
 						</li>
 
@@ -184,12 +184,13 @@
 								<div class="single-product">
 									<input type="hidden" value="${item.placeNo }" name="pno" /> <img
 										class="img-fluid"
-										src="${contextPath}${item.filePath}${item.changeName}" alt="">
+										src="${contextPath}${item.filePath}${item.changeName}" alt=""
+										style="width : 300px; height : 174px;">
 									<div class="product-details">
 										<h4>${item.placeName}</h4>
 										
-										<div class="prd-bottom">
-											<a href="${contextPath }/detail.so?pno=${item.placeNo}"
+										<div class="prd-bottom" id="viewMore">
+											<a href="#"
 												class="social-info"> <span class="lnr lnr-move"></span>
 												<p class="hover-text">view more</p>
 											</a>
@@ -205,12 +206,52 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting mr-auto"></div>
-					<div class="pagination">
-						<a href="#" class="prev-arrow"><i
-							class="fa fa-long-arrow-left" aria-hidden="true"></i></a> <a href="#"
-							class="active">1</a> <a href="#">2</a> <a href="#">3</a> <a
-							href="#">4</a> <a href="#" class="next-arrow"> <i
-							class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+						<div class="pagination">					
+						<c:choose>
+			                        <c:when test="${pi.currentPage eq 1}">
+										 <li class="page-item">
+			                                <a href="#" class="page-link" aria-label="Previous">
+			                                    <span aria-hidden="true">
+			                                        <span class="lnr lnr-chevron-left"></span>
+			                                    </span>
+			                                </a>
+			                            </li>
+									</c:when>
+									<c:otherwise>
+									 	<li class="page-item">
+			                                <a href="${contextPath }/sc.gyeonggi?localName=경기&currentPage=${pi.currentPage-1}" class="page-link" aria-label="Previous">
+			                                    <span aria-hidden="true">
+			                                        <span class="lnr lnr-chevron-left"></span>
+			                                    </span>
+			                                </a>
+			                            </li>
+									</c:otherwise>
+			             </c:choose>
+						
+						<c:forEach var="i" begin="${pi.startPage}" end="${pi.endPage }">
+		                            <li class="page-item"><a href="${contextPath }/sc.gyeonggi?localName=경기&currentPage=${i}" class="page-link">${i}</a></li>
+						</c:forEach>								
+								
+			                    <c:choose>
+			                        <c:when test="${pi.currentPage eq pi.maxPage}">
+										 <li class="page-item">
+			                                <a href="#" class="page-link" aria-label="Next">
+			                                    <span aria-hidden="true">
+			                                        <span class="lnr lnr-chevron-right"></span>
+			                                    </span>
+			                                </a>
+			                            </li>
+									</c:when>
+									<c:otherwise>
+									 	<li class="page-item">
+			                                <a href="${contextPath }/sc.gyeonggi?localName=경기&currentPage=${pi.currentPage+1}" class="page-link" aria-label="Previous">
+			                                    <span aria-hidden="true">
+			                                        <span class="lnr lnr-chevron-right"></span>
+			                                    </span>
+			                                </a>
+			                            </li>
+									</c:otherwise>
+			             </c:choose>						
 					</div>
 				</div>
 				<!-- End Filter Bar -->
@@ -330,15 +371,18 @@
 	<script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
 	<script>
 	$(document).ready(function() {
-		
-	    $(".single-product").click(function() {
-	    	let date = $("#date").val();
-	        console.log(pno);
-	    	
-	        var pno = $(this).find("input[name=pno]").val();
-	        
-	        
-	        location.href = "detail.so?pno=" + $(this).children().eq(0).val() + "&date=" + date;
+	    $(".single-product, #viewMore p").on("click", function(event) {
+	        var selectedDate = $("#date").val(); // 선택된 날짜 값을 가져옵니다
+
+	        if (!selectedDate || selectedDate === "날짜선택") {
+	            alert("날짜를 먼저 선택하세요");
+	            event.preventDefault();
+	        } else {
+	            var pno = $(this).find("input[name=pno]").val();
+	            location.href = "detail.so?pno=" + pno + "&date=" + selectedDate;
+	            // 원하는 작업을 수행하는 대신 페이지 이동을 수행합니다.
+	            // location.href = '${contextPath}/sc.seoul';
+	        }
 	    });
 	});
 

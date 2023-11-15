@@ -79,5 +79,14 @@ public class SoccerPlaceService {
 	}
 
 
+	//업데이트순 축구 리스트
+	public ArrayList<SoccerPlace> selectUpdateSoccerPlaceList() {
+		Connection conn = JDBCTemplate.getConnection();
+		ArrayList<SoccerPlace> list = new SoccerPlaceDao().selectUpdateSoccerPlaceList(conn);
+		JDBCTemplate.close(conn);
+		return list;
+	}
+
+
 
 }

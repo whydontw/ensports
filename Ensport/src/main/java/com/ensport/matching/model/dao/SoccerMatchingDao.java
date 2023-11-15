@@ -12,6 +12,7 @@ import java.util.Properties;
 
 import com.ensport.admin.model.vo.Attachment;
 import com.ensport.common.JDBCTemplate;
+import com.ensport.common.model.vo.PageInfo;
 import com.ensport.matching.model.vo.SoccerMatching;
 import com.ensport.place.model.vo.Place;
 import com.ensport.review.model.vo.Review;
@@ -42,6 +43,8 @@ public class SoccerMatchingDao {
 		ArrayList<SoccerMatching> slist = new ArrayList<SoccerMatching>();
 		
 		SoccerMatching sm = null;
+		
+		
 		
 		String sql = prop.getProperty("selectSoccerMatchingList");
 		
@@ -210,34 +213,39 @@ public class SoccerMatchingDao {
 
 
 		//전체 리스트 조회
-		public ArrayList<SoccerMatching> selectAllSoccerMatchingList(Connection conn) {
+		public ArrayList<SoccerMatching> selectAllSoccerMatchingList(Connection conn, PageInfo pi) {
 			
 			ResultSet rset =  null;
-			Statement stmt = null;
+			PreparedStatement pstmt = null;
 			
-			ArrayList<SoccerMatching> alist = new ArrayList(); 
+			ArrayList<SoccerMatching> alist = new ArrayList<>(); 
 			SoccerMatching sm = null;
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = pi.getCurrentPage() * pi.getBoardLimit();
 			
 			String sql = prop.getProperty("selectAllSoccerMatchingList");
 			
 			try {
-				stmt = conn.createStatement();
-				rset = stmt.executeQuery(sql);
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+				rset = pstmt.executeQuery();
 				
 				while(rset.next()) {
-					sm = new SoccerMatching(rset.getInt("PLACE_NO")
-							, rset.getString("PLACE_NAME") 
-							, rset.getString("FILE_PATH")
-							, rset.getString("CHANGE_NAME"));
+					alist.add(new SoccerMatching(rset.getInt("PLACE_NO")
+												,rset.getString("PLACE_NAME") 
+												,rset.getString("FILE_PATH")
+												,rset.getString("CHANGE_NAME")));
 	
-					alist.add(sm);
+					
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}finally {
 				JDBCTemplate.close(rset);
-				JDBCTemplate.close(stmt);
+				JDBCTemplate.close(pstmt);
 			}
 			
 			
@@ -378,23 +386,463 @@ public class SoccerMatchingDao {
 
 
 		//리뷰 리스트
-		public ArrayList<Review> selectReviewList(Connection conn, int pno) {
+		public ArrayList<Review> selectReviewList(Connection conn, int placeNo) {
 			
+			ArrayList<Review> rlist = new ArrayList<>();
 			ResultSet rset = null;
-			ArrayList<Review> rlist = new ArrayList<Review>();
 			PreparedStatement pstmt = null;
 			String sql = prop.getProperty("selectReviewList");
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					rlist.add(new Review(rset.getInt("REVIEW_NO")
+										
+										,rset.getInt("SCORE")
+										,rset.getString("REVIEW_CONTENT")
+										,rset.getDate("CREATE_DATE")
+										,rset.getString("USER_NICKNAME")));
+				}
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return rlist;
+		}
+
+
+		//리뷰 수
+		public int selectReviewCount(Connection conn, int placeNo) {
+			
+			int count = 0;
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("selectReviewCount");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					
+					count = rset.getInt("COUNT");
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
 			}
-			
-			return null;
+			return count;
 		}
 
+
+		//서울 지역 페이징 select
+		public ArrayList<SoccerMatching> selectAllSeoulSoccerMatchingList(Connection conn, String localName, PageInfo pi) {
+			PreparedStatement pstmt = null;
+			
+			ResultSet rset = null;
+			
+			//게시글 목록 조회 리스트
+			ArrayList<SoccerMatching> list = new ArrayList<>();
+			
+			SoccerMatching sm = null;
+			
+			String sql = prop.getProperty("selectAllseoulMatchingList");
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = pi.getCurrentPage() * pi.getBoardLimit();
+			
+			try {
+				pstmt = conn.prepareStatement(sql);		
+				
+				pstmt.setString(1, localName);
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+				
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					
+					sm = new SoccerMatching(rset.getInt("PLACE_NO")
+											, rset.getString("PLACE_NAME")
+											, rset.getString("FILE_PATH")
+											, rset.getString("CHANGE_NAME"));
+					
+					list.add(sm);
+					
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+					
+			return list;
+		}
+
+
+		//서울 지역 페이징 카운트
+		public int allSeoulCount(Connection conn) {
+			int count = 0;
+			ResultSet rset = null; //조회구문이기 때문에 필요
+			Statement stmt = null; //위치홀더 필요없으니 statement 활용
+			
+			String sql = prop.getProperty("allSeoulListCount");
+			
+			try {
+				stmt = conn.createStatement();
+				
+				//개수 조회
+				rset = stmt.executeQuery(sql);
+				
+				if(rset.next()) {
+					//조회된 게시글 개수
+					count = rset.getInt("COUNT");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(stmt);
+			}
+			
+			return count; //게시글 개수 돌려주기
+		}
+
+
+		//리뷰 총점
+		public int selectReviewSum(Connection conn, int placeNo) {
+			int sum = 0;
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("selectReviewSum");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					
+					sum = rset.getInt("TOTAL");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			return sum;
+		}
+
+
+		//5점
+		public int selectfiveStar(Connection conn, int placeNo) {
+			int fiveStar = 0;
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("selectfiveStar");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					
+					fiveStar = rset.getInt("FIVE");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			return fiveStar;
+		}
+
+
+		//4점
+		public int selectfourStar(Connection conn, int placeNo) {
+			int fourStar = 0;
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("selectfourStar");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					
+					fourStar = rset.getInt("FOUR");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			return fourStar;
+		}
+
+		//3점
+		public int selectthreeStar(Connection conn, int placeNo) {
+			int threeStar = 0;
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("selectthreeStar");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					
+					threeStar = rset.getInt("THREE");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			return threeStar;
+		}
+
+		//2점
+		public int selectTwoStar(Connection conn, int placeNo) {
+			int twoStar = 0;
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("selecttwoStar");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					
+					twoStar = rset.getInt("TWO");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			return twoStar;
+		}
+
+		//1점
+		public int selectOneStar(Connection conn, int placeNo) {
+			int oneStar = 0;
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			
+			String sql = prop.getProperty("selectoneStar");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				rset = pstmt.executeQuery();
+				
+				if(rset.next()) {
+					
+					oneStar = rset.getInt("ONE");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			return oneStar;
+		}
+
+		
+		//리뷰 최신순
+		public ArrayList<Review> selectRecentReview(Connection conn, int placeNo) {
+			ArrayList<Review> rlist = new ArrayList<>();
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			String sql = prop.getProperty("selectRecentReview");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					rlist.add(new Review(rset.getInt("REVIEW_NO")
+										,rset.getInt("SCORE")
+										,rset.getString("REVIEW_CONTENT")
+										,rset.getDate("CREATE_DATE")
+										,rset.getString("USER_NICKNAME")));
+				}
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return rlist;
+		}
+
+
+		//리뷰 별점순
+		public ArrayList<Review> selectStarReview(Connection conn, int placeNo) {
+			ArrayList<Review> slist = new ArrayList<>();
+			ResultSet rset = null;
+			PreparedStatement pstmt = null;
+			String sql = prop.getProperty("selectStarReview");
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, placeNo);
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					slist.add(new Review(rset.getInt("REVIEW_NO")
+							
+							,rset.getInt("SCORE")
+							,rset.getString("REVIEW_CONTENT")
+							,rset.getDate("CREATE_DATE")
+							,rset.getString("USER_NICKNAME")));
+				}
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(pstmt);
+			}
+			
+			return slist;
+		}
+
+
+		//경기지역 페이징 카운트
+		public int allGyeonggiCount(Connection conn) {
+			int count = 0;
+			ResultSet rset = null; //조회구문이기 때문에 필요
+			Statement stmt = null; //위치홀더 필요없으니 statement 활용
+			
+			String sql = prop.getProperty("allGyeonggiistCount");
+			
+			try {
+				stmt = conn.createStatement();
+				
+				//개수 조회
+				rset = stmt.executeQuery(sql);
+				
+				if(rset.next()) {
+					//조회된 게시글 개수
+					count = rset.getInt("COUNT");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(rset);
+				JDBCTemplate.close(stmt);
+			}
+			
+			return count; //게시글 개수 돌려주기
+		}
+
+
+		//경기 지역 select
+		public ArrayList<SoccerMatching> selectAllGyeonggiSoccerMatchingList(Connection conn, String localName,
+				PageInfo pi) {
+			PreparedStatement pstmt = null;
+			
+			ResultSet rset = null;
+			
+			//게시글 목록 조회 리스트
+			ArrayList<SoccerMatching> list = new ArrayList<>();
+			
+			SoccerMatching sm = null;
+			
+			String sql = prop.getProperty("selectAllgyeonggiMatchingList");
+			
+			int startRow = (pi.getCurrentPage() - 1) * pi.getBoardLimit() + 1;
+			int endRow = pi.getCurrentPage() * pi.getBoardLimit();
+			
+			try {
+				pstmt = conn.prepareStatement(sql);		
+				
+				pstmt.setString(1, localName);
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, endRow);
+				
+				
+				rset = pstmt.executeQuery();
+				
+				while(rset.next()) {
+					
+					sm = new SoccerMatching(rset.getInt("PLACE_NO")
+											, rset.getString("PLACE_NAME")
+											, rset.getString("FILE_PATH")
+											, rset.getString("CHANGE_NAME"));
+					
+					list.add(sm);
+					
+				}
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				JDBCTemplate.close(pstmt);
+			}
+			
+					
+			return list;
+		}
+
+		
+		
+		
+		
+	
+
+	
 
 	
 

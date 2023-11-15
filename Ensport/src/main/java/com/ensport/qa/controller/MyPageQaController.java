@@ -122,6 +122,10 @@ public class MyPageQaController extends HttpServlet {
 		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, myPageQaLimit, maxPage, startPage, endPage);
 		
 		
+		System.out.println("pi" + pi);
+		
+		
+		
 		//myPage Qa List
 		ArrayList<Qa> selectMyQaList = new QaService().selectMyQaList(pi, userNo);
 		
@@ -129,7 +133,7 @@ public class MyPageQaController extends HttpServlet {
 		request.setAttribute("pi", pi);
 		request.setAttribute("qList", selectMyQaList);
 		
-		System.out.println("혜진님 집 가고싶어요.");
+		
 		request.getRequestDispatcher("views/member/myPageQa.jsp").forward(request, response);
 	}
 

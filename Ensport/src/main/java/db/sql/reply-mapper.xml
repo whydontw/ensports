@@ -26,7 +26,7 @@
 					FROM BOARD B JOIN REPLY R
 					ON(B.BOARD_NO = R.BOARD_NO)
 					WHERE USER_ID = ?
-					ORDER BY R.CREATE_DATE
+					ORDER BY R.CREATE_DATE DESC
                  ) A
               )
         WHERE RNUM BETWEEN ? AND ?
