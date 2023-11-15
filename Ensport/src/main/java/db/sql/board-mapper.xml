@@ -90,7 +90,7 @@
 		   SET ORIGIN_NAME = ?
 		   	  ,CHANGE_NAME = ?
 		   	  ,FILE_PATH = ?
-		   	  ,UPROAD_DATE = SYSDATE
+		   	  ,UPLOAD_DATE = SYSDATE
 		WHERE AT_NO = ?
 		AND FILE_TYPE = 1  	  
 	</entry>

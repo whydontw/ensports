@@ -392,115 +392,13 @@
 				<div class="row justify-content-center">
 					<div class="col-lg-6 text-center">
 						<div class="section-title">
-							<h1>업데이트순</h1>
-							<p>지금 바로 올라온 경기장! 누구보다 빠르게 만나보시죠</p>
+							<h1> <b>야구 시설 인기순</b> </h1>
+							<p> 나처럼 되고 싶지 않으면 운동해  -유빈89- </p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<!-- single product -->
-							<div class="col-lg-4 col-md-4" id="updateSort" style="display: contents;">	
-								
-							<div class="single-product">
-									<script>							
-							$(function(){
-								
-								$.ajax({
-									url: "updateAjax2.do",
-									type : "get",
-									success : function(data){
-										
-										//값 뽑기
-										console.log("업데이트");
-										console.log(data);
-										
-		// 				                var resultDiv = $("#resultCount");
-						                $.each(data, function(index, item) {
-						                	
-						                	$(".row>#updateSort").append(
-						                			
-						                			"<div class='single-product' style='margin: 15px;'>" +
-						                			"<div class='col-md-13 figure'>" +
-							                        "<img class='img-fluid' src='${contextPath}" + item.filePath + item.changeName + "' alt='' style=' width: 250px;height: 200px;'>" +
-							                        "<div class='product-details'>" +
-							                        "<h6>" + item.placeName + "</h6>" +
-							                        "<div class='prd-bottom'>" +
-							                        "<a href='${contextPath}/place.so' class='social-info'>" +
-							                        "<span class='lnr lnr-move'></span>" +
-							                        "<p class='hover-text'>예약하기</p>" +
-							                        "</a>" +
-							                        "</div>" +
-							                        "</div>" +
-							                        "</div>"+
-							                        "</div>"
-						                	
-						                	);
-						                    
-		
-		// 				                    resultDiv.append(html);
-						                });
-										
-		
-										
-									},error : function(){
-										console.log("실패");
-									}
-								});
-								
-							})														
-							</script>		
-						
-							<div class="col-lg-4 col-md-4" id="updateSort" style="display: contents;">	
-								
-							<div class="single-product">
-									<script>							
-							$(function(){
-								
-								$.ajax({
-									url: "updateAjax2.do",
-									type : "get",
-									success : function(data){
-										
-										//값 뽑기
-										//console.log("업데이트");
-										//console.log(data);
-										
-		// 				                var resultDiv = $("#resultCount");
-						                $.each(data, function(index, item) {
-						                	
-						                	$(".row>#updateSort").append(
-						                			
-						                			"<div class='single-product' style='margin: 15px;'>" +
-						                			"<div class='col-md-13 figure'>" +
-							                        "<img class='img-fluid' src='${contextPath}" + item.filePath + item.changeName + "' alt='' style=' width: 250px;height: 200px;'>" +
-							                        "<div class='product-details'>" +
-							                        "<h6>" + item.placeName + "</h6>" +
-							                        "<div class='prd-bottom'>" +
-							                        "<a href='${contextPath}/place.so?currentPage=1' class='social-info'>" +
-							                        "<span class='lnr lnr-move'></span>" +
-							                        "<p class='hover-text'>예약하기</p>" +
-							                        "</a>" +
-							                        "</div>" +
-							                        "</div>" +
-							                        "</div>"+
-							                        "</div>"
-						                	
-						                	);
-						                    
-		
-		// 				                    resultDiv.append(html);
-						                });
-										
-		
-										
-									},error : function(){
-										console.log("실패");
-									}
-								});
-								
-							})														
-							</script>		
-						
 							<div class="col-lg-4 col-md-4" id="updateSort" style="display: contents;">	
 								
 							<div class="single-product">
@@ -594,9 +492,7 @@
 								success : function(data){
 									
 									//값 뽑기
-									console.log(data);
-									
-
+									//console.log(data);
 									
 // 				                var resultDiv = $("#resultCount");
 					                $.each(data, function(index, item) {
@@ -609,7 +505,7 @@
 						                        "<div class='product-details'>" +
 						                        "<h6>" + item.placeName + "</h6>" +
 						                        "<div class='prd-bottom'>" +
-						                        "<a href='${contextPath}/list.so' class='social-info'>" +
+						                        "<a href='${contextPath}/list.so?currentPage=1' class='social-info'>" +
 						                        "<span class='lnr lnr-move'></span>" +
 						                        "<p class='hover-text'>예약하기</p>" +
 						                        "</a>" +
@@ -621,7 +517,7 @@
 					                	);
 					                    
 	
-	// 				                    resultDiv.append(html);
+// 				                    resultDiv.append(html);
 					                });
 									
 	
@@ -644,141 +540,7 @@
 	
 	<!-- end product Area -->
 
-	<div class="section">
-
-		<div class="section bg-light">
-
-			<h2 class="heading mb-5 text-center">이용 후기</h2>
-
-			<div class="text-center mb-5">
-				<div id="prevnext-testimonial">
-					<span class="prev me-3" data-controls="prev"> <span
-						class="icon-chevron-left"></span>
-
-					</span> <span class="next" data-controls="next"> <span
-						class="icon-chevron-right"></span>
-
-					</span>
-				</div>
-			</div>
-
-			<div class="wide-slider-testimonial-wrap">
-				<div class="wide-slider-testimonial">
-					<div class="item">
-						<blockquote class="block-testimonial">
-							<div class="author">
-								<img src="resources/img/person_1.jpg"
-									alt="Free template by TemplateUX">
-								<h3>John Doe</h3>
-								<p class="position mb-5">CEO, Founder</p>
-							</div>
-							<p>
-							<div class="quote">&ldquo;</div> 
-							&ldquo;Far far away, behind the word mountains, far from the
-							countries Vokalia and Consonantia, there live the blind texts.
-							Separated they live in Bookmarksgrove right at the coast of the
-							Semantics, a large language ocean.&rdquo;
-							</p>
-						</blockquote>
-					</div>
-
-					<div class="item">
-						<blockquote class="block-testimonial">
-							<div class="author">
-								<img src="resources/img/person_2.jpg"
-									alt="Free template by TemplateUX">
-								<h3>James Woodland</h3>
-								<p class="position mb-5">Designer at Facebook</p>
-							</div>
-							<p>
-							<div class="quote">&ldquo;</div>
-							&ldquo;When she reached the first hills of the Italic Mountains,
-							she had a last view back on the skyline of her hometown
-							Bookmarksgrove, the headline of Alphabet Village and the subline
-							of her own road, the Line Lane. Pityful a rethoric question ran
-							over her cheek, then she continued her way.&rdquo;
-							</p>
-
-						</blockquote>
-					</div>
-
-					<div class="item">
-						<blockquote class="block-testimonial">
-							<div class="author">
-								<img src="resources/img/person_3.jpg"
-									alt="Free template by TemplateUX">
-								<h3>Rob Smith</h3>
-								<p class="position mb-5">Product Designer at Twitter</p>
-							</div>
-							<p>
-							<div class="quote">&ldquo;</div>
-							&ldquo;A small river named Duden flows by their place and
-							supplies it with the necessary regelialia. It is a paradisematic
-							country, in which roasted parts of sentences fly into your
-							mouth.&rdquo;
-							</p>
-						</blockquote>
-					</div>
-
-					<div class="item">
-						<blockquote class="block-testimonial">
-							<div class="author">
-								<img src="resources/img/person_1.jpg"
-									alt="Free template by TemplateUX">
-								<h3>John Doe</h3>
-								<p class="position mb-5">CEO, Founder</p>
-							</div>
-							<p>
-							<div class="quote">&ldquo;</div>
-							&ldquo;Far far away, behind the word mountains, far from the
-							countries Vokalia and Consonantia, there live the blind texts.
-							Separated they live in Bookmarksgrove right at the coast of the
-							Semantics, a large language ocean.&rdquo;
-							</p>
-						</blockquote>
-					</div>
-
-					<div class="item">
-						<blockquote class="block-testimonial">
-							<div class="author">
-								<img src="resources/img/person_2.jpg"
-									alt="Free template by TemplateUX">
-								<h3>James Woodland</h3>
-								<p class="position mb-5">Designer at Facebook</p>
-							</div>
-							<p>
-							<div class="quote">&ldquo;</div>
-							&ldquo;When she reached the first hills of the Italic Mountains,
-							she had a last view back on the skyline of her hometown
-							Bookmarksgrove, the headline of Alphabet Village and the subline
-							of her own road, the Line Lane. Pityful a rethoric question ran
-							over her cheek, then she continued her way.&rdquo;
-							</p>
-
-						</blockquote>
-					</div>
-
-					<div class="item">
-						<blockquote class="block-testimonial">
-							<div class="author">
-								<img src="resources/img/person_3.jpg"
-									alt="Free template by TemplateUX">
-								<h3>Rob Smith</h3>
-								<p class="position mb-5">Product Designer at Twitter</p>
-							</div>
-							<p>
-							<div class="quote">&ldquo;</div>
-							&ldquo;A small river named Duden flows by their place and
-							supplies it with the necessary regelialia. It is a paradisematic
-							country, in which roasted parts of sentences fly into your
-							mouth.&rdquo;
-							</p>
-						</blockquote>
-					</div>
-				</div>
-			</div>
-
-		</div>
+	
 		
 	
 		
