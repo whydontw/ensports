@@ -72,9 +72,9 @@
 							</div>
 							<div class="col-md-12 form-group">
 								<div class="creat_account">
-									<input type="checkbox" id="f-option2" name="saveId">
-									<label for="f-option2">아이디 저장하기</label>
+									<label for="f-option2">아이디 저장하기<input type="checkbox" id="f-option2" name="saveId" ></label>
 								</div>
+								
 							</div>
 							<div class="col-md-12 form-group">
 								<button type="submit" value="submit" class="primary-btn">Log In</button>

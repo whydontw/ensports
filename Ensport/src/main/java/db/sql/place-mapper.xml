@@ -131,7 +131,8 @@
 							FROM PLAYER JOIN RESERVATION USING(RESERVATION_NO)
 							WHERE PLACE_NO = ?
 							AND RESERVATION_DATE = TO_DATE(?, 'YY/MM/DD')
-							AND TIME_NO = ? )		
+							AND TIME_NO = ?
+							AND FIXED_YN = 'Y')
 	</entry>
 	
 	<entry key ="allSeoulListCount">
@@ -301,7 +302,8 @@
 							FROM PLAYER JOIN RESERVATION USING(RESERVATION_NO)
 							WHERE PLACE_NO = ?
 							AND RESERVATION_DATE = TO_DATE(?, 'YY/MM/DD')
-							AND TIME_NO = ? )		
+							AND TIME_NO = ?
+							AND FIXED_YN = 'Y' )		
 	</entry>
 	
 	<entry key ="baseballSeoulListCount">
