@@ -377,10 +377,14 @@
 		            type : "get",
 		            data : { selectTime : selectedTime, pno: ${ssp.placeNo}, placeDate: "${placeDate}" },
 		            success : function(data) {
+		            	
 						
 		            	var result = JSON.parse(data);
-		            		              
-		                if (result.reservationChk > 0) {
+		            	
+		            	console.log("16385131365435");
+		            	console.log(result.reservationChk);
+
+		            	if (result.reservationChk > 0) {
 		                    // 인원 마감 시 버튼 비활성화
 		                    $(".primary-btn").prop("disabled", true);
 		                    alert("인원이 마감되었습니다.");

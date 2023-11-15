@@ -41,32 +41,24 @@ public class BaseballPlaceEnrollController extends HttpServlet {
 		String placeNo = request.getParameter("placeNo");
 		String reservationDate = request.getParameter("reservationDate");
 	
-		int placePlayer =  new BaseballPlaceService().baseballreservationPlayer(timeNo, placeNo, reservationDate);
 		
-		if( placePlayer == 1) {
-			session.setAttribute("alertMsg", "예약 마감되었습니다.");
-			response.sendRedirect(request.getHeader("referer"));
-		}else {
-			int duplicate = new BaseballPlaceService().baseballPlaceDuplicate(userNo,timeNo, placeNo, reservationDate);
+		int currentPlayerCount =  new BaseballPlaceService().baseballreservationPlayer(timeNo, placeNo, reservationDate);
+		
+		if( currentPlayerCount == 0) {
+						
+			int result = new BaseballPlaceService().baseballPlaceReservation(userNo, timeNo, placeNo, reservationDate);
 			
-			if(duplicate>0) {
-				session.setAttribute("alertMsg", "중복예약입니다.");
-				response.sendRedirect(request.getHeader("referer"));
+			if(result>0) {
+				
+				session.setAttribute("alertMsg", "예약이 확정되었습니다.");
+				response.sendRedirect(request.getContextPath() + "/myPageReservation.me?currentPage=1");
+		
 			}else {
 				
-				int result = new BaseballPlaceService().baseballPlaceReservation(userNo, timeNo, placeNo, reservationDate);
-				
-				if(result > 0) {
-					session.setAttribute("alertMsg", "예약이 확정되었습니다.");
-					response.sendRedirect(request.getHeader("referer"));
-				}else {
-					request.setAttribute("errorMsg", "예약이 처리되지 않았습니다. 다시 시도해주세요.");
-					response.sendRedirect(request.getHeader("referer"));
+				session.setAttribute("alertMsg", "예약에 실패하였습니다.");
+				response.sendRedirect(request.getHeader("referer"));	
 					
-				}
-				
 			}			
-			
 		}
 	}
 

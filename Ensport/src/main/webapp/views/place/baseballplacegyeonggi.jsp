@@ -44,11 +44,11 @@
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>축구 경기매칭</h1>
+					<h1>야구 시설예약</h1>
 					<nav class="d-flex align-items-center">
 						<a href="index.html">시설예약<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">축구<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">서울</a>
+						<a href="#">야구<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">경기</a>
 					</nav>
 				</div>
 			</div>
@@ -61,39 +61,39 @@
 				<div class="sidebar-categories">
 					<div class="head">지역</div>
 					<ul class="main-categories">
-						<li class="main-nav-list"><a href="${contextPath }/seoul.ba?localName=서울&currentPage=1" onclick="goToSeoulPage()"><span class="lnr lnr-arrow-right"></span>서울<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/seoul.ba?localName=서울&currentPage=1" onclick="goToSeoulPage()"><span class="lnr lnr-arrow-right"></span>서울<span class="number"></span></a></li>
 
-						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.ba?localName=경기&currentPage=1" onclick="goToSeoulPage()" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span>경기<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="${contextPath }/gyeonggi.ba?localName=경기&currentPage=1" onclick="goToSeoulPage()" onclick="goToGyeonggiPage()"><span class="lnr lnr-arrow-right"></span><b>경기</b><span class="number"></span></a></li>
 
-						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToIncheonPage()"><span class="lnr lnr-arrow-right"></span>인천<span class="number">(53)</span></a></li>
+						<li class="main-nav-list"><a href="javascript:void(0);" onclick="goToIncheonPage()"><span class="lnr lnr-arrow-right"></span>인천<span class="number"></span></a></li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeonbuk" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>전북<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>전북<span class="number"></span></a>
 							
 						</li>
 						
 						<li class="main-nav-list"><a data-toggle="collapse" href="#daejeon" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>대전<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>대전<span class="number"></span></a>
 							
 						</li>						
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#sejong" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>세종<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>세종<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#busan" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>부산<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>부산<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#gangwon" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>강원<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>강원<span class="number"></span></a>
 							
 						</li>
 
 						<li class="main-nav-list"><a data-toggle="collapse" href="#jeju" aria-expanded="false" aria-controls="fruitsVegetable"><span
-								class="lnr lnr-arrow-right"></span>제주<span class="number">(53)</span></a>
+								class="lnr lnr-arrow-right"></span>제주<span class="number"></span></a>
 							
 						</li>
 						

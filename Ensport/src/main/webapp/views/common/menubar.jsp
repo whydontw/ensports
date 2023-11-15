@@ -82,7 +82,7 @@
 							</li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">경기장</a>
+								 aria-expanded="false">시설예약</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="${contextPath}/place.so?currentPage=1">축구</a></li>
 									<li class="nav-item"><a class="nav-link" href="${contextPath}/place.ba?currentPage=1">야구</a></li>
