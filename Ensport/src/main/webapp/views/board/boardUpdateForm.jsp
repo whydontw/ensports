@@ -99,14 +99,7 @@
 						<c:choose>
 							<c:when test="${not empty list }">
 								<c:forEach items="${list }" var="image" varStatus="vs">
-									<c:choose>
-										<c:when test="${vs.index eq 0}">
-											<td><img id="titleImg" src="${contextPath }${image.filePath}${image.changeName}" width="370" height="300"></td>
-										</c:when>
-										<c:otherwise>
-											<td><img id="contentImg${vs.count }" src="${contextPath }${image.filePath}${image.changeName}" width="270" height="300"></td>
-										</c:otherwise>
-									</c:choose>
+									<td><img id="contentImg${vs.count }" src="${contextPath }${image.filePath}${image.changeName}" width="300" height="300"></td>
 								</c:forEach>
 							</c:when>
 						</c:choose>	
@@ -143,13 +136,13 @@
 		  $(function(){
                 $("#file-area").hide(); //file input 숨기기
                 //대표이미지를 클릭하면 input file 요소 1번이 클릭되게 하는 함수
-                $("#titleImg").click(function(){
+                $("#contentImg1").click(function(){
                     $("#file1").click();
                 });
-                $("#contentImg1").click(function(){
+                $("#contentImg2").click(function(){
                     $("#file2").click();
                 });
-                $("#contentImg2").click(function(){
+                $("#contentImg3").click(function(){
                     $("#file3").click();
                 });
             });
@@ -176,18 +169,18 @@
                         console.log(e.target.result);
 
                         switch(num){
-                            case 1: $("#titleImg").attr("src",e.target.result); break;
-                            case 2: $("#contentImg1").attr("src",e.target.result); break;
-                            case 3: $("#contentImg2").attr("src",e.target.result); break;
+                            case 1: $("#contentImg1").attr("src",e.target.result); break;
+                            case 2: $("#contentImg2").attr("src",e.target.result); break;
+                            case 3: $("#contentImg3").attr("src",e.target.result); break;
                         }
 
                     }
 
                 }else{ //length가 1이 아니면
                     switch(num){
-                       	case 1: $("#titleImg").attr("src",null); break;
-                            case 2: $("#contentImg1").attr("src",null); break;
-                            case 3: $("#contentImg2").attr("src",null); break;
+                            case 1: $("#contentImg1").attr("src",null); break;
+                            case 2: $("#contentImg2").attr("src",null); break;
+                       		case 3: $("#contentImg3").attr("src",null); break;
                     }
                 }
             }

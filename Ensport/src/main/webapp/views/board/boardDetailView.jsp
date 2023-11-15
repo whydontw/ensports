@@ -152,14 +152,7 @@ th {
 				<tr>
 						<th style="font-size: 15px; padding-left: 0px;">이미지</th>
 						<c:forEach items="${list }" var="image" varStatus="vs">
-							<c:choose>
-								<c:when test="${vs.index eq 0}">
-									<td><img id="titleImg" src="${contextPath }${image.filePath}${image.changeName}" width="370" height="300"></td>
-								</c:when>
-								<c:otherwise>
-									<td><img id="contentImg${vs.count }" src="${contextPath }${image.filePath}${image.changeName}" width="270" height="300"></td>
-								</c:otherwise>
-							</c:choose>
+							<td><img id="contentImg${vs.count }" src="${contextPath }${image.filePath}${image.changeName}" width="300" height="300"></td>
 						</c:forEach>
 						
 				</tr>
