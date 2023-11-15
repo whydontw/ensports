@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import com.ensport.admin.model.vo.Attachment;
+import com.ensport.admin.model.vo.MonthRevenue;
 import com.ensport.admin.model.vo.PieChart;
 import com.ensport.admin.model.vo.Place;
 import com.ensport.admin.model.vo.QA;
@@ -847,6 +848,34 @@ public class AdminDao {
 			while(rset.next()) {
 				list.add(new PieChart(rset.getString("GENDER")
 									 ,rset.getInt("COUNT")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return list;
+	}
+
+
+	public ArrayList<MonthRevenue> calculateMonthlyRevenue(Connection conn) {
+		
+		ArrayList<MonthRevenue> list = new ArrayList<>();
+		ResultSet rset = null;
+		Statement stmt = null;
+		
+		String sql = prop.getProperty("calculateMonthlyRevenue");
+		try {
+			stmt = conn.createStatement();
+			
+			rset = stmt.executeQuery(sql);
+			
+			while(rset.next()) {
+				list.add(new MonthRevenue(rset.getInt("MONTH")
+										,rset.getInt("RESERVATION_COUNT")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

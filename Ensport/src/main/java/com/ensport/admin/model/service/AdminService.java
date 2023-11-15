@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import com.ensport.admin.model.dao.AdminDao;
 import com.ensport.admin.model.vo.Attachment;
+import com.ensport.admin.model.vo.MonthRevenue;
 import com.ensport.admin.model.vo.PieChart;
 import com.ensport.admin.model.vo.Place;
 import com.ensport.admin.model.vo.QA;
@@ -351,6 +352,17 @@ public class AdminService {
 		Connection conn = JDBCTemplate.getConnection();
 
 		ArrayList<PieChart> list = new AdminDao().countGender(conn);
+		
+		JDBCTemplate.close(conn);
+		
+		return list;
+	}
+
+	public ArrayList<MonthRevenue> calculateMonthlyRevenue() {
+		
+		Connection conn = JDBCTemplate.getConnection();
+
+		ArrayList<MonthRevenue> list = new AdminDao().calculateMonthlyRevenue(conn);
 		
 		JDBCTemplate.close(conn);
 		

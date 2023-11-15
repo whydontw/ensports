@@ -169,7 +169,8 @@ public class BoardDao {
 						     ,rset.getString("BOARD_TITLE")
 						     ,rset.getString("BOARD_CONTENT")
 						     ,rset.getDate("CREATE_DATE")
-						     ,rset.getInt("BOARD_COUNT"));
+						     ,rset.getInt("BOARD_COUNT")
+						     ,rset.getInt("BOARD_TYPE"));
 			}
 			
 		} catch (SQLException e) {

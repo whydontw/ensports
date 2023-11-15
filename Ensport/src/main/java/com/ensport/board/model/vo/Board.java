@@ -70,6 +70,20 @@ public class Board {
 		this.boardCount = boardCount;
 	}
 	
+	
+	
+
+	public Board(int boardNo, String userNo, String boardTitle, String boardContent, Date createDate, int boardCount,
+			int boardType) {
+		super();
+		this.boardNo = boardNo;
+		this.userNo = userNo;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.createDate = createDate;
+		this.boardCount = boardCount;
+		this.boardType = boardType;
+	}
 
 	public int getBoardType() {
 		return boardType;

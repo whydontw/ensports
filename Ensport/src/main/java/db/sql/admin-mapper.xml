@@ -214,8 +214,9 @@
 		      ,create_date
 		      ,review_content
 		      ,user_nickname
-		from review
-		join member on(player_no=user_no)
+		from review r
+		left join member m on(player_no=user_no)
+		where r.status = 'Y'
 		order by create_date desc
 	</entry>
 	<entry key="countAdminMember">
@@ -227,5 +228,14 @@
 		SELECT GENDER, COUNT(GENDER) AS COUNT
 		FROM MEMBER
 		GROUP BY GENDER
+	</entry>
+	<entry key="calculateMonthlyRevenue">
+		SELECT
+		    EXTRACT(MONTH FROM RESERVATION_DATE) AS MONTH,
+		    COUNT(*) AS RESERVATION_COUNT
+		FROM reservation
+		WHERE EXTRACT(YEAR FROM RESERVATION_DATE) = EXTRACT(YEAR FROM SYSDATE)
+		GROUP BY EXTRACT(YEAR FROM RESERVATION_DATE), EXTRACT(MONTH FROM RESERVATION_DATE)
+		ORDER BY EXTRACT(YEAR FROM RESERVATION_DATE) ASC, EXTRACT(MONTH FROM RESERVATION_DATE) ASC
 	</entry>
 </properties>

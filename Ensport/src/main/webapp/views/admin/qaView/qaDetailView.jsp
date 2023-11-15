@@ -14,6 +14,7 @@
 
 	<div class="comment-form">
          <form method="post" action="${contextPath }/qaEnroll.qa">
+         	<div align="center" style="margin-bottom: 20px;"><h1><b>문의사항 답변</b></h1></div>
              <div class="form-group">
                  <b>닉네임</b> <input type="text" class="form-control" id="nick_name" name="nick_name" placeholder="Subject" value="${qa.user_nickname}" readonly>
              </div>
