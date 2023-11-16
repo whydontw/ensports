@@ -15,6 +15,7 @@ import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.PageInfo;
 import com.ensport.place.model.vo.Place;
 import com.ensport.place.model.vo.SoccerPlace;
+import com.ensport.review.model.vo.Review;
 
 
 public class BaseballPlaceDao {
@@ -514,6 +515,219 @@ public class BaseballPlaceDao {
 		
 				
 		return list;
+	}
+
+	public int selectReviewSum(Connection conn, int placeNo) {
+		int sum = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectReviewSum");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				sum = rset.getInt("TOTAL");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return sum;
+	}
+
+	public int selectReviewCount(Connection conn, int placeNo) {
+		int count = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectReviewCount");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				count = rset.getInt("COUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return count;
+	}
+
+	public int selectfiveStar(Connection conn, int placeNo) {
+		int fiveStar = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectfiveStar");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				fiveStar = rset.getInt("FIVE");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return fiveStar;
+	}
+
+	public int selectfourStar(Connection conn, int placeNo) {
+		int fourStar = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectfourStar");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				fourStar = rset.getInt("FOUR");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return fourStar;
+	}
+
+	public int selectthreeStar(Connection conn, int placeNo) {
+		int threeStar = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectthreeStar");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				threeStar = rset.getInt("THREE");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return threeStar;
+	}
+
+	public int selectTwoStar(Connection conn, int placeNo) {
+		int twoStar = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selecttwoStar");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				twoStar = rset.getInt("TWO");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return twoStar;
+	}
+
+	public int selectOneStar(Connection conn, int placeNo) {
+		int oneStar = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		String sql = prop.getProperty("selectoneStar");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				
+				oneStar = rset.getInt("ONE");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return oneStar;
+	}
+
+	public ArrayList<Review> selectReviewList(Connection conn, int placeNo) {
+		ArrayList<Review> rlist = new ArrayList<>();
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String sql = prop.getProperty("selectReviewList");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, placeNo);
+			
+			rset = pstmt.executeQuery();
+			
+			while(rset.next()) {
+				rlist.add(new Review(rset.getInt("REVIEW_NO")
+									
+									,rset.getInt("SCORE")
+									,rset.getString("REVIEW_CONTENT")
+									,rset.getDate("CREATE_DATE")
+									,rset.getString("USER_NICKNAME")));
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return rlist;
 	}
 
 }

@@ -6,10 +6,12 @@ import java.util.ArrayList;
 import com.ensport.admin.model.vo.Attachment;
 import com.ensport.common.JDBCTemplate;
 import com.ensport.common.model.vo.PageInfo;
+import com.ensport.matching.model.dao.BaseballMatchingDao;
 import com.ensport.place.model.dao.BaseballPlaceDao;
 import com.ensport.place.model.dao.SoccerPlaceDao;
 import com.ensport.place.model.vo.Place;
 import com.ensport.place.model.vo.SoccerPlace;
+import com.ensport.review.model.vo.Review;
 
 
 public class BaseballPlaceService {
@@ -180,6 +182,67 @@ public class BaseballPlaceService {
 		JDBCTemplate.close(conn);
 		
 		return list;
+	}
+
+	public int selectReviewSum(int placeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int sum = new BaseballPlaceDao().selectReviewSum(conn,placeNo);
+		JDBCTemplate.close(conn);
+		return sum;
+	}
+
+	public int selectReviewCount(int placeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		int count = new BaseballPlaceDao().selectReviewCount(conn,placeNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return count;
+	}
+
+	public int selectfiveStar(int placeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int fiveStar = new BaseballPlaceDao().selectfiveStar(conn,placeNo);
+		JDBCTemplate.close(conn);
+		return fiveStar;	}
+
+	public int selectfourStar(int placeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int fourStar = new BaseballPlaceDao().selectfourStar(conn,placeNo);
+		JDBCTemplate.close(conn);
+		return fourStar;
+	}
+
+	public int selectthreeStar(int placeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int threeStar = new BaseballPlaceDao().selectthreeStar(conn,placeNo);
+		JDBCTemplate.close(conn);
+		return threeStar;
+	}
+
+	public int selectTwoStar(int placeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int twoStar = new BaseballPlaceDao().selectTwoStar(conn,placeNo);
+		JDBCTemplate.close(conn);
+		return twoStar;
+	}
+
+	public int selectOneStar(int placeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		int oneStar = new BaseballPlaceDao().selectOneStar(conn,placeNo);
+		JDBCTemplate.close(conn);
+		return oneStar;
+	}
+
+	public ArrayList<Review> selectReviewList(int placeNo) {
+		Connection conn = JDBCTemplate.getConnection();
+		
+		ArrayList<Review> rlist = new BaseballPlaceDao().selectReviewList(conn,placeNo);
+		
+		JDBCTemplate.close(conn);
+		
+		return rlist;
 	}
 	
 	
