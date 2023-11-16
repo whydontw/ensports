@@ -99,12 +99,12 @@
 									                               		<c:set var="reservationTime"><fmt:formatDate value="${rv.reservationDate}" pattern="yyMMdd" /></c:set>
 									                                	<!-- ======================================================= -->
 									                               		
-									                               		<c:if test="${reservationTime > today}">
+									                               		<c:if test="${reservationTime >= today}">
 										                                    <div class="button-group-area mt-40 text-center" onclick="return confirm('취소하시겠습니까?')">
 																				<a href="${contextPath }/reservationCancel.rv?rvNo=${rv.reservationNo }" class="genric-btn primary-border small">취소</a>
 																			</div>
 																		</c:if>
-																		<c:if test="${reservationTime <= today}">
+																		<c:if test="${reservationTime < today}">
 										                                    <div class="button-group-area mt-40 text-center">
 																				<p>경기종료</p>
 																			</div>

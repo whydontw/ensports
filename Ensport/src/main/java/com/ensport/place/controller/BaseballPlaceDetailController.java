@@ -65,6 +65,7 @@ public class BaseballPlaceDetailController extends HttpServlet {
 			
 			request.setAttribute("placeDate", placeDate);
 			request.setAttribute("placeTime", placeTime);
+			request.setAttribute("sno", placeNo);
 			
 			request.setAttribute("bp", bp);
 			request.setAttribute("list", list);
