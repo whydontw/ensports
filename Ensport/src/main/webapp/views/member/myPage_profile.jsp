@@ -69,21 +69,20 @@ Level 5. 우주제일운동왕
 
 			<!-- 내 경기 정보 -->
 			<aside class="single_sidebar_widget post_category_widget">
-				<h4 class="widget_title">나의 예약</h4>
+				<h4 class="widget_title">나의 경기</h4>
 				<ul class="list cat-list">
 					<li>
 						<a href="${contextPath }/myPageReservation.me?currentPage=1" class="d-flex justify-content-between">
-							<p>예약 내역</p>
+							<p>경기 예약 내역</p>
 							<p id="reservationCount"></p>
 						</a>
 					</li>
-<!-- 				<li> -->
-<!-- 					이건 후순위 구현하는 것으로 -->
-<!-- 					<a href="#" class="d-flex justify-content-between">W -->
-<!-- 						<p>나의 지난 경기</p> -->
-<!-- 						<p>0</p> -->
-<!-- 					</a> -->
-<!-- 				</li> -->
+				<li>
+					<a href="${contextPath }/myPageMyPlace.me?currentPage=1" class="d-flex justify-content-between">
+						<p>찜한 경기장</p>
+						<p id="myPlaceCount"></p>
+					</a>
+				</li>
 				</ul>
 				<div class="br"></div>
 			</aside>
@@ -132,6 +131,7 @@ Level 5. 우주제일운동왕
 					$("#qaCount").text(data.qaCount);
 					$("#reviewCount").text(data.reviewCount);
 					$("#reservationCount").text(data.reservationCount);
+					$("#myPlaceCount").text(data.myPlaceCount);
 					
 					
 					var rvCount = data.reviewCount;

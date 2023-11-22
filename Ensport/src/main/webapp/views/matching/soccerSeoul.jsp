@@ -168,7 +168,7 @@
 					</div>
 					<div class="sorting">
 						<label for="date"> <input type="date" id="date"
-							max="2023-11-18" min="2023-11-14" value="날짜선택">
+							min="2023-11-14" value="날짜선택">
 					</div>
 
 					<div class="sorting mr-auto">

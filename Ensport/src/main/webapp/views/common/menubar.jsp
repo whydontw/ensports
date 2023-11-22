@@ -102,7 +102,7 @@
 								<c:otherwise>
 									<li class="nav-item submenu dropdown">
 										<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-											<img class="" src="${contextPath }/resources/img/elements/soccer_icon1.png" alt=""> ${loginUser.userNickname } 님 환영합니다!
+											<img class="" src="${contextPath }/resources/img/elements/baseball_icon1.png" alt=""> ${loginUser.userNickname } 님 환영합니다!
 										</a>
 										<ul class="dropdown-menu">
 											<c:if test="${loginUser.userNo == 1 }">
@@ -118,7 +118,7 @@
 
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li class="nav-item"><a href="#" class="cart"><span class="ti-briefcase"></span></a></li>
+							<li class="nav-item"><a href="#" class="cart"><span class="ti-view-list"></span></a></li>
 							<li class="nav-item">
 								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 							</li>

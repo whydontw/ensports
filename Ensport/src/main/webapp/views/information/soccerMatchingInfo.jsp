@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-s
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -85,7 +84,10 @@ s
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h3>[ ${matchingDate}]${p.placeName }</h3>
+						
+						
+						
+						<h3>[ ${matchingDate}] ${p.placeName }</h3>
 						<ul class="list">
 							<li><a class="active" href="#"><span>Category</span> :
 									${p.categoryName }</a></li>
@@ -114,8 +116,18 @@ s
 						</div>
 						<br> <br>
 						<div class="card_area d-flex align-items-center" id="btnWrap">
-							<button type="button" class="primary-btn" data-toggle="modal"
-								data-target="#exampleModal">예약하기</button>
+							<button type="button" id="doReservation" class="primary-btn" data-toggle="modal" data-target="#exampleModal">예약하기</button>
+							<c:if test="${not empty loginUser}">
+								<button type="button" id="myPlaceLike" class="primary-btn">
+									<c:if test="${likeYn == 0}">
+										<i class="bi bi-star" id="likeN"></i>
+									</c:if>
+									<c:if test="${likeYn > 0}">
+										<i class="bi bi-star-fill" id="likeY"></i>
+									</c:if>
+								</button>
+							</c:if>
+							
 						</div>
 					</div>
 				</div>
@@ -364,7 +376,7 @@ s
 	$(document).ready(function() {
 		
 				
-		$(".primary-btn").on("click",function(){
+		$("#doReservation").on("click",function(){
 			
 		
 				var selectedTime = $("#default-select option:selected").val();
@@ -381,6 +393,60 @@ s
 				}
 									
 			});
+		
+		
+		
+		$("#myPlaceLike").click(function(){
+			
+			if(($("#myPlaceLike > i").attr("id")) === "likeN"){
+			
+				$.ajax({
+					url: "addMyPlace.do",
+					data: {pno: ${pno}, userNo: ${loginUser.userNo} },
+					method: "get",
+					success: function(result){
+						
+						var result = JSON.parse(result); 
+						
+						if(result.myPlaceLikeYn > 0){
+							$("#myPlaceLike").html("<i class='bi bi-star-fill' id='likeY'></i>")
+						}
+						
+					},
+					error: function(){
+						alert("통신 오류");
+					}
+				})
+			
+			}else{
+			
+				$.ajax({
+					url: "deleteMyPlace.do",
+					data: {pno: ${pno}, userNo: ${loginUser.userNo} },
+					method: "get",
+					success: function(result){
+						
+						var result = JSON.parse(result); 
+						
+						if(result.myPlaceLikeYn > 0){
+							$("#myPlaceLike").html("<i class='bi bi-star' id='likeN'></i>")
+						}
+						
+					},
+					error: function(){
+						alert("통신 오류");
+					}
+				})
+			}
+		})
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	});
 
@@ -406,7 +472,7 @@ s
 		                
 		                if (data.player >= data.total) {
 		                    // 인원 마감 시 버튼 비활성화
-		                    $(".primary-btn").prop("disabled", true);
+		                    $("#doReservation").prop("disabled", true);
 		                    alert("인원이 마감되었습니다.");
 		                } else { //인원마감되지 않았지만 
 		                	if(data.duplicate>0){ //중복이면 버튼 비활성화
@@ -548,7 +614,6 @@ s
 	
 		function selectReviewList(){
 			
-			
 			 $.ajax({
 				 url: "review.li",
 		         data: {pno: "${pno}"},
@@ -606,53 +671,6 @@ s
        
 	
 	</script>
-
-	
-
-	<script>
-// 	$(document).ready(function(){
-		
-		
-// 		selectRecentReview();
-		
-		
-		
-		
-		
-			
-			
-// 			$(".button-group-area #recent").on("click", function() {
-				
-// 				console.log(쿼리~);
-				
-// 		 		function selectRecentReview(){
-					
-// 				}
-// 		 	}
-			
-			
-			
-			
-			
-			
-			
-			
-// 		});
-	
-	
-	 	
-		
-		
-	</script>
-
-
-
-
-
-
-
-
-
 
 
 </body>

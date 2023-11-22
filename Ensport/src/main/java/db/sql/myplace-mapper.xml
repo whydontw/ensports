@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+
+<properties>
+
+	<entry key="selectMyPlaceYn">
+		SELECT COUNT(*) COUNT FROM MYPLACE
+		WHERE
+		PLACE_NO = ?
+		AND
+		USER_NO = ?
+	</entry>
+
+
+	<entry key="addMyPlace">
+		INSERT INTO MYPLACE
+		VALUES(SEQ_LNO.NEXTVAL, ?, ?)
+	</entry>
+	
+
+	<entry key="deleteMyPlace">
+		DELETE FROM MYPLACE
+		WHERE PLACE_NO = ?
+		AND USER_NO = ?
+	</entry>
+
+
+
+	<entry key="myPlaceListCount">
+		SELECT COUNT(*) COUNT
+		FROM MYPLACE
+		WHERE USER_NO = ?
+	</entry>
+
+	
+	
+	<entry key="selectMyPlaceList">
+		SELECT *
+		FROM (SELECT ROWNUM RNUM,A.*
+		        FROM (SELECT PLACE_NO
+					,PLACE_NAME
+					,FILE_PATH
+				    ,CHANGE_NAME
+                    ,CATEGORY_NAME
+			FROM PLACE P
+			JOIN ATTACHMENT AT
+			ON(PLACE_NO=REF_NO)
+            JOIN MYPLACE
+            USING(PLACE_NO)
+            JOIN CATEGORY
+            USING(CATEGORY_NO)
+			WHERE FILE_LEVEL = 1
+			AND CATEGORY_NO=1
+			AND FILE_TYPE=2
+            AND USER_NO = ?
+            ORDER BY PLACE_NO
+		            )A
+		        )
+		WHERE RNUM BETWEEN ? AND ?
+	</entry>
+
+</properties>

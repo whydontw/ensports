@@ -133,35 +133,35 @@
                             <script type="text/javascript">
                             
                             	
-                            	$(function(){
+//                             	$(function(){
                             		
-                            		//쿼리스트링으로 전달된 현재 페이지
-                            		var currentPageNum = ${pi.currentPage};
+//                             		//쿼리스트링으로 전달된 현재 페이지
+//                             		var currentPageNum = ${pi.currentPage};
                             		
-                            		//페이징 태그 내부 숫자
-                            		var currentPageNm = $("#currentPageNm a").html();
+//                             		//페이징 태그 내부 숫자
+//                             		var currentPageNm = $("#currentPageNm a").html();
                             		
-                            		console.log("====================")
-                            		console.log(currentPageNum)
-                            		console.log(currentPageNm)
-                            		console.log("====================")
+//                             		console.log("====================")
+//                             		console.log(currentPageNum)
+//                             		console.log(currentPageNm)
+//                             		console.log("====================")
 
 
-                            		//두 개가 같을 경우에
-                            		if(currentPageNum == currentPageNm){
-                            			//active class 추가하기
-                            			console.log("같습니다")
-                            			console.log($('#currentPageNm').find('.page-link:contains(${pi.currentPage})'));
-                            			console.log("^^");
-                            			console.log($('.page-link:contains(${pi.currentPage})').text());
+//                             		//두 개가 같을 경우에
+//                             		if(currentPageNum == currentPageNm){
+//                             			//active class 추가하기
+//                             			console.log("같습니다")
+//                             			console.log($('#currentPageNm').find('.page-link:contains(${pi.currentPage})'));
+//                             			console.log("^^");
+//                             			console.log($('.page-link:contains(${pi.currentPage})').text());
                             			
-                            			$('#currentPageNm').find('.page-link:contains(${pi.currentPage})').addClass("active");
+//                             			$('#currentPageNm').find('.page-link:contains(${pi.currentPage})').addClass("active");
                             			
-                            		}else{
-                            			console.log("다릅니당")
-                            		}
+//                             		}else{
+//                             			console.log("다릅니당")
+//                             		}
                             		
-                            	})
+//                             	})
                             
                             </script>
                             

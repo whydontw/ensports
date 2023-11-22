@@ -1,6 +1,5 @@
 package com.ensport.matching.model.vo;
 
-import java.sql.Connection;
 import java.util.Date;
 
 public class SoccerMatching {

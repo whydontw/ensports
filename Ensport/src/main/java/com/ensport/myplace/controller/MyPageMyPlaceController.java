@@ -1,4 +1,4 @@
-package com.ensport.review.controller;
+package com.ensport.myplace.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,21 +11,23 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ensport.common.model.vo.PageInfo;
+import com.ensport.matching.model.vo.SoccerMatching;
 import com.ensport.member.model.vo.Member;
+import com.ensport.myplace.model.service.MyPlaceService;
+import com.ensport.reservation.model.service.ReservationService;
 import com.ensport.reservation.model.vo.Reservation;
-import com.ensport.review.model.service.ReviewService;
 
 /**
- * Servlet implementation class MyPageBoardController
+ * Servlet implementation class MyPageMyPlaceController
  */
-@WebServlet("/myPageReview.me")
-public class MyPageReviewController extends HttpServlet {
+@WebServlet("/myPageMyPlace.me")
+public class MyPageMyPlaceController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyPageReviewController() {
+    public MyPageMyPlaceController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,36 +36,29 @@ public class MyPageReviewController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 		//userNo, userId 세션에서 추출하기
 		HttpSession session = request.getSession();
 		int userNo = ((Member)session.getAttribute("loginUser")).getUserNo();			
 		String userId = ((Member)session.getAttribute("loginUser")).getUserId();			
 
 		
-		int reviewListCount; // 총 게시글 개수
+		int myPlaceListCount; // 총 게시글 개수
 		int currentPage; // 현재 페이지
 		int pageLimit; // 페이지 하단에 보여질 페이징바의 최대 개수
-		int myPageReviewLimit; // 한페이지에 보여질 게시글 개수
+		int myPageMyPlaceLimit; // 한페이지에 보여질 게시글 개수
 
 		int maxPage; // 가장 마지막 페이징바가 몇번인지 (총 페이지수)
 		int startPage; // 페이지 하단에 보여질 페이징바의 시작수
 		int endPage; // 페이지 하단에 보여질 페이징바의 끝수
-
 		
-		// listCount 현재 게시글 개수
-		reviewListCount = new ReviewService().reviewListCount(userNo); // 게시글 개수 조회해오기
-		// 현재페이지 정보(번호)
+		myPlaceListCount = new MyPlaceService().myPageMyPlaceListCount(userNo); // 게시글 개수 조회해오기
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		
 		pageLimit = 5;
+		myPageMyPlaceLimit = 9;
+		maxPage = (int) Math.ceil((double) myPlaceListCount / myPageMyPlaceLimit);
 		
-		myPageReviewLimit = 5;
-
-		
-		maxPage = (int) Math.ceil((double) reviewListCount / myPageReviewLimit);
-
-	
 		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;
 
 		endPage = startPage + pageLimit - 1;
@@ -72,20 +67,20 @@ public class MyPageReviewController extends HttpServlet {
 			endPage = maxPage;
 		}
 
-		PageInfo pi = new PageInfo(reviewListCount, currentPage, pageLimit, myPageReviewLimit, maxPage, startPage, endPage);
+		PageInfo pi = new PageInfo(myPlaceListCount, currentPage, pageLimit, myPageMyPlaceLimit, maxPage, startPage, endPage);
 		
 		
-		//myPage Review List
-		ArrayList<Reservation> selectMyReviewList = new ReviewService().selectMyReviewList(pi, userNo);
+		//찜 경기장 조회하기
+		ArrayList<SoccerMatching> aList = new MyPlaceService().selectMyPlaceList(pi, userNo);
 		
 		
 		request.setAttribute("pi", pi);
-		request.setAttribute("reviewList", selectMyReviewList);
+		request.setAttribute("aList", aList);
 		
-		request.getRequestDispatcher("views/review/myPageReview.jsp").forward(request, response);
+		request.getRequestDispatcher("views/myplace/myPageMyPlace.jsp").forward(request, response);
 	}
-	
 
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

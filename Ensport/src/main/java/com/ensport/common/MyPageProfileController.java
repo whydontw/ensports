@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 
 import com.ensport.member.model.service.MemberService;
+import com.ensport.myplace.model.service.MyPlaceService;
 import com.ensport.qa.model.service.QaService;
 import com.ensport.reply.model.service.ReplyService;
 import com.ensport.reservation.model.service.ReservationService;
@@ -44,6 +45,7 @@ public class MyPageProfileController extends HttpServlet {
 		int qaCount = new QaService().qalistCount(userNo);
 		int reviewCount = new ReviewService().reviewListCount(userNo);
 		int reservationCount = new ReservationService().reservationListCount(userNo);
+		int myPlaceListCount = new MyPlaceService().myPageMyPlaceListCount(userNo);
 		
 		
 		JSONObject jObj = new JSONObject();
@@ -53,6 +55,7 @@ public class MyPageProfileController extends HttpServlet {
 		jObj.put("qaCount", qaCount);
 		jObj.put("reviewCount", reviewCount);
 		jObj.put("reservationCount", reservationCount);
+		jObj.put("myPlaceCount", myPlaceListCount);
 		
 		response.getWriter().print(jObj);
 
