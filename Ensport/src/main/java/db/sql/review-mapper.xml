@@ -47,7 +47,7 @@
 						
                         LEFT JOIN REVIEW USING(PLAYER_NO)
                         WHERE RESERVATION_DATE < SYSDATE
-                        ORDER BY RESERVATION_DATE DESC
+                        ORDER BY RESERVATION_NO DESC
 
                  ) A
               )

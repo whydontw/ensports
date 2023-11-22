@@ -36,6 +36,7 @@ public class ReviewListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		int placeNo = Integer.parseInt(request.getParameter("pno"));
 		int sum = new SoccerMatchingService().selectReviewSum(placeNo);
 		int count = new SoccerMatchingService().selectReviewCount(placeNo);
@@ -46,17 +47,11 @@ public class ReviewListController extends HttpServlet {
 		int oneStar = new SoccerMatchingService().selectOneStar(placeNo);
 		
 		
-
 		ArrayList<Review> rlist = new SoccerMatchingService().selectReviewList(placeNo);
 		
-		System.out.println("rlist 출력하기");
-		for(Review r : rlist) {
-			System.out.println(r);
-		}
-
 		
-
 		Map<String, Object> responseData = new HashMap<>();
+		
 		responseData.put("sum", sum);
 		responseData.put("count", count);
 		responseData.put("fiveStar", fiveStar);
@@ -73,8 +68,6 @@ public class ReviewListController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(json);
 
-//		System.out.println("수 : " + count);
-//		System.out.println("총점 : " + sum);		
 	}
 
 	/**

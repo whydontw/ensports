@@ -30,7 +30,7 @@
 
             <div class="section-top-border">
                 
-                <h3 class="mb-30"><b class="mb-30">사이트 이용 약관</b></h3>
+                <h3 class="my-3"><b class="mb-30">사이트 이용 약관</b></h3>
                 <div class="row">
                     <div class="col-md-12">
                         <blockquote class="generic-blockquote" style="overflow: scroll; overflow-x: hidden; height: 200px;">
@@ -161,7 +161,7 @@
                         </blockquote>
                         <div class="col-lg-4 mx-auto">
                             <div class="single-element-widget mt-50">
-                                <div class="switch-wrap d-flex justify-content-around">
+                                <div class="switch-wrap d-flex justify-content-around my-3">
                                     <h4>이용약관에 동의합니다.</h4>
                                     <div class="primary-checkbox">
                                         <input type="checkbox" id="default-checkbox" name="termsChk">
@@ -174,7 +174,7 @@
                 </div>
 
 
-                <h3 class="section_gap_top"><b class="mb-30">개인정보 이용 약관</b></h3>
+                <h3 class="section_gap_top my-3"><b class="mb-30">개인정보 이용 약관</b></h3>
                 <div class="row  mt-50">
                     <div class="col-md-12">
 
@@ -306,7 +306,7 @@
                         </blockquote>
                         <div class="col-lg-5 mx-auto">
                             <div class="single-element-widget mt-50">
-                                <div class="switch-wrap d-flex justify-content-around">
+                                <div class="switch-wrap d-flex justify-content-around my-3">
                                     <h4>Ensport 개인정보 이용 약관에 동의합니다.</h4>
                                     <div class="primary-checkbox">
                                         <input type="checkbox" id="default-checkbox2" name="termsChk">
@@ -316,7 +316,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-5 mx-auto section_gap_top" style="margin-top: 50px;">
+                        <div class="col-lg-5 mx-auto section_gap_top">
                             <div class="single-element-widget mt-50">
                                 <div class="switch-wrap d-flex justify-content-around">
                                     <h4 class="mt-50">Ensport 이용 약관에 모두 동의합니다.</h4>
@@ -333,7 +333,7 @@
             </div>
         </div>
 
-        <div class="row contact_form">
+        <div class="row contact_form my-3">
             <div class="col-md-12 text-center mt-50">
                 <button class="primary-btn" id="insertMemberNext">회원가입</button>
             </div>

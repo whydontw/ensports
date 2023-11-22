@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import com.ensport.admin.model.vo.Attachment;
 
 import com.ensport.matching.model.service.SoccerMatchingService;
+import com.ensport.member.model.vo.Member;
+import com.ensport.myplace.model.service.MyPlaceService;
 import com.ensport.place.model.vo.Place;
 
 /**
@@ -35,24 +37,42 @@ public class SoccerMatchingDetailController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+
+		//로그인 하지않을 시 초기값(찜)
+		int userNo = 0;
+		
+		//로그인 시
+		if((session.getAttribute("loginUser")) != null) {
+			//userNo 세션에서 추출하기
+			userNo = ((Member)session.getAttribute("loginUser")).getUserNo();
+		}
+		
 		String matchingDate = request.getParameter("date");
 		String matchingTime = request.getParameter("time");
 		
 		int placeNo = Integer.parseInt(request.getParameter("pno"));
-		System.out.println("안 넘어온다면서 넘어오는 pno번호: "+placeNo);
-		System.out.println(matchingDate);
 		
 	
 		
 		SoccerMatchingService ss = new SoccerMatchingService();
 		
+		//찜 여부 확인하기
+		int likeYn = new MyPlaceService().selectMyPlaceYn(userNo, placeNo);
+		
+		System.out.println(userNo);
+		System.out.println(placeNo);
+		System.out.println("찜 맻개 들어갔니?" + likeYn);
+		
+		
 		int result = ss.increaseCount(placeNo);
-		HttpSession session = request.getSession();
 		
 		if(result>0) {
 			Place p = ss.selectPlace(placeNo);
 			ArrayList<Attachment> list = ss.selectAttachmentList(placeNo);
 			
+			
+			request.setAttribute("likeYn", likeYn);
 			request.setAttribute("time", matchingTime);
 			request.setAttribute("pno", placeNo);
 			request.setAttribute("p", p);
