@@ -223,7 +223,7 @@
 						},
 						success : function(result) {
 	
-							if (result == 'NNNNN') { //아이디 중복
+							if (result == 'Y') { //아이디 중복
 								alert("해당 아이디는 이미 존재하거나 탈퇴한 회원의 아이디입니다.");
 							} else { //아이디 사용가능
 								//기존의 disabled 되어있던 회원가입 버튼을 사용가능하게 바꾸고 id값을 변경할 수 없도록 readonly 처리해주기

@@ -19,7 +19,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>서울 축구 경기매칭</title>
+	<title>서울 축구 시설예약</title>
 
 </head>
 

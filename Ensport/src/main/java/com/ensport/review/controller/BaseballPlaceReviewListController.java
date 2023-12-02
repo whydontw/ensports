@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 /**
  * Servlet implementation class BaseballPlaceReviewListController
  */
-@WebServlet("/review.baplll")
+@WebServlet("/reviewList.ba")
 public class BaseballPlaceReviewListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,6 +35,8 @@ public class BaseballPlaceReviewListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				
+	
 		int placeNo = Integer.parseInt(request.getParameter("pno"));
 		
 		System.out.println(placeNo);
@@ -69,6 +71,8 @@ public class BaseballPlaceReviewListController extends HttpServlet {
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(json);
+		
+	
 	}
 
 	/**
