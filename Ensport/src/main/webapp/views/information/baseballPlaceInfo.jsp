@@ -323,35 +323,15 @@
 
 	<%@ include file="../common/footer.jsp"%>
 
-	<script
-		src="<%=request.getContextPath()%>/resources/js/vendor/jquery-2.2.4.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-		integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-		crossorigin="anonymous"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/vendor/bootstrap.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.ajaxchimp.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.nice-select.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.sticky.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/nouislider.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.magnific-popup.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
-	<!--gmaps Js-->
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/gmaps.min.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
 
-	<script>
+
+
+	<script type="text/javascript">
 	
-	$(document).ready(function() {
+	$(function() {
+		
+		selectReviewList();
+		
 
 		//시간미선택시 예약 막기
 		$(".primary-btn").on("click",function() {
@@ -424,29 +404,23 @@
 		            }
 		        });
 		    });		
-	});
+		});
 		
-	</script>
-	<script>
-	$(function(){
-		selectReviewList();
-	});
-
+	
+	
 	function selectReviewList(){
 		
-		console.log("==============")
-		console.log(${sno});
-		console.log("==============")
-		
-		 $.ajax({
-			 url: "review.baplll",
-	         data: {pno: ${sno}},
-	         method: "get",
-	         success: function(result){
-	        	 
-	        	 console.log(result);
-	        	 
-	        	 var avg = (result.sum / result.count).toFixed(2);
+
+		$.ajax({
+			url: "reviewList.ba",
+			data: {
+				pno : ${sno},
+			},
+			method: "get",
+			
+			success : function(result){
+				
+				 var avg = (result.sum / result.count).toFixed(2);
 
 	        	 for (var i = 0; i < result.count; i++) {
 	        		 
@@ -483,18 +457,118 @@
 	        	 $(".box_total h6").text("("+result.count+" Reviews)");
 	        	 $("#count h3").text("Based on "+result.count+" Reviews");
 	        	 $(".box_total h4").text(avg);
-//		              $(".box_total h6").text("("+result.length+" Reviews)");
-//		              $("#count h3").text("Based on "+result.length+" Reviews");
-//		              console.log(result.length);
-`				console.log(result);
+	        	 
+				
+			},
+			error: function(){
+				alert("안왔당");
+			}
+			
+		});
+		
+		
+		
+		
+// 		console.log("==============")
+// 		console.log(${sno});
+// 		console.log("==============")
+		
+		
+// 		 $.ajax({
+// 			 url: "reviewList.ba",
+// 	         data: {
+// 	        	 pno: ${sno},
+// 	        	 message : "안녕"
+// 	         },
+// // 	         method: "get",
+// 	         success: function(result){
+	        	 
+// 	        	 console.log(result);
+	        	 
+// 	        	 var avg = (result.sum / result.count).toFixed(2);
+
+// 	        	 for (var i = 0; i < result.count; i++) {
+	        		 
+// 	        		    var stars = "";
+// 	        		    for (var j = 0; j < result.rlist[i].score; j++) {
+	        		    	
+// 	        		        stars += "<i class='fa fa-star'></i> ";
+// 	        		    }
+
+// 	        		    var reviewItem = $("<div class='review_item'>" +
+// 	        		        "<div class='media'>" +
+// 	        		        "<div class='d-flex'>" +
+<%-- 	        		        "<img src='" + '<%=request.getContextPath()%>' + "/resources/img/product/review.jpg' alt=''>" + --%>
+// 	        		        "</div>" +
+// 	        		        "<div class='media-body'>" +
+// 	        		        "<h4>" + result.rlist[i].reviewWriter + "</h4>" +
+// 	        		        "<br>" +
+// 	        		        "<h4>" + result.rlist[i].createDate + "</h4>" +
+// 	        		        stars +
+// 	        		        "</div>" +
+// 	        		        "</div>" +
+// 	        		        "<p>" + result.rlist[i].reviewContent + "</p>" +
+// 	        		        "</div>");
+						
+// 	        		    $(".review_list").append(reviewItem);
+// 	        		}
+	        	 
+	        	 
+// 	        	 $("#five span").text(result.fiveStar+"개");
+// 	        	 $("#four span").text(result.fourStar+"개");
+// 	        	 $("#three span").text(result.threeStar+"개");
+// 	        	 $("#two span").text(result.twoStar+"개");
+// 	        	 $("#one span").text(result.oneStar+"개");
+// 	        	 $(".box_total h6").text("("+result.count+" Reviews)");
+// 	        	 $("#count h3").text("Based on "+result.count+" Reviews");
+// 	        	 $(".box_total h4").text(avg);
+// //		              $(".box_total h6").text("("+result.length+" Reviews)");
+// //		              $("#count h3").text("Based on "+result.length+" Reviews");
+// //		              console.log(result.length);
+// `				console.log(result);
 	             
-	            },
-	            error: function(){
-	                console.log("리뷰 오류");
-	            }
-	        });
+// 	            },
+// 	            error: function(){
+// 	                console.log("리뷰 오류");
+// 	            }
+// 	        });
 		}
+	
+	
+	
 	</script>
+
+	
+	<script
+		src="<%=request.getContextPath()%>/resources/js/vendor/jquery-2.2.4.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+		integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+		crossorigin="anonymous"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/vendor/bootstrap.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.ajaxchimp.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.nice-select.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.sticky.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/nouislider.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.magnific-popup.min.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/owl.carousel.min.js"></script>
+	<!--gmaps Js-->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/gmaps.min.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/main.js"></script>
+
+
+	
+	
+
 </body>
 
 </html>

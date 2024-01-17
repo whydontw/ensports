@@ -231,93 +231,85 @@
 					</div>
 				</div>
 				
-				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+				<div class="tab-pane fade show active" id="review" role="tabpanel"
+					aria-labelledby="review-tab">
 					<div class="row">
 						<div class="col-lg">
 							<div class="row total_rate">
 								<div class="col-6">
-									<div class="box_total">
+									<div class="box_total" id="avaerage">
 										<h5>Overall</h5>
-										<h4>4.0</h4>
-										<h6>(03 Reviews)</h6>
+										<h4></h4>
+										<h6>( Reviews)</h6>
 									</div>
 								</div>
 								<div class="col-6">
-									<div class="rating_list">
-										<h3>Based on 3 Reviews</h3>
+									<div class="rating_list" id="count">
+										<h3>Based on Reviews</h3>
 										<ul class="list">
-											<li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">3 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">2 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">1 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+											<li id="five"><a href="#"> 5 Star <i
+													class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+													class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+													class="fa fa-star"></i> <span></span>
+											</a></li>
+											<li id="four"><a href="#">4 Star <i
+													class="fa fa-star"></i><i class="fa fa-star"></i><i
+													class="fa fa-star"></i><i class="fa fa-star"></i> <span></span>
+											</a></li>
+											<li id="three"><a href="#">3 Star <i
+													class="fa fa-star"></i><i class="fa fa-star"></i><i
+													class="fa fa-star"></i> <span></span>
+											</a></li>
+											<li id="two"><a href="#">2 Star <i
+													class="fa fa-star"></i><i class="fa fa-star"></i> <span></span>
+											</a></li>
+											<li id="one"><a href="#">1 Star <i
+													class="fa fa-star"></i><span></span>
+											</a></li>
 										</ul>
 									</div>
 								</div>
+
 							</div>
-							<div class="review_list">
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="<%= request.getContextPath() %>/resources/img/product/review-1.png" alt="">
+							<div class="button-group-area">
+								<a class="genric-btn" onclick="orderByRecent()">최신순</a> 
+								<a class="genric-btn" onclick="orderByStar()">별점순</a>
+
+							</div>
+							
+							
+							
+				
+							<div id="reviewContainer">
+								<div class="review_list">
+									<div class="review_item">
+										<div class="media">
+											<div class="d-flex">
+												<img class="author_img rounded-circle" src="" alt="">
+											</div>
+											<div class="media-body">
+												<h4>
+													<!-- 이름 -->
+												</h4>
+												<br>
+												<h4>
+													<!-- 날짜 -->
+												</h4>
+												<!--  <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+												class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+												class="fa fa-star"></i>-->
+
+											</div>
 										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
+										<p>
+											<!-- 내용 -->
+										</p>
 									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
 								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="<%= request.getContextPath() %>/resources/img/product/review-2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="<%= request.getContextPath() %>/resources/img/product/review-3.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-										dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-										commodo</p>
-								</div>
+
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -425,6 +417,168 @@
 	});
 		
 	</script>
+	
+	<script>
+	
+	function orderByRecent(){
+		
+		$.ajax({
+			 url: "ajax.review",
+	         data: {pno: "${ssp}"},
+	         success: function(result){
+	        	 
+	        	 $(".review_list").html("");
+	        	 
+	        	 for (var i = 0; i < result.rlist.length; i++) {
+	        		 
+	        		    var stars = "";
+	        		    
+	        		    for (var j = 0; j < result.rlist[i].score; j++) {
+	        		        stars += "<i class='fa fa-star'></i> ";
+	        		    }
+	        		    var reviewItem = $("<div class='review_item'>" +
+	        		        "<div class='media'>" +
+	        		        "<div class='d-flex'>" +
+	        		        "<img src='" + '<%=request.getContextPath()%>' + "/resources/img/product/review.jpg' alt=''>" +
+	        		        "</div>" +
+	        		        "<div class='media-body'>" +
+	        		        "<h4>" + result.rlist[i].reviewWriter + "</h4>" +
+	        		        "<br>" +
+	        		        "<h4>" + result.rlist[i].createDate + "</h4>" +
+	        		        stars +
+	        		        "</div>" +
+	        		        "</div>" +
+	        		        "<p>" + result.rlist[i].reviewContent + "</p>" +
+	        		        "</div>");
+	        		    
+	        		    
+	        		    $(".review_list").append(reviewItem);
+	        		    
+	        		    console.log(result.rlist);
+	        		}
+
+	         },
+	         error: function(){
+	         console.log("최신순 오류");
+	         }
+		});
+		
+	}	
+	
+	function orderByStar(){
+		
+		$.ajax({
+			 url: "ajax.star",
+	         data: {pno: "${ssp}"},
+	         success: function(result){
+	        	 
+	        	 $(".review_list").html("");
+	        	 
+	        	 for (var i = 0; i < result.slist.length; i++) {
+	        		 
+	        		    var stars = "";
+	        		    
+	        		    for (var j = 0; j < result.slist[i].score; j++) {
+	        		        stars += "<i class='fa fa-star'></i> ";
+	        		    }
+	        		    var reviewItem = $("<div class='review_item'>" +
+	        		        "<div class='media'>" +
+	        		        "<div class='d-flex'>" +
+	        		        "<img src='" + '<%=request.getContextPath()%>' + "/resources/img/product/review.jpg' alt=''>" +
+	        		        "</div>" +
+	        		        "<div class='media-body'>" +
+	        		        "<h4>" + result.slist[i].reviewWriter+ "</h4>" +
+	        		        "<br>" +
+	        		        "<h4>" + result.slist[i].createDate + "</h4>" +
+	        		        stars +
+	        		        "</div>" +
+	        		        "</div>" +
+	        		        "<p>" + result.slist[i].reviewContent + "</p>" +
+	        		        "</div>");
+	        		    
+	        		    
+	        		    $(".review_list").append(reviewItem);
+	        		    
+	        		    console.log(result.slist);
+	        		}
+
+	         },
+	         error: function(){
+	         console.log("별점순 오류");
+	         }
+		});
+		
+	}
+	
+	
+	
+		
+		$(function(){
+			selectReviewList();
+		});
+	
+		function selectReviewList(){
+			
+			
+			 $.ajax({
+				 url: "review.li",
+		         data: {pno:"${ssp}"},
+		         success: function(result){
+		        	 
+		        	 var avg = (result.sum / result.count).toFixed(2);
+
+		        	 
+		        	 for (var i = 0; i < result.count; i++) {
+		        		 
+		        		    var stars = "";
+		        		    for (var j = 0; j < result.rlist[i].score; j++) {
+		        		    	
+		        		    	
+		        		        stars += "<i class='fa fa-star'></i> ";
+		        		    }
+
+		        		    var reviewItem = $("<div class='review_item'>" +
+		        		        "<div class='media'>" +
+		        		        "<div class='d-flex'>" +
+		        		        "<img src='" + '<%=request.getContextPath()%>' + "/resources/img/product/review.jpg' alt=''>" +
+		        		        "</div>" +
+		        		        "<div class='media-body'>" +
+		        		        "<h4>" + result.rlist[i].reviewWriter + "</h4>" +
+		        		        "<br>" +
+		        		        "<h4>" + result.rlist[i].createDate + "</h4>" +
+		        		        stars +
+		        		        "</div>" +
+		        		        "</div>" +
+		        		        "<p>" + result.rlist[i].reviewContent + "</p>" +
+		        		        "</div>");
+							
+		        		    $(".review_list").append(reviewItem);
+		        		}
+		        	 
+		        	 
+		        	 $("#five span").text(result.fiveStar+"개");
+		        	 $("#four span").text(result.fourStar+"개");
+		        	 $("#three span").text(result.threeStar+"개");
+		        	 $("#two span").text(result.twoStar+"개");
+		        	 $("#one span").text(result.oneStar+"개");
+		        	 $(".box_total h6").text("("+result.count+" Reviews)");
+		        	 $("#count h3").text("Based on "+result.count+" Reviews");
+		        	 $(".box_total h4").text(avg);
+// 		              $(".box_total h6").text("("+result.length+" Reviews)");
+// 		              $("#count h3").text("Based on "+result.length+" Reviews");
+// 		              console.log(result.length);
+		             
+		            },
+		            error: function(){
+		                console.log("리뷰 오류");
+		            }
+		        });
+			}
+       
+	
+	</script>
+	
+	
 
 </body>
 
