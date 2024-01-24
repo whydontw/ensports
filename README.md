@@ -10,7 +10,8 @@
 **`개발목표`**
 >축구, 야구 등 많은 인원을 요구하는 스포츠를 일상에서 즐기고 싶으나 단체 모집에 어려움이 있어 즐길 수 없는 생활 스포츠인을 위한 소셜 매치 및 경기장 예약 사이트를 구현함
 
-<br><br>
+<br>
+
 **`개발환경`**
 - 운영체제 : Window 11
 - 사용언어 : JAVA, JavaScript, HTML/CSS
@@ -20,7 +21,8 @@
 - WAS : Apache Tomcat 9.0
 - Collaboration : GitHub, Notion, Slack
 
-<br><br>
+<br>
+
 **`구현기능`**
 ###### ***(+ 직접 구현한 기능은 기울임 처리)***
 
@@ -34,3 +36,7 @@
 8.	경기장 찜(선호 경기장 찜)
 9.	***FAQ***
 
+<br>
+
+## 🎬 시연 영상
+[![Video Label](http://img.youtube.com/vi/wUcJFpHnbt4/0.jpg)](https://youtu.be/wUcJFpHnbt4)
