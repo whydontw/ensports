@@ -1,11 +1,15 @@
 ## ⚽ ENsports (Enjoy with your Neighbor)
 <br>
 
+![1_메인](https://github.com/whydontw/tinyFarm/assets/101682578/249c1139-ac37-4b40-a785-269f5ea3a2f5)
+
+<br>
+
 **`프로젝트명`** ENsports (Enjoy with your Neighbor)
 
 **`개발기간`** 23.10.15 ~ 23.11.14
 
-**`개발인원`** 5명
+**`개발인원`** 5
 
 **`개발목표`**
 >축구, 야구 등 많은 인원을 요구하는 스포츠를 일상에서 즐기고 싶으나 단체 모집에 어려움이 있어 즐길 수 없는 생활 스포츠인을 위한 소셜 매치 및 경기장 예약 사이트를 구현함
@@ -39,4 +43,4 @@
 <br>
 
 ## 🎬 시연 영상
-[![Video Label](http://img.youtube.com/vi/wUcJFpHnbt4/0.jpg)](https://youtu.be/wUcJFpHnbt4)
+[![Video Label](http://img.youtube.com/vi/wUcJFpHnbt4/sddefault.jpg)](https://youtu.be/wUcJFpHnbt4)
